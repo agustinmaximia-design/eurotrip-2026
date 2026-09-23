@@ -3,7 +3,7 @@
    - "cascara": el HTML, el manifest y los íconos. Se renueva sola al publicar.
    - "audio": los MP3. Nunca se tocan solos; los baja y los borra el usuario. */
 
-const VERSION = "cb1ceab4cc";
+const VERSION = "2aced5a090";
 const CACHE_CASCARA = "eurotrip-cascara-" + VERSION;
 const CACHE_AUDIO = "eurotrip-audio-v1";
 
@@ -93,7 +93,7 @@ self.addEventListener("message", function (ev) {
   if (msg.tipo === "estado") {
     caches.open(CACHE_AUDIO).then(function (c) {
       return Promise.all(msg.urls.map(function (u) {
-        return c.match(u).then(function (hit) { return hit ? 1 : 0; });
+        return c.match(u, { ignoreVary: true }).then(function (hit) { return hit ? 1 : 0; });
       }));
     }).then(function (hits) {
       responder({ guardadas: hits.reduce(function (a, b) { return a + b; }, 0) });
@@ -102,15 +102,36 @@ self.addEventListener("message", function (ev) {
   }
 
   if (msg.tipo === "descargar") {
-    caches.open(CACHE_AUDIO).then(function (c) {
-      let hechas = 0, fallidas = 0;
+    /* waitUntil es lo que mantiene vivo al service worker mientras baja.
+       Sin esto el navegador lo puede matar a mitad de camino y la descarga
+       queda incompleta sin avisar: así se cortó en 17 de 27 la primera vez. */
+    const tarea = caches.open(CACHE_AUDIO).then(function (c) {
+      let hechas = 0, fallidas = 0, vuelta = 0, base = 0;
+      const pendientes = function () {
+        return Promise.all(msg.urls.map(function (u) {
+          return c.match(u, { ignoreVary: true }).then(function (h) { return h ? null : u; });
+        })).then(function (r) { return r.filter(Boolean); });
+      };
+      /* Hasta 3 pasadas: lo que falló por un corte de red se reintenta solo. */
+      const rematar = function () {
+        return pendientes().then(function (faltan) {
+          if (!faltan.length || vuelta >= 2) {
+            return { listo: true, hechas: msg.urls.length - faltan.length,
+                     fallidas: faltan.length, total: msg.urls.length };
+          }
+          vuelta++;
+          return new Promise(function (ok) {
+            hechas = 0; fallidas = 0;
+            base = msg.urls.length - faltan.length;   // las que ya estan
+            correr(faltan, ok);
+          }).then(rematar);
+        });
+      };
+      const correr = function (urls, fin) {
       const siguiente = function (i) {
-        if (i >= msg.urls.length) {
-          responder({ listo: true, hechas: hechas, fallidas: fallidas });
-          return;
-        }
-        const u = msg.urls[i];
-        c.match(u).then(function (hit) {
+        if (i >= urls.length) { fin(); return; }
+        const u = urls[i];
+        c.match(u, { ignoreVary: true }).then(function (hit) {
           if (hit) { hechas++; avisar(i + 1); return siguiente(i + 1); }
           return fetch(u, { cache: "no-store" }).then(function (res) {
             if (!res || !res.ok) throw new Error("http " + (res && res.status));
@@ -130,15 +151,18 @@ self.addEventListener("message", function (ev) {
           });
         });
       };
+        siguiente(0);
+      };
       const avisar = function (n) {
         self.clients.matchAll().then(function (cs) {
           cs.forEach(function (cl) {
-            cl.postMessage({ tipo: "progreso", ciudad: msg.ciudad, hechas: n, total: msg.urls.length });
+            cl.postMessage({ tipo: "progreso", ciudad: msg.ciudad, hechas: Math.min(base + n, msg.urls.length), total: msg.urls.length, vuelta: vuelta });
           });
         });
       };
-      siguiente(0);
-    });
+      return new Promise(function (ok) { correr(msg.urls, ok); }).then(rematar);
+    }).then(responder).catch(function () { responder({ listo: true, fallidas: -1 }); });
+    if (ev.waitUntil) ev.waitUntil(tarea);
     return;
   }
 
