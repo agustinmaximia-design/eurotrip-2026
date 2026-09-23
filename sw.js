@@ -3,7 +3,7 @@
    - "cascara": el HTML, el manifest y los íconos. Se renueva sola al publicar.
    - "audio": los MP3. Nunca se tocan solos; los baja y los borra el usuario. */
 
-const VERSION = "2aced5a090";
+const VERSION = "8635fa2aae";
 const CACHE_CASCARA = "eurotrip-cascara-" + VERSION;
 const CACHE_AUDIO = "eurotrip-audio-v1";
 

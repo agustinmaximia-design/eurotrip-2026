@@ -270,6 +270,11 @@
     width: 100%; text-align: left; background: none; border: 0; cursor: pointer; font: inherit;
     color: inherit; padding: 15px 2px; }
   .parada-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .parada-texto { appearance: none; background: none; border: 0; cursor: pointer; font: inherit;
+    font-size: 12px; letter-spacing: .02em; color: var(--muted); padding: 0 18px 14px 54px;
+    display: block; width: 100%; text-align: left; }
+  .parada-texto:active { opacity: .6; }
+  .parada-texto:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
   .num { font-family: var(--ff-mono); font-size: 11px; font-weight: 600; color: var(--faint);
     padding-top: 4px; font-variant-numeric: tabular-nums; min-width: 20px; }
   .parada.done .num { color: var(--accent); }
@@ -507,6 +512,7 @@ const ITINERARIO = {
 };
 
 const GUIA_MADRID_D1 = {
+  voz: "es-US-Chirp3-HD-Gacrux",
   id: "madrid-d1",
   ciudad: "madrid",
   titulo: "Madrid, día 1",
@@ -585,6 +591,7 @@ const GUIA_MADRID_D1 = {
 };
 
 const GUIA_MADRID_D2 = {
+  voz: "es-US-Chirp3-HD-Iapetus",
   id: "madrid-d2",
   ciudad: "madrid",
   titulo: "Madrid, día 2",
@@ -661,6 +668,7 @@ const GUIA_MADRID_D2 = {
 };
 
 const GUIA_MADRID_D4 = {
+  voz: "es-US-Chirp3-HD-Iapetus",
   id: "madrid-d4",
   ciudad: "madrid",
   titulo: "Madrid, día 4",
@@ -717,6 +725,7 @@ const GUIA_MADRID_D4 = {
 };
 
 const GUIA_TOLEDO = {
+  voz: "es-US-Chirp3-HD-Gacrux",
   id: "toledo",
   ciudad: "madrid",
   titulo: "Toledo, día completo",
@@ -857,6 +866,12 @@ var AUDIO_BASE = "audio/";
   "use strict";
 
   var GUIAS = [GUIA_MADRID_D1, GUIA_MADRID_D2, GUIA_TOLEDO, GUIA_MADRID_D4];
+  /* Cada guía se narra con una voz. Se copia a cada parada porque la huella
+     del MP3 la incluye: si le cambio la voz a una guía, cambia la URL y el
+     teléfono se baja SOLO esas pistas, sin tocar las demás. */
+  GUIAS.forEach(function (g) {
+    g.paradas.forEach(function (p) { p.voz = g.voz || ""; });
+  });
   var IT = ITINERARIO;
 
   /* ---------- almacenamiento tolerante a fallos ---------- */
@@ -1008,7 +1023,7 @@ var AUDIO_BASE = "audio/";
   }
 
   function urlParada(p) {
-    return "audio/" + p.id + ".mp3?v=" + huella(p.guion);
+    return "audio/" + p.id + ".mp3?v=" + huella((p.voz || "") + "\n" + p.guion);
   }
 
   /* ===== descargas para usar sin conexión ===== */
@@ -1204,6 +1219,7 @@ var AUDIO_BASE = "audio/";
       h += '<span class="parada-sala">' + esc(p.sala) + (p.planta ? " &middot; " + esc(p.planta) : "") + "</span></span>";
       h += '<span class="play-dot">&#9654;</span>';
       h += "</button>";
+      h += '<button class="parada-texto" aria-expanded="false">Ver texto</button>';
       h += '<div class="parada-body" hidden>';
       if (p.tecnica) h += '<div class="tecnica">' + esc(p.tecnica) + "</div>";
       h += '<div class="guion">' + parrafos(p.guion) + "</div>";
@@ -1281,17 +1297,16 @@ var AUDIO_BASE = "audio/";
     });
   }
 
+  /* Al reproducir NO se abre el guion: la audioguía es para escuchar caminando.
+     El texto se despliega solo si lo pedís con "Ver texto". */
   function abrirCuerpo(id) {
     var nodo = document.querySelector('.parada[data-parada="' + id + '"]');
     if (!nodo) return;
-    var cuerpo = nodo.querySelector(".parada-body");
-    var btn = nodo.querySelector(".parada-btn");
-    if (cuerpo && cuerpo.hidden) { cuerpo.hidden = false; btn.setAttribute("aria-expanded", "true"); }
     nodo.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function reproducir(p) {
-    var src = AUDIO_BASE + p.id + ".mp3?v=" + huella(p.guion);
+    var src = AUDIO_BASE + p.id + ".mp3?v=" + huella((p.voz || "") + "\n" + p.guion);
     var a = new Audio();
     a.preload = "auto";
     a.playbackRate = reproductor.rate;
@@ -1520,20 +1535,28 @@ var AUDIO_BASE = "audio/";
       return;
     }
 
+    /* "Ver texto": despliega el guion sin tocar la reproducción. */
+    var vt = ev.target.closest ? ev.target.closest(".parada-texto") : null;
+    if (vt) {
+      var nodoT = vt.closest(".parada");
+      var cuerpoT = nodoT.querySelector(".parada-body");
+      var abrir = cuerpoT.hidden;
+      cuerpoT.hidden = !abrir;
+      vt.setAttribute("aria-expanded", String(abrir));
+      vt.textContent = abrir ? "Ocultar texto" : "Ver texto";
+      return;
+    }
+
     var btn = ev.target.closest ? ev.target.closest(".parada-btn") : null;
     if (btn) {
       var nodo2 = btn.closest(".parada");
       var id2 = nodo2.getAttribute("data-parada");
-      var cuerpo = nodo2.querySelector(".parada-body");
-      var abriendo = cuerpo.hidden;
-      cuerpo.hidden = !abriendo;
-      btn.setAttribute("aria-expanded", String(abriendo));
-      if (abriendo && guiaActual) {
+      var esActual = nodo2.classList.contains("playing");
+      if (esActual) { el("btn-play").click(); return; }   // pausa/reanuda
+      if (guiaActual) {
         var i = -1;
         guiaActual.paradas.forEach(function (p, k) { if (p.id === id2) i = k; });
         if (i >= 0) cargarParada(i);
-      } else if (!abriendo) {
-        detener(false);
       }
     }
   });
