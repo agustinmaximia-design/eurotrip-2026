@@ -1,0 +1,1586 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0E1113">
+<style>
+  :root { color-scheme: light dark; padding-top: env(safe-area-inset-top, 0px);
+          padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Eurotrip 2026</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Eurotrip">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-startup-image" href="splash-440x956@3.png" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-402x874@3.png" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-430x932@3.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-393x852@3.png" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-428x926@3.png" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-390x844@3.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-375x812@3.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-414x896@3.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-414x896@2.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-375x667@2.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+<link rel="apple-touch-startup-image" href="splash-414x736@3.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #EDEFEC;
+    --surface: #FFFFFF;
+    --surface-2: #F4F6F3;
+    --ink: #13181A;
+    --muted: #5C6763;
+    --faint: #8B948F;
+    --line: #D3D9D4;
+    --line-soft: #E3E7E3;
+    --accent: #14604F;
+    --accent-soft: #DCEBE5;
+    --signal: #8A5000;
+    --signal-soft: #F5E9D5;
+    --alert: #97281F;
+    --alert-soft: #F6E1DE;
+    --shadow: 0 1px 2px rgba(19,24,26,.06), 0 8px 24px -12px rgba(19,24,26,.18);
+    --ff-ui: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --ff-text: "Spectral", Georgia, "Times New Roman", serif;
+    --ff-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E1113;
+      --surface: #161A1D;
+      --surface-2: #1C2124;
+      --ink: #E6ECE8;
+      --muted: #96A19C;
+      --faint: #6E7975;
+      --line: #2A3134;
+      --line-soft: #222829;
+      --accent: #5FB9A8;
+      --accent-soft: #14302B;
+      --signal: #E0A63A;
+      --signal-soft: #32260F;
+      --alert: #E0655A;
+      --alert-soft: #35201D;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E1113;
+    --surface: #161A1D;
+    --surface-2: #1C2124;
+    --ink: #E6ECE8;
+    --muted: #96A19C;
+    --faint: #6E7975;
+    --line: #2A3134;
+    --line-soft: #222829;
+    --accent: #5FB9A8;
+    --accent-soft: #14302B;
+    --signal: #E0A63A;
+    --signal-soft: #32260F;
+    --alert: #E0655A;
+    --alert-soft: #35201D;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { overscroll-behavior-y: none; }
+  body {
+    margin: 0;
+    touch-action: manipulation;
+    -webkit-user-select: none; user-select: none;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--ff-ui);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding-inline: 16px;
+    padding-block: 0 calc(96px + env(safe-area-inset-bottom, 0px)); }
+  body.con-player .wrap { padding-bottom: calc(190px + env(safe-area-inset-bottom, 0px)); }
+
+  /* ---- header ---- */
+  .top {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .top-in { max-width: 720px; margin: 0 auto; padding-inline: 16px; padding-block: 12px 12px; }
+  .brand { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .brand h1 {
+    font-family: var(--ff-text); font-weight: 600; font-size: 21px; margin: 0;
+    letter-spacing: -.01em;
+  }
+  .countdown {
+    font-family: var(--ff-mono); font-size: 11px; font-weight: 500;
+    color: var(--signal); letter-spacing: .06em; text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .brand h1 { transition: opacity .18s ease; }
+
+  /* ---- barra de navegación inferior, al alcance del pulgar ---- */
+  .tabbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    background: color-mix(in srgb, var(--surface) 94%, transparent);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-top: 1px solid var(--line-soft);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .tab {
+    appearance: none; border: 0; background: none; cursor: pointer;
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    padding: 9px 4px 7px; color: var(--faint);
+    font-family: var(--ff-ui); font-size: 10.5px; font-weight: 600; letter-spacing: .01em;
+    transition: color .18s ease;
+  }
+  .tab svg { width: 23px; height: 23px; fill: none; stroke: currentColor;
+    stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+    transition: transform .22s cubic-bezier(.34,1.56,.64,1); }
+  .tab[aria-selected="true"] { color: var(--accent); }
+  .tab[aria-selected="true"] svg { transform: translateY(-1px) scale(1.06); }
+  .tab:active svg { transform: scale(.9); }
+  .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; border-radius: 8px; }
+
+  /* ---- generic ---- */
+  .eyebrow {
+    font-family: var(--ff-mono); font-size: 10.5px; font-weight: 500;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--faint);
+  }
+  h2.sec { font-family: var(--ff-ui); font-size: 13px; font-weight: 700; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--muted); margin: 28px 0 10px; }
+  .muted { color: var(--muted); }
+
+  /* ---- avisos ---- */
+  .avisos { display: grid; gap: 8px; margin-top: 18px; }
+  .aviso {
+    display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start;
+    padding: 11px 13px; border-radius: 3px; font-size: 13.5px; line-height: 1.45;
+    background: var(--surface); border: 1px solid var(--line-soft);
+    border-left: 3px solid var(--line);
+  }
+  .aviso .dot { font-family: var(--ff-mono); font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; padding-top: 2px; white-space: nowrap; }
+  .aviso.pendiente { border-left-color: var(--alert); }
+  .aviso.pendiente .dot { color: var(--alert); }
+  .aviso.atencion { border-left-color: var(--signal); }
+  .aviso.atencion .dot { color: var(--signal); }
+  .aviso.dato { border-left-color: var(--accent); }
+  .aviso.dato .dot { color: var(--accent); }
+
+  /* ---- ciudades ---- */
+  .ciudad { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .ciudad-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .ciudad-head h3 { font-family: var(--ff-text); font-size: 24px; font-weight: 600; margin: 0; letter-spacing: -.015em; }
+  .ciudad-head .pais { font-size: 12px; color: var(--faint); }
+  .ciudad-meta { font-family: var(--ff-mono); font-size: 11.5px; color: var(--muted);
+    margin-top: 3px; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+
+  .card { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    padding: 13px 14px; margin-top: 10px; }
+  .card-title { font-size: 14px; font-weight: 600; margin: 0 0 3px; }
+  .card-sub { font-size: 13px; color: var(--muted); line-height: 1.45; }
+
+  /* ---- transporte: tablero de salidas ---- */
+  .leg { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    margin-top: 10px; overflow: hidden; }
+  .leg-top { display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 10px 13px 8px; border-bottom: 1px dashed var(--line); flex-wrap: wrap; }
+  .leg-op { font-family: var(--ff-mono); font-size: 12px; font-weight: 600; color: var(--signal);
+    letter-spacing: .05em; }
+  .leg-date { font-family: var(--ff-mono); font-size: 11px; color: var(--faint);
+    letter-spacing: .06em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+  .leg-route { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center;
+    padding: 11px 13px; }
+  .leg-pt .time { font-family: var(--ff-mono); font-size: 19px; font-weight: 600;
+    font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+  .leg-pt .place { font-size: 12px; color: var(--muted); line-height: 1.35; margin-top: 1px; }
+  .leg-pt.to { text-align: right; }
+  .leg-arrow { color: var(--faint); font-family: var(--ff-mono); font-size: 13px; }
+  .leg-foot { padding: 0 13px 12px; font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 13px 12px; }
+  .chip { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase;
+    padding: 3px 7px; border-radius: 2px; background: var(--surface-2); color: var(--muted);
+    border: 1px solid var(--line-soft); }
+  .chip.code { color: var(--signal); background: var(--signal-soft); border-color: transparent; font-weight: 600; }
+  .chip.ok { color: var(--accent); background: var(--accent-soft); border-color: transparent; }
+  .chip.wait { color: var(--alert); background: var(--alert-soft); border-color: transparent; }
+
+  /* ---- descargas offline ---- */
+  .offline { background: var(--surface); border: 1px solid var(--line-soft);
+    border-radius: 3px; padding: 14px; margin-top: 16px; }
+  .offline h3 { font-family: var(--ff-ui); font-size: 13px; font-weight: 700;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+  .offline .nota { font-size: 12.5px; color: var(--faint); line-height: 1.45; margin-bottom: 12px; }
+  .desc-fila { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center;
+    padding: 10px 0; border-top: 1px solid var(--line-soft); }
+  .desc-fila:first-of-type { border-top: 0; }
+  .desc-nom { font-size: 14px; font-weight: 600; }
+  .desc-det { font-family: var(--ff-mono); font-size: 11px; color: var(--faint);
+    letter-spacing: .03em; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .desc-fila.lista .desc-det { color: var(--accent); }
+  .desc-btn { appearance: none; cursor: pointer; font: inherit; font-size: 12.5px;
+    font-weight: 600; padding: 7px 12px; border-radius: 2px; border: 1px solid var(--accent);
+    background: var(--accent); color: var(--bg); white-space: nowrap; }
+  .desc-btn.sec { background: var(--surface); color: var(--muted); border-color: var(--line); }
+  .desc-btn[disabled] { opacity: .5; cursor: default; }
+  .diag { margin: 10px 0 0; padding: 10px; border-radius: 10px; background: var(--surface);
+          border: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.5;
+          white-space: pre-wrap; word-break: break-all; user-select: text; font-family: ui-monospace, monospace; }
+  .desc-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .desc-barra { grid-column: 1 / -1; height: 3px; background: var(--line-soft);
+    border-radius: 2px; overflow: hidden; }
+  .desc-barra i { display: block; height: 100%; background: var(--accent); width: 0%; }
+
+  /* ---- audioguías ---- */
+  .guia-card { display: block; width: 100%; text-align: left; cursor: pointer;
+    background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    padding: 16px; margin-top: 12px; font: inherit; color: inherit; }
+  .guia-card:hover { border-color: var(--accent); }
+  .guia-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .guia-card h3 { font-family: var(--ff-text); font-size: 20px; font-weight: 600; margin: 6px 0 2px; }
+  .guia-card .sub { font-size: 13.5px; color: var(--muted); }
+  .guia-card .dur { font-family: var(--ff-mono); font-size: 11px; color: var(--faint);
+    letter-spacing: .05em; margin-top: 8px; }
+
+  .back { appearance: none; border: 0; background: none; cursor: pointer; font: inherit;
+    font-size: 13px; font-weight: 600; color: var(--accent); padding: 14px 0 4px; }
+  .back:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .guia-hero { padding: 4px 0 16px; border-bottom: 1px solid var(--line); }
+  .guia-hero h2 { font-family: var(--ff-text); font-size: 30px; font-weight: 600; margin: 4px 0 4px;
+    letter-spacing: -.02em; text-wrap: balance; line-height: 1.15; }
+  .guia-hero .sub { font-size: 14px; color: var(--muted); }
+
+  .practico { background: var(--surface-2); border: 1px solid var(--line-soft); border-radius: 3px;
+    padding: 14px; margin-top: 14px; display: grid; gap: 9px; }
+  .practico div { font-size: 13px; line-height: 1.5; color: var(--muted); }
+  .practico b { color: var(--ink); font-weight: 600; }
+
+  /* paradas */
+  .parada { border-bottom: 1px solid var(--line-soft); scroll-margin-top: 78px; }
+  .parada-btn { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: start;
+    width: 100%; text-align: left; background: none; border: 0; cursor: pointer; font: inherit;
+    color: inherit; padding: 15px 2px; }
+  .parada-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .num { font-family: var(--ff-mono); font-size: 11px; font-weight: 600; color: var(--faint);
+    padding-top: 4px; font-variant-numeric: tabular-nums; min-width: 20px; }
+  .parada.done .num { color: var(--accent); }
+  .parada-t { display: block; font-family: var(--ff-text); font-size: 17px; font-weight: 600;
+    line-height: 1.25; letter-spacing: -.01em; text-wrap: balance; }
+  .parada-a { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+  .parada-sala { display: block; font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--signal); margin-top: 6px; }
+  .play-dot { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line);
+    display: grid; place-items: center; color: var(--muted); flex: none; margin-top: 3px; }
+  .parada.playing .play-dot { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .parada.playing .parada-t { color: var(--accent); }
+
+  .parada-body { padding: 0 2px 20px; }
+  .guion { -webkit-user-select: text; user-select: text; font-family: var(--ff-text); font-size: 16.5px; line-height: 1.68; color: var(--ink);
+    max-width: 62ch; }
+  .guion p { margin: 0 0 1em; }
+  .mirar { margin-top: 16px; padding: 13px 14px; background: var(--accent-soft); border-radius: 3px; }
+  .mirar .eyebrow { color: var(--accent); }
+  .mirar ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 5px; }
+  .mirar li { font-size: 13.5px; line-height: 1.45; }
+  .tecnica { font-family: var(--ff-mono); font-size: 11px; color: var(--faint); margin-bottom: 14px;
+    letter-spacing: .02em; }
+  .marcar { appearance: none; margin-top: 14px; cursor: pointer; font: inherit; font-size: 12.5px;
+    font-weight: 600; padding: 7px 12px; border-radius: 2px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--muted); }
+  .marcar:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .parada.done .marcar { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
+  /* ---- player ---- */
+  .player { position: fixed; left: 0; right: 0; z-index: 60;
+    bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+    background: color-mix(in srgb, var(--surface) 96%, transparent);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-top: 1px solid var(--line);
+    padding: 10px 16px 12px;
+    box-shadow: 0 -10px 30px -18px rgba(0,0,0,.55);
+    animation: subir .26s cubic-bezier(.22,1,.36,1); }
+  @keyframes subir { from { transform: translateY(100%); } to { transform: none; } }
+  .player-in { max-width: 720px; margin: 0 auto; display: grid; gap: 8px; }
+  .player-now { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .player-t { font-family: var(--ff-text); font-size: 14px; font-weight: 600; line-height: 1.25;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .player-src { font-family: var(--ff-mono); font-size: 9.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--faint); white-space: nowrap; }
+  .bar { height: 3px; background: var(--line-soft); border-radius: 2px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0%; background: var(--accent); transition: width .25s linear; }
+  .ctrls { display: flex; align-items: center; gap: 6px; }
+  .ctrl { appearance: none; border: 1px solid var(--line); background: var(--surface); cursor: pointer;
+    color: var(--ink); border-radius: 2px; height: 36px; min-width: 40px; display: grid; place-items: center;
+    font: inherit; font-size: 12px; font-weight: 600; padding: 0 9px; }
+  .ctrl:hover { border-color: var(--accent); color: var(--accent); }
+  .ctrl:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .ctrl.main { background: var(--accent); border-color: var(--accent); color: var(--bg); min-width: 52px; }
+  .ctrl.main:hover { opacity: .9; color: var(--bg); }
+  .ctrl[disabled] { opacity: .4; cursor: not-allowed; }
+  .spacer { flex: 1; }
+
+  /* ---- práctico tab ---- */
+  .kv { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 8px; }
+  .kv-row { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 11px 0;
+    border-bottom: 1px solid var(--line-soft); font-size: 13.5px; align-items: start; }
+  .kv-row dt { font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--faint); padding-top: 3px; }
+  .kv-row dd { margin: 0; line-height: 1.5; color: var(--muted); }
+  .kv-row dd b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 430px) { .kv-row { grid-template-columns: 1fr; gap: 3px; } }
+
+  .note { font-size: 12.5px; color: var(--faint); line-height: 1.5; margin-top: 20px;
+    padding-top: 14px; border-top: 1px solid var(--line-soft); max-width: 62ch; }
+
+  /* ---- movimiento: lo que separa una app de una página ---- */
+  @keyframes entrar { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  main > section { animation: entrar .26s cubic-bezier(.22,1,.36,1); }
+
+  .guia-card, .card, .leg, .aviso, .parada { animation: entrar .3s cubic-bezier(.22,1,.36,1) backwards; }
+  .guia-card:nth-child(2) { animation-delay: .03s; }
+  .guia-card:nth-child(3) { animation-delay: .06s; }
+  .guia-card:nth-child(4) { animation-delay: .09s; }
+
+  .guia-card, .parada-btn, .desc-btn, .ctrl, .marcar, .back {
+    transition: transform .12s ease, border-color .18s ease, background .18s ease, color .18s ease;
+  }
+  .guia-card:active, .desc-btn:active:not([disabled]), .marcar:active { transform: scale(.985); }
+  .ctrl:active { transform: scale(.92); }
+  .parada-btn:active { transform: scale(.995); }
+
+  .parada-body { animation: entrar .24s cubic-bezier(.22,1,.36,1); }
+  .play-dot { transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+  .parada.playing .play-dot { transform: scale(1.08); }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <h1 id="titulo-vista">Itinerario</h1>
+      <span class="countdown" id="countdown"></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="view-itin"></section>
+  <section id="view-audio" hidden></section>
+  <section id="view-prac" hidden></section>
+</main>
+
+<div class="player" id="player" hidden>
+  <div class="player-in">
+    <div class="player-now">
+      <span class="player-t" id="player-title">—</span>
+      <span class="player-src" id="player-src"></span>
+    </div>
+    <div class="bar"><i id="player-bar"></i></div>
+    <div class="ctrls">
+      <button class="ctrl" id="btn-prev" aria-label="Parada anterior">&#9664;&#9664;</button>
+      <button class="ctrl main" id="btn-play" aria-label="Reproducir">&#9654;</button>
+      <button class="ctrl" id="btn-next" aria-label="Parada siguiente">&#9654;&#9654;</button>
+      <button class="ctrl" id="btn-rate" aria-label="Velocidad de lectura">1,0&times;</button>
+      <span class="spacer"></span>
+      <button class="ctrl" id="btn-stop" aria-label="Cerrar reproductor">&#10005;</button>
+    </div>
+  </div>
+</div>
+
+<nav class="tabbar" role="tablist">
+  <button class="tab" role="tab" id="tab-itin" aria-selected="true" data-view="itin">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V6.5a1 1 0 0 1 .7-.95l4.6-1.5a1 1 0 0 1 .62 0l4.16 1.4a1 1 0 0 0 .62 0l3.98-1.32A.7.7 0 0 1 19.6 4.3V17a1 1 0 0 1-.7.95l-4.2 1.4a1 1 0 0 1-.62 0l-4.16-1.4a1 1 0 0 0-.62 0l-4.2 1.4A.7.7 0 0 1 4 19Z"/><path d="M9.6 4.2v14M14.4 5.6v14"/></svg>
+    <span>Itinerario</span>
+  </button>
+  <button class="tab" role="tab" id="tab-audio" aria-selected="false" data-view="audio">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14.5A1.5 1.5 0 0 1 5.5 13H7v6H5.5A1.5 1.5 0 0 1 4 17.5v-3ZM20 14.5a1.5 1.5 0 0 0-1.5-1.5H17v6h1.5a1.5 1.5 0 0 0 1.5-1.5v-3Z"/></svg>
+    <span>Audioguías</span>
+  </button>
+  <button class="tab" role="tab" id="tab-prac" aria-selected="false" data-view="prac">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9"/><circle cx="19.5" cy="18" r="2.2"/></svg>
+    <span>Pendientes</span>
+  </button>
+</nav>
+
+<script>
+const ITINERARIO = {
+  titulo: "Eurotrip 2026",
+  viajeros: 2,
+  inicio: "2026-10-01",
+  fin: "2026-11-04",
+  ciudades: [
+    { id: "madrid", nombre: "Madrid", pais: "España", desde: "2026-10-01", hasta: "2026-10-05", noches: 4 },
+    { id: "napoles", nombre: "Nápoles", pais: "Italia", desde: "2026-10-05", hasta: "2026-10-10", noches: 5 },
+    { id: "roma", nombre: "Roma", pais: "Italia", desde: "2026-10-10", hasta: "2026-10-14", noches: 4 },
+    { id: "florencia", nombre: "Florencia", pais: "Italia", desde: "2026-10-14", hasta: "2026-10-18", noches: 4 },
+    { id: "turin", nombre: "Turín", pais: "Italia", desde: "2026-10-18", hasta: "2026-10-20", noches: 2 },
+    { id: "lyon", nombre: "Lyon", pais: "Francia", desde: "2026-10-20", hasta: "2026-10-22", noches: 2 },
+    { id: "paris", nombre: "París", pais: "Francia", desde: "2026-10-22", hasta: "2026-10-27", noches: 5 },
+    { id: "londres", nombre: "Londres", pais: "Reino Unido", desde: "2026-10-27", hasta: "2026-10-31", noches: 4 },
+    { id: "edimburgo", nombre: "Edimburgo", pais: "Reino Unido", desde: "2026-10-31", hasta: "2026-11-03", noches: 3 },
+    { id: "madrid2", nombre: "Madrid", pais: "España", desde: "2026-11-03", hasta: "2026-11-04", noches: 1 }
+  ],
+
+  alojamientos: [
+    { ciudad: "madrid", nombre: null, estado: "pendiente", nota: "Todavía no está definido. 4 noches, del 1 al 5 de octubre." },
+    { ciudad: "napoles", nombre: null, estado: "pendiente", nota: "Todavía no está definido. 5 noches, del 5 al 10 de octubre." },
+    { ciudad: "roma", nombre: "El Chihuahua", estado: "reservado", plataforma: "Airbnb", anfitrion: "Marco", rating: "4,98 · 129 reseñas · Superanfitrión",
+      zona: "Testaccio, junto al Aventino", checkin: "15:00", precio: "US$828 final", cancelacion: "Gratuita",
+      nota: "Departamento entero con cocina, lavarropas, ascensor y detectores de humo y monóxido." },
+    { ciudad: "florencia", nombre: null, estado: "pendiente", nota: "Todavía no está definido. 4 noches, del 14 al 18 de octubre." },
+    { ciudad: "turin", nombre: null, estado: "pendiente", zona: "Porta Nuova", nota: "Zona elegida: Porta Nuova. El FlixBus del 20 sale de Corso Vittorio Emanuele II, al lado de la estación." },
+    { ciudad: "lyon", nombre: null, estado: "pendiente", nota: "Todavía no está definido. 2 noches, del 20 al 22 de octubre." },
+    { ciudad: "paris", nombre: "Apartamento con balcón en el corazón de París", estado: "reservado", plataforma: "Airbnb", anfitrion: "Amaia", rating: "4,88 · 25 reseñas · Superanfitrión",
+      zona: "11º, Saint-Ambroise / plaza Gardette", precio: "US$912,93 final", cancelacion: "Gratuita hasta el 17/10 · se cobra el 9/10",
+      nota: "60 m², dormitorio separado, balcón de 5 m², 1º piso con ascensor, lavarropas y bañera." },
+    { ciudad: "londres", nombre: "Aparthotel Adagio London City East", estado: "reservado", plataforma: "Booking", rating: "Google 4,8 · 2.286 reseñas",
+      zona: "Whitechapel E1, línea Elizabeth", precio: "US$776 los dos", cancelacion: "Sin cancelación gratuita",
+      nota: "Cocina, lavadora, gym, A/C, triple vidriado. Desayuno incluido — eso fue lo que lo definió." },
+    { ciudad: "edimburgo", nombre: "Forth House by Supercity Aparthotels", estado: "reservado",
+      precio: "US$676 (3 noches)", nota: "Lo definió el lavarropas dentro del departamento." },
+    { ciudad: "madrid2", nombre: null, estado: "pendiente", nota: "Una noche antes del vuelo de vuelta. Conviene cerca de Atocha o Nuevos Ministerios por el acceso al aeropuerto." }
+  ],
+
+  transportes: [
+    { id: "t0", fecha: "2026-09-30", tipo: "vuelo", estado: "comprado", operador: "Plus Ultra 502",
+      desde: "Buenos Aires EZE", hasta: "Madrid MAD", sale: "13:25", llega: "06:30 (+1 día)",
+      detalle: "Directo. Llegás a Madrid el 1 de octubre a la mañana." },
+    { id: "t1", fecha: "2026-10-05", tipo: "vuelo", estado: "comprado", operador: "Ryanair FR1306",
+      desde: "Madrid", hasta: "Nápoles", sale: "10:30", llega: "13:05",
+      detalle: "Directo, 2h35. Tarifa Regular con prioridad, 2 piezas de cabina y asiento reservado, más 2 valijas despachadas de 23 kg.",
+      precio: "€238,48 los dos" },
+    { id: "t2", fecha: "2026-10-10", tipo: "tren", estado: "comprado", operador: "Italo 9924",
+      desde: "Napoli Centrale", hasta: "Roma Termini", sale: "09:20", llega: "10:30",
+      detalle: "Ambiente Smart, tarifa Italo Young. Coche 9, asientos 1 y 2.", precio: "~€36 los dos" },
+    { id: "t3", fecha: "2026-10-14", tipo: "tren", estado: "comprado", operador: "Italo 8906",
+      desde: "Roma Termini", hasta: "Firenze S.M. Novella", sale: "08:55", llega: "10:31",
+      detalle: "Smart, tarifa eXtra Magic. Coche 6, asientos 15 y 16.", precio: "€29,80 los dos" },
+    { id: "t4", fecha: "2026-10-18", tipo: "tren", estado: "comprado", operador: "Trenitalia",
+      desde: "Firenze S.M. Novella", hasta: "Torino Porta Nuova", sale: "—", llega: "—",
+      detalle: "2 adultos con Offerta Young. La tarifa joven le ganó a Italo (€75,80).", precio: "€58 los dos" },
+    { id: "t5", fecha: "2026-10-20", tipo: "bus", estado: "comprado", operador: "FlixBus",
+      desde: "Turín, C.so Vittorio Emanuele II", hasta: "Lyon, Gerland Bus Station", sale: "09:30", llega: "14:10",
+      detalle: "Elegido sobre el Frecciarossa directo, que salía €104.", precio: "~€44 los dos" },
+    { id: "t6", fecha: "2026-10-22", tipo: "tren", estado: "comprado", operador: "OUIGO Grande Vitesse",
+      desde: "Lyon Part-Dieu", hasta: "Paris Gare de Lyon", sale: "08:38", llega: "10:41",
+      detalle: "Directo, 2h03. Incluye valija despachada, selección de asiento y wifi.", precio: "€76 los dos" },
+    { id: "t7", fecha: "2026-10-27", tipo: "tren", estado: "comprado", operador: "Eurostar Standard",
+      desde: "Paris Gare du Nord", hasta: "London St Pancras", sale: "11:02", llega: "12:30",
+      detalle: "Presentate 60-90 min antes: hay control de pasaportes de salida de Schengen y de entrada al Reino Unido.",
+      precio: "€174 los dos" },
+    { id: "t8", fecha: "2026-10-31", tipo: "tren", estado: "pendiente", operador: "Lumo o LNER",
+      desde: "London King's Cross", hasta: "Edinburgh Waverley", sale: "—", llega: "—",
+      detalle: "Es el único tramo que falta comprar. Lumo suele ser bastante más barato; LNER tiene más frecuencias. Conviene sacarlo pronto: la tarifa sube a medida que se acerca la fecha." },
+    { id: "t9", fecha: "2026-11-03", tipo: "vuelo", estado: "comprado", operador: "easyJet EZY3209",
+      desde: "Edimburgo", hasta: "Madrid T1", sale: "15:25", llega: "19:30",
+      detalle: "Paquete Extra con valija despachada de 23 kg cada uno. Asientos 9E y 9F.", precio: "£221,94 los dos" },
+    { id: "t10", fecha: "2026-11-04", tipo: "vuelo", estado: "comprado", operador: "Plus Ultra 501",
+      desde: "Madrid MAD", hasta: "Buenos Aires EZE", sale: "23:10", llega: "07:45 (+1 día)",
+      detalle: "Directo. Tenés todo el día 4 libre en Madrid antes de ir al aeropuerto." }
+  ],
+
+  avisos: [
+    { nivel: "pendiente", texto: "Falta comprar el tren Londres → Edimburgo del 31 de octubre. Es el único tramo abierto y la tarifa sube con el tiempo." },
+    { nivel: "pendiente", texto: "Faltan definir cinco alojamientos: Madrid (ambos tramos), Nápoles, Florencia, Turín y Lyon." },
+    { nivel: "atencion", texto: "Turín y Lyon tienen una sola jornada completa cada uno. Si hacés Sacra di San Michele el 19 y Annecy el 21, prácticamente no vas a ver las ciudades en sí." },
+    { nivel: "dato", texto: "Los dos tienen 25 años: califican para Italo Young (hasta 29) y Trenitalia Young (hasta 30)." },
+    { nivel: "dato", texto: "Pagás los consumos del exterior liquidando el resumen en dólares, así que no te aplica la percepción." }
+  ],
+
+  excursiones: [
+    { ciudad: "turin", nombre: "Sacra di San Michele", fechaSugerida: "2026-10-19", nota: "Abadía del siglo X sobre el monte Pirchiriano. Es la única jornada completa que tenés en Turín." },
+    { ciudad: "lyon", nombre: "Annecy", fechaSugerida: "2026-10-21", nota: "Lago alpino y casco antiguo. Es la única jornada completa que tenés en Lyon." }
+  ]
+};
+
+const GUIA_MADRID_D1 = {
+  id: "madrid-d1",
+  ciudad: "madrid",
+  titulo: "Madrid, día 1",
+  subtitulo: "Los Austrias por tu cuenta, del muro árabe a Debod",
+  duracion: "6 paradas · unos 25 minutos de audio",
+  practico: {
+    cuando: "Jueves 1 de octubre, desde que el free tour te suelta a las 12:15 hasta el atardecer en Debod.",
+    almuerzo: "El Mercado de San Miguel, que tenés a la salida del tour, es precioso por fuera y carísimo por dentro: se convirtió en mercado gourmet en 2009 y hoy es todo turistas. Entrá diez minutos a ver la estructura de hierro de 1916 y andá a comer a la Cava Baja o a Cuchilleros, a cinco minutos, donde comen los madrileños.",
+    reloj: "La cripta cierra 14:00 y la cúpula 14:30, en punto las dos. Después no hay nada con horario hasta el Palacio Real.",
+    plata: "Muralla, cripta y Sabatini son gratis. La cúpula con museo, €8. El palacio es gratis en la franja para iberoamericanos.",
+    ojo: "Tu itinerario dice que el Palacio Real es gratis para iberoamericanos de 16:00 a 18:00 con la taquilla cerrando a las 17:00. La web de Patrimonio Nacional dice 17:00 a 19:00, que parece el horario de verano — en octubre el palacio cierra a las 18:00. Preguntá en taquilla apenas llegues y por las dudas caé antes de las 16:30.",
+    documento: "Para la entrada gratis al palacio hay que mostrar pasaporte o DNI argentino. Llevalo encima, no en la valija."
+  },
+  paradas: [
+    {
+      id: "mad1-01", orden: 1, sala: "Cuesta de la Vega",
+      titulo: "La muralla árabe", autor: "Emir Muhammad I de Córdoba", fecha: "entre 860 y 880",
+      guion: "Estás parado frente a lo más viejo que queda en pie en Madrid, y es una pared. Vale la pena, porque esta pared te explica por qué existe la ciudad.\n\nMadrid no es una ciudad romana. No es visigoda. No tiene un pasado antiguo glorioso que le hayan tapado. Madrid es un cuartel musulmán, y esto es lo único que sobró de él.\n\nPongámoslo en contexto. En el año 711 los musulmanes cruzaron desde el norte de África y en pocos años se quedaron con casi toda la península. Fundaron un estado con capital en Córdoba que duró siglos. Arriba, en el norte, quedaron unos reinos cristianos chicos que durante setecientos años fueron empujando hacia el sur. Esa pelea larga es lo que después llamaron la Reconquista, y esta pared es una pieza de esa pelea.\n\nA mediados del siglo nueve el emir de Córdoba, Muhammad I, tenía un problema concreto: esos cristianos del norte bajaban a hacer razias y el objetivo grande era Toledo, que era la ciudad importante de la zona. Así que mandó levantar una línea de fortalezas para frenarlos antes de que llegaran. Una de ellas fue esta. Le pusieron Mayrit.\n\nY el nombre importa, porque explica la elección del lugar. La raíz tiene que ver con los canales de agua: acá abajo hay agua subterránea en cantidad, y los musulmanes armaron una red de galerías para sacarla. O sea que Madrid está donde está por el agua. No por el río, que es un chiste. Por lo que hay abajo.\n\nPensalo un segundo: es una de las poquísimas capitales europeas fundada por musulmanes. Londres es romana, París es romana, Roma es Roma. Madrid es un fortín de frontera del siglo nueve que puso un emir cordobés para cuidar Toledo.\n\nY ahí está la ironía. En 1085 el rey Alfonso VI pasó por acá, tomó Madrid casi de paso, siguió camino y se quedó con Toledo igual. Madrid quedó como un pueblo sin importancia durante casi quinientos años, hasta que en 1561 el rey Felipe II decidió traer acá la corte, que es el gobierno y toda la gente que vive de él. ¿El motivo? Que Madrid estaba en el medio geográfico del país y tenía agua. Lo mismo que había pensado el emir setecientos años antes.\n\nEl pueblito que cuidaba Toledo terminó reemplazándola. Y el sábado vas a Toledo y vas a ver lo que perdió.\n\nAhora mirá la pared. Se conservan unos ciento veinte metros y tiene dos metros sesenta de espesor: esto era en serio. Fijate abajo, en la parte de bloques grandes, oscuros e irregulares: eso es pedernal, una piedra muy dura, y es lo original del siglo nueve. Más arriba, donde los bloques son claros y están prolijamente escuadrados, es piedra caliza, y buena parte es reconstrucción posterior. La línea donde cambia el color es más o menos la línea entre lo que tocaron los albañiles de Muhammad y lo que tocaron los del siglo veinte.\n\nY una última cosa: fijate que estás mirando la muralla desde abajo, en un pozo verde, con la calle allá arriba. No es que la muralla esté hundida. Es que Madrid creció encima suyo durante mil años.",
+      mirar: [
+        "Abajo, los bloques oscuros e irregulares: pedernal del siglo IX, lo original.",
+        "Arriba, la piedra caliza clara y escuadrada: reconstrucción moderna.",
+        "El desnivel con la calle: no se hundió, la ciudad creció por encima."
+      ]
+    },
+    {
+      id: "mad1-02", orden: 2, sala: "Cripta de la Almudena",
+      titulo: "La cripta de la Almudena", autor: "Marqués de Cubas", fecha: "abierta en 1911",
+      guion: "Bajás unas escaleras y aparecés en una iglesia de columnas gordas y capiteles tallados, de esas que uno asocia con el año mil. Tiene poco más de cien años.\n\nLa cripta se abrió al culto en 1911. Una cripta, por si no lo tenés claro, es la iglesia de abajo: el sótano consagrado sobre el que se apoya el templo grande. Esta está hecha a propósito para parecer vieja. El estilo se llama neorrománico, que quiere decir una imitación moderna del románico, que era la forma de construir iglesias en Europa alrededor del año mil: muros gruesos, arcos de medio punto, poca luz. La idea era que evocara justamente la época en la que, según la leyenda, apareció la imagen de la Virgen de la Almudena. O sea que es una puesta en escena, pero una muy buena.\n\nY acá se cierra el círculo con lo que acabás de ver arriba. Almudena viene del árabe al-mudayna, que significa la ciudadela: la muralla. La leyenda cuenta que cuando llegaron los musulmanes, los cristianos de Madrid escondieron una imagen de la Virgen dentro del muro, y que apareció intacta en 1085, cuando Alfonso VI tomó la ciudad. La pared de la que venís y esta cripta son la misma historia.\n\nAhora el juego, que es lo mejor de estar acá. Hay más de cuatrocientas columnas. Las cincuenta de la nave central son monolíticas, es decir que cada una está tallada en una sola piedra en vez de apilada en pedazos. Pero lo importante es lo de arriba. El capitel es la pieza tallada que remata la columna, esa especie de sombrero de piedra entre la columna y el arco. Acá ningún capitel se repite. Ninguno. Son todos distintos, con figuras bíblicas, plantas, bichos, caras. Caminá despacio mirando para arriba y buscá el que más te guste. Es de esas cosas que nadie te dice y que te cambian la visita: la gente pasa de largo mirando al frente y se pierde el techo entero.\n\nLa otra cosa que hay que buscar es la Virgen de la Flor de Lis. Es una pintura del siglo trece, la imagen más antigua de toda la catedral, y la leyenda —muy generosa, como todas— dice que la pintó el propio Alfonso VI. No la pintó, pero la pintura es de verdad medieval y estuvo acá antes que todo lo demás.\n\nY un dato que cambia un poco la sensación del lugar: abajo tuyo hay más de mil personas enterradas. Esto es un cementerio activo de familias madrileñas, con nichos que se siguen usando. No es una cripta de museo.\n\nSon treinta minutos y es gratis, aunque piden un euro de colaboración para la luz. Dáselos: literalmente es lo que mantiene prendidas las lámparas que te dejan ver los capiteles.",
+      mirar: [
+        "Los capiteles: no hay dos iguales en las cuatrocientas columnas.",
+        "La Virgen de la Flor de Lis, pintura del siglo XIII.",
+        "Las cincuenta columnas de la nave central, cada una de una sola piedra."
+      ]
+    },
+    {
+      id: "mad1-03", orden: 3, sala: "Cúpula y museo de la catedral",
+      titulo: "La catedral de arriba", autor: "Cubas, y después Chueca Goitia", fecha: "1883–1993",
+      guion: "Subís ocho euros de escalera y lo que te vas a encontrar es la catedral más rara de España. Te lo aviso para que la disfrutes en vez de que te desconcierte.\n\nEmpecemos por el dato que no cierra: Madrid, capital de un país profundamente católico, no tuvo catedral hasta 1993. Hace treinta años. Una catedral, para ser precisos, no es una iglesia grande: es la iglesia donde tiene su silla el obispo, y por lo tanto la iglesia principal de una zona. Madrid no tenía obispo propio.\n\nLa razón es puro orgullo institucional. Cuando Felipe II trajo la corte acá en 1561, Madrid era un pueblo de veinte mil habitantes que dependía religiosamente de Toledo. Y Toledo venía siendo la sede religiosa más importante de España desde los visigodos, mil años antes, y no pensaba ceder un centímetro de rango. Así que Madrid fue capital política sin ser nunca capital religiosa. El obispado propio se creó recién en 1885.\n\nLas obras arrancaron en 1883 con un proyecto neogótico del marqués de Cubas —neogótico quiere decir una imitación del gótico medieval, con arcos en punta y mucha altura—, se frenaron con la Guerra Civil, que fue la guerra entre españoles de 1936 a 1939, y cuando se retomaron en los años cincuenta alguien tomó una decisión rara: el arquitecto Fernando Chueca Goitia rediseñó el exterior en neoclásico, que es el estilo sobrio de columnas y frontones, para que combinara con el Palacio Real, que está enfrente. Resultado: por fuera es neoclásica y por dentro es neogótica. Son dos edificios distintos pegados.\n\nY adentro hay una tercera capa, que es la que divide a la gente. Las bóvedas, los vitrales y el techo se decoraron en los años noventa, con colores fuertes y geometrías contemporáneas, nada que ver con una catedral medieval. A mucha gente le parece feo. A mí me parece lo único honesto del edificio: es una catedral construida en el siglo veinte que no finge ser del catorce. Miralo con esos ojos y funciona.\n\nDe lo que hay en el museo, lo que vale son las vistas del recorrido. Subís por las galerías altas y terminás asomado a la plaza de la Armería con el Palacio Real enfrente. Desde arriba se entiende la escena completa: el palacio y la catedral mirándose a la cara, que es exactamente lo que Chueca Goitia quería que pasara.\n\nDos datos para cerrar. La consagró el papa Juan Pablo II en 1993, y es la única catedral española consagrada por un papa. Y acá se casaron el actual rey Felipe VI y Letizia en 2004, la primera boda real en Madrid en casi un siglo.\n\nOjo con el reloj: cierra a las 14:30 en punto y no abre los domingos.",
+      mirar: [
+        "Por fuera neoclásica, por dentro neogótica: son dos proyectos distintos.",
+        "Las bóvedas y vitrales de los años noventa, con colores fuertes.",
+        "Desde las galerías altas, el Palacio Real enfrente cruzando la plaza."
+      ]
+    },
+    {
+      id: "mad1-04", orden: 4, sala: "Palacio Real",
+      titulo: "El Palacio Real", autor: "Juvarra y Sacchetti", fecha: "1738–1764",
+      guion: "Estás por entrar al palacio real más grande de Europa occidental: ciento treinta y cinco mil metros cuadrados y unas tres mil cuatrocientas habitaciones. Versalles tiene más jardín; como edificio, este es más grande. Y el rey no vive acá.\n\nDos cosas antes de entrar, porque las dos explican lo que vas a ver.\n\nLa primera es un incendio. Acá estaba el Real Alcázar, que había empezado siendo aquella fortaleza musulmana y con los siglos se había convertido en el palacio de los reyes. Ahí adentro trabajó toda su vida Velázquez, el pintor más importante de España, y ahí colgaba Las meninas, su cuadro más famoso. La Nochebuena de 1734 el Alcázar se prendió fuego y ardió cuatro días. Se perdieron más de quinientos cuadros. Se salvaron los que alcanzaron a descolgar y tirar por las ventanas, y Las meninas fue uno de ellos: salió con un agujero en la cara de la infanta que restauraron poco después y que hoy no se nota.\n\nLa segunda es un cambio de familia. Durante casi dos siglos España la gobernó la dinastía de los Habsburgo, unos reyes austríacos que se casaban tanto entre primos que el último murió sin poder tener hijos. Eso desató una guerra europea por la corona española que duró trece años, y la ganó un príncipe francés, nieto del rey Luis XIV de Francia. Ese es Felipe V, el primer Borbón, la dinastía que sigue reinando hoy. Felipe V era francés, se había criado en Versalles, y cuando se le quemó el palacio viejo aprovechó para construir algo a la altura de lo que él consideraba un palacio.\n\nLe encargó el proyecto a Filippo Juvarra, un arquitecto siciliano, que murió al poco tiempo; lo continuó su discípulo Sacchetti. Y tomaron una decisión que se nota apenas entrás: se ordenó construirlo todo de obra, con los techos abovedados en piedra y ladrillo en vez de armados con vigas, para que no volviera a arder. Queda madera en puertas, ventanas y algunas cubiertas, pero la estructura que sostiene el edificio no tiene nada que pueda incendiarse. Por eso los techos son bóvedas.\n\nDe lo que vas a recorrer, quedate con cuatro cosas.\n\nLa escalera principal, apenas entrás: mármol, y en el techo un fresco enorme de Corrado Giaquinto. Fresco quiere decir pintado directamente sobre el revoque húmedo de la pared, así que el color queda adentro del muro y no se puede corregir: hay que acertar a la primera.\n\nEl Salón del Trono, todo terciopelo rojo y espejos venecianos, con un techo pintado por Tiepolo. Tiepolo era el pintor veneciano más cotizado del siglo dieciocho; lo trajeron a Madrid y terminó muriéndose acá. Acostate mentalmente a mirar ese techo: es la joya del palacio.\n\nEl Salón de Porcelana, que es exactamente eso: una habitación con las paredes cubiertas enteras de placas de porcelana blanca y verde con relieves. Es delirante y no se parece a nada.\n\nY el Comedor de Gala, con una mesa para más de cien personas que todavía se usa en cenas de Estado.\n\nUn dato para cerrar: el rey no vive acá desde hace cincuenta años. La familia real vive en el palacio de la Zarzuela, a las afueras, que es mucho más chico. Este se usa para actos oficiales y para que entres vos.",
+      mirar: [
+        "El techo del Salón del Trono, pintado por Tiepolo.",
+        "El Salón de Porcelana: paredes enteras de placas con relieve.",
+        "Todo es piedra y ladrillo, sin madera: la lección del incendio de 1734."
+      ]
+    },
+    {
+      id: "mad1-05", orden: 5, sala: "Jardines de Sabatini",
+      titulo: "Los Jardines de Sabatini", autor: "Fernando García Mercadal", fecha: "proyectados en 1933, abiertos en 1978",
+      guion: "Salís del palacio por el norte y te metés en unos jardines geométricos con setos recortados, una fuente y estatuas de reyes. Parecen del siglo dieciocho. El proyecto es de 1933 y se terminaron cuarenta años después, y la historia de por qué existen es mejor que los jardines.\n\nAcá no había jardín: había caballerizas. Las cuadras reales, con capacidad para cientos de caballos, construidas por Francesco Sabatini, el arquitecto italiano del rey Carlos III. De ahí el nombre: los jardines se llaman como el tipo que construyó lo que había antes y que se demolió para hacerlos.\n\nY ahora el dato bueno. En 1931 España echó al rey y se convirtió en república, es decir que pasó a no tener monarquía. Alfonso XIII se fue del país sin abdicar. El nuevo gobierno republicano se quedó con todo el patrimonio de la corona y empezó a abrirlo al público, con una lógica muy clara: lo que era del rey ahora es de la gente. Tiraron abajo las caballerizas y encargaron en su lugar estos jardines al arquitecto Fernando García Mercadal, para que los madrileños pudieran caminar donde antes solo entraban los caballos del rey.\n\nDuró poco. En 1936 empezó la Guerra Civil, la ganó el general Franco, que gobernó como dictador hasta 1975, y después la monarquía volvió. La obra quedó frenada décadas: los jardines recién se terminaron y se abrieron al público en 1978, cuarenta y cinco años después de que alguien los pensara.\n\nDe lo que hay para ver: el estanque rectangular refleja la fachada norte del palacio, que es la más bonita de las cuatro, y es la mejor foto que vas a sacar del edificio. Las estatuas de reyes que ves acá son hermanas de las de la Plaza de Oriente: todas estaban pensadas para ir arriba, en la cornisa del palacio, y nunca subieron.\n\nQuince minutos y seguís. Estás a catorce minutos caminando de Plaza de España, y de ahí a Debod son cinco.",
+      mirar: [
+        "El estanque reflejando la fachada norte del palacio.",
+        "Las estatuas de reyes que nunca subieron a la cornisa.",
+        "Que el jardín es de 1933: acá había caballerizas."
+      ]
+    },
+    {
+      id: "mad1-06", orden: 6, sala: "Templo de Debod",
+      titulo: "El Templo de Debod", autor: "Nubia, siglo II a.C.", fecha: "Trasladado en 1970–1972",
+      guion: "Terminás el primer día mirando el atardecer desde un templo egipcio de más de dos mil años que está en un parque de Madrid. Y sí, es egipcio de verdad. No es una réplica.\n\nLa historia de cómo llegó acá es de las mejores del viaje.\n\nEn los años sesenta Egipto decidió construir una represa gigante sobre el Nilo, la presa de Asuán, para controlar las crecidas y generar electricidad. El problema es que el embalse iba a inundar una región entera río arriba llamada Nubia, que hoy queda entre el sur de Egipto y Sudán, y ahí había decenas de templos antiguos que se iban a perder abajo del agua para siempre. Entre ellos Abu Simbel, que es el más famoso.\n\nLa UNESCO, que es el organismo de la ONU que se ocupa del patrimonio, lanzó una campaña internacional para salvarlos. Varios países mandaron ingenieros, plata y equipos, y lo que se hizo fue literalmente desarmar los templos piedra por piedra, numerarlas y volver a armarlos más arriba. España participó y mandó gente.\n\nComo agradecimiento, Egipto regaló cuatro templos a los cuatro países que más habían ayudado. Uno fue a Estados Unidos, y está en el museo Metropolitan de Nueva York. Otro a Italia, y está en Turín —donde vos vas a estar el mes que viene—. Otro a los Países Bajos, en Leiden. Y este a España.\n\nSe desarmó, se embarcó por el Nilo hasta Alejandría, cruzó el Mediterráneo hasta Valencia y llegó a Madrid en mil trescientas cajas. Lo volvieron a montar acá y se inauguró en 1972. Está orientado de este a oeste, igual que estaba en Nubia.\n\nDel templo en sí: lo empezó a construir en el siglo dos antes de Cristo un rey nubio llamado Adijalamani, y estaba dedicado a los dioses Amón e Isis. Después lo fueron agrandando los Ptolomeos, que eran la dinastía griega que gobernó Egipto después de Alejandro Magno —Cleopatra era la última de esa familia— y más tarde los emperadores romanos Augusto y Tiberio. O sea que en esas piedras hay tres imperios encima.\n\nSi está abierto, entrá: adentro quedan relieves originales, bastante gastados. El aire seco de Nubia los conservó dos mil años y el clima de Madrid los está desgastando mucho más rápido en cincuenta. Es de las cosas tristes del traslado.\n\nY ahora lo importante: sentate. Es el mejor mirador del oeste de Madrid, es gratis, el estanque de adelante refleja el templo, y al fondo se ve la sierra de Guadarrama. Llevás casi veinticuatro horas despierto, estás a diez mil kilómetros de tu casa y tenés treinta y cuatro días por delante.",
+      mirar: [
+        "Los relieves originales del interior, del siglo II antes de Cristo.",
+        "El estanque de adelante: refleja el templo al atardecer.",
+        "La sierra de Guadarrama al fondo, hacia el oeste."
+      ]
+    }
+  ]
+};
+
+const GUIA_MADRID_D2 = {
+  id: "madrid-d2",
+  ciudad: "madrid",
+  titulo: "Madrid, día 2",
+  subtitulo: "El Retiro, el paseo del arte y una azotea",
+  duracion: "6 paradas · unos 22 minutos de audio",
+  practico: {
+    cuando: "Viernes 2 de octubre. Estas paradas son las que hacés sin guía: el Retiro a la mañana, el camino hasta el Prado, y la azotea a la noche.",
+    yatenes: "El Prado tiene audioguía contratada, Andén 0 es visita guiada y el free tour Madrid Oscuro también. De esos tres no te escribo nada: ya te los cuentan.",
+    reloj: "San Jerónimo el Real cierra al mediodía y vuelve a abrir a la tarde; si llegás 12:45 vas justo. La azotea del Círculo abre hasta tarde y son €6.",
+    consejo: "El Retiro son 125 hectáreas y vos tenés hora y media. No intentes recorrerlo entero: el eje estanque, Palacio de Cristal y Ángel Caído es lo que vale, y se hace caminando tranquilo."
+  },
+  paradas: [
+    {
+      id: "mad2-01", orden: 1, sala: "Parque del Retiro",
+      titulo: "El Retiro: el jardín privado del rey", autor: "Felipe IV y el conde-duque de Olivares", fecha: "1630s",
+      guion: "Estás caminando por un parque público de ciento veinticinco hectáreas y quince mil árboles. Durante doscientos años, si entrabas sin permiso te echaban: era el jardín privado del rey.\n\nLa historia empieza en 1630. El rey era Felipe IV, que gobernó España durante cuarenta y cuatro años en el momento más raro de su historia: el imperio español era el más grande del mundo —les pertenecía media América, Filipinas, buena parte de Italia y los Países Bajos— y al mismo tiempo el Estado estaba fundido y perdiendo guerras en todos lados.\n\nFelipe IV no gobernaba mucho: le delegaba casi todo a un hombre de confianza, el conde-duque de Olivares. Y a Olivares se le ocurrió que el rey necesitaba un lugar para retirarse de la corte a descansar y dar fiestas. De ahí el nombre: el Buen Retiro. Le construyeron un palacio entero con jardines, teatro y un lago artificial, a las afueras de lo que entonces era la ciudad.\n\nO sea que mientras el imperio se hundía, le hicieron al rey un parque de diversiones. Los contemporáneos lo criticaron bastante y tenían razón.\n\n¿Y dónde está ese palacio? Casi no queda nada, y la culpa es de Napoleón. En 1808 el emperador francés invadió España, puso a su propio hermano de rey y arrancó una guerra de seis años. Las tropas francesas usaron el Retiro como cuartel y fortificación y lo destrozaron. De todo el complejo solo sobreviven dos edificios, y los dos están cerca del Prado: el Casón del Buen Retiro y el Salón de Reinos.\n\nEl parque pasó a ser público en 1868, cuando una revolución echó a la reina Isabel II. Desde entonces es de los madrileños, que lo usan como living al aire libre.\n\nAhora, el estanque. Ese lago rectangular enorme con la columnata y la estatua ecuestre no es decorativo: era el escenario de batallas navales de mentira. Se metían barcos chicos y se representaban combates para entretener al rey y a la corte. También había góndolas traídas de Venecia con gondoleros italianos.\n\nHoy alquilan botes a remo y es la mejor plata que podés gastar en el parque. La estatua enorme que preside todo es de Alfonso XII, el rey del siglo diecinueve, y se la pagó el pueblo por suscripción popular.",
+      mirar: [
+        "El estanque: se hacían batallas navales de mentira para el rey.",
+        "El monumento a Alfonso XII presidiendo el agua.",
+        "Casi no queda nada del palacio: lo arrasaron las tropas de Napoleón."
+      ]
+    },
+    {
+      id: "mad2-02", orden: 2, sala: "Palacio de Cristal",
+      titulo: "El Palacio de Cristal", autor: "Ricardo Velázquez Bosco", fecha: "1887",
+      guion: "Un edificio hecho enteramente de hierro y vidrio, parado en medio de un parque, reflejándose en un estanque con patos. Es la foto más linda de Madrid y casi nadie sabe para qué se construyó.\n\nSe hizo en 1887 para una exposición sobre las Filipinas. Filipinas era colonia española desde el siglo dieciséis y lo siguió siendo hasta 1898, cuando España la perdió junto con Cuba y Puerto Rico en una guerra contra Estados Unidos. En 1887 todavía era española, y se montó una gran muestra para exhibir plantas, animales y —esto es lo incómodo— también personas traídas de allá, que vivieron acá durante meses expuestas al público. Era una práctica común en la Europa de la época y hoy se lee como lo que era.\n\nEl edificio se pensó como un invernadero: por eso todo vidrio, para que las plantas tropicales sobrevivieran al invierno madrileño. Lo diseñó Ricardo Velázquez Bosco inspirándose en el Crystal Palace de Londres, un edificio gigantesco de hierro y vidrio que los ingleses habían levantado en 1851 y que dejó a media Europa queriendo uno parecido.\n\nMirá la estructura. Hierro fundido y vidrio, con una cúpula central y planta de cruz. En el siglo diecinueve esto era tecnología de punta: recién ahí se había aprendido a producir hierro barato y en cantidad, y de golpe se podían hacer edificios que antes eran imposibles, con muy poco muro y muchísima luz. Es la misma revolución que dio las grandes estaciones de tren, y de hecho el mismo día 4 vas a ver una, la de Delicias.\n\nHoy funciona como sala de exposiciones del Museo Reina Sofía, es gratis, y suele haber una sola obra contemporánea adentro. Puede tocarte algo que te guste o algo que te parezca una tomada de pelo. No importa mucho: el edificio vacío, con la luz entrando de todos lados, ya vale la entrada que no pagás.",
+      mirar: [
+        "La cúpula central y la estructura de hierro fundido.",
+        "El reflejo en el estanque, que es la foto.",
+        "Se construyó como invernadero para plantas de Filipinas."
+      ]
+    },
+    {
+      id: "mad2-03", orden: 3, sala: "Glorieta del Ángel Caído",
+      titulo: "El Ángel Caído", autor: "Ricardo Bellver", fecha: "1877, colocado en 1885",
+      guion: "Estás frente a una de las poquísimas estatuas públicas del mundo dedicadas al diablo. En un parque municipal. Pagada por el Estado español, en un país católico. Ya por eso vale el desvío.\n\nLa hizo Ricardo Bellver, un escultor madrileño que estaba estudiando en Roma con una beca. Modeló el yeso en 1877 y eligió un tema arriesgado: el momento exacto en que Lucifer, que era un ángel, cae del cielo.\n\nSe basó en El paraíso perdido, un poema larguísimo que el inglés John Milton escribió en 1667 y que cuenta la rebelión de los ángeles contra Dios y la expulsión de Adán y Eva. En ese poema Lucifer no es un monstruo con cuernos: es una criatura magnífica que se rebela por orgullo y pierde. Bellver eligió pintar —esculpir— ese instante, no el resultado.\n\nY eso es lo que hay que mirar. El ángel está cayendo de espaldas, con las alas abiertas y el cuerpo torcido. Tiene la cara desencajada y la boca abierta. Y fijate abajo, alrededor de las piernas y el brazo: hay serpientes que se le están enroscando. La caída no terminó todavía; el castigo está empezando. Un cuerpo joven y hermoso que se está convirtiendo en otra cosa mientras lo mirás.\n\nLa obra se mandó a la Exposición Universal de París de 1878 —una especie de feria mundial donde cada país mostraba lo mejor que tenía— y gustó tanto que el Estado la fundió en bronce y la instaló acá en 1885.\n\nAhora, la leyenda. Se dice mucho que la estatua está a exactamente 666 metros sobre el nivel del mar, que es el número asociado al diablo en la Biblia. Te lo van a repetir mil veces. La verdad es más sosa: el observatorio meteorológico que está acá al lado mide 656,8 metros, así que la cifra es verosímil pero nadie la verificó nunca. Lo más probable es que sea una casualidad que alguien redondeó para que quedara mejor la anécdota. Cosa que, honestamente, está bien: la anécdota queda mejor.",
+      mirar: [
+        "Las serpientes enroscándose en las piernas y el brazo.",
+        "La cara: boca abierta, cayendo de espaldas, todavía en el aire.",
+        "Lo de los 666 metros es leyenda: al lado miden 656,8."
+      ]
+    },
+    {
+      id: "mad2-04", orden: 4, sala: "Puerta de Alcalá y Cibeles",
+      titulo: "Alcalá y Cibeles, de paso", autor: "Sabatini y Ventura Rodríguez", fecha: "1778 y 1782",
+      guion: "Salís del Retiro y en diez minutos pasás por las dos postales de Madrid. Como vas caminando hacia el Prado, te las cuento en el orden en que aparecen.\n\nPrimero la Puerta de Alcalá, ese arco enorme de piedra en medio de una rotonda. Lo hizo Francesco Sabatini en 1778 —el mismo de las caballerizas del palacio— por encargo del rey Carlos III.\n\nPará un segundo en Carlos III, porque es el rey que hizo Madrid. Gobernó entre 1759 y 1788 y llegó decidido a convertir un pueblo sucio en una capital europea: empedró y alumbró las calles, prohibió tirar la basura por la ventana —que era lo normal—, hizo el alcantarillado, el Jardín Botánico, el Museo del Prado y esta puerta. Los madrileños lo bautizaron el mejor alcalde de Madrid, y el apodo le quedó para siempre.\n\nLo curioso del arco es que no es un arco de triunfo. Los arcos de triunfo se construyen para celebrar una victoria militar; este es simplemente una puerta de la ciudad, de las cinco que tenía la cerca que rodeaba Madrid, y estaba ahí para controlar quién entraba y cobrar impuestos a la mercadería. Lo que pasa es que Sabatini la hizo monumental, y hoy nadie diría que es una aduana.\n\nUn detalle que casi nadie nota y es de los mejores: las dos caras del arco son distintas entre sí. Cruzá al otro lado y comparalas.\n\nSeguro te van a contar que eso pasó porque a Carlos III le gustaron dos diseños y no supo cuál elegir. Es mentira, aunque se repite en todas las visitas. Hubo cuatro proyectos y el rey eligió el definitivo sin dudar, en 1769. Lo que cambia entre una cara y la otra es la escultura: de un lado hay trofeos militares, o sea armas y armaduras talladas en piedra, y del otro hay figuras de las cuatro virtudes cardinales. Hacer distintas las dos caras de una puerta de ciudad era lo normal en la época: cada una le hablaba a un público, la de afuera al que llegaba y la de adentro al que vivía en Madrid.\n\nSeguís bajando y llegás a Cibeles. La fuente es de 1782, también de la época de Carlos III. Cibeles era la diosa romana de la tierra y la fertilidad, y va en un carro tirado por dos leones. Los leones, según el mito, son una pareja de amantes que ofendieron a los dioses y fueron convertidos en bestias como castigo. Acá festeja sus títulos el Real Madrid, así que si ves la fuente vallada es por eso.\n\nY ese palacio blanco enorme con torres que parece una catedral: no es un palacio ni una catedral. Se construyó en 1919 como oficina de correos, y era tan desproporcionadamente lujosa para lo que era que los madrileños la llamaban con sorna Nuestra Señora de las Comunicaciones. Hoy es la sede del gobierno de la ciudad.",
+      mirar: [
+        "Las dos caras de la Puerta de Alcalá son distintas: cruzá y compará.",
+        "No es un arco de triunfo: era una aduana para cobrar impuestos.",
+        "El palacio blanco de Cibeles era la oficina de correos."
+      ]
+    },
+    {
+      id: "mad2-05", orden: 5, sala: "San Jerónimo el Real",
+      titulo: "San Jerónimo el Real", autor: "Iglesia de los reyes", fecha: "siglo XVI, rehecha en el XIX",
+      guion: "Es la iglesia que está justo atrás del Prado, subiendo unas escaleras. Entrás veinte minutos y es gratis, y lo que vale acá no es tanto el edificio como lo que pasó adentro.\n\nEsta fue durante siglos la iglesia de los reyes españoles. No la catedral —ya vimos que Madrid no tuvo catedral hasta 1993— sino la iglesia donde la monarquía hacía sus ceremonias. Acá se proclamaban los reyes al asumir, se casaban, se bautizaban los herederos y se hacían los funerales de Estado.\n\nLa lista es larga. Acá se casó Alfonso XII. Acá se casó Alfonso XIII en 1906, y ese día pasó lo peor que pasó nunca en una boda española: mientras el cortejo volvía de la iglesia al palacio, un anarquista llamado Mateo Morral tiró desde una ventana de la calle Mayor una bomba escondida en un ramo de flores. Murieron veinticuatro personas y hubo más de cien heridos. Los novios se salvaron. Y en noviembre de 1975, dos días después de que muriera Franco, Juan Carlos I fue proclamado rey ante el parlamento; la ceremonia religiosa que selló esa asunción se hizo acá, cinco días más tarde.\n\nEl edificio original es de principios del siglo dieciséis, de estilo gótico tardío, y formaba parte de un monasterio de la orden de los jerónimos. De ese monasterio viene todo: el barrio se llama Los Jerónimos y el Retiro se construyó pegado porque los reyes ya venían a retirarse acá.\n\nPero ojo, porque lo que ves no es del siglo dieciséis. La iglesia quedó bastante destruida —otra vez, la invasión de Napoleón, que la usó como cuartel— y en el siglo diecinueve la rehicieron casi entera imitando el gótico. Las dos torres de la fachada, que parecen lo más medieval, son del siglo diecinueve. Adentro, en cambio, la estructura sí conserva bastante de lo antiguo.\n\nY un detalle de arquitectura que vale la pena saber si te gustó el Prado: cuando se amplió el museo en 2007, el arquitecto Rafael Moneo metió el edificio nuevo dentro del claustro del monasterio, que estaba en ruinas. Lo desarmó piedra por piedra, lo restauró y lo montó adentro del edificio moderno, como una caja dentro de otra. Si estuviste en el Prado, pasaste por ahí abajo.",
+      mirar: [
+        "Las dos torres de la fachada son del siglo XIX, no medievales.",
+        "Acá se proclamó rey Juan Carlos I en 1975, dos días después de Franco.",
+        "El claustro del monasterio está adentro de la ampliación del Prado."
+      ]
+    },
+    {
+      id: "mad2-06", orden: 6, sala: "Azotea del Círculo de Bellas Artes",
+      titulo: "La azotea del Círculo", autor: "Antonio Palacios", fecha: "1926",
+      guion: "Seis euros y un ascensor te dejan cincuenta y seis metros sobre la calle de Alcalá, de noche, con Madrid prendido abajo. Es la mejor plata que vas a gastar en toda la ciudad.\n\nEl edificio es de 1926 y lo hizo Antonio Palacios, que es el arquitecto que le dio a Madrid buena parte de su cara del siglo veinte. Pero lo que hay adentro es más interesante que el edificio: el Círculo de Bellas Artes es un club privado de artistas fundado en 1880, una asociación de pintores, escritores y músicos que se juntaban a trabajar, exponer y discutir.\n\nEn los años veinte y treinta fue el centro de la vida cultural española. Por acá pasó toda la generación de escritores y artistas que hizo el mejor momento de la cultura española moderna, la gente que después se exilió o se murió con la Guerra Civil. Sigue funcionando como club, con su cine, su sala de exposiciones y su café enorme en la planta baja, que es un sitio precioso para tomar algo si te sobra tiempo.\n\nArriba, en la azotea, mirá primero la escultura: una Minerva de bronce, la diosa romana de la sabiduría y las artes, que preside el edificio desde 1964.\n\nY después ubicate. Hacia el oeste tenés la Gran Vía entera, que es la avenida de los carteles luminosos; buscá el edificio Metrópolis, el de la cúpula negra con una figura dorada arriba, que es la foto clásica de Madrid. Más allá, si la noche está clara, se recortan la catedral de la Almudena y el Palacio Real, donde estuviste ayer. Hacia el este, abajo, el Paseo del Prado y el Retiro como una mancha negra. Y al fondo, la sierra.\n\nDos consejos prácticos. Primero: subí ya de noche, no al atardecer, porque lo que hace especial a esta azotea es Madrid iluminado, no la puesta de sol. Y segundo: en octubre a las nueve de la noche allá arriba hace frío y corre viento. Llevá algo de abrigo, porque si no te vas a bajar en diez minutos y te vas a perder lo mejor.",
+      mirar: [
+        "La Minerva de bronce que preside la azotea desde 1964.",
+        "Hacia el oeste, el edificio Metrópolis y la Gran Vía entera.",
+        "Al fondo, la Almudena y el Palacio Real donde estuviste ayer."
+      ]
+    }
+  ]
+};
+
+const GUIA_MADRID_D4 = {
+  id: "madrid-d4",
+  ciudad: "madrid",
+  titulo: "Madrid, día 4",
+  subtitulo: "El Rastro y el eje sur, el Madrid que no sale en las postales",
+  duracion: "4 paradas · unos 15 minutos de audio",
+  practico: {
+    cuando: "Domingo 4 de octubre. Es el día más tranquilo de Madrid y el único en que podés ver esta parte de la ciudad, que es obrera, industrial y bastante distinta de todo lo anterior.",
+    reloj: "El Rastro funciona de 9:00 a 15:00 y la franja buena es hasta las 13:00; después empiezan a levantar. Todo lo demás del día no tiene horario crítico.",
+    plata: "El Rastro, Matadero y Madrid Río son gratis. El Museo del Ferrocarril cuesta unos pocos euros y los domingos suele estar más barato.",
+    consejo: "Es domingo y mañana salís temprano a Nápoles: el plan termina caminando junto al río al atardecer, sin apuro. No le agregues nada."
+  },
+  paradas: [
+    {
+      id: "mad4-01", orden: 1, sala: "Ribera de Curtidores",
+      titulo: "El Rastro", autor: "Mercado de domingo desde el siglo XVIII", fecha: null,
+      guion: "Mil puestos en la calle, un domingo a la mañana, en una cuesta. Esto pasa todas las semanas desde hace casi trescientos años y el nombre tiene un origen bastante desagradable.\n\nRastro, en español, es el reguero que deja algo al arrastrarse. Acá abajo, en esta zona, estaba el matadero de la ciudad, y las reses faenadas se arrastraban cuesta abajo hasta las curtidurías, que son los talleres donde se trabaja el cuero. El recorrido dejaba un rastro de sangre por la calle todas las semanas. De ahí el nombre del mercado, y de ahí el nombre de la calle principal: Ribera de Curtidores, la ribera de los curtidores.\n\nEl mercado se armó alrededor de ese movimiento, primero vendiendo despojos y cueros, después ropa usada, y con los siglos cualquier cosa. Está documentado desde mediados del siglo dieciocho.\n\nY ahora lo importante, que es cómo recorrerlo, porque hacerlo mal es la diferencia entre una hora buena y una hora de empujones.\n\nLa calle principal, la Ribera de Curtidores, es la que baja derecho y es la más llena y la más turística: medias, imanes, ropa nueva barata. Está bien para ver el ambiente, pero no es donde está lo bueno.\n\nLo bueno está en las calles laterales. Metete por Calle del Carnero, por Mira el Río, por Plaza del General Vara del Rey: ahí están los puestos de antigüedades de verdad, los libros viejos, los discos, las llaves, las cámaras de fotos, los cuadros que alguien sacó de una casa que se vació. Y en las galerías cubiertas, que son locales fijos con puertas a la calle, hay anticuarios que abren solo los domingos.\n\nTres cosas prácticas. Se regatea: el primer precio nunca es el precio, y ofrecer un poco menos es parte del juego, no una ofensa. Se paga en efectivo, muchos puestos no toman tarjeta. Y cuidá la billetera y el celular, porque es el lugar de Madrid con más carteristas y funcionan exactamente donde hay más apretujón.\n\nCuando termines, subí a la Cava Baja. Es una calle corta de tabernas, a diez minutos, y es donde los madrileños van a tapear el domingo al mediodía. Ahí comés.",
+      mirar: [
+        "Metete por las calles laterales: ahí están las antigüedades de verdad.",
+        "Las galerías cubiertas con anticuarios que abren solo los domingos.",
+        "El nombre viene del reguero de sangre del matadero hacia las curtidurías."
+      ]
+    },
+    {
+      id: "mad4-02", orden: 2, sala: "Museo del Ferrocarril",
+      titulo: "La estación de Delicias", autor: "Émile Cachelièvre y Fives-Lille", fecha: "1880",
+      guion: "Entrás a lo que parece un galpón enorme de hierro y vidrio y adentro hay treinta locomotoras. Muchas se pueden recorrer por dentro. Es uno de los lugares más lindos de Madrid y casi no hay nadie.\n\nEl edificio es la estación de Delicias, inaugurada en 1880, y es lo primero que hay que mirar, antes que los trenes. Es una nave de hierro y vidrio de ciento setenta metros de largo, treinta y cinco de ancho y veintidós de alto, sin una sola columna en el medio: toda la cubierta se sostiene sola con cerchas de hierro. Eso, en 1880, era tecnología de punta.\n\nAcordate de lo que hablamos ayer en el Palacio de Cristal: el siglo diecinueve aprendió a producir hierro barato y en cantidad, y con eso pudo hacer edificios enormes, muy livianos y llenos de luz, que antes eran imposibles porque había que sostenerlos con muros de piedra. Las grandes estaciones de tren de Europa son el mejor ejemplo de esa revolución, y esta es una de ellas. La proyectó el ingeniero francés Émile Cachelièvre y la estructura metálica la fabricó Fives-Lille, una empresa del norte de Francia. Era lo normal en la España de esa época: el capital y la tecnología del ferrocarril venían de afuera.\n\nDelicias funcionó como estación hasta 1969. Se cerró, estuvo a punto de demolerse y se salvó porque en 1984 la convirtieron en museo.\n\nDe lo que hay adentro, buscá tres cosas.\n\nLas locomotoras de vapor, que son las más antiguas y las más impresionantes de cerca: fijate en el tamaño de las ruedas y en la cantidad de tubos, palancas y ruedas manuales que tenía que manejar el maquinista con las manos, sin ninguna computadora, a sesenta kilómetros por hora.\n\nLos coches de viajeros de lujo, que se pueden recorrer: hay salones con terciopelo, comedores y camas. Así viajaba la gente rica hace cien años.\n\nY los coches de tercera clase, que están al lado: bancos de madera, sin calefacción. Los dos trenes iban al mismo lugar.\n\nSi te agarra hambre, adentro hay un vagón-restaurante convertido en cafetería. Tomar un café adentro de un tren de 1930 parado en una estación de 1880 es una experiencia bastante mejor de lo que suena.",
+      mirar: [
+        "La nave de hierro de 1880: ciento cincuenta metros sin columnas en el medio.",
+        "Los coches de lujo con terciopelo, y al lado los de tercera con bancos de madera.",
+        "Los mandos de una locomotora de vapor: todo a mano, sin electrónica."
+      ]
+    },
+    {
+      id: "mad4-03", orden: 3, sala: "Matadero Madrid",
+      titulo: "El Matadero", autor: "Luis Bellido", fecha: "1911–1925",
+      guion: "Un conjunto de naves de ladrillo rojo, enormes, con techos altos y patios entre medio. Durante ochenta años acá se mataron vacas. Hoy es el centro cultural más grande de Madrid.\n\nEl complejo lo diseñó el arquitecto municipal Luis Bellido y se construyó entre 1911 y 1925. No era solo un matadero: era el matadero y mercado de ganado de toda la ciudad, cuarenta y ocho edificios sobre más de dieciséis hectáreas, con su propio sistema de rieles, corrales, establos y cámaras frigoríficas. Funcionó hasta 1996.\n\nMirá el estilo, porque es muy español y tiene nombre: neomudéjar. El mudéjar era la forma de construir de los albañiles musulmanes que se quedaron a vivir en los reinos cristianos después de la Reconquista, y su marca es el ladrillo visto trabajado en dibujos geométricos, sin piedra y sin mármol, porque era barato y rápido. A fines del siglo diecinueve los arquitectos españoles lo recuperaron para edificios industriales y populares —fábricas, plazas de toros, estaciones— justamente porque era económico. Fijate en los frisos, los arcos y las cenefas: todo está hecho con ladrillos puestos de distinta manera. No hay ningún material caro en todo el edificio.\n\nY ahora lo que hace especial al lugar hoy. Cuando lo convirtieron en centro cultural, a partir de 2006, tomaron una decisión que no es la habitual: no lo maquillaron. No taparon nada. Dejaron los rieles en el piso por donde corrían las reses colgadas, los ganchos, los azulejos blancos lavables de las salas de faena, las canaletas de desagüe, las inscripciones pintadas en las paredes. Entrás a una sala de exposiciones y estás parado adentro de una cámara de despiece, y se nota.\n\nEsa honestidad es rarísima y es lo que hay que ir a ver, más que la muestra que haya esa tarde. Caminá los patios entre naves, metete en las que estén abiertas y mirá el piso y los techos.\n\nEs gratis, es enorme y los domingos a la tarde está lleno de familias del barrio. No intentes verlo entero: entrá en dos o tres naves y seguí, porque a diez minutos caminando tenés el río.",
+      mirar: [
+        "Los rieles y ganchos en el techo por donde iban las reses colgadas.",
+        "Los azulejos blancos y las canaletas de las salas de faena.",
+        "El ladrillo trabajado en dibujos: neomudéjar, sin un solo material caro."
+      ]
+    },
+    {
+      id: "mad4-04", orden: 4, sala: "Madrid Río",
+      titulo: "Madrid Río", autor: "Burgos & Garrido, Porras La Casta, Rubio & Álvarez-Sala, West 8", fecha: "túneles 2004–2007, parque 2007–2011",
+      guion: "Estás caminando por un parque de seis kilómetros junto al río, y abajo tuyo, a unos metros, pasan ocho carriles de autopista. Esa es toda la historia de este lugar, y es una de las obras urbanas más grandes que se hicieron en Europa en este siglo.\n\nEmpecemos por el río, que necesita una aclaración. El Manzanares es célebre en España por ser un río malísimo. Durante siglos fue objeto de burla: los escritores del Siglo de Oro se reían de que Madrid tuviera un puente monumental y un hilo de agua abajo. Le decían aprendiz de río. Es un chiste viejo y sigue vigente.\n\nDurante la segunda mitad del siglo veinte, a ese río pobre le pusieron al lado una autopista, la M-30, que es el anillo de circunvalación de Madrid. O sea que entre la ciudad y su río había ocho carriles de autos a toda velocidad. El río quedó como el fondo de la ciudad: nadie iba, nadie lo miraba.\n\nEntonces se hizo algo carísimo y bastante radical: enterrar la autopista. Entre 2004 y 2007 metieron el tramo que va junto al río en túneles por debajo del suelo, y entre 2007 y 2011 construyeron este parque encima, donde antes había asfalto. Costó miles de millones de euros, fue muy discutido mientras se hacía —tres años de obra y de caos en toda la ciudad— y hoy nadie en Madrid lo cambiaría.\n\nDe lo que vas a ver mientras caminás, quedate con tres cosas.\n\nLos puentes viejos, sobre todo el Puente de Segovia y el Puente de Toledo. El de Toledo es de principios del siglo dieciocho, barroco, con hornacinas y estatuas, y es exactamente el puente monumental del que se burlaban los escritores.\n\nEl Puente de Arganzuela, que es el nuevo: dos espirales metálicas entrelazadas, del arquitecto francés Dominique Perrault. Si podés, cruzalo por dentro y mirá cómo la estructura gira alrededor tuyo.\n\nY el río mismo. En 2016 se tomó otra decisión importante: abrir las compuertas de las represas que lo mantenían artificialmente ancho y quieto, como un lago falso, y dejar que corriera como un río de verdad. Bajó el nivel, aparecieron islas de arena y vegetación, y volvieron los patos, las garzas y los peces. Hoy el Manzanares se parece por primera vez en siglos a un río.\n\nCaminá hacia el sur con el sol bajando. Es la última tarde del viaje en España por ahora, y mañana a las siete y media salís para Nápoles.",
+      mirar: [
+        "El Puente de Toledo, barroco del siglo XVIII, con sus estatuas.",
+        "El Puente de Arganzuela: dos espirales metálicas entrelazadas.",
+        "Las islas de arena y las garzas: el río volvió a correr en 2016."
+      ]
+    }
+  ]
+};
+
+const GUIA_TOLEDO = {
+  id: "toledo",
+  ciudad: "madrid",
+  titulo: "Toledo, día completo",
+  subtitulo: "La capital que perdió contra Madrid",
+  duracion: "11 paradas · unos 42 minutos de audio",
+  practico: {
+    cuando: "Sábado 3 de octubre. Salís de Atocha 09:15 y volvés en el tren de las 21:37, que es el último del sábado. Ese horario no se puede perder.",
+    entradas: "La pulsera turística cuesta €14, vale siete días y cubre cuatro de los lugares que vas a ver: Cristo de la Luz, Santa María la Blanca, Santo Tomé y San Juan de los Reyes. Se compra en la taquilla de cualquiera de ellos. La catedral va aparte (€12) y la Sinagoga del Tránsito también.",
+    gratis: "La Sinagoga del Tránsito, que es museo estatal, entra gratis los sábados desde las 14:00. Por eso está puesta a esa hora en tu itinerario.",
+    propina: "La pulsera incluye tres lugares más que no tenés en el plan. Si te sobra media hora, el mejor es la Iglesia de los Jesuitas: se suben las dos torres y es la mejor vista del casco antiguo desde adentro de la ciudad.",
+    pies: "Toledo es una cuesta empinada con calles de piedra irregular. Son nueve horas caminando en subida y bajada. Zapatillas, y el que tenga rodillas delicadas que use las escaleras mecánicas públicas para subir desde la estación.",
+    cena: "Quedate a cenar. La mayoría de los turistas son excursiones de un día que se van a las seis, así que a partir de esa hora la ciudad se vacía y queda iluminada y casi vacía. Es el mejor momento del día."
+  },
+  paradas: [
+    {
+      id: "tol-01", orden: 1, sala: "Subiendo desde la estación",
+      titulo: "Por qué Toledo es así", autor: "Tres religiones y una capital perdida", fecha: null,
+      guion: "Antes de que empieces a subir, quince minutos de contexto que van a hacer que el resto del día tenga sentido. Porque Toledo no es un pueblo bonito: es una capital fracasada, y eso es exactamente lo que la volvió interesante.\n\nPrimero, la geografía, porque lo explica todo. Toledo está encima de un peñón de granito, y el río Tajo lo rodea por tres lados metido en un barranco profundo. O sea que es una fortaleza natural: por tres lados no se puede atacar, y por el cuarto se pone una muralla y listo. Cualquiera que quisiera controlar el centro de la península quería este peñón.\n\nY todos lo tuvieron. Los romanos, primero. Después los visigodos, que eran un pueblo germánico que se quedó con España cuando el Imperio Romano se cayó, y que en el siglo seis hicieron de Toledo la capital de su reino. Después, en el 711, llegaron los musulmanes desde el norte de África y Toledo fue una ciudad islámica durante casi cuatrocientos años. Y en 1085 la tomó el rey cristiano Alfonso VI —el mismo que de paso se había quedado con Madrid— y volvió a ser capital, ahora del reino de Castilla.\n\nAhora viene lo bueno, y es la razón por la que a Toledo la llaman la ciudad de las tres culturas. Después de la conquista cristiana no echaron a nadie. Siguieron viviendo acá cristianos, musulmanes y judíos, en barrios separados, con sus templos, sus leyes y sus idiomas. No era un paraíso de convivencia —había impuestos distintos, humillaciones y estallidos de violencia— pero durante trescientos años las tres comunidades compartieron la misma ciudad. La judía era una de las más grandes e importantes de Europa.\n\nY de esa mezcla salió algo que le cambió la cabeza al continente entero. En los siglos doce y trece funcionó acá lo que se llama la Escuela de Traductores de Toledo: equipos de judíos, musulmanes y cristianos que tradujeron al latín los libros que estaban en árabe. Y en árabe estaba casi todo: la medicina, la astronomía, las matemáticas, y sobre todo los filósofos griegos, que en Europa se habían perdido y que los árabes habían conservado y comentado durante siglos. Aristóteles vuelve a Europa por acá. Un solo traductor, Gerardo de Cremona, que era italiano y se vino a vivir a Toledo justamente porque acá estaban los libros, tradujo él solo más de ochenta obras: el tratado de astronomía de Ptolomeo que ordenaba el cielo entero, el manual de medicina de Avicena que se usó en las universidades europeas durante quinientos años, matemáticas, óptica, alquimia. Esta ciudad fue durante un par de siglos el lugar donde el conocimiento cambiaba de idioma, y después se repartía por toda Europa.\n\n¿Y qué pasó? Dos golpes. En 1492 los Reyes Católicos expulsaron a los judíos de España: la comunidad que había estado acá ochocientos años tuvo cuatro meses para irse o convertirse. Y en 1561 el rey Felipe II se llevó la corte a Madrid, sesenta y cinco kilómetros al norte. Toledo dejó de ser capital de un día para el otro.\n\nY ahí está la clave de lo que vas a ver hoy. Cuando una ciudad pierde el poder, deja de construirse encima de sí misma. Toledo se congeló en el siglo dieciséis. Por eso las calles siguen siendo medievales, por eso las sinagogas siguen en pie, por eso la ciudad entera es patrimonio de la humanidad. Madrid ganó y se llenó de edificios nuevos. Toledo perdió y por eso todavía está acá.",
+      mirar: [
+        "El barranco del Tajo rodeando la ciudad por tres lados.",
+        "Las calles: son medievales porque la ciudad dejó de crecer en 1561.",
+        "Tres religiones convivieron acá trescientos años, en barrios separados."
+      ]
+    },
+    {
+      id: "tol-02", orden: 2, sala: "Mezquita del Cristo de la Luz",
+      titulo: "La mezquita del año 999", autor: "Musa Ibn Ali, para Ahmad Ibn Hadidi", fecha: "999",
+      guion: "Es un edificio chiquito, casi un cubo de ladrillo, al que le pasarías por al lado sin mirarlo. Tiene mil veintisiete años y es el edificio más antiguo que vas a ver hoy, más viejo que la catedral por doscientos treinta años.\n\nSe construyó en el año 999 como mezquita de barrio, y sabemos la fecha exacta porque está escrita en la pared. Mirá la fachada del lado suroeste: hay una inscripción en ladrillo, en escritura árabe, que dice quién la pagó —un vecino llamado Ahmad Ibn Hadidi— y quién la construyó. Es como una placa de obra, puesta hace mil años.\n\nSe llamaba mezquita de Bab al-Mardum, por la puerta de la muralla que tenía al lado.\n\nAhora entrá y mirá para arriba, porque ahí está lo extraordinario. El espacio es minúsculo: cuatro columnas en el medio dividen el interior en nueve cuadraditos. Y cada uno de esos nueve tiene una bóveda distinta. Nueve bóvedas, nueve diseños diferentes, ninguno repetido, hechas con nervios de ladrillo que se cruzan formando estrellas.\n\nEso, en el año 999, era alarde puro. El arquitecto estaba demostrando que podía resolver nueve veces el mismo problema de nueve maneras distintas, en un edificio del tamaño de un garaje. Y esos nervios cruzados son la misma idea que doscientos años después va a hacer posibles las catedrales góticas enormes como la que vas a ver en un rato. Acá está el germen, en miniatura.\n\nFijate también en los arcos de las tres fachadas: son todos distintos entre sí. Los hay de herradura, que es la forma típica del arte islámico español, y los hay lobulados, con los bordes recortados como pétalos.\n\nY ahora la parte cristiana. En 1085 Toledo pasó a manos cristianas, y en 1186 el rey Alfonso VIII le entregó el edificio a los caballeros de la Orden de San Juan, que lo convirtieron en iglesia. Para eso tiraron abajo la pared del fondo —la que miraba hacia La Meca— y le pegaron un ábside, que es esa parte semicircular que ves al fondo. Lo hicieron en estilo mudéjar, o sea con albañiles musulmanes trabajando para patrones cristianos, y por eso combina tan bien que casi no se nota el agregado.\n\nMirá la juntura entre lo viejo y lo nuevo. Ese edificio es, literalmente, las dos religiones pegadas.\n\nY la leyenda, que te la van a contar sí o sí. Dicen que cuando Alfonso VI entró a Toledo en 1085, su caballo se arrodilló justo acá y no quiso avanzar. Al revisar, encontraron un crucifijo escondido en el muro con una lámpara todavía encendida al lado, que los cristianos habrían dejado ahí antes de la llegada de los musulmanes. De ahí el nombre: Cristo de la Luz.",
+      mirar: [
+        "La inscripción árabe en ladrillo de la fachada: dice quién la pagó, en 999.",
+        "Las nueve bóvedas del techo: cada una con un diseño distinto.",
+        "El ábside del fondo, agregado en 1186 donde estaba el muro hacia La Meca."
+      ]
+    },
+    {
+      id: "tol-03", orden: 3, sala: "Catedral Primada",
+      titulo: "La catedral: por qué manda", autor: "Empezada por Maestro Martín", fecha: "1226–1493",
+      guion: "Te vas a pasar dos horas acá adentro, así que vale la pena entender qué es este edificio antes de entrar, porque no es una catedral más.\n\nSe llama Catedral Primada, y primada quiere decir primera: manda sobre todas las demás iglesias de España. El arzobispo de Toledo es el jefe de la Iglesia española. Eso viene de los visigodos, en el siglo seis, cuando Toledo era la capital y acá se hacían los concilios que decidían la doctrina de todo el reino. Cuando Felipe II mudó la corte a Madrid, Toledo perdió el poder político pero se quedó con el religioso, y nunca lo soltó. Por eso Madrid no tuvo catedral hasta 1993.\n\nAhora, el suelo que estás pisando tiene tres capas. Primero hubo una iglesia visigoda, en el siglo seis. Cuando llegaron los musulmanes, la convirtieron en la mezquita principal de la ciudad. Y cuando los cristianos retomaron Toledo, la mezquita volvió a ser iglesia, hasta que en 1226 decidieron tirar todo y hacer esto.\n\nTardaron doscientos sesenta y siete años. Se terminó en 1493, un año después de que Colón llegara a América. O sea que hubo generaciones enteras de canteros que nacieron, trabajaron acá toda la vida y se murieron sin ver el edificio terminado. Eso es normal en las catedrales góticas y sin embargo cuesta hacerse a la idea.\n\nDos palabras sobre el gótico, porque el edificio es el mejor ejemplo español. El gótico es la forma de construir iglesias que se inventó en Francia en el siglo doce y que resolvió un problema viejo: cómo hacer edificios altísimos y llenos de luz sin que se caigan. La solución fue técnica —arcos en punta, nervaduras cruzadas en las bóvedas y contrafuertes por fuera que empujan las paredes hacia adentro— y el resultado es que los muros dejan de sostener el peso y se pueden abrir enteros en vidrio. De ahí los vitrales.\n\nEste tiene setecientos cincuenta vitrales, casi todos originales de los siglos catorce al dieciséis. Es uno de los conjuntos más grandes de Europa que sobrevivieron.\n\nY un detalle que delata el pasado del lugar. Los arcos de la catedral, en algunas zonas, son polilobulados: en vez de terminar en punta limpia, tienen el borde recortado en lóbulos, como los que acabás de ver en la mezquita. Eso no es gótico francés, es una cita directa al arte islámico. Los constructores cristianos usaron formas musulmanas dentro de la catedral más importante de España, y a nadie le pareció raro.\n\nAhora entrá y caminá primero por la nave central sin mirar nada en particular. Ochenta y ocho columnas, cinco naves, treinta metros de alto. Dejá que te impresione el tamaño antes de ponerte a buscar cosas: para eso están las tres paradas que siguen.",
+      mirar: [
+        "Los 750 vitrales, casi todos originales de los siglos XIV al XVI.",
+        "Los arcos polilobulados: formas islámicas dentro de una catedral cristiana.",
+        "Tardó 267 años: se terminó en 1493, un año después de Colón."
+      ]
+    },
+    {
+      id: "tol-04", orden: 4, sala: "Coro y Capilla Mayor",
+      titulo: "El coro y el retablo", autor: "Rodrigo Alemán, Berruguete y Vigarny", fecha: "1489–1543",
+      guion: "En el medio de la catedral hay una especie de caja cerrada de madera y mármol que te tapa la vista. Eso es el coro, y es lo más español que tiene el edificio.\n\nEn las catedrales francesas o inglesas, cuando entrás ves todo el largo de la nave hasta el altar. En España no: acá se metía el coro en el medio, cerrado con muros, porque era el lugar donde los curas cantaban las ocho veces al día que se rezaba. Te arruina la perspectiva y a cambio te da esto.\n\nMirá la sillería, que son los asientos de madera tallada. Hay dos filas, una arriba y otra abajo, y son de épocas y manos distintas.\n\nLa fila de abajo la talló Rodrigo Alemán entre 1489 y 1495, y es un documento histórico extraordinario: cada respaldo tiene tallada una escena de la conquista de Granada, que estaba pasando en ese momento. Granada era el último reino musulmán que quedaba en España y cayó en 1492. O sea que estos relieves son como un noticiero tallado en roble, hecho por alguien que se enteraba de las batallas mientras las esculpía. Están los campamentos, las murallas, los soldados. Es la única crónica visual contemporánea de esa guerra.\n\nY ahora agachate un poco y mirá debajo de los asientos, en la parte que se levanta. Ahí hay tallas escondidas que no tienen nada de religioso: monstruos, borrachos, curas gordos, escenas obscenas, gente haciendo cosas que no esperarías en una catedral. Los talladores medievales metían estos chistes en las partes que nadie mira. Buscalos: es de lo más divertido del edificio.\n\nLa fila de arriba es cuarenta años posterior, de los años 1539 a 1543, y la hicieron dos escultores compitiendo: Alonso Berruguete de un lado y Felipe Vigarny del otro. Son personajes de la Biblia, y se nota el cambio de época: las figuras de abajo son medievales, planas, narrativas; las de arriba son del Renacimiento, con cuerpos torcidos y musculosos, aprendidos en Italia. Cincuenta años y otro mundo.\n\nDate vuelta ahora hacia el altar, a la Capilla Mayor. Ese retablo enorme que ocupa la pared entera hasta el techo es de principios del siglo dieciséis, tallado en madera de alerce dorada, y cuenta la vida de Cristo en pisos, como una historieta que se lee de abajo hacia arriba. Es de los retablos góticos más grandes que existen.\n\nY abajo, a los pies, fijate en las tumbas: ahí están enterrados varios reyes de Castilla.",
+      mirar: [
+        "La fila baja del coro: la conquista de Granada tallada mientras pasaba.",
+        "Debajo de los asientos: monstruos, borrachos y chistes obscenos.",
+        "El retablo del altar: la vida de Cristo en pisos, de abajo hacia arriba."
+      ]
+    },
+    {
+      id: "tol-05", orden: 5, sala: "El Transparente",
+      titulo: "El Transparente", autor: "Narciso Tomé y sus cuatro hijos", fecha: "1729–1732",
+      guion: "Caminá por detrás del altar mayor, por el pasillo curvo que lo rodea, y en algún momento vas a llegar a algo que no se parece a nada que hayas visto en una iglesia. Mármoles, bronces, ángeles saliendo de las paredes, nubes de piedra, y un chorro de luz cayendo del techo como si alguien hubiera abierto un agujero al cielo.\n\nAlguien lo abrió. Literalmente.\n\nEl problema era este. Detrás del altar mayor está el sagrario, que es donde se guarda la hostia consagrada, lo más sagrado de una iglesia católica. Pero el retablo gigante que acabás de ver tapaba toda la luz, así que el sagrario quedaba en penumbra permanente, escondido atrás de una montaña de madera dorada. Al arzobispo de Toledo eso le parecía inaceptable.\n\nEn 1729 le encargó la solución a Narciso Tomé, un arquitecto y escultor que trabajó en esto con sus cuatro hijos: dos arquitectos, un pintor y un escultor. Una empresa familiar.\n\nY lo que hicieron fue de una audacia enorme: le hicieron un agujero a la catedral. Abrieron un tragaluz en la bóveda, allá arriba, a varios metros de altura, y otro agujero en la parte de atrás del retablo. La luz del sol entra por el techo, baja en diagonal, atraviesa la obra y va a dar justo sobre el sagrario, que se ilumina desde atrás. De ahí el nombre: transparente, porque la luz lo atraviesa.\n\nPará y mirá para arriba, hacia el tragaluz. Vas a ver que Tomé no dejó el agujero pelado: lo rodeó de ángeles, profetas y nubes esculpidas que parecen estar flotando alrededor de la luz que entra. Es una máquina hecha para que no parezca una máquina. Todo el aparato existe para que vos creas que ese rayo de sol es un milagro y no ingeniería.\n\nEsto es el barroco, que es el estilo que dominó Europa en los siglos diecisiete y dieciocho y que se caracteriza exactamente por esto: teatro, movimiento, emoción, y esconder el truco. La versión española del barroco más recargado se llama churrigueresco, y esto es su ejemplo más famoso.\n\nCuando se terminó, en 1732, hubo un escándalo. Media Toledo dijo que era una barbaridad haberle hecho un agujero a una catedral gótica de quinientos años para meter esa cosa recargada. La otra mitad lo llamó la octava maravilla del mundo y le escribió poemas. La discusión sigue: mucha gente todavía opina que está fuera de lugar.\n\nSi podés, volvé a mediodía, que es cuando el sol pega en el ángulo correcto y el efecto funciona como lo pensaron.",
+      mirar: [
+        "El tragaluz abierto en la bóveda, rodeado de ángeles y nubes de piedra.",
+        "Dónde cae la luz: justo sobre el sagrario, iluminado desde atrás.",
+        "A mediodía el efecto funciona; a otra hora es solo escultura."
+      ]
+    },
+    {
+      id: "tol-06", orden: 6, sala: "Sacristía",
+      titulo: "La sacristía y El Greco", autor: "El Greco, Luca Giordano y otros", fecha: "1577–1579 el Expolio",
+      guion: "La sacristía es el cuarto donde los curas se ponen la ropa para la misa. En cualquier iglesia es un cuarto de servicio. Acá es un museo de pintura, y de los buenos.\n\nApenas entrás, mirá para arriba: todo el techo está pintado al fresco por Luca Giordano, un napolitano del siglo diecisiete al que llamaban Fa Presto, que quiere decir hazlo rápido, porque pintaba a una velocidad que asustaba a sus contemporáneos.\n\nPero la obra por la que estás acá está al fondo, presidiendo la sala. Se llama El Expolio, que quiere decir el despojo, y la pintó El Greco entre 1577 y 1579.\n\nUn minuto para El Greco, porque lo vas a encontrar dos veces hoy y es el personaje del día. Se llamaba Doménikos Theotokópoulos, nació en la isla de Creta, se formó pintando iconos bizantinos, se fue a Venecia a aprender con los mejores pintores de su época, pasó por Roma, y terminó acá, en Toledo, donde vivió el resto de su vida. Los españoles no podían con su apellido, así que lo llamaron simplemente El Greco: el griego. Es el pintor de Toledo.\n\nEsta fue su primera obra importante en España, apenas llegó. Y le trajo un juicio.\n\nEl cuadro muestra el momento en que a Cristo le arrancan la ropa antes de crucificarlo. Y lo que hizo El Greco fue meterlo a él en el medio de una multitud que lo aprieta: cabezas, armaduras, lanzas, gente empujándose. Cristo está ahí adentro, con una túnica roja intensa, mirando para arriba con una calma absoluta mientras todos le gritan alrededor.\n\nEl rojo de esa túnica es lo que tenés que mirar. Es el único color fuerte del cuadro y te lleva el ojo directo al centro sin que te des cuenta. Todo lo demás es gris, acero, marrón.\n\nAhora, el juicio. Los canónigos de la catedral, que eran los que le pagaban, se enojaron por dos cosas. Primero, que las cabezas de la multitud estuvieran más altas que la de Cristo, lo que les parecía una falta de respeto. Y segundo, que abajo a la izquierda aparecieran las tres Marías, porque según los evangelios ellas no estuvieron en esa escena. Le hicieron juicio para bajarle el precio. El Greco se negó a cambiar el cuadro y terminó cobrando bastante menos de lo que pedía. Era un tipo difícil y murió endeudado.\n\nEn la misma sala hay más: un Goya, un Tiziano, un Van Dyck y una colección larga de retratos de apóstoles del propio Greco. Si te sobra tiempo, dales una vuelta.",
+      mirar: [
+        "El techo entero pintado al fresco por Luca Giordano.",
+        "En El Expolio: el rojo de la túnica, el único color fuerte del cuadro.",
+        "Las cabezas de la multitud más altas que la de Cristo: por eso lo demandaron."
+      ]
+    },
+    {
+      id: "tol-07", orden: 7, sala: "Sinagoga del Tránsito",
+      titulo: "La sinagoga del tesorero", autor: "Samuel ha-Leví", fecha: "1355–1357",
+      guion: "Entrás a una sala rectangular con las paredes cubiertas de yeso tallado hasta el techo y un artesonado de madera arriba. Si no supieras dónde estás, jurarías que es un palacio musulmán. Es una sinagoga, la construyó un judío, y trabajaron en ella artesanos musulmanes para un rey cristiano.\n\nEso es Toledo en un solo edificio.\n\nLa mandó hacer entre 1355 y 1357 Samuel ha-Leví, que era el tesorero del rey Pedro I de Castilla. O sea: el hombre que manejaba la plata del reino era judío, y el rey le permitió construirse una sinagoga privada de este tamaño, cosa que legalmente estaba bastante restringida. Eso te dice hasta dónde llegaba la posición de la comunidad judía toledana.\n\nLa historia de Samuel ha-Leví termina mal, para que no te ilusiones: el rey terminó desconfiando de él, lo mandó detener, lo torturaron en Sevilla para que confesara dónde tenía escondido el dinero y murió en el tormento. Sus bienes pasaron a la corona.\n\nAhora mirá las paredes. El estilo es mudéjar, que ya viste hoy: artesanos musulmanes trabajando con materiales baratos —ladrillo, yeso, madera— pero con una destreza que deja sin aliento. No hay mármol ni piedra tallada en esta sala. Todo eso que parece encaje es yeso.\n\nY en medio de los dibujos geométricos y vegetales, buscá las letras. Hay inscripciones en hebreo corriendo por las paredes como frisos: son salmos y textos que cuentan quién construyó el edificio y bajo qué rey. Un especialista las llamó las inscripciones judías más hermosas de la Edad Media. Pero acá viene el detalle que a mí me parece increíble: también hay inscripciones en árabe. En una sinagoga. Alabando a un rey cristiano. Las tres culturas escritas en la misma pared.\n\nArriba, el artesonado: madera de conífera policromada, encajada en dibujos geométricos sin un solo clavo.\n\nY ahora lo que pasó después. En 1492 los Reyes Católicos dieron a los judíos españoles cuatro meses para convertirse al cristianismo o irse del país. La comunidad que llevaba ochocientos años acá desapareció. A los que se fueron y siguieron hablando español por el mundo se los llama sefardíes, de Sefarad, que es como llamaban ellos a España; todavía hoy, quinientos años después, hay gente en Turquía, Grecia o Israel que habla un castellano antiguo que se llevaron de acá.\n\nEl edificio pasó a manos de una orden militar cristiana y se convirtió en iglesia. De esa época viene el nombre raro: del Tránsito, por un cuadro que colgaron adentro.\n\nHoy es el Museo Sefardí, desde 1964. Date una vuelta por las salas del costado: hay objetos, documentos y trajes de la vida judía española, y explican mucho mejor que yo lo que se perdió acá.",
+      mirar: [
+        "Las inscripciones en hebreo corriendo como frisos por las paredes.",
+        "Las inscripciones en árabe: en una sinagoga, alabando a un rey cristiano.",
+        "Todo eso que parece encaje es yeso, no piedra: material barato, manos enormes."
+      ]
+    },
+    {
+      id: "tol-08", orden: 8, sala: "Santa María la Blanca",
+      titulo: "Santa María la Blanca", autor: "Sinagoga mayor de Toledo", fecha: "hacia 1180–1200",
+      guion: "Esta es la sorpresa del día. Entrás y lo que ves es un bosque de columnas blancas con arcos de herradura, todo encalado, sin un mueble, sin un cuadro, sin casi nada. Es lo más parecido a una mezquita que vas a ver hoy, es en realidad una sinagoga, y hoy es una iglesia.\n\nTiene unos ochocientos cuarenta años: se construyó alrededor del 1180, o sea casi dos siglos antes que la del Tránsito, y era la sinagoga mayor de Toledo, la principal de la comunidad.\n\nEl estilo es almohade, que era la forma de construir del imperio musulmán que dominaba el sur de España en ese momento. Y ahí está lo desconcertante: una sinagoga judía, construida en territorio cristiano, con la arquitectura del enemigo militar de los cristianos. A nadie le pareció contradictorio porque simplemente era la manera de construir bien que había en el lugar.\n\nAhora contá las columnas mientras caminás. Hay treinta y dos, en cinco naves, y todas son octogonales y están pintadas de blanco. Mirá los capiteles, esos remates de arriba: son de yeso tallado con piñas y volutas, y aunque parecen todos iguales, si prestás atención vas a ver que hay variaciones. Y por encima de los arcos hay una franja de yesería calada, tallada como un encaje.\n\nEl efecto del conjunto es lo importante. No hay color, no hay imágenes, no hay oro. Hay ritmo: columna, arco, columna, arco, repetido hasta el fondo. Es un espacio que no te dice nada y te deja en silencio, y eso es rarísimo entre todo lo que vas a ver hoy.\n\nLa historia de cómo dejó de ser sinagoga es fea y conviene contarla. En 1391 hubo una ola de ataques contra las juderías de toda España, con matanzas y conversiones forzadas; en Toledo la comunidad quedó destrozada. Poco después el edificio le fue quitado a los judíos y convertido en iglesia cristiana, casi cien años antes de la expulsión de 1492. El nombre actual, Santa María la Blanca, es de esa época.\n\nDespués tuvo una vida bastante indigna: fue cuartel, depósito de armas y hasta almacén. Recién en el siglo diecinueve la declararon monumento y la empezaron a cuidar.\n\nUna cosa práctica: no hay bancos ni recorrido marcado. Caminá hasta el fondo, date vuelta y mirá el conjunto desde ahí. Son diez minutos y es la foto más linda que vas a sacar en Toledo.",
+      mirar: [
+        "Las 32 columnas octogonales blancas y los arcos de herradura.",
+        "La franja de yeso calado por encima de los arcos, como un encaje.",
+        "Caminá al fondo y date vuelta: desde ahí se ve el conjunto entero."
+      ]
+    },
+    {
+      id: "tol-09", orden: 9, sala: "Iglesia de Santo Tomé",
+      titulo: "El entierro del Conde de Orgaz", autor: "El Greco", fecha: "1586–1588",
+      guion: "Este cuadro está en una salita al lado de una iglesia, mide casi cinco metros, y la mitad de la gente que entra no sabe que está mirando el resultado de un juicio.\n\nVa la historia. En 1323 se muere don Gonzalo Ruiz, señor de Orgaz, un tipo importante de Toledo, y le deja plata a esta parroquia para siempre. Dos siglos y medio después, el pueblo de Orgaz había dejado de pagar. El cura de Santo Tomé les hizo juicio, ganó, y con esa plata se dio un gusto: le encargó un cuadro enorme a El Greco para que nadie se olvidara de por qué había que pagar.\n\nEl tema es lo que supuestamente pasó en ese entierro. Según la tradición toledana, cuando estaban por meter el cuerpo en la tumba bajaron del cielo San Esteban y San Agustín en persona y lo depositaron ellos mismos. En Toledo lo daban por cierto y el cura quería eso pintado, grande, en la pared.\n\nAhora el juego. El cuadro tiene dos pisos: abajo el entierro, con cuarenta señores de negro parados como en un velorio; arriba el cielo, todo torcido. Buscá tres cosas.\n\nEl nene de abajo a la izquierda, el único que te mira a vos y señala la escena con el dedo: es el hijo del Greco, tenía ocho años. En el pañuelo que le asoma del bolsillo el padre le pintó su fecha de nacimiento, 1578, y esa es la única firma del cuadro.\n\nMás arriba, entre los caballeros de negro, otro que te mira de frente con la cara pálida, justo encima de San Esteban: ese es El Greco.\n\nY fijate cómo cambia la pintura de un piso al otro. Abajo todo es nítido: las caras son retratos de vecinos suyos, con arrugas y ojeras, y las armaduras y los bordados brillan. Arriba se le va la mano: los cuerpos se estiran como si fueran de goma, las nubes parecen humo, nada tiene borde. No es que pintara peor arriba. Está pintando dos cosas distintas: una es Toledo un martes a la tarde, la otra no.\n\nDos cosas más para el final. La primera: esa manera de estirar los cuerpos no era un error ni una moda de la época. Viene de los iconos bizantinos con los que El Greco se formó de chico en Creta, donde la figura no obedece a la anatomía sino al significado. A sus contemporáneos les pareció extravagante. Trescientos años después, los pintores de vanguardia del siglo veinte lo adoptaron como un antepasado: Cézanne lo copió y Picasso estudió esta época del Greco antes de pintar su cuadro más rupturista.\n\nY la segunda: el cuadro sigue en el lugar exacto para el que fue pintado, en la pared para la que se encargó, a la altura para la que se pensó. Casi ningún cuadro famoso del mundo puede decir eso. Los demás están en museos.",
+      mirar: [
+        "El nene de abajo a la izquierda: el hijo del Greco, con la firma en el pañuelo.",
+        "El señor pálido que te mira de frente, encima de San Esteban: es El Greco.",
+        "El cambio entre los dos pisos: abajo nítido y real, arriba estirado y sin bordes."
+      ]
+    },
+    {
+      id: "tol-10", orden: 10, sala: "San Juan de los Reyes",
+      titulo: "San Juan de los Reyes", autor: "Juan Guas", fecha: "1477–1495",
+      guion: "Antes de entrar, parate en la calle y mirá la pared de afuera. Hay cadenas de hierro colgadas, muchas, oxidadas, atadas al muro. No son decorativas.\n\nSon las cadenas de prisioneros cristianos que estuvieron cautivos en territorio musulmán y quedaron libres cuando los Reyes Católicos tomaron las ciudades de Málaga y Baeza, a fines del siglo quince. Los liberados las colgaron acá como ofrenda. Llevan quinientos años en esa pared.\n\nY eso te explica de qué se trata el edificio entero, que es propaganda en piedra de muy alto nivel.\n\nLos Reyes Católicos fueron Isabel de Castilla y Fernando de Aragón, que se casaron y al unir sus dos reinos armaron lo que después sería España. Son los mismos que en 1492 financiaron a Colón, tomaron Granada y expulsaron a los judíos: el año más cargado de la historia española. Pero antes de todo eso tuvieron que pelear una guerra para que Isabel pudiera ser reina, porque su derecho al trono estaba discutido. Esa guerra se decidió en la batalla de Toro, en 1476.\n\nEste monasterio se mandó construir para celebrar esa victoria. Empezó en 1477 y lo dirigió Juan Guas, el arquitecto de confianza de Isabel.\n\nEl estilo se llama gótico isabelino, por ella, y es una mezcla muy española: la estructura gótica de siempre, pero con una decoración desbordada que toma cosas del mudéjar musulmán y del Renacimiento italiano. Cuando entres a la iglesia mirá las paredes del crucero: están cubiertas de escudos gigantes de los reyes, con el águila de San Juan, sostenidos por leones, repetidos hasta arriba. No es decoración religiosa: es una declaración de quién manda.\n\nY ahora lo mejor, que es el claustro. Pasá al patio y tomate diez minutos ahí, porque es de los espacios más lindos de España.\n\nUn claustro es el patio cuadrado rodeado de galerías donde los monjes caminaban y rezaban. Este es de dos pisos. Abajo, arcos góticos con una tracería finísima y, en las paredes, hornacinas con estatuas de santos. Arriba, un artesonado mudéjar de madera, o sea otra vez artesanos musulmanes trabajando en el edificio más triunfalmente católico de la ciudad.\n\nY buscá los bichos. Entre la decoración de piedra hay animales por todos lados: monos, lagartijas, aves, monstruos, plantas. Los canteros se divertían. Es el mismo chiste que los asientos del coro de la catedral, pero al aire libre.\n\nUn detalle que cierra la historia. Isabel quería que este fuera su tumba y la de Fernando. Nunca los enterraron acá. En 1492 cayó Granada, el último reino musulmán de la península, y la reina decidió que ese era el lugar que valía la pena: están los dos en la catedral de Granada. Este monasterio enorme se construyó para un funeral que nunca se hizo.",
+      mirar: [
+        "Las cadenas en la pared de afuera: de cautivos liberados en Málaga y Baeza.",
+        "En el claustro, los animales tallados entre la decoración: monos, lagartijas.",
+        "El artesonado mudéjar del piso de arriba del claustro."
+      ]
+    },
+    {
+      id: "tol-11", orden: 11, sala: "Mirador del Valle",
+      titulo: "El Mirador del Valle", autor: "La vista", fecha: null,
+      guion: "Cruzaste el río, subiste la ladera de enfrente y ahora tenés Toledo entero delante. Esta es la vista que pintó El Greco y la que sale en todas las fotos. Vale la pena quedarse un rato largo, así que sentate.\n\nUbicá primero lo grande. El edificio cuadrado con cuatro torres en las esquinas, arriba de todo, es el Alcázar: fue fortaleza romana, después palacio musulmán, después residencia de Carlos V, y hoy es una biblioteca y un museo del ejército. Está en el punto más alto de la ciudad, que es el punto más alto del peñón.\n\nLa torre alta y delgada que asoma a la izquierda del Alcázar es la de la catedral, de noventa y dos metros. Desde acá se entiende una cosa que adentro no se nota: la catedral está metida entre casas, sin ninguna plaza delante. Es enorme y está escondida. Eso pasa porque cuando se construyó, la ciudad ya estaba apretada alrededor y no había lugar.\n\nAbajo, el Tajo. Mirá cómo lo rodea: es un meandro, o sea una curva cerrada del río, que abraza la ciudad por el este, el sur y el oeste. Solo el lado norte está en tierra firme, y por ahí estaba la muralla. Toledo es prácticamente una isla, y eso es lo que la hizo capital durante mil quinientos años.\n\nBuscá también los dos puentes históricos, uno a cada lado: el de Alcántara, que es romano de origen y fue por donde entró todo el mundo durante siglos, y el de San Martín, medieval, del lado opuesto.\n\nY ahora mirá los colores: el ocre de la piedra, el verde oscuro de la ladera, el gris del río. Es exactamente la paleta con la que El Greco pintó Toledo una y otra vez. Cuando veas un cuadro suyo con esta ciudad bajo un cielo de tormenta, vas a reconocer este lugar.\n\nDos consejos prácticos. Vení con la tarde caída, no con el sol alto: la luz rasante marca los relieves y la ciudad se pone dorada. Y si podés esperar a que se prendan las luces, hacelo, porque Toledo iluminada desde acá es una de las imágenes que te vas a llevar del viaje.\n\nDespués bajá, cená sin apuro en el casco viejo —que a esa hora ya se vació de excursiones— y acordate del tren de las 21:37, que es el último del sábado y no tiene repuesto.",
+      mirar: [
+        "El Alcázar cuadrado arriba de todo y, a su izquierda, la torre de la catedral.",
+        "El meandro del Tajo abrazando la ciudad por tres lados.",
+        "Los puentes de Alcántara, romano, y de San Martín, medieval."
+      ]
+    }
+  ]
+};
+
+</script>
+
+<script>
+/* ========= configuración de audio =========
+   Si al lado de este archivo existe una carpeta "audio" con los MP3
+   generados (audio/prado-01.mp3, etc.), la app los usa.
+   Si no encuentra el archivo, lee el guion con la voz del dispositivo. */
+var AUDIO_BASE = "audio/";
+
+(function () {
+  "use strict";
+
+  var GUIAS = [GUIA_MADRID_D1, GUIA_MADRID_D2, GUIA_TOLEDO, GUIA_MADRID_D4];
+  var IT = ITINERARIO;
+
+  /* ---------- almacenamiento tolerante a fallos ---------- */
+  var store = {
+    get: function (k, d) {
+      try { var v = localStorage.getItem("eurotrip." + k); return v === null ? d : JSON.parse(v); }
+      catch (e) { return d; }
+    },
+    set: function (k, v) {
+      try { localStorage.setItem("eurotrip." + k, JSON.stringify(v)); } catch (e) {}
+    }
+  };
+  var hechas = store.get("hechas", {});
+
+  /* ---------- utilidades ---------- */
+  var MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+  var DIAS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+  function parseISO(s) { var p = s.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function fechaCorta(s) { var d = parseISO(s); return DIAS[d.getDay()] + " " + d.getDate() + " " + MESES[d.getMonth()]; }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function parrafos(t) {
+    return String(t).split("\n\n").map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
+  }
+  function el(id) { return document.getElementById(id); }
+
+  /* ---------- cuenta regresiva ---------- */
+  (function () {
+    var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+    var salida = new Date(2026, 8, 30);
+    var fin = parseISO(IT.fin);
+    var dias = Math.round((salida - hoy) / 86400000);
+    var txt;
+    if (dias > 1) txt = "faltan " + dias + " días";
+    else if (dias === 1) txt = "salís mañana";
+    else if (dias === 0) txt = "salís hoy";
+    else if (hoy <= fin) {
+      var n = Math.round((hoy - parseISO(IT.inicio)) / 86400000) + 1;
+      txt = "día " + n + " de 35";
+    } else txt = "viaje terminado";
+    el("countdown").textContent = txt;
+  })();
+
+  /* ================= VISTA: ITINERARIO ================= */
+  function renderItin() {
+    var h = "";
+    h += '<div class="avisos">';
+    IT.avisos.forEach(function (a) {
+      var etiqueta = a.nivel === "pendiente" ? "Falta" : a.nivel === "atencion" ? "Ojo" : "Dato";
+      h += '<div class="aviso ' + a.nivel + '"><span class="dot">' + etiqueta + "</span><span>" + esc(a.texto) + "</span></div>";
+    });
+    h += "</div>";
+
+    IT.ciudades.forEach(function (c, i) {
+      var alo = IT.alojamientos.filter(function (a) { return a.ciudad === c.id; })[0];
+      var legs = IT.transportes.filter(function (t) { return t.fecha === c.desde; });
+      var exc = IT.excursiones.filter(function (e) { return e.ciudad === c.id; });
+
+      h += '<article class="ciudad">';
+      h += '<div class="ciudad-head"><h3>' + esc(c.nombre) + '</h3><span class="pais">' + esc(c.pais) + "</span></div>";
+      h += '<div class="ciudad-meta">' + fechaCorta(c.desde) + " &rarr; " + fechaCorta(c.hasta) +
+           " &middot; " + c.noches + (c.noches === 1 ? " noche" : " noches") + "</div>";
+
+      legs.forEach(function (t) { h += legHTML(t, "Llegada"); });
+
+      if (alo) {
+        h += '<div class="card">';
+        h += '<div class="eyebrow">Alojamiento</div>';
+        if (alo.estado === "reservado") {
+          h += '<div class="card-title">' + esc(alo.nombre) + "</div>";
+          var bits = [];
+          if (alo.zona) bits.push(alo.zona);
+          if (alo.plataforma) bits.push(alo.plataforma);
+          if (alo.rating) bits.push(alo.rating);
+          h += '<div class="card-sub">' + esc(bits.join(" · ")) + "</div>";
+          if (alo.nota) h += '<div class="card-sub" style="margin-top:6px">' + esc(alo.nota) + "</div>";
+          h += '<div class="chips" style="padding:10px 0 0">';
+          if (alo.precio) h += '<span class="chip">' + esc(alo.precio) + "</span>";
+          if (alo.checkin) h += '<span class="chip">check-in ' + esc(alo.checkin) + "</span>";
+          if (alo.cancelacion) h += '<span class="chip">' + esc(alo.cancelacion) + "</span>";
+          h += "</div>";
+        } else {
+          h += '<div class="card-title" style="color:var(--alert)">Sin reservar</div>';
+          h += '<div class="card-sub">' + esc(alo.nota) + "</div>";
+        }
+        h += "</div>";
+      }
+
+      exc.forEach(function (e) {
+        h += '<div class="card"><div class="eyebrow">Excursión · ' + fechaCorta(e.fechaSugerida) + "</div>";
+        h += '<div class="card-title">' + esc(e.nombre) + "</div>";
+        h += '<div class="card-sub">' + esc(e.nota) + "</div></div>";
+      });
+
+      var guias = GUIAS.filter(function (g) { return g.ciudad === c.id; });
+      if (guias.length && i === 0) {
+        guias.forEach(function (g) {
+          h += '<button class="guia-card" data-guia="' + esc(g.id) + '" style="margin-top:10px">';
+          h += '<div class="eyebrow" style="color:var(--accent)">Audioguía disponible</div>';
+          h += "<h3>" + esc(g.titulo) + "</h3>";
+          h += '<div class="sub">' + esc(g.subtitulo) + "</div>";
+          h += '<div class="dur">' + esc(duracionGuia(g)) + "</div></button>";
+        });
+      }
+      h += "</article>";
+    });
+
+    var salida = IT.transportes.filter(function (t) { return t.id === "t10"; })[0];
+    h += '<h2 class="sec">Vuelta</h2>' + legHTML(salida, "Salida");
+    h += '<p class="note">Los tramos marcados como comprados son los que ya tenés cerrados con código y asiento. ' +
+         "El resto está abierto.</p>";
+    el("view-itin").innerHTML = h;
+  }
+
+  function legHTML(t, etiqueta) {
+    if (!t) return "";
+    var h = '<div class="leg">';
+    h += '<div class="leg-top"><span class="leg-op">' + esc(t.operador) + '</span>';
+    h += '<span class="leg-date">' + fechaCorta(t.fecha) + "</span></div>";
+    h += '<div class="leg-route">';
+    h += '<div class="leg-pt from"><div class="time">' + esc(t.sale) + '</div><div class="place">' + esc(t.desde) + "</div></div>";
+    h += '<div class="leg-arrow">&#9679;&mdash;&#9679;</div>';
+    h += '<div class="leg-pt to"><div class="time">' + esc(t.llega) + '</div><div class="place">' + esc(t.hasta) + "</div></div>";
+    h += "</div>";
+    if (t.detalle) h += '<div class="leg-foot">' + esc(t.detalle) + "</div>";
+    h += '<div class="chips">';
+    h += t.estado === "comprado" ? '<span class="chip ok">comprado</span>' : '<span class="chip wait">falta comprar</span>';
+    if (t.codigo) h += '<span class="chip code">' + esc(t.codigo) + "</span>";
+    if (t.precio) h += '<span class="chip">' + esc(t.precio) + "</span>";
+    h += "</div></div>";
+    return h;
+  }
+
+  /* ================= VISTA: AUDIOGUÍAS ================= */
+  /* Huella del texto de cada parada. Si reescribo un guion, cambia la huella,
+     cambia la URL del MP3 y el celular se baja SOLO esa pista de nuevo.
+     Es FNV-1a de 32 bits: el mismo algoritmo está en generar_audio.py. */
+  function huella(texto) {
+    var bytes = unescape(encodeURIComponent(texto));
+    var h = 0x811c9dc5;
+    for (var i = 0; i < bytes.length; i++) {
+      h ^= bytes.charCodeAt(i);
+      h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+    }
+    return ("0000000" + h.toString(16)).slice(-8);
+  }
+
+  function urlParada(p) {
+    return "audio/" + p.id + ".mp3?v=" + huella(p.guion);
+  }
+
+  /* ===== descargas para usar sin conexión ===== */
+  var BYTES_POR_CARACTER = 243;   // medido sobre los MP3 reales a velocidad 1,1
+  var sw = null;
+  var progresos = {};
+  var estadosCache = {};
+
+  function grupos() {
+    var g = {};
+    GUIAS.forEach(function (guia) {
+      var k = guia.ciudad;
+      if (!g[k]) g[k] = { ciudad: k, nombre: nombreCiudad(k), paradas: [], chars: 0 };
+      guia.paradas.forEach(function (p) {
+        g[k].paradas.push(urlParada(p));
+        g[k].chars += p.guion.length;
+      });
+    });
+    return Object.keys(g).map(function (k) { return g[k]; });
+  }
+
+  function urlsDe(grupo) {
+    return grupo.paradas.map(function (u) { return new URL(u, location.href).href; });
+  }
+
+  function todasLasUrls() {
+    var out = [];
+    grupos().forEach(function (g) { out = out.concat(urlsDe(g)); });
+    return out;
+  }
+
+  function mb(bytes) { return (bytes / 1048576).toFixed(1).replace(".", ",") + " MB"; }
+
+  function preguntarSW(msg) {
+    return new Promise(function (res) {
+      if (!sw) return res(null);
+      var ch = new MessageChannel();
+      var listo = false;
+      ch.port1.onmessage = function (e) { listo = true; res(e.data); };
+      try { sw.postMessage(msg, [ch.port2]); } catch (e) { return res(null); }
+      setTimeout(function () { if (!listo) res(null); }, 8000);
+    });
+  }
+
+  function renderOffline() {
+    var cont = el("offline-box");
+    if (!cont) return;
+    if (!sw) {
+      cont.innerHTML = '<h3>Audio sin conexión</h3><div class="nota">' +
+        "Esta función necesita que abras la app desde su dirección de internet, " +
+        "no desde un archivo suelto. Mientras tanto, las paradas se leen con la voz del equipo.</div>";
+      return;
+    }
+    var h = '<h3>Audio sin conexión</h3>';
+    h += '<div class="nota">Descargá el audio con wifi antes de viajar. ' +
+         "Una vez guardado queda en el teléfono y funciona sin señal y sin datos.</div>";
+    grupos().forEach(function (g) {
+      var est = mb(g.chars * BYTES_POR_CARACTER);
+      var pr = progresos[g.ciudad];
+      var guardadas = estadosCache[g.ciudad] === undefined ? null : estadosCache[g.ciudad];
+      var completo = guardadas === g.paradas.length;
+      h += '<div class="desc-fila' + (completo ? " lista" : "") + '" data-ciudad="' + esc(g.ciudad) + '">';
+      h += "<div><div class=\"desc-nom\">" + esc(g.nombre) + "</div>";
+      h += '<div class="desc-det">' + g.paradas.length + " pistas · " + est +
+           (guardadas === null ? "" : completo ? " · guardado" : " · " + guardadas + " de " + g.paradas.length) +
+           "</div></div>";
+      if (pr) {
+        h += '<button class="desc-btn" disabled>' + pr.hechas + "/" + pr.total + "</button>";
+        h += '<div class="desc-barra"><i style="width:' +
+             Math.round(pr.hechas / pr.total * 100) + '%"></i></div>';
+      } else if (completo) {
+        h += '<button class="desc-btn sec" data-borrar="' + esc(g.ciudad) + '">Borrar</button>';
+      } else {
+        h += '<button class="desc-btn" data-bajar="' + esc(g.ciudad) + '">Descargar</button>';
+      }
+      h += "</div>";
+    });
+    h += '<button class="desc-btn sec" id="diag-btn" style="margin-top:12px">Verificar audio guardado</button>';
+    h += '<pre id="diag-out" class="diag" hidden></pre>';
+    cont.innerHTML = h;
+  }
+
+  /* Comprueba que lo que la app pide sea exactamente lo que el service worker
+     guardó. Si alguna vez vuelve a sonar la voz del equipo estando offline,
+     esto dice por qué en una pantalla. */
+  function diagnosticar() {
+    var out = el("diag-out");
+    if (!out) return;
+    out.hidden = false;
+    out.textContent = "Probando...";
+    var gs = grupos();
+    if (!gs.length || !sw) { out.textContent = "Sin service worker."; return; }
+    var urls = urlsDe(gs[0]).slice(0, 3);
+    preguntarSW({ tipo: "probar", urls: urls }).then(function (r) {
+      if (!r) { out.textContent = "El service worker no respondio."; return; }
+      if (r.error) { out.textContent = "Error: " + r.error; return; }
+      var t = "guardadas: " + r.guardadas + "\n";
+      t += "conexion: " + (navigator.onLine ? "si" : "no") + "\n";
+      t += "ejemplo guardado:\n  " + (r.ejemplo || "(ninguno)") + "\n\n";
+      (r.pruebas || []).forEach(function (x) {
+        t += (x.ok ? "OK  " : "NO  ") + x.url.split("/").pop() + "\n";
+        if (x.ok) t += "     " + x.tipo + " - " + x.bytes + " bytes\n";
+      });
+      out.textContent = t;
+    });
+  }
+
+  function refrescarEstados() {
+    var gs = grupos();
+    var pend = gs.length;
+    if (!pend || !sw) { renderOffline(); return; }
+    gs.forEach(function (g) {
+      preguntarSW({ tipo: "estado", urls: urlsDe(g) }).then(function (r) {
+        g.guardadas = r ? r.guardadas : 0;
+        estadosCache[g.ciudad] = g.guardadas;
+        if (--pend === 0) {
+          renderOffline();
+          preguntarSW({ tipo: "limpiar", urls: todasLasUrls() });
+        }
+      });
+    });
+  }
+
+  function renderAudioIndex() {
+    var h = '<div class="offline" id="offline-box"></div>';
+    h += '<h2 class="sec">Guías listas</h2>';
+    GUIAS.forEach(function (g) {
+      var total = g.paradas.length;
+      var listas = g.paradas.filter(function (p) { return hechas[p.id]; }).length;
+      h += '<button class="guia-card" data-guia="' + esc(g.id) + '">';
+      h += '<div class="eyebrow">' + esc(nombreCiudad(g.ciudad)) + "</div>";
+      h += "<h3>" + esc(g.titulo) + "</h3>";
+      h += '<div class="sub">' + esc(g.subtitulo) + "</div>";
+      h += '<div class="dur">' + esc(duracionGuia(g)) + (listas ? " &middot; " + listas + "/" + total + " escuchadas" : "") + "</div>";
+      h += "</button>";
+    });
+    h += '<h2 class="sec">Todavía no escritas</h2>';
+    var faltan = ["Nápoles", "Roma", "Florencia", "Edimburgo"];
+    h += '<p class="note" style="margin-top:0;border:0;padding-top:0">' +
+         "Faltan las guías de " + faltan.join(", ") + ". " +
+         "Se escriben en orden del viaje. Turín, Lyon, París y Londres esperan a que cierres esos itinerarios.</p>";
+    el("view-audio").innerHTML = h;
+    renderOffline();
+    refrescarEstados();
+  }
+
+  /* Medido sobre el MP3 real: 2492 caracteres = 175,5 s a velocidad 0,95,
+     o sea unos 986 caracteres por minuto a la velocidad actual de 1,1. */
+  var CARACTERES_POR_MINUTO = 986;
+
+  function duracionGuia(g) {
+    var chars = 0;
+    g.paradas.forEach(function (p) { chars += p.guion.length; });
+    var min = Math.round(chars / CARACTERES_POR_MINUTO);
+    return g.paradas.length + " paradas · " + min + " min de audio";
+  }
+
+  function nombreCiudad(id) {
+    var c = IT.ciudades.filter(function (x) { return x.id === id; })[0];
+    return c ? c.nombre : id;
+  }
+
+  /* ---------- detalle de una guía ---------- */
+  var guiaActual = null;
+
+  function renderGuia(id) {
+    var g = GUIAS.filter(function (x) { return x.id === id; })[0];
+    if (!g) return;
+    guiaActual = g;
+    var h = '<button class="back" id="btn-back">&larr; Todas las guías</button>';
+    h += '<div class="guia-hero"><div class="eyebrow">' + esc(nombreCiudad(g.ciudad)) + "</div>";
+    h += "<h2>" + esc(g.titulo) + "</h2>";
+    h += '<div class="sub">' + esc(g.subtitulo) + " &middot; " + esc(duracionGuia(g)) + "</div></div>";
+
+    h += '<div class="practico">';
+    Object.keys(g.practico).forEach(function (k) {
+      var etiquetas = {
+        horario: "Horario", entrada: "Entrada", tip: "Truco", ahorro: "Ahorro",
+        advertencia: "Ojo", llegada: "Llegada", transporte: "Cómo llegar",
+        consejo: "Jet lag", comida: "Horarios de comida"
+      };
+      h += "<div><b>" + esc(etiquetas[k] || k) + ".</b> " + esc(g.practico[k]) + "</div>";
+    });
+    h += "</div>";
+
+    h += '<h2 class="sec">' + g.paradas.length + " paradas</h2>";
+    g.paradas.forEach(function (p) {
+      h += '<div class="parada' + (hechas[p.id] ? " done" : "") + '" data-parada="' + esc(p.id) + '">';
+      h += '<button class="parada-btn" aria-expanded="false">';
+      h += '<span class="num">' + (p.orden === 0 ? "&#9733;" : String(p.orden).padStart(2, "0")) + "</span>";
+      h += "<span><span class=\"parada-t\">" + esc(p.titulo) + "</span>";
+      if (p.autor) h += '<span class="parada-a">' + esc(p.autor) + (p.fecha ? " &middot; " + esc(p.fecha) : "") + "</span>";
+      h += '<span class="parada-sala">' + esc(p.sala) + (p.planta ? " &middot; " + esc(p.planta) : "") + "</span></span>";
+      h += '<span class="play-dot">&#9654;</span>';
+      h += "</button>";
+      h += '<div class="parada-body" hidden>';
+      if (p.tecnica) h += '<div class="tecnica">' + esc(p.tecnica) + "</div>";
+      h += '<div class="guion">' + parrafos(p.guion) + "</div>";
+      if (p.mirar && p.mirar.length) {
+        h += '<div class="mirar"><div class="eyebrow">Qué mirar</div><ul>';
+        p.mirar.forEach(function (m) { h += "<li>" + esc(m) + "</li>"; });
+        h += "</ul></div>";
+      }
+      h += '<button class="marcar">' + (hechas[p.id] ? "&#10003; Escuchada" : "Marcar como escuchada") + "</button>";
+      h += "</div></div>";
+    });
+    el("view-audio").innerHTML = h;
+    window.scrollTo(0, 0);
+  }
+
+  /* ================= VISTA: PENDIENTES ================= */
+  function renderPrac() {
+    var h = '<h2 class="sec">Lo que falta cerrar</h2><dl class="kv">';
+    IT.transportes.filter(function (t) { return t.estado === "pendiente"; }).forEach(function (t) {
+      h += '<div class="kv-row"><dt>' + fechaCorta(t.fecha) + "</dt><dd><b>" + esc(t.desde) + " &rarr; " + esc(t.hasta) +
+           "</b><br>" + esc(t.detalle) + "</dd></div>";
+    });
+    IT.alojamientos.filter(function (a) { return a.estado === "pendiente"; }).forEach(function (a) {
+      var c = IT.ciudades.filter(function (x) { return x.id === a.ciudad; })[0];
+      h += '<div class="kv-row"><dt>' + esc(c.nombre) + "</dt><dd><b>Alojamiento sin reservar</b><br>" + esc(a.nota) + "</dd></div>";
+    });
+    h += "</dl>";
+
+    h += '<h2 class="sec">Lo que ya está cerrado</h2><dl class="kv">';
+    IT.transportes.filter(function (t) { return t.estado === "comprado"; }).forEach(function (t) {
+      h += '<div class="kv-row"><dt>' + fechaCorta(t.fecha) + "</dt><dd><b>" + esc(t.operador) + "</b> &middot; " +
+           esc(t.desde) + " " + esc(t.sale) + " &rarr; " + esc(t.hasta) + " " + esc(t.llega) +
+           (t.codigo ? "<br>Código " + esc(t.codigo) : "") + (t.precio ? " &middot; " + esc(t.precio) : "") + "</dd></div>";
+    });
+    h += "</dl>";
+
+    h += '<h2 class="sec">Audio con voz natural</h2>';
+    h += '<p class="note" style="margin-top:0;border:0;padding-top:0">Mientras no haya archivos MP3 en la carpeta ' +
+         '<code>audio/</code>, el reproductor lee los guiones con la voz del dispositivo. ' +
+         "Cuando generes los MP3 y los pongas ahí, la app los usa automáticamente y no hace falta tocar nada.</p>";
+    el("view-prac").innerHTML = h;
+  }
+
+  /* ================= REPRODUCTOR ================= */
+  var reproductor = {
+    lista: [], idx: -1, modo: null, audio: null, tocando: false, rate: 1,
+    rates: [1, 1.15, 1.3, 0.85]
+  };
+
+  function soporteVoz() { return typeof speechSynthesis !== "undefined"; }
+
+  function abrirPlayer() {
+    el("player").hidden = false;
+    document.body.classList.add("con-player");
+  }
+
+  function cargarParada(i) {
+    if (!guiaActual) return;
+    var lista = guiaActual.paradas;
+    if (i < 0 || i >= lista.length) return;
+    detener(true);
+    reproductor.lista = lista;
+    reproductor.idx = i;
+    var p = lista[i];
+    el("player-title").textContent = p.titulo;
+    abrirPlayer();
+    marcarActiva(p.id);
+    abrirCuerpo(p.id);
+    reproducir(p);
+  }
+
+  function marcarActiva(id) {
+    Array.prototype.forEach.call(document.querySelectorAll(".parada"), function (n) {
+      n.classList.toggle("playing", n.getAttribute("data-parada") === id);
+    });
+  }
+
+  function abrirCuerpo(id) {
+    var nodo = document.querySelector('.parada[data-parada="' + id + '"]');
+    if (!nodo) return;
+    var cuerpo = nodo.querySelector(".parada-body");
+    var btn = nodo.querySelector(".parada-btn");
+    if (cuerpo && cuerpo.hidden) { cuerpo.hidden = false; btn.setAttribute("aria-expanded", "true"); }
+    nodo.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function reproducir(p) {
+    var src = AUDIO_BASE + p.id + ".mp3?v=" + huella(p.guion);
+    var a = new Audio();
+    a.preload = "auto";
+    a.playbackRate = reproductor.rate;
+    var falloAMP3 = false;
+
+    a.addEventListener("error", function () {
+      if (falloAMP3) return;
+      falloAMP3 = true;
+      leerConVoz(p);
+    });
+    a.addEventListener("timeupdate", function () {
+      if (a.duration) progreso(a.currentTime / a.duration);
+    });
+    a.addEventListener("ended", function () { finParada(); });
+    a.addEventListener("playing", function () {
+      reproductor.modo = "mp3";
+      el("player-src").textContent = "audio";
+      setTocando(true);
+      ponerMediaSession(p);
+    });
+    a.src = src;
+    reproductor.audio = a;
+    var pr = a.play();
+    if (pr && pr.catch) {
+      pr.catch(function () { if (!falloAMP3) { falloAMP3 = true; leerConVoz(p); } });
+    }
+  }
+
+  function leerConVoz(p) {
+    reproductor.audio = null;
+    if (!soporteVoz()) {
+      el("player-src").textContent = "sin audio";
+      setTocando(false);
+      return;
+    }
+    reproductor.modo = "voz";
+    el("player-src").textContent = "voz del equipo";
+    try { speechSynthesis.cancel(); } catch (e) {}
+    var texto = p.guion.replace(/\n\n/g, ". ");
+    var u = new SpeechSynthesisUtterance(texto);
+    u.lang = "es-ES";
+    u.rate = reproductor.rate;
+    var voces = [];
+    try { voces = speechSynthesis.getVoices() || []; } catch (e) {}
+    var esp = voces.filter(function (v) { return /^es/i.test(v.lang); });
+    if (esp.length) u.voice = esp[0];
+    var total = texto.length;
+    u.onboundary = function (ev) { if (ev.charIndex && total) progreso(ev.charIndex / total); };
+    u.onend = function () { finParada(); };
+    u.onerror = function () { setTocando(false); };
+    reproductor.utter = u;
+    try { speechSynthesis.speak(u); setTocando(true); } catch (e) { setTocando(false); }
+  }
+
+  function ponerMediaSession(p) {
+    if (!("mediaSession" in navigator)) return;
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: p.titulo,
+        artist: guiaActual ? guiaActual.titulo : "Eurotrip 2026",
+        album: p.sala || "",
+        artwork: [{ src: "icon-512.png", sizes: "512x512", type: "image/png" }]
+      });
+      navigator.mediaSession.setActionHandler("play", function () {
+        if (reproductor.audio) { reproductor.audio.play(); setTocando(true); }
+      });
+      navigator.mediaSession.setActionHandler("pause", function () {
+        if (reproductor.audio) { reproductor.audio.pause(); setTocando(false); }
+      });
+      navigator.mediaSession.setActionHandler("previoustrack", function () {
+        if (reproductor.idx > 0) cargarParada(reproductor.idx - 1);
+      });
+      navigator.mediaSession.setActionHandler("nexttrack", function () {
+        if (reproductor.idx < reproductor.lista.length - 1) cargarParada(reproductor.idx + 1);
+      });
+    } catch (e) {}
+  }
+
+  function progreso(f) {
+    el("player-bar").style.width = Math.max(0, Math.min(1, f)) * 100 + "%";
+  }
+
+  function setTocando(v) {
+    reproductor.tocando = v;
+    el("btn-play").innerHTML = v ? "&#10073;&#10073;" : "&#9654;";
+    el("btn-play").setAttribute("aria-label", v ? "Pausar" : "Reproducir");
+  }
+
+  function finParada() {
+    var p = reproductor.lista[reproductor.idx];
+    if (p) { hechas[p.id] = true; store.set("hechas", hechas); refrescarMarca(p.id); }
+    progreso(1);
+    if (reproductor.idx < reproductor.lista.length - 1) cargarParada(reproductor.idx + 1);
+    else setTocando(false);
+  }
+
+  function refrescarMarca(id) {
+    var nodo = document.querySelector('.parada[data-parada="' + id + '"]');
+    if (!nodo) return;
+    nodo.classList.add("done");
+    var b = nodo.querySelector(".marcar");
+    if (b) b.innerHTML = "&#10003; Escuchada";
+  }
+
+  function detener(silencioso) {
+    if (reproductor.audio) { try { reproductor.audio.pause(); } catch (e) {} reproductor.audio = null; }
+    if (soporteVoz()) { try { speechSynthesis.cancel(); } catch (e) {} }
+    setTocando(false);
+    if (!silencioso) {
+      progreso(0);
+      el("player").hidden = true;
+      document.body.classList.remove("con-player");
+      marcarActiva(null);
+      reproductor.idx = -1;
+    }
+  }
+
+  el("btn-play").addEventListener("click", function () {
+    if (reproductor.idx < 0) return;
+    if (reproductor.tocando) {
+      if (reproductor.audio) reproductor.audio.pause();
+      else if (soporteVoz()) { try { speechSynthesis.pause(); } catch (e) {} }
+      setTocando(false);
+    } else {
+      if (reproductor.audio) reproductor.audio.play();
+      else if (soporteVoz()) {
+        try {
+          if (speechSynthesis.paused) speechSynthesis.resume();
+          else leerConVoz(reproductor.lista[reproductor.idx]);
+        } catch (e) {}
+      }
+      setTocando(true);
+    }
+  });
+  el("btn-prev").addEventListener("click", function () { if (reproductor.idx > 0) cargarParada(reproductor.idx - 1); });
+  el("btn-next").addEventListener("click", function () {
+    if (reproductor.idx < reproductor.lista.length - 1) cargarParada(reproductor.idx + 1);
+  });
+  el("btn-stop").addEventListener("click", function () { detener(false); });
+  el("btn-rate").addEventListener("click", function () {
+    var i = reproductor.rates.indexOf(reproductor.rate);
+    reproductor.rate = reproductor.rates[(i + 1) % reproductor.rates.length];
+    el("btn-rate").textContent = reproductor.rate.toFixed(2).replace(".", ",").replace(/,?0+$/, "") + "×";
+    if (reproductor.audio) reproductor.audio.playbackRate = reproductor.rate;
+    else if (reproductor.tocando && reproductor.idx >= 0) leerConVoz(reproductor.lista[reproductor.idx]);
+  });
+
+  function alertaSuave(texto) {
+    var box = el("offline-box");
+    if (!box) return;
+    var d = document.createElement("div");
+    d.className = "nota";
+    d.style.color = "var(--alert)";
+    d.textContent = texto;
+    box.appendChild(d);
+    setTimeout(function () { if (d.parentNode) d.parentNode.removeChild(d); }, 8000);
+  }
+
+  /* ================= NAVEGACIÓN ================= */
+  var TITULOS = { itin: "Itinerario", audio: "Audioguías", prac: "Pendientes" };
+
+  function mostrar(v) {
+    ["itin", "audio", "prac"].forEach(function (x) {
+      el("view-" + x).hidden = x !== v;
+      var t = el("tab-" + x);
+      t.setAttribute("aria-selected", String(x === v));
+    });
+    var h1 = el("titulo-vista");
+    if (h1 && h1.textContent !== TITULOS[v]) {
+      h1.style.opacity = "0";
+      setTimeout(function () { h1.textContent = TITULOS[v]; h1.style.opacity = "1"; }, 120);
+    }
+    window.scrollTo(0, 0);
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function (t) {
+    t.addEventListener("click", function () {
+      var v = t.getAttribute("data-view");
+      if (v === "audio") renderAudioIndex();
+      mostrar(v);
+    });
+  });
+
+  document.addEventListener("click", function (ev) {
+    var bajar = ev.target.closest ? ev.target.closest("[data-bajar]") : null;
+    if (bajar) {
+      var cid = bajar.getAttribute("data-bajar");
+      var gr = grupos().filter(function (x) { return x.ciudad === cid; })[0];
+      if (!gr || !sw) return;
+      progresos[cid] = { hechas: 0, total: gr.paradas.length };
+      renderOffline();
+      preguntarSW({ tipo: "descargar", ciudad: cid, urls: urlsDe(gr) }).then(function (r) {
+        delete progresos[cid];
+        if (r && r.fallidas) {
+          alertaSuave("Se guardaron " + r.hechas + " de " + (r.hechas + r.fallidas) +
+                      " pistas. Probá de nuevo con mejor señal.");
+        }
+        refrescarEstados();
+      });
+      return;
+    }
+
+    if (ev.target.closest && ev.target.closest("#diag-btn")) { diagnosticar(); return; }
+    var borrar = ev.target.closest ? ev.target.closest("[data-borrar]") : null;
+    if (borrar) {
+      var cid2 = borrar.getAttribute("data-borrar");
+      var gr2 = grupos().filter(function (x) { return x.ciudad === cid2; })[0];
+      if (!gr2 || !sw) return;
+      preguntarSW({ tipo: "borrar", urls: urlsDe(gr2) }).then(refrescarEstados);
+      return;
+    }
+
+    var g = ev.target.closest ? ev.target.closest("[data-guia]") : null;
+    if (g) { renderGuia(g.getAttribute("data-guia")); mostrar("audio"); return; }
+
+    if (ev.target.closest && ev.target.closest("#btn-back")) { renderAudioIndex(); return; }
+
+    var marcar = ev.target.closest ? ev.target.closest(".marcar") : null;
+    if (marcar) {
+      var nodo = marcar.closest(".parada");
+      var id = nodo.getAttribute("data-parada");
+      hechas[id] = !hechas[id];
+      store.set("hechas", hechas);
+      nodo.classList.toggle("done", !!hechas[id]);
+      marcar.innerHTML = hechas[id] ? "&#10003; Escuchada" : "Marcar como escuchada";
+      return;
+    }
+
+    var btn = ev.target.closest ? ev.target.closest(".parada-btn") : null;
+    if (btn) {
+      var nodo2 = btn.closest(".parada");
+      var id2 = nodo2.getAttribute("data-parada");
+      var cuerpo = nodo2.querySelector(".parada-body");
+      var abriendo = cuerpo.hidden;
+      cuerpo.hidden = !abriendo;
+      btn.setAttribute("aria-expanded", String(abriendo));
+      if (abriendo && guiaActual) {
+        var i = -1;
+        guiaActual.paradas.forEach(function (p, k) { if (p.id === id2) i = k; });
+        if (i >= 0) cargarParada(i);
+      } else if (!abriendo) {
+        detener(false);
+      }
+    }
+  });
+
+  /* ================= SERVICE WORKER ================= */
+  function pedirPersistencia() {
+    try {
+      if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
+    } catch (e) {}
+  }
+
+  function registrarSW() {
+    pedirPersistencia();
+    if (!("serviceWorker" in navigator) || location.protocol === "file:") return;
+    navigator.serviceWorker.register("sw.js").then(function () {
+      return navigator.serviceWorker.ready;
+    }).then(function (reg) {
+      sw = reg.active || navigator.serviceWorker.controller;
+      if (!sw) {
+        navigator.serviceWorker.addEventListener("controllerchange", function () {
+          sw = navigator.serviceWorker.controller;
+          refrescarEstados();
+        });
+        return;
+      }
+      refrescarEstados();
+    }).catch(function () {});
+
+    navigator.serviceWorker.addEventListener("message", function (ev) {
+      var m = ev.data || {};
+      if (m.tipo === "progreso") {
+        if (!(m.ciudad in progresos)) return;   // ya terminó: aviso rezagado
+        progresos[m.ciudad] = { hechas: m.hechas, total: m.total };
+        renderOffline();
+      }
+    });
+  }
+
+  /* ================= ARRANQUE ================= */
+  renderItin();
+  renderPrac();
+  renderAudioIndex();
+  mostrar("itin");
+  registrarSW();
+  if (soporteVoz()) { try { speechSynthesis.getVoices(); } catch (e) {} }
+})();
+</script>
+
+</body>
+</html>
