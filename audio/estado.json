@@ -1,29 +1,164 @@
 {
- "mad1-01": "7bc69765",
- "mad1-02": "637e24c4",
- "mad1-03": "aa0e19fa",
- "mad1-04": "cce591dd",
- "mad1-05": "6af44612",
- "mad1-06": "44763775",
- "mad2-01": "92c9ea6b",
- "mad2-02": "6ee95a90",
- "mad2-03": "f5796251",
- "mad2-04": "214e9f26",
- "mad2-05": "41e28cc7",
- "mad2-06": "6efba3bd",
- "mad4-01": "b440f4ca",
- "mad4-02": "b64bff0f",
- "mad4-03": "150ceec0",
- "mad4-04": "ca42300f",
- "tol-01": "a1572ef4",
- "tol-02": "6f15acba",
- "tol-03": "173e0c65",
- "tol-04": "28a81507",
- "tol-05": "e0058d15",
- "tol-06": "12f2e49f",
- "tol-07": "912c298c",
- "tol-08": "2da24e0d",
- "tol-09": "6056b3e8",
- "tol-10": "b7b6d33f",
- "tol-11": "83b2b8a5"
+ "mad1-01": {
+  "huella": "0936bd86",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "mad1-02": {
+  "huella": "bd4b034d",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "mad1-03": {
+  "huella": "8e9ac05f",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "mad1-04": {
+  "huella": "eb51f7f8",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "mad1-05": {
+  "huella": "3a28b7e3",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "mad1-06": {
+  "huella": "e1201038",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "mad2-01": {
+  "huella": "78f5ff69",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "mad2-02": {
+  "huella": "f8730002",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "mad2-03": {
+  "huella": "14066c13",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "mad2-04": {
+  "huella": "6828c818",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "mad2-05": {
+  "huella": "51721b59",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "mad2-06": {
+  "huella": "4f1f3b7f",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "mad4-01": {
+  "huella": "4fccf8e0",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "mad4-02": {
+  "huella": "5e265f9d",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "mad4-03": {
+  "huella": "7b4cb782",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "mad4-04": {
+  "huella": "a2ff8161",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Iapetus"
+ },
+ "tol-01": {
+  "huella": "5ff20faf",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-02": {
+  "huella": "051e255b",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-03": {
+  "huella": "ae863300",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-04": {
+  "huella": "df61ebee",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-05": {
+  "huella": "5d92face",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-06": {
+  "huella": "1ace4abc",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-07": {
+  "huella": "2b7b3681",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-08": {
+  "huella": "5b7e3d80",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-09": {
+  "huella": "c8a82c5f",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-10": {
+  "huella": "ed4d4b5c",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ },
+ "tol-11": {
+  "huella": "9abbe762",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "es-US-Chirp3-HD-Gacrux"
+ }
 }
