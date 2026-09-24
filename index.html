@@ -205,6 +205,14 @@
     padding-top: 3px; white-space: nowrap; }
   .mini-play.listo .mp-t { color: var(--muted); }
   .mini-play.ver { background: var(--surface); border-color: var(--accent); }
+  .mini-play.resumen { border-style: dashed; }
+  .mini-play.tramo { border-color: color-mix(in srgb, var(--linea) 70%, transparent);
+    background: color-mix(in srgb, var(--surface) 60%, transparent); }
+  .mp-tipo { display: block; font-family: var(--ff-mono); font-size: 10.5px;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--faint); margin-top: 3px; }
+  .dia-play { display: inline-block; margin-top: 9px; font-family: var(--ff-mono);
+    font-size: 12px; letter-spacing: .03em; color: var(--accent);
+    border: 1px solid var(--accent); border-radius: 999px; padding: 5px 11px; }
   .dia-notas { padding: 13px 16px; border-top: 1px solid var(--line-soft);
     font-size: 14.5px; line-height: 1.55; color: var(--muted); background: var(--surface-2); }
   .dia-notas div + div { margin-top: 4px; }
@@ -3780,6 +3788,21 @@ var AUDIO_BASE = "audio/";
     cargarParada(r.idx);
   }
 
+  /* Todos los audios de un día, en el orden en que los vas a caminar. No es
+     el orden de la guía: un día puede cruzar guías y mezcla paradas y tramos. */
+  function paradasDelDia(fecha) {
+    var d = DIAS.filter(function (x) { return x.fecha === fecha; })[0];
+    if (!d) return [];
+    var out = [];
+    (d.actividades || []).forEach(function (a) {
+      (a.paradas || []).forEach(function (id) {
+        var r = paradaPorId(id);
+        if (r) out.push(r.p);
+      });
+    });
+    return out;
+  }
+
   function minutosDeParada(p) {
     return Math.max(1, Math.round(p.guion.length / CARACTERES_POR_MINUTO));
   }
@@ -3806,6 +3829,10 @@ var AUDIO_BASE = "audio/";
 
   function claveAct(fecha, i) { return fecha + "#" + i; }
 
+  /* Qué bloques de audio se abrieron a mano. Un bloque con 3 o más audios
+     arranca colapsado: si no, una sala de museo te empuja el día entero. */
+  var audiosAbiertos = {};
+
   function filaActividad(a, fecha, i) {
     var k = claveAct(fecha, i);
     var lista = !!actHechas[k];
@@ -3828,16 +3855,34 @@ var AUDIO_BASE = "audio/";
         h += '<span class="mp-t">' + esc(x.titulo) + "</span>";
         h += '<span class="mp-m">' + esc(nombreTipo(x.tipo).toLowerCase()) + "</span></button>";
       });
-      (a.paradas || []).forEach(function (id) {
-        var r = paradaPorId(id);
-        if (!r) return;
-        var listo = hechas[id];
-        h += '<button class="mini-play' + (listo ? " listo" : "") + '" data-tocar="' + esc(id) + '">';
-        h += '<span class="mp-ico">' + (listo ? "&#10003;" : "&#9654;") + "</span>";
-        h += '<span class="mp-t">' + esc(r.p.titulo) + "</span>";
-        h += '<span class="mp-m">' + minutosDeParada(r.p) + " min</span>";
-        h += "</button>";
-      });
+      var refs = (a.paradas || []).map(paradaPorId).filter(Boolean);
+      var mins = refs.reduce(function (s2, r) { return s2 + minutosDeParada(r.p); }, 0);
+      if (refs.length >= 3 && !audiosAbiertos[k]) {
+        h += '<button class="mini-play resumen" data-audios="' + esc(k) + '">';
+        h += '<span class="mp-ico">&#9835;</span>';
+        h += '<span class="mp-t">' + refs.length + " audios &middot; " + mins + " min</span>";
+        h += '<span class="mp-m">ver</span></button>';
+      } else {
+        refs.forEach(function (r) {
+          var id = r.p.id, listo = hechas[id], esTramo = r.p.tipo === "tramo";
+          h += '<button class="mini-play' + (listo ? " listo" : "") +
+               (esTramo ? " tramo" : "") + '" data-tocar="' + esc(id) + '">';
+          h += '<span class="mp-ico">' +
+               (listo ? "&#10003;" : esTramo ? "&#8599;" : "&#9654;") + "</span>";
+          h += '<span class="mp-t">' + esc(r.p.titulo);
+          /* Solo el tramo necesita aclaración: la parada es el caso normal, y
+             ponerle "parate acá" a todo hacía el día más alto y más ruidoso. */
+          if (esTramo) h += '<span class="mp-tipo">mientras caminás</span>';
+          h += "</span>";
+          h += '<span class="mp-m">' + minutosDeParada(r.p) + " min</span>";
+          h += "</button>";
+        });
+        if (refs.length >= 3) {
+          h += '<button class="mini-play resumen" data-audios="' + esc(k) + '">';
+          h += '<span class="mp-ico">&#9652;</span><span class="mp-t">Ocultar</span>';
+          h += '<span class="mp-m"></span></button>';
+        }
+      }
       h += "</div>";
     }
     h += "</div></div>";
@@ -3898,6 +3943,13 @@ var AUDIO_BASE = "audio/";
     h += '<span class="dia-f">' + esc(fechaLarga(d.fecha)) + "</span></div>";
     h += "<h3>" + esc(d.titulo) + "</h3>";
     h += '<div class="dia-tags">' + esc(partes.join(" · ")) + "</div>";
+    if (nAud) {
+      var minDia = paradasDelDia(d.fecha).reduce(function (s2, p) {
+        return s2 + minutosDeParada(p);
+      }, 0);
+      h += '<span class="dia-play" data-diaplay="' + esc(d.fecha) + '">' +
+           "&#9654; Reproducir el día &middot; " + minDia + " min</span>";
+    }
     h += '<span class="dia-flecha">&#9662;</span>';
     h += "</button>";
     return h;
@@ -4272,8 +4324,13 @@ var AUDIO_BASE = "audio/";
 
   function cargarParada(i) {
     if (!guiaActual) return;
-    var lista = guiaActual.paradas;
-    if (i < 0 || i >= lista.length) return;
+    cargarLista(guiaActual.paradas, i);
+  }
+
+  /* Antes el reproductor solo sabía encadenar las paradas de una guía. Ahora
+     recibe la lista, así "Reproducir el día" puede pasarle el día entero. */
+  function cargarLista(lista, i) {
+    if (!lista || i < 0 || i >= lista.length) return;
     detener(true);
     reproductor.lista = lista;
     reproductor.idx = i;
@@ -4283,6 +4340,14 @@ var AUDIO_BASE = "audio/";
     marcarActiva(p.id);
     abrirCuerpo(p.id);
     reproducir(p);
+  }
+
+  function reproducirDia(fecha) {
+    var lista = paradasDelDia(fecha);
+    if (!lista.length) return;
+    var r = paradaPorId(lista[0].id);
+    if (r) guiaActual = r.guia;
+    cargarLista(lista, 0);
   }
 
   function marcarActiva(id) {
@@ -4371,10 +4436,12 @@ var AUDIO_BASE = "audio/";
         if (reproductor.audio) { reproductor.audio.pause(); setTocando(false); }
       });
       navigator.mediaSession.setActionHandler("previoustrack", function () {
-        if (reproductor.idx > 0) cargarParada(reproductor.idx - 1);
+        if (reproductor.idx > 0) cargarLista(reproductor.lista, reproductor.idx - 1);
       });
       navigator.mediaSession.setActionHandler("nexttrack", function () {
-        if (reproductor.idx < reproductor.lista.length - 1) cargarParada(reproductor.idx + 1);
+        if (reproductor.idx < reproductor.lista.length - 1) {
+          cargarLista(reproductor.lista, reproductor.idx + 1);
+        }
       });
     } catch (e) {}
   }
@@ -4393,8 +4460,9 @@ var AUDIO_BASE = "audio/";
     var p = reproductor.lista[reproductor.idx];
     if (p) { hechas[p.id] = true; store.set("hechas", hechas); refrescarMarca(p.id); }
     progreso(1);
-    if (reproductor.idx < reproductor.lista.length - 1) cargarParada(reproductor.idx + 1);
-    else setTocando(false);
+    if (reproductor.idx < reproductor.lista.length - 1) {
+      cargarLista(reproductor.lista, reproductor.idx + 1);
+    } else setTocando(false);
   }
 
   function refrescarMarca(id) {
@@ -4435,9 +4503,13 @@ var AUDIO_BASE = "audio/";
       setTocando(true);
     }
   });
-  el("btn-prev").addEventListener("click", function () { if (reproductor.idx > 0) cargarParada(reproductor.idx - 1); });
+  el("btn-prev").addEventListener("click", function () {
+    if (reproductor.idx > 0) cargarLista(reproductor.lista, reproductor.idx - 1);
+  });
   el("btn-next").addEventListener("click", function () {
-    if (reproductor.idx < reproductor.lista.length - 1) cargarParada(reproductor.idx + 1);
+    if (reproductor.idx < reproductor.lista.length - 1) {
+      cargarLista(reproductor.lista, reproductor.idx + 1);
+    }
   });
   el("btn-stop").addEventListener("click", function () { detener(false); });
   el("btn-rate").addEventListener("click", function () {
@@ -4983,6 +5055,20 @@ var AUDIO_BASE = "audio/";
     var t = ev.target;
     if (!t.closest) return;
 
+    var verAudios = t.closest("[data-audios]");
+    if (verAudios) {
+      var ka = verAudios.getAttribute("data-audios");
+      audiosAbiertos[ka] = !audiosAbiertos[ka];
+      renderItin();
+      var nd = document.querySelector('.dia[data-dia="' + ka.split("#")[0] + '"]');
+      if (nd) nd.scrollIntoView({ block: "start" });
+      return;
+    }
+    var diaPlay = t.closest("[data-diaplay]");
+    if (diaPlay) {
+      reproducirDia(diaPlay.getAttribute("data-diaplay"));
+      return;
+    }
     var cab = t.closest(".dia-cab");
     if (cab) {
       var art = cab.closest(".dia");
