@@ -127,6 +127,32 @@
 
 
 
+
+  .tic { appearance: none; cursor: pointer; font: inherit; font-size: 10px; line-height: 1;
+    width: 17px; height: 17px; flex: 0 0 17px; margin-right: 8px; border-radius: 50%;
+    border: 1.5px solid var(--line); background: var(--surface); color: #fff;
+    display: inline-flex; align-items: center; justify-content: center; vertical-align: -3px; }
+  .tic[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); }
+  .tic:active { transform: scale(.88); }
+  .fila-t { display: flex; align-items: flex-start; }
+  .fila.hecha .fila-t span { color: var(--faint); text-decoration: line-through; }
+  .fila.hecha .fila-d { opacity: .5; }
+
+  .prac { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    padding: 12px 14px; margin-bottom: 8px; }
+  .prac-q { font-size: 15px; font-weight: 600; }
+  .prac-c { font-size: 12.5px; color: var(--accent); margin-top: 3px; }
+  .prac-n { font-size: 12.5px; color: var(--muted); margin-top: 5px; line-height: 1.45; }
+  .crit { background: var(--surface); border: 1px solid var(--line-soft);
+    border-left: 3px solid var(--alert); border-radius: 3px;
+    padding: 11px 13px; margin-bottom: 7px; }
+  .crit.pasado { border-left-color: var(--line); opacity: .5; }
+  .crit-cab { display: flex; gap: 9px; align-items: baseline; }
+  .crit-f { font-size: 11.5px; color: var(--faint); }
+  .crit-h { font-family: var(--ff-mono); font-size: 12.5px; font-weight: 600; color: var(--alert); }
+  .crit.pasado .crit-h { color: var(--faint); }
+  .crit-q { font-size: 14px; margin-top: 3px; }
+
   /* ---- itinerario por día ---- */
   .alo { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
     padding: 12px 14px; margin-bottom: 10px; }
@@ -575,7 +601,7 @@
   </button>
   <button class="tab" role="tab" id="tab-prac" aria-selected="false" data-view="prac">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9"/><circle cx="19.5" cy="18" r="2.2"/></svg>
-    <span>Pendientes</span>
+    <span>Práctico</span>
   </button>
 </nav>
 
@@ -667,6 +693,53 @@ const ITINERARIO = {
   excursiones: [
     { ciudad: "turin", nombre: "Sacra di San Michele", fechaSugerida: "2026-10-19", nota: "Abadía del siglo X sobre el monte Pirchiriano. Es la única jornada completa que tenés en Turín." },
     { ciudad: "lyon", nombre: "Annecy", fechaSugerida: "2026-10-21", nota: "Lago alpino y casco antiguo. Es la única jornada completa que tenés en Lyon." }
+  ]
+};
+
+const PRACTICO = {
+  llevar: [
+    { que: "Pasaporte",
+      cuando: "Día 8 Pompeya · día 11 Coliseo · día 14 cúpula de Florencia · " +
+              "día 17 Accademia y Chianti · día 23 Louvre · todo Reino Unido",
+      nota: "En Pompeya la entrada es nominativa: sin pasaporte no entrás." },
+    { que: "DNI físicos, no el pasaporte",
+      cuando: "Día 13 en Roma",
+      nota: "Quedan en depósito mientras usás las audioguías del Panteón. " +
+            "Por eso conviene el DNI y no el pasaporte." },
+    { que: "Efectivo",
+      cuando: "€30 el día 7 · propinas de los free tours",
+      nota: "La Napoli Sotterranea no toma tarjeta. Para los free tours, entre " +
+            "€10 y €15 por persona es lo habitual." },
+    { que: "El Paris Museum Pass en mano",
+      cuando: "Días 22 al 26",
+      nota: "La entrada de €0 que reservás es la franja horaria, no el derecho " +
+            "de entrada. Sin el pase físico no entrás aunque tengas la reserva." }
+  ],
+
+  criticos: [
+    { fecha: "2026-10-01", hora: "16:00", que: "Palacio Real gratis para iberoamericanos",
+      nota: "La franja es 16 a 18, pero la taquilla cierra a las 17:00." },
+    { fecha: "2026-10-02", hora: "17:00", que: "Andén 0, Chamberí", nota: "Sesión reservada." },
+    { fecha: "2026-10-03", hora: "21:37", que: "Último tren de Toledo a Madrid",
+      nota: "Es el último del sábado. No hay otro." },
+    { fecha: "2026-10-06", hora: "17:02", que: "Último ferry de Amalfi a Sorrento",
+      nota: "Si lo perdés, volver por tierra son dos horas y media de curvas." },
+    { fecha: "2026-10-10", hora: "16:50", que: "Punto de encuentro del free tour de Roma" },
+    { fecha: "2026-10-11", hora: "14:40", que: "Punto de encuentro del Coliseo" },
+    { fecha: "2026-10-13", hora: "17:30", que: "La macchina barocca del Gesù",
+      nota: "Función única del día." },
+    { fecha: "2026-10-14", hora: "18:00", que: "Cúpula de Brunelleschi",
+      nota: "Tolerancia de 5 minutos y después no entrás." },
+    { fecha: "2026-10-16", hora: "turno fijo", que: "Entrada al Duomo de Siena" },
+    { fecha: "2026-10-17", hora: "09:00", que: "Accademia · y 14:30 la salida al Chianti" },
+    { fecha: "2026-10-22", hora: "14:15", que: "Amaia abre el departamento de París" },
+    { fecha: "2026-10-22", hora: "15:30", que: "Sainte-Chapelle",
+      nota: "Ahí arranca el reloj del Paris Museum Pass." },
+    { fecha: "2026-10-23", hora: "09:00", que: "Louvre · y 18:00 la Torre Eiffel" },
+    { fecha: "2026-10-24", hora: "franja", que: "Château de Versalles" },
+    { fecha: "2026-10-26", hora: "15:30", que: "Vence el Paris Museum Pass" },
+    { fecha: "2026-10-31", hora: "14:30", que: "Castillo de Edimburgo · y 20:15 el tour de fantasmas" },
+    { fecha: "2026-11-02", hora: "09:00", que: "Franja de Rosslyn Chapel" }
   ]
 };
 
@@ -3718,11 +3791,22 @@ var AUDIO_BASE = "audio/";
     return pasesCache.filter(function (p) { return p.fecha === fecha; });
   }
 
-  function filaActividad(a) {
-    var h = '<div class="fila">';
+  /* Las actividades se marcan como hechas con un toque en el círculo. La clave
+     es fecha + posición: los días vienen de dias.js y no tienen id propio. */
+  var actHechas = store.get("actHechas", {});
+
+  function claveAct(fecha, i) { return fecha + "#" + i; }
+
+  function filaActividad(a, fecha, i) {
+    var k = claveAct(fecha, i);
+    var lista = !!actHechas[k];
+    var h = '<div class="fila' + (lista ? " hecha" : "") + '">';
     h += '<div class="fila-h">' + esc(a.hora) + "</div>";
     h += '<div class="fila-c">';
-    h += '<div class="fila-t">' + esc(a.titulo) + "</div>";
+    h += '<div class="fila-t"><button class="tic" data-act="' + esc(k) + '" ' +
+         'aria-pressed="' + lista + '" aria-label="Marcar como hecha">' +
+         (lista ? "&#10003;" : "") + "</button>";
+    h += "<span>" + esc(a.titulo) + "</span></div>";
     (a.detalle || []).forEach(function (d) {
       h += '<div class="fila-d">' + esc(d) + "</div>";
     });
@@ -3760,8 +3844,8 @@ var AUDIO_BASE = "audio/";
 
   function cuerpoDia(d) {
     var items = [];
-    (d.actividades || []).forEach(function (a) {
-      items.push({ hora: a.hora || "99:99", html: filaActividad(a) });
+    (d.actividades || []).forEach(function (a, i) {
+      items.push({ hora: a.hora || "99:99", html: filaActividad(a, d.fecha, i) });
     });
     pasesDelDia(d.fecha).forEach(function (p) {
       items.push({ hora: p.hora || "00:00", html: filaPase(p) });
@@ -3782,7 +3866,10 @@ var AUDIO_BASE = "audio/";
       return s + ((a.paradas && a.paradas.length) || 0);
     }, 0);
     var nPas = pasesDelDia(d.fecha).length;
-    var partes = [(d.actividades || []).length + " actividades"];
+    var total = (d.actividades || []).length;
+    var listas = 0;
+    for (var i = 0; i < total; i++) if (actHechas[claveAct(d.fecha, i)]) listas++;
+    var partes = [listas ? listas + " de " + total + " hechas" : total + " actividades"];
     if (nAud) partes.push(nAud + (nAud === 1 ? " audioguía" : " audioguías"));
     if (nPas) partes.push(nPas + (nPas === 1 ? " pase" : " pases"));
 
@@ -4097,29 +4184,57 @@ var AUDIO_BASE = "audio/";
 
   /* ================= VISTA: PENDIENTES ================= */
   function renderPrac() {
-    var h = '<h2 class="sec">Lo que falta cerrar</h2><dl class="kv">';
-    IT.transportes.filter(function (t) { return t.estado === "pendiente"; }).forEach(function (t) {
-      h += '<div class="kv-row"><dt>' + fechaCorta(t.fecha) + "</dt><dd><b>" + esc(t.desde) + " &rarr; " + esc(t.hasta) +
-           "</b><br>" + esc(t.detalle) + "</dd></div>";
-    });
-    IT.alojamientos.filter(function (a) { return a.estado === "pendiente"; }).forEach(function (a) {
-      var c = IT.ciudades.filter(function (x) { return x.id === a.ciudad; })[0];
-      h += '<div class="kv-row"><dt>' + esc(c.nombre) + "</dt><dd><b>Alojamiento sin reservar</b><br>" + esc(a.nota) + "</dd></div>";
-    });
-    h += "</dl>";
+    var h = "";
 
-    h += '<h2 class="sec">Lo que ya está cerrado</h2><dl class="kv">';
+    h += '<h2 class="sec">Qué llevar encima</h2>';
+    PRACTICO.llevar.forEach(function (x) {
+      h += '<div class="prac">';
+      h += '<div class="prac-q">' + esc(x.que) + "</div>";
+      h += '<div class="prac-c">' + esc(x.cuando) + "</div>";
+      if (x.nota) h += '<div class="prac-n">' + esc(x.nota) + "</div>";
+      h += "</div>";
+    });
+
+    h += '<h2 class="sec">Horarios que no se pueden mover</h2>';
+    var hoy = hoyISO();
+    PRACTICO.criticos.forEach(function (c) {
+      var pasado = c.fecha < hoy;
+      h += '<div class="crit' + (pasado ? " pasado" : "") + '">';
+      h += '<div class="crit-cab"><span class="crit-f">' + esc(fechaCorta(c.fecha)) +
+           '</span><span class="crit-h">' + esc(c.hora) + "</span></div>";
+      h += '<div class="crit-q">' + esc(c.que) + "</div>";
+      if (c.nota) h += '<div class="prac-n">' + esc(c.nota) + "</div>";
+      h += "</div>";
+    });
+
+    var pend = IT.transportes.filter(function (t) { return t.estado === "pendiente"; });
+    var pendA = IT.alojamientos.filter(function (a) { return a.estado === "pendiente"; });
+    h += '<h2 class="sec">Reservas · lo que falta cerrar</h2>';
+    if (!pend.length && !pendA.length) {
+      h += '<p class="note" style="margin-top:0">Está todo cerrado.</p>';
+    } else {
+      h += '<dl class="kv">';
+      pend.forEach(function (t) {
+        h += '<div class="kv-row"><dt>' + fechaCorta(t.fecha) + "</dt><dd><b>" +
+             esc(t.desde) + " &rarr; " + esc(t.hasta) + "</b><br>" + esc(t.detalle) + "</dd></div>";
+      });
+      pendA.forEach(function (a) {
+        var c = IT.ciudades.filter(function (x) { return x.id === a.ciudad; })[0];
+        h += '<div class="kv-row"><dt>' + esc(c ? c.nombre : "") +
+             "</dt><dd><b>Alojamiento sin reservar</b><br>" + esc(a.nota) + "</dd></div>";
+      });
+      h += "</dl>";
+    }
+
+    h += '<h2 class="sec">Reservas · lo que ya está</h2><dl class="kv">';
     IT.transportes.filter(function (t) { return t.estado === "comprado"; }).forEach(function (t) {
-      h += '<div class="kv-row"><dt>' + fechaCorta(t.fecha) + "</dt><dd><b>" + esc(t.operador) + "</b> &middot; " +
-           esc(t.desde) + " " + esc(t.sale) + " &rarr; " + esc(t.hasta) + " " + esc(t.llega) +
-           (t.codigo ? "<br>Código " + esc(t.codigo) : "") + (t.precio ? " &middot; " + esc(t.precio) : "") + "</dd></div>";
+      h += '<div class="kv-row"><dt>' + fechaCorta(t.fecha) + "</dt><dd><b>" + esc(t.operador) +
+           "</b> &middot; " + esc(t.desde) + " " + esc(t.sale) + " &rarr; " + esc(t.hasta) +
+           " " + esc(t.llega) + (t.codigo ? "<br>Código " + esc(t.codigo) : "") +
+           (t.precio ? " &middot; " + esc(t.precio) : "") + "</dd></div>";
     });
     h += "</dl>";
 
-    h += '<h2 class="sec">Audio con voz natural</h2>';
-    h += '<p class="note" style="margin-top:0;border:0;padding-top:0">Mientras no haya archivos MP3 en la carpeta ' +
-         '<code>audio/</code>, el reproductor lee los guiones con la voz del dispositivo. ' +
-         "Cuando generes los MP3 y los pongas ahí, la app los usa automáticamente y no hace falta tocar nada.</p>";
     el("view-prac").innerHTML = h;
   }
 
@@ -4326,7 +4441,7 @@ var AUDIO_BASE = "audio/";
   }
 
   /* ================= NAVEGACIÓN ================= */
-  var TITULOS = { itin: "Itinerario", audio: "Audioguías", pases: "Pases", prac: "Pendientes" };
+  var TITULOS = { itin: "Itinerario", audio: "Audioguías", pases: "Pases", prac: "Práctico" };
 
   function mostrar(v) {
     ["itin", "audio", "pases", "prac"].forEach(function (x) {
@@ -4348,6 +4463,7 @@ var AUDIO_BASE = "audio/";
       if (v === "audio") renderAudioIndex();
       if (v === "pases") renderPases();
       if (v === "itin") renderItin();
+      if (v === "prac") renderPrac();
       mostrar(v);
     });
   });
@@ -4830,6 +4946,29 @@ var AUDIO_BASE = "audio/";
       if (diaAbierto === f) {
         var nodo = document.querySelector('.dia[data-dia="' + f + '"]');
         if (nodo) nodo.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      return;
+    }
+    var tic = t.closest("[data-act]");
+    if (tic) {
+      var k = tic.getAttribute("data-act");
+      if (actHechas[k]) delete actHechas[k]; else actHechas[k] = 1;
+      store.set("actHechas", actHechas);
+      var fila = tic.closest(".fila");
+      fila.classList.toggle("hecha", !!actHechas[k]);
+      tic.innerHTML = actHechas[k] ? "&#10003;" : "";
+      tic.setAttribute("aria-pressed", String(!!actHechas[k]));
+      var art = tic.closest(".dia");
+      if (art) {
+        var d = DIAS.filter(function (x) { return x.fecha === art.getAttribute("data-dia"); })[0];
+        var tg = art.querySelector(".dia-tags");
+        if (d && tg) {
+          var tot = d.actividades.length, li = 0;
+          for (var j = 0; j < tot; j++) if (actHechas[claveAct(d.fecha, j)]) li++;
+          var resto = tg.textContent.split(" · ").slice(1);
+          tg.textContent = [li ? li + " de " + tot + " hechas" : tot + " actividades"]
+            .concat(resto).join(" · ");
+        }
       }
       return;
     }
