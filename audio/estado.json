@@ -42,129 +42,171 @@
   "voz": "coral"
  },
  "mad2-01": {
-  "huella": "78f5ff69",
+  "bitrate": "48k",
+  "huella": "87d5b1f2",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "mad2-02": {
-  "huella": "f8730002",
+  "bitrate": "48k",
+  "huella": "42856899",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "mad2-03": {
-  "huella": "14066c13",
+  "bitrate": "48k",
+  "huella": "b50dc6aa",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "mad2-04": {
-  "huella": "6828c818",
+  "bitrate": "48k",
+  "huella": "2cd0716f",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "mad2-05": {
-  "huella": "51721b59",
+  "bitrate": "48k",
+  "huella": "aab9b4f4",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "mad2-06": {
-  "huella": "4f1f3b7f",
+  "bitrate": "48k",
+  "huella": "37186136",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "mad4-01": {
-  "huella": "4fccf8e0",
+  "bitrate": "48k",
+  "huella": "29f98951",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "mad4-02": {
-  "huella": "5e265f9d",
+  "bitrate": "48k",
+  "huella": "d63cdde6",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "mad4-03": {
-  "huella": "7b4cb782",
+  "bitrate": "48k",
+  "huella": "89cf51c3",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "mad4-04": {
-  "huella": "a2ff8161",
+  "bitrate": "48k",
+  "huella": "d0289c5c",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Iapetus"
+  "voz": "coral"
  },
  "tol-01": {
-  "huella": "5ff20faf",
+  "bitrate": "48k",
+  "huella": "b4b28411",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-02": {
-  "huella": "051e255b",
+  "bitrate": "48k",
+  "huella": "9cc50c65",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-03": {
-  "huella": "ae863300",
+  "bitrate": "48k",
+  "huella": "2a78576a",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-04": {
-  "huella": "df61ebee",
+  "bitrate": "48k",
+  "huella": "562c556c",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-05": {
-  "huella": "5d92face",
+  "bitrate": "48k",
+  "huella": "9779a4d0",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-06": {
-  "huella": "1ace4abc",
+  "bitrate": "48k",
+  "huella": "661b5c1e",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-07": {
-  "huella": "2b7b3681",
+  "bitrate": "48k",
+  "huella": "34799553",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-08": {
-  "huella": "5b7e3d80",
+  "bitrate": "48k",
+  "huella": "bad79352",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-09": {
-  "huella": "c8a82c5f",
+  "bitrate": "48k",
+  "huella": "7f2cbd81",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-10": {
-  "huella": "ed4d4b5c",
+  "bitrate": "48k",
+  "huella": "b96d9c0e",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "tol-11": {
-  "huella": "9abbe762",
+  "bitrate": "48k",
+  "huella": "a15ac860",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  }
 }
