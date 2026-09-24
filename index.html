@@ -548,6 +548,8 @@
       <label>Fecha<input id="pase-fecha" type="date"></label>
       <label>Hora<input id="pase-hora" type="time"></label>
     </div>
+    <label>Actividad <span class="opt">se llena al elegir la fecha</span>
+      <select id="pase-act"><option value="">Sin actividad — va por hora</option></select></label>
     <label>Código o localizador <span class="opt">opcional</span><input id="pase-codigo" type="text"></label>
     <label>Nota <span class="opt">opcional</span><input id="pase-nota" type="text" placeholder="Terminal 4, mostrador 12"></label>
     <div class="hoja-acc">
@@ -3751,7 +3753,11 @@ var AUDIO_BASE = "audio/";
      pero el día es el lugar donde uno mira cuando está viajando. */
 
   var pasesCache = [];
-  var diaAbierto = null;
+  /* undefined = todavía no se calculó el día por defecto.
+     null = el usuario cerró todo a propósito. Distinguirlos importa: si se
+     usa null para las dos cosas, el día por defecto no se puede compactar
+     porque renderItin lo vuelve a abrir en el acto. */
+  var diaAbierto;
 
   function paradaPorId(id) {
     for (var i = 0; i < GUIAS.length; i++) {
@@ -3810,9 +3816,16 @@ var AUDIO_BASE = "audio/";
     (a.detalle || []).forEach(function (d) {
       h += '<div class="fila-d">' + esc(d) + "</div>";
     });
-    if (a.paradas && a.paradas.length) {
+    var pegados = pasesDelDia(fecha).filter(function (x) { return x.actividad === k; });
+    if ((a.paradas && a.paradas.length) || pegados.length) {
       h += '<div class="fila-audio">';
-      a.paradas.forEach(function (id) {
+      pegados.forEach(function (x) {
+        h += '<button class="mini-play ver" data-verpase="' + esc(x.id) + '">';
+        h += '<span class="mp-ico">&#9744;</span>';
+        h += '<span class="mp-t">' + esc(x.titulo) + "</span>";
+        h += '<span class="mp-m">' + esc(nombreTipo(x.tipo).toLowerCase()) + "</span></button>";
+      });
+      (a.paradas || []).forEach(function (id) {
         var r = paradaPorId(id);
         if (!r) return;
         var listo = hechas[id];
@@ -3847,8 +3860,12 @@ var AUDIO_BASE = "audio/";
     (d.actividades || []).forEach(function (a, i) {
       items.push({ hora: a.hora || "99:99", html: filaActividad(a, d.fecha, i) });
     });
+    /* Los pases enganchados a una actividad ya se dibujaron dentro de ella.
+       Los sueltos van por hora, y los que no tienen hora al final — antes
+       caían primeros y te aparecía el pase arriba de todo el día. */
     pasesDelDia(d.fecha).forEach(function (p) {
-      items.push({ hora: p.hora || "00:00", html: filaPase(p) });
+      if (p.actividad) return;
+      items.push({ hora: p.hora || "99:98", html: filaPase(p) });
     });
     items.sort(function (a, b) { return a.hora < b.hora ? -1 : a.hora > b.hora ? 1 : 0; });
 
@@ -3884,7 +3901,7 @@ var AUDIO_BASE = "audio/";
   }
 
   function renderItin() {
-    if (diaAbierto === null) diaAbierto = diaPorDefecto();
+    if (diaAbierto === undefined) diaAbierto = diaPorDefecto();
     var h = "";
 
     h += '<div class="avisos">';
@@ -4468,6 +4485,10 @@ var AUDIO_BASE = "audio/";
     });
   });
 
+  el("pase-fecha").addEventListener("change", function (ev) {
+    llenarActividades(ev.target.value, "");
+  });
+
   el("pase-file").addEventListener("change", function (ev) {
     nuevoPase(ev.target.files); ev.target.value = "";
   });
@@ -4687,7 +4708,8 @@ var AUDIO_BASE = "audio/";
     }, Promise.resolve([])).then(function (imagenes) {
       borrador = {
         id: "p" + Date.now() + Math.floor(Math.random() * 1000),
-        tipo: "entrada", titulo: "", fecha: "", hora: "", codigo: "", nota: "",
+        tipo: "entrada", titulo: "", fecha: "", hora: "", actividad: "",
+        codigo: "", nota: "",
         imagenes: imagenes, creado: Date.now()
       };
       el("pase-estado").hidden = true;
@@ -4703,12 +4725,31 @@ var AUDIO_BASE = "audio/";
     el("pase-titulo").value = borrador.titulo;
     el("pase-fecha").value = borrador.fecha;
     el("pase-hora").value = borrador.hora || "";
+    llenarActividades(borrador.fecha, borrador.actividad);
     el("pase-codigo").value = borrador.codigo;
     el("pase-nota").value = borrador.nota;
     el("pase-tipo").value = borrador.tipo;
     el("pase-form").hidden = false;
     document.body.classList.add("sin-scroll");
     setTimeout(function () { el("pase-titulo").focus(); }, 60);
+  }
+
+  /* Lista las actividades del día elegido, para enganchar el pase a una. */
+  function llenarActividades(fecha, elegida) {
+    var sel = el("pase-act");
+    if (!sel) return;
+    var d = DIAS.filter(function (x) { return x.fecha === fecha; })[0];
+    var h = '<option value="">Sin actividad — va por hora</option>';
+    if (d) {
+      d.actividades.forEach(function (a, i) {
+        var k = claveAct(fecha, i);
+        var t = a.titulo.length > 46 ? a.titulo.slice(0, 46) + "…" : a.titulo;
+        h += '<option value="' + esc(k) + '"' + (k === elegida ? " selected" : "") +
+             ">" + esc(a.hora + "  " + t) + "</option>";
+      });
+    }
+    sel.innerHTML = h;
+    sel.disabled = !d;
   }
 
   function cerrarFormulario() {
@@ -4723,6 +4764,7 @@ var AUDIO_BASE = "audio/";
     borrador.titulo = el("pase-titulo").value.trim() || nombreTipo(borrador.tipo);
     borrador.fecha = el("pase-fecha").value;
     borrador.hora = el("pase-hora").value;
+    borrador.actividad = el("pase-act").value;
     borrador.codigo = el("pase-codigo").value.trim();
     borrador.nota = el("pase-nota").value.trim();
     guardarPase(borrador).then(function () {
@@ -4876,7 +4918,8 @@ var AUDIO_BASE = "audio/";
           return blobAB64(b).then(function (d) { return { t: b.type, d: d }; });
         })).then(function (imgs) {
           return { id: p.id, tipo: p.tipo, titulo: p.titulo, fecha: p.fecha,
-                   hora: p.hora, codigo: p.codigo, nota: p.nota,
+                   hora: p.hora, actividad: p.actividad || "",
+                   codigo: p.codigo, nota: p.nota,
                    creado: p.creado, imgs: imgs };
         });
       }));
@@ -4917,7 +4960,8 @@ var AUDIO_BASE = "audio/";
       var obj = JSON.parse(new TextDecoder().decode(claro));
       var ps = (obj.pases || []).map(function (p) {
         return { id: p.id, tipo: p.tipo, titulo: p.titulo, fecha: p.fecha,
-                 hora: p.hora || "", codigo: p.codigo, nota: p.nota, creado: p.creado,
+                 hora: p.hora || "", actividad: p.actividad || "",
+                 codigo: p.codigo, nota: p.nota, creado: p.creado,
                  imagenes: p.imgs.map(function (x) { return b64ABlob(x.d, x.t); }) };
       });
       return ps.reduce(function (c, p) {
@@ -4943,10 +4987,10 @@ var AUDIO_BASE = "audio/";
       var f = art.getAttribute("data-dia");
       diaAbierto = (diaAbierto === f) ? null : f;
       renderItin();
-      if (diaAbierto === f) {
-        var nodo = document.querySelector('.dia[data-dia="' + f + '"]');
-        if (nodo) nodo.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      /* Siempre se vuelve al mismo día, se haya abierto o cerrado. Al compactar,
+         todo lo de abajo sube y sin esto el día se te va de la pantalla. */
+      var nodo = document.querySelector('.dia[data-dia="' + f + '"]');
+      if (nodo) nodo.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
     var tic = t.closest("[data-act]");
