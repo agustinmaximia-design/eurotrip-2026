@@ -126,6 +126,62 @@
   .brand h1 { transition: opacity .18s ease; }
 
 
+
+  /* ---- itinerario por día ---- */
+  .alo { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    padding: 12px 14px; margin-bottom: 10px; }
+  .alo-t { font-size: 15px; font-weight: 600; margin-top: 3px; }
+  .alo-s { font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+  .dia { background: var(--surface); border: 1px solid var(--line-soft);
+    border-radius: 3px; margin-bottom: 9px; overflow: hidden; }
+  .dia.abierto { border-color: var(--line); box-shadow: var(--shadow); }
+  .dia-cab { appearance: none; border: 0; background: none; cursor: pointer; font: inherit;
+    display: block; width: 100%; text-align: left; padding: 14px 40px 14px 15px;
+    position: relative; color: var(--ink); }
+  .dia-cab:active { background: var(--surface-2); }
+  .dia-top { display: flex; gap: 9px; align-items: baseline; }
+  .dia-n { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  .dia-f { font-size: 11.5px; color: var(--faint); }
+  .dia-cab h3 { margin: 4px 0 0; font-family: var(--ff-text); font-size: 17px;
+    font-weight: 600; letter-spacing: -.01em; }
+  .dia-tags { font-size: 11.5px; color: var(--muted); margin-top: 5px; }
+  .dia-flecha { position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
+    color: var(--faint); font-size: 13px; transition: transform .2s ease; }
+  .dia.abierto .dia-flecha { transform: translateY(-50%) rotate(180deg); }
+  .dia-cuerpo { border-top: 1px solid var(--line-soft); }
+
+  .linea { padding: 4px 0; }
+  .fila { display: grid; grid-template-columns: 52px 1fr; gap: 4px;
+    padding: 10px 15px; border-bottom: 1px solid var(--line-soft); }
+  .fila:last-child { border-bottom: 0; }
+  .fila-h { font-family: var(--ff-mono); font-size: 12px; font-weight: 500;
+    color: var(--faint); padding-top: 1px; }
+  .fila-t { font-size: 14px; line-height: 1.4; }
+  .fila-d { font-size: 12.5px; color: var(--muted); margin-top: 3px; line-height: 1.45; }
+  .fila-tipo { font-family: var(--ff-mono); font-size: 10px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
+  .fila-cod { font-family: var(--ff-mono); font-size: 12.5px; color: var(--accent);
+    margin-top: 3px; user-select: text; letter-spacing: .04em; }
+  .pase-fila { background: var(--accent-soft); }
+  .fila-audio { display: grid; gap: 5px; margin-top: 8px; }
+  .mini-play { appearance: none; cursor: pointer; font: inherit; text-align: left;
+    display: grid; grid-template-columns: 18px 1fr auto; gap: 8px; align-items: center;
+    padding: 8px 10px; border-radius: 3px; border: 1px solid var(--line);
+    background: var(--surface-2); color: var(--ink); }
+  .mini-play:active { transform: scale(.99); }
+  .mp-ico { color: var(--accent); font-size: 11px; text-align: center; }
+  .mp-t { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mp-m { font-family: var(--ff-mono); font-size: 10.5px; color: var(--faint); }
+  .mini-play.listo .mp-t { color: var(--muted); }
+  .mini-play.ver { background: var(--surface); border-color: var(--accent); }
+  .dia-notas { padding: 11px 15px; border-top: 1px solid var(--line-soft);
+    font-size: 12.5px; color: var(--muted); background: var(--surface-2); }
+  .dia-notas div + div { margin-top: 4px; }
+  .hoja-par { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hoja-par label { margin-top: 14px; }
+
   /* ---- pases ---- */
   .pases-top { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0 4px; }
   .vacio { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
@@ -462,7 +518,10 @@
       <option value="entrada">Entrada</option><option value="aloj">Alojamiento</option>
       <option value="otro">Otro</option></select></label>
     <label>Título<input id="pase-titulo" type="text" placeholder="Ryanair FR1306 a Nápoles"></label>
-    <label>Fecha<input id="pase-fecha" type="date"></label>
+    <div class="hoja-par">
+      <label>Fecha<input id="pase-fecha" type="date"></label>
+      <label>Hora<input id="pase-hora" type="time"></label>
+    </div>
     <label>Código o localizador <span class="opt">opcional</span><input id="pase-codigo" type="text"></label>
     <label>Nota <span class="opt">opcional</span><input id="pase-nota" type="text" placeholder="Terminal 4, mostrador 12"></label>
     <div class="hoja-acc">
@@ -610,6 +669,2597 @@ const ITINERARIO = {
     { ciudad: "lyon", nombre: "Annecy", fechaSugerida: "2026-10-21", nota: "Lago alpino y casco antiguo. Es la única jornada completa que tenés en Lyon." }
   ]
 };
+
+const DIAS = [
+ {
+  "n": 1,
+  "fecha": "2026-10-01",
+  "dow": "jue",
+  "titulo": "Austrias y Palacio Real",
+  "ciudad": "madrid",
+  "actividades": [
+   {
+    "hora": "09:30",
+    "titulo": "🧳 Dejar valijas (recepción y guardaequipaje 24 h)",
+    "detalle": []
+   },
+   {
+    "hora": "10:00",
+    "titulo": "🗣️ FREE TOUR \"Tourstilla\" — CON GUÍA EN VIVO, en español",
+    "detalle": [
+     "2h15 · Puerta del Sol, paraguas amarillo y naranja",
+     "9 min a pie de casa · a la gorra"
+    ]
+   },
+   {
+    "hora": "12:20",
+    "titulo": "🥬 MERCADO DE SAN MIGUEL = ALMUERZO",
+    "detalle": []
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🧱 MURALLA ÁRABE — Cuesta de la Vega, s. IX · GRATIS",
+    "detalle": [],
+    "paradas": [
+     "mad1-01"
+    ]
+   },
+   {
+    "hora": "13:10",
+    "titulo": "⛪ CRIPTA DE LA ALMUDENA — Calle Mayor 90 · GRATIS",
+    "detalle": [
+     "🔴 cierra 14:00"
+    ],
+    "paradas": [
+     "mad1-02"
+    ]
+   },
+   {
+    "hora": "13:40",
+    "titulo": "⬆️ CÚPULA Y MUSEO DE LA ALMUDENA — €8",
+    "detalle": [
+     "🔴 cierra 14:30 en punto · no abre domingos"
+    ],
+    "paradas": [
+     "mad1-03"
+    ]
+   },
+   {
+    "hora": "14:30",
+    "titulo": "☕ Café y descanso por los Austrias",
+    "detalle": []
+   },
+   {
+    "hora": "15:15",
+    "titulo": "🎟️ HACER LA COLA DEL PALACIO REAL",
+    "detalle": []
+   },
+   {
+    "hora": "16:00",
+    "titulo": "🏰 PALACIO REAL — 🇦🇷 GRATIS para iberoamericanos",
+    "detalle": [
+     "🔴 lun-jue 16-18 h · LA TAQUILLA CIERRA 17:00",
+     "Acceso por la plaza de la Armería"
+    ],
+    "paradas": [
+     "mad1-04"
+    ]
+   },
+   {
+    "hora": "18:00",
+    "titulo": "🌳 JARDINES DE SABATINI → PLAZA DE ESPAÑA (14 min)",
+    "detalle": [],
+    "paradas": [
+     "mad1-05"
+    ]
+   },
+   {
+    "hora": "19:00",
+    "titulo": "🏛️ TEMPLO DE DEBOD — GRATIS · 🔴 con reserva previa",
+    "detalle": [],
+    "paradas": [
+     "mad1-06"
+    ]
+   },
+   {
+    "hora": "19:57",
+    "titulo": "🌅 Atardecer",
+    "detalle": []
+   },
+   {
+    "hora": "21:00",
+    "titulo": "🍽️ Cena de tapas",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "⚠️ **Día de ~15 h con jet lag.** Lo único inamovible: **Palacio Real (16-18 h)** y **Debod (sesión reservada)**. Si el tour se atrasa, saltear San Miguel. Prioridad: cúpula > cripta > muralla > mercado."
+  ]
+ },
+ {
+  "n": 2,
+  "fecha": "2026-10-02",
+  "dow": "vie",
+  "titulo": "Retiro, Prado y Madrid oscuro",
+  "ciudad": "madrid",
+  "actividades": [
+   {
+    "hora": "10:30",
+    "titulo": "Salir",
+    "detalle": []
+   },
+   {
+    "hora": "11:00",
+    "titulo": "🌳 PARQUE DEL RETIRO — 1h30 · GRATIS",
+    "detalle": [
+     "Palacio de Cristal, estanque, Rosaleda, Ángel Caído"
+    ],
+    "paradas": [
+     "mad2-01",
+     "mad2-02",
+     "mad2-03"
+    ]
+   },
+   {
+    "hora": "12:30",
+    "titulo": "🚶 Puerta de Alcalá → Cibeles → Paseo del Prado",
+    "detalle": [],
+    "paradas": [
+     "mad2-04"
+    ]
+   },
+   {
+    "hora": "12:45",
+    "titulo": "⛪ SAN JERÓNIMO EL REAL — GRATIS · 20 min",
+    "detalle": [],
+    "paradas": [
+     "mad2-05"
+    ]
+   },
+   {
+    "hora": "13:15",
+    "titulo": "🍽️ Almuerzo por el Paseo del Prado",
+    "detalle": []
+   },
+   {
+    "hora": "14:15",
+    "titulo": "🎧 MUSEO DEL PRADO — CON AUDIOGUÍA (contratada), 2 h",
+    "detalle": []
+   },
+   {
+    "hora": "17:00",
+    "titulo": "🗣️ ANDÉN 0 · CHAMBERÍ — VISITA CON GUÍA EN VIVO, 30-40 min",
+    "detalle": [
+     "GRATIS · 🔴 CON RESERVA · vie 16:00-20:00 · máx. 28 personas",
+     "Estación del Arte L1 → Iglesia L1, directo, 12 min"
+    ]
+   },
+   {
+    "hora": "18:30",
+    "titulo": "🗣️ FREE TOUR \"MADRID OSCURO\" — CON GUÍA EN VIVO, en español",
+    "detalle": [
+     "2h15 · Plaza Mayor, estatua de Felipe III · a la gorra"
+    ]
+   },
+   {
+    "hora": "21:00",
+    "titulo": "👁️ AZOTEA DEL CÍRCULO DE BELLAS ARTES — €6",
+    "detalle": [
+     "56 m sobre Alcalá, con Madrid iluminado"
+    ],
+    "paradas": [
+     "mad2-06"
+    ]
+   },
+   {
+    "hora": "22:30",
+    "titulo": "🍽️ Cena en la Cava Baja o Mercado de San Fernando",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 3,
+  "fecha": "2026-10-03",
+  "dow": "sáb",
+  "titulo": "TOLEDO",
+  "ciudad": "madrid",
+  "actividades": [
+   {
+    "hora": "07:30",
+    "titulo": "Levantarse",
+    "detalle": []
+   },
+   {
+    "hora": "08:30",
+    "titulo": "Salir — 20 min a pie a Atocha-Almudena Grandes",
+    "detalle": []
+   },
+   {
+    "hora": "09:15",
+    "titulo": "🚄 AVANT 08292 → Toledo",
+    "detalle": [],
+    "paradas": [
+     "tol-01"
+    ]
+   },
+   {
+    "hora": "09:49",
+    "titulo": "Llegada · subir a la ciudad (15 min o escaleras mecánicas)",
+    "detalle": []
+   },
+   {
+    "hora": "10:30",
+    "titulo": "🕌 MEZQUITA DEL CRISTO DE LA LUZ — s. X · pulsera",
+    "detalle": [],
+    "paradas": [
+     "tol-02"
+    ]
+   },
+   {
+    "hora": "11:15",
+    "titulo": "⛪ CATEDRAL PRIMADA — 2 h · €12 · 🔴 hora asignada",
+    "detalle": [],
+    "paradas": [
+     "tol-03",
+     "tol-04",
+     "tol-05",
+     "tol-06"
+    ]
+   },
+   {
+    "hora": "13:15",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "14:30",
+    "titulo": "🕍 SINAGOGA DEL TRÁNSITO / MUSEO SEFARDÍ",
+    "detalle": [
+     "⭐ GRATIS los sábados desde las 14:00"
+    ],
+    "paradas": [
+     "tol-07"
+    ]
+   },
+   {
+    "hora": "15:30",
+    "titulo": "🕍 SANTA MARÍA LA BLANCA · pulsera",
+    "detalle": [],
+    "paradas": [
+     "tol-08"
+    ]
+   },
+   {
+    "hora": "16:00",
+    "titulo": "🎨 SANTO TOMÉ — El entierro del Conde de Orgaz · pulsera",
+    "detalle": [],
+    "paradas": [
+     "tol-09"
+    ]
+   },
+   {
+    "hora": "16:45",
+    "titulo": "⛪ SAN JUAN DE LOS REYES — claustro gótico · pulsera",
+    "detalle": [],
+    "paradas": [
+     "tol-10"
+    ]
+   },
+   {
+    "hora": "18:00",
+    "titulo": "🚕 MIRADOR DEL VALLE — ~€12 · la postal de Toledo",
+    "detalle": [],
+    "paradas": [
+     "tol-11"
+    ]
+   },
+   {
+    "hora": "19:30",
+    "titulo": "🍽️ CENAR EN TOLEDO — iluminada y sin excursiones",
+    "detalle": []
+   },
+   {
+    "hora": "21:37",
+    "titulo": "🚄 AVANT 08213 → Atocha (EL ÚLTIMO DEL SÁBADO)",
+    "detalle": []
+   },
+   {
+    "hora": "22:15",
+    "titulo": "Madrid · 20 min a pie a casa",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "💡 **Pulsera turística €14** — cubre los 4 monumentos marcados. Catedral y Sefardí van aparte."
+  ]
+ },
+ {
+  "n": 4,
+  "fecha": "2026-10-04",
+  "dow": "dom",
+  "titulo": "El Rastro y el eje sur",
+  "ciudad": "madrid",
+  "actividades": [
+   {
+    "hora": "10:00",
+    "titulo": "🛍️ EL RASTRO — Ribera de Curtidores · 10 min de casa",
+    "detalle": [
+     "La franja buena es hasta las 13:00"
+    ],
+    "paradas": [
+     "mad4-01"
+    ]
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🍷 CAVA BAJA — la calle de tapeo",
+    "detalle": []
+   },
+   {
+    "hora": "15:00",
+    "titulo": "🚂 MUSEO DEL FERROCARRIL — estación de Delicias",
+    "detalle": [
+     "Locomotoras de vapor que se recorren por dentro"
+    ],
+    "paradas": [
+     "mad4-02"
+    ]
+   },
+   {
+    "hora": "17:00",
+    "titulo": "🏭 MATADERO MADRID — arquitectura industrial · GRATIS",
+    "detalle": [],
+    "paradas": [
+     "mad4-03"
+    ]
+   },
+   {
+    "hora": "18:30",
+    "titulo": "🌳 MADRID RÍO — atardecer caminando (sol 19:55)",
+    "detalle": [
+     "Vuelta temprana"
+    ],
+    "paradas": [
+     "mad4-04"
+    ]
+   }
+  ],
+  "notas": [
+   "🛫 **lun 5/10 · salir de casa 07:30** — Ryanair **FR1306**, Barajas **10:30 → Nápoles 13:05**.",
+   "---"
+  ]
+ },
+ {
+  "n": 5,
+  "fecha": "2026-10-05",
+  "dow": "lun",
+  "titulo": "Medio día · Quartieri Spagnoli",
+  "ciudad": "napoles",
+  "actividades": [
+   {
+    "hora": "13:35",
+    "titulo": "🚕 Traslado al centro",
+    "detalle": []
+   },
+   {
+    "hora": "14:00",
+    "titulo": "🔑 CHECK-IN Casa Esposito",
+    "detalle": []
+   },
+   {
+    "hora": "14:40",
+    "titulo": "🎫 COMPRAR LAS 2 CAMPANIA ARTECARD — €82",
+    "detalle": [
+     "Infopoint Piazza del Gesù Nuovo 7 · 3 min de casa",
+     "🔴 TIENE QUE SER HOY: cierra los martes",
+     "⚠️ Comprarlas hoy, ACTIVARLAS MAÑANA (cubre 6-7-8)"
+    ]
+   },
+   {
+    "hora": "14:45",
+    "titulo": "🚶 10 min a Via Toledo 364",
+    "detalle": []
+   },
+   {
+    "hora": "15:00",
+    "titulo": "🗣️ FREE TOUR \"El pueblo napolitano\" — CON GUÍA EN VIVO",
+    "detalle": [
+     "(Emanuele), en español · 3 h · a la gorra",
+     "Via Toledo 364, junto al Tabacchi, frente al KFC",
+     "Piazza della Carità → Largo Baracche → Largo Maradona"
+    ]
+   },
+   {
+    "hora": "18:00",
+    "titulo": "🍷 Aperitivo / pizza en los Quartieri",
+    "detalle": []
+   },
+   {
+    "hora": "19:30",
+    "titulo": "🚶 SPACCANAPOLI y SAN GREGORIO ARMENO de noche",
+    "detalle": []
+   },
+   {
+    "hora": "20:30",
+    "titulo": "🍕 Cena — Da Michele o Sorbillo",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 6,
+  "fecha": "2026-10-06",
+  "dow": "mar",
+  "titulo": "COSTA AMALFITANA",
+  "ciudad": "napoles",
+  "actividades": [
+   {
+    "hora": "06:45",
+    "titulo": "Levantarse",
+    "detalle": []
+   },
+   {
+    "hora": "07:10",
+    "titulo": "Salir — 7 min a Piazza Garibaldi",
+    "detalle": []
+   },
+   {
+    "hora": "07:27",
+    "titulo": "🚆 CIRCUMVESUVIANA → Sorrento          [ARTECARD ✅]",
+    "detalle": []
+   },
+   {
+    "hora": "08:40",
+    "titulo": "Sorrento — café en Marina Piccola",
+    "detalle": []
+   },
+   {
+    "hora": "09:00",
+    "titulo": "⛴️ FERRY NLG → Positano · €23 c/u",
+    "detalle": [
+     "👁️ Sentarse AFUERA: la costa desde el mar es la vista"
+    ]
+   },
+   {
+    "hora": "09:40",
+    "titulo": "🏖️ POSITANO — 3h35",
+    "detalle": [
+     "Spiaggia Grande · VIA POSITANESI D'AMERICA (la pasarela",
+     "tallada en el acantilado) · Spiaggia del Fornillo",
+     "⬆️ Via dei Mulini entre las buganvillas",
+     "🍽️ Almuerzo con vista al mar"
+    ]
+   },
+   {
+    "hora": "13:30",
+    "titulo": "⛴️ FERRY Travelmar → Amalfi · €10 c/u",
+    "detalle": []
+   },
+   {
+    "hora": "13:55",
+    "titulo": "🏘️ AMALFI + ATRANI — 2h50",
+    "detalle": [
+     "Piazza del Duomo y la escalinata DESDE AFUERA",
+     "Via Lorenzo d'Amalfi · 🚶 ATRANI a pie (12 min)"
+    ]
+   },
+   {
+    "hora": "16:45",
+    "titulo": "Volver al muelle",
+    "detalle": []
+   },
+   {
+    "hora": "17:02",
+    "titulo": "🔴 FERRY NLG → Sorrento · €26 c/u · EL ÚLTIMO DEL DÍA",
+    "detalle": []
+   },
+   {
+    "hora": "18:02",
+    "titulo": "🌅 SORRENTO — Villa Comunale (mirador gratis sobre el",
+    "detalle": [
+     "golfo con el Vesubio enfrente) · Piazza Tasso · aperitivo"
+    ]
+   },
+   {
+    "hora": "20:14",
+    "titulo": "🚆 CIRCUMVESUVIANA → Nápoles (el último sale 22:02)",
+    "detalle": []
+   },
+   {
+    "hora": "21:25",
+    "titulo": "Llegada · cena",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🔴 **El 17:02 es el único horario del día que no se puede perder.**"
+  ]
+ },
+ {
+  "n": 7,
+  "fecha": "2026-10-07",
+  "dow": "mié",
+  "titulo": "Museo, centro storico y Vomero",
+  "ciudad": "napoles",
+  "actividades": [
+   {
+    "hora": "08:10",
+    "titulo": "Levantarse",
+    "detalle": []
+   },
+   {
+    "hora": "08:45",
+    "titulo": "Salir — 14 min a pie",
+    "detalle": []
+   },
+   {
+    "hora": "09:00",
+    "titulo": "🏛️ MUSEO ARCHEOLOGICO — 2h30       [ARTECARD ✅]",
+    "detalle": [
+     "Mosaico de Alejandro · Toro Farnese · Hércules Farnesio",
+     "Gabinete Secreto · frescos de Pompeya y Herculano",
+     "⚠️ Control de equipaje obligatorio"
+    ]
+   },
+   {
+    "hora": "11:45",
+    "titulo": "☕ PIAZZA BELLINI — café sobre la muralla griega del s. IV a.C.",
+    "detalle": []
+   },
+   {
+    "hora": "12:30",
+    "titulo": "🚶 VIA DEI TRIBUNALI — el decumano mayor",
+    "detalle": []
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🍕 Pizza en Via dei Tribunali",
+    "detalle": []
+   },
+   {
+    "hora": "14:15",
+    "titulo": "🗣️ NAPOLI SOTTERRANEA — VISITA CON GUÍA EN VIVO, 1h15",
+    "detalle": [
+     "Sale por idioma; pedir la salida en español",
+     "Guía incluida en los €15 c/u · 💵 SOLO EFECTIVO",
+     "Acueducto griego, refugio antiaéreo, teatro romano"
+    ]
+   },
+   {
+    "hora": "15:45",
+    "titulo": "🚶 SAN GREGORIO ARMENO — la calle de los pesebres",
+    "detalle": []
+   },
+   {
+    "hora": "16:30",
+    "titulo": "⛪ CAPPELLA SANSEVERO ✅ comprado — Cristo Velato · 45 min",
+    "detalle": []
+   },
+   {
+    "hora": "17:20",
+    "titulo": "🚶 7 min a Metro Dante",
+    "detalle": []
+   },
+   {
+    "hora": "17:30",
+    "titulo": "🚇 LÍNEA 1 Dante → Vanvitelli          [ARTECARD ✅]",
+    "detalle": []
+   },
+   {
+    "hora": "17:50",
+    "titulo": "🚶 12 min de subida",
+    "detalle": []
+   },
+   {
+    "hora": "18:05",
+    "titulo": "👁️ CASTEL SANT'ELMO — €5 · cierra 19:30",
+    "detalle": [
+     "Las murallas: el golfo, el Vesubio y toda Nápoles",
+     "🌅 atardecer ~18:45"
+    ]
+   },
+   {
+    "hora": "19:20",
+    "titulo": "🚇 Bajar · cena",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "💵 **Llevar €30 en efectivo** para la Sotterranea."
+  ]
+ },
+ {
+  "n": 8,
+  "fecha": "2026-10-08",
+  "dow": "jue",
+  "titulo": "VESUBIO + POMPEYA (el día más físico)",
+  "ciudad": "napoles",
+  "actividades": [
+   {
+    "hora": "07:15",
+    "titulo": "Levantarse",
+    "detalle": []
+   },
+   {
+    "hora": "07:45",
+    "titulo": "Salir — 7 min a Piazza Garibaldi",
+    "detalle": []
+   },
+   {
+    "hora": "07:55",
+    "titulo": "🚆 CIRCUMVESUVIANA → Ercolano Scavi (~25 min)  [ARTECARD ✅]",
+    "detalle": [
+     "⚠️ No todos los trenes paran ahí — mirar el cartel"
+    ]
+   },
+   {
+    "hora": "08:25",
+    "titulo": "Caminar a VESUVIO EXPRESS — Via Vittorio Veneto 8",
+    "detalle": [
+     "Piden estar 15 min antes"
+    ]
+   },
+   {
+    "hora": "09:00",
+    "titulo": "🚐 Minibús → cráter · ~30 min · ~€15 c/u",
+    "detalle": []
+   },
+   {
+    "hora": "09:35",
+    "titulo": "🌋 GRAN CONO DEL VESUBIO ✅ ticket 09:40",
+    "detalle": [
+     "Subida 45 min · borde 15-20 min · bajada 30 min",
+     "👁️ El golfo entero, Capri, Ischia, Procida"
+    ]
+   },
+   {
+    "hora": "11:30",
+    "titulo": "🚐 Vuelta en minibús",
+    "detalle": []
+   },
+   {
+    "hora": "12:30",
+    "titulo": "🚆 CIRCUMVESUVIANA Ercolano → Pompei Scavi",
+    "detalle": []
+   },
+   {
+    "hora": "12:55",
+    "titulo": "🍽️ Almuerzo cerca de la estación",
+    "detalle": []
+   },
+   {
+    "hora": "14:00",
+    "titulo": "🏛️ POMPEYA — entrar por PIAZZA ESEDRA",
+    "detalle": [
+     "(entrada reservada a titulares de Artecard)",
+     "4h45 · última entrada 17:30 · cierra 19:00"
+    ]
+   },
+   {
+    "hora": "18:45",
+    "titulo": "🚆 Vuelta a Nápoles",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "Llegada · cena",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🛂 **Llevar pasaporte:** la entrada de Pompeya es nominativa."
+  ]
+ },
+ {
+  "n": 9,
+  "fecha": "2026-10-09",
+  "dow": "vie",
+  "titulo": "CAPRI",
+  "ciudad": "napoles",
+  "actividades": [
+   {
+    "hora": "07:15",
+    "titulo": "Levantarse",
+    "detalle": []
+   },
+   {
+    "hora": "07:45",
+    "titulo": "Salir — 20 min a pie a Molo Beverello",
+    "detalle": []
+   },
+   {
+    "hora": "08:30",
+    "titulo": "⛴️ ALISCAFO → Capri · 50 min · ~€25 c/u",
+    "detalle": []
+   },
+   {
+    "hora": "09:20",
+    "titulo": "Marina Grande",
+    "detalle": []
+   },
+   {
+    "hora": "09:35",
+    "titulo": "🚌 Bus a ANACAPRI · €2,50 · ~20 min",
+    "detalle": []
+   },
+   {
+    "hora": "10:00",
+    "titulo": "🚡 SEGGIOVIA A MONTE SOLARO — €15 ida y vuelta",
+    "detalle": []
+   },
+   {
+    "hora": "10:15",
+    "titulo": "👁️ MONTE SOLARO (589 m) — el punto más alto de la isla",
+    "detalle": []
+   },
+   {
+    "hora": "11:15",
+    "titulo": "📸 CASA ROSSA — Via Orlandi, solo por fuera",
+    "detalle": []
+   },
+   {
+    "hora": "11:30",
+    "titulo": "🚌 Bus a Capri centro",
+    "detalle": []
+   },
+   {
+    "hora": "11:55",
+    "titulo": "📸 LA PIAZZETTA",
+    "detalle": []
+   },
+   {
+    "hora": "12:10",
+    "titulo": "🚶 EL PASEO DEL ARCO NATURALE — 1h20, lo mejor de la isla",
+    "detalle": [
+     "Arco Naturale → Grotta di Matermania → VIA PIZZOLUNGO",
+     "→ 📸 BELVEDERE DI TRAGARA (los Faraglioni de frente)"
+    ]
+   },
+   {
+    "hora": "13:20",
+    "titulo": "🍽️ Almuerzo por Via Camerelle",
+    "detalle": []
+   },
+   {
+    "hora": "14:00",
+    "titulo": "📸 VIA MADRE SERAFINA — callejón abovedado",
+    "detalle": []
+   },
+   {
+    "hora": "14:15",
+    "titulo": "📸 BELVEDERE DI PUNTA CANNONE — gratis y sin gente",
+    "detalle": []
+   },
+   {
+    "hora": "14:35",
+    "titulo": "🌿 GIARDINI DI AUGUSTO — €2,50 · 🔴 COMPRA ONLINE",
+    "detalle": [
+     "La vista más fotografiada de Capri"
+    ]
+   },
+   {
+    "hora": "15:05",
+    "titulo": "🚶 20 min de bajada",
+    "detalle": []
+   },
+   {
+    "hora": "15:20",
+    "titulo": "🏖️ MARINA PICCOLA — playa y baño · agua 23-24 °C",
+    "detalle": []
+   },
+   {
+    "hora": "16:45",
+    "titulo": "🚡 Funicular a Marina Grande · €2,40",
+    "detalle": []
+   },
+   {
+    "hora": "17:30",
+    "titulo": "📸 MARINA GRANDE a la hora dorada",
+    "detalle": []
+   },
+   {
+    "hora": "19:00",
+    "titulo": "⛴️ FERRY → Nápoles (el último es 20:17)",
+    "detalle": []
+   },
+   {
+    "hora": "20:15",
+    "titulo": "Llegada · última cena en Nápoles",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🛫 **sáb 10/10 · salir de casa 08:30** — Italo **9924**, Napoli Centrale **09:10 → Roma Termini 10:30**.",
+   "---"
+  ]
+ },
+ {
+  "n": 10,
+  "fecha": "2026-10-10",
+  "dow": "sáb",
+  "titulo": "Llegada, Gianicolo y free tour",
+  "ciudad": "roma",
+  "actividades": [
+   {
+    "hora": "10:50",
+    "titulo": "🚌 Termini → Trastevere con las valijas (~40 min)",
+    "detalle": []
+   },
+   {
+    "hora": "11:30",
+    "titulo": "🧳 Dejar valijas en consigna del barrio",
+    "detalle": []
+   },
+   {
+    "hora": "11:50",
+    "titulo": "🍽️ Almuerzo en TRASTEVERE",
+    "detalle": []
+   },
+   {
+    "hora": "13:15",
+    "titulo": "🚶 Santa Maria in Trastevere, callejones, Piazza Trilussa",
+    "detalle": []
+   },
+   {
+    "hora": "14:30",
+    "titulo": "⬆️ GIANICOLO — 20 min subiendo · GRATIS",
+    "detalle": [
+     "Piazzale Garibaldi: la panorámica de Roma con todas las",
+     "cúpulas · de paso, la Fontana dell'Acqua Paola"
+    ]
+   },
+   {
+    "hora": "16:00",
+    "titulo": "🔑 CHECK-IN (caja de llaves) · meter valijas · ducha",
+    "detalle": []
+   },
+   {
+    "hora": "16:30",
+    "titulo": "🚇 Salir hacia Plaza de España (~28 min)",
+    "detalle": []
+   },
+   {
+    "hora": "16:50",
+    "titulo": "📍 Plaza de España, esquina Vicolo del Bottino,",
+    "detalle": [
+     "junto al quiosco de flores · cartel de Civitatis"
+    ]
+   },
+   {
+    "hora": "17:00",
+    "titulo": "🗣️ FREE TOUR POR ROMA — CON GUÍA EN VIVO, en español",
+    "detalle": [
+     "2 h ✅ A41636066 · a la gorra (€10-15 c/u)",
+     "Plaza de España → Trevi → Panteón → Piazza Navona"
+    ]
+   },
+   {
+    "hora": "19:00",
+    "titulo": "Fin en Piazza Navona, al anochecer",
+    "detalle": []
+   },
+   {
+    "hora": "19:15",
+    "titulo": "🚶 Campo de' Fiori y Largo di Torre Argentina de noche",
+    "detalle": []
+   },
+   {
+    "hora": "20:30",
+    "titulo": "🍽️ Cena en el centro",
+    "detalle": []
+   },
+   {
+    "hora": "22:15",
+    "titulo": "🌙 FONTANA DI TREVI DE NOCHE — GRATIS",
+    "detalle": [
+     "Después de las 22:00 el perímetro pago cierra y queda libre"
+    ]
+   },
+   {
+    "hora": "22:45",
+    "titulo": "🚶 32 min a Trastevere (o taxi ~€12)",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 11,
+  "fecha": "2026-10-11",
+  "dow": "dom",
+  "titulo": "Roma antigua, Coliseo y Monti",
+  "ciudad": "roma",
+  "actividades": [
+   {
+    "hora": "08:45",
+    "titulo": "Levantarse",
+    "detalle": []
+   },
+   {
+    "hora": "09:20",
+    "titulo": "🚌 Transporte al Aventino (~26 min)",
+    "detalle": []
+   },
+   {
+    "hora": "09:50",
+    "titulo": "👁️ GIARDINO DEGLI ARANCI — GRATIS",
+    "detalle": [
+     "A la mañana la cúpula de San Pedro queda iluminada"
+    ]
+   },
+   {
+    "hora": "10:15",
+    "titulo": "🔑 BUCO DELLA SERRATURA — Priorato de Malta · GRATIS",
+    "detalle": []
+   },
+   {
+    "hora": "10:40",
+    "titulo": "👁️ CIRCO MASSIMO — gratis",
+    "detalle": []
+   },
+   {
+    "hora": "11:10",
+    "titulo": "⛪ BOCCA DELLA VERITÀ — Santa Maria in Cosmedin",
+    "detalle": [
+     "Gratis, ~€2 de colaboración · 9:30-13:00"
+    ]
+   },
+   {
+    "hora": "11:40",
+    "titulo": "🏛️ Foro Boario: templos de Hércules y Portuno (exterior)",
+    "detalle": []
+   },
+   {
+    "hora": "12:00",
+    "titulo": "⛪ BASÍLICA DE SAN CLEMENTE — €10 c/u · dom abre 12:00",
+    "detalle": [
+     "Tres niveles: s. XII sobre basílica del s. IV",
+     "sobre un TEMPLO DE MITRA del s. II"
+    ]
+   },
+   {
+    "hora": "13:30",
+    "titulo": "🍽️ Almuerzo cerca del Coliseo",
+    "detalle": []
+   },
+   {
+    "hora": "14:40",
+    "titulo": "📍 PUNTO DE ENCUENTRO — Largo Gaetana Agnesi 5",
+    "detalle": [
+     "2ª planta del metro Colosseo · uniforme azul oscuro",
+     "🛂 LLEVAR PASAPORTE (entradas nominativas)"
+    ]
+   },
+   {
+    "hora": "15:00",
+    "titulo": "🗣️ COLISEO + FORO + PALATINO — CON GUÍA EN VIVO EN ESPAÑOL",
+    "detalle": [
+     "✅ GYGZGZRGQFM8 · 2h30 · auriculares incluidos"
+    ]
+   },
+   {
+    "hora": "17:30",
+    "titulo": "Fin en Via della Salara Vecchia 5/6",
+    "detalle": []
+   },
+   {
+    "hora": "17:50",
+    "titulo": "🍷 MONTI — Piazza della Madonna dei Monti, Via dei",
+    "detalle": [
+     "Serpenti, Via del Boschetto · aperitivo",
+     "*(opcional a 4 min: San Pietro in Vincoli, el MOISÉS,",
+     "gratis, cierra ~19:00)*"
+    ]
+   },
+   {
+    "hora": "21:00",
+    "titulo": "🍽️ Cena en Monti",
+    "detalle": []
+   },
+   {
+    "hora": "22:30",
+    "titulo": "🚇 Monti → Trastevere · 38 min",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🎒 **No llevar mochila ni bolso grande al Coliseo.**"
+  ]
+ },
+ {
+  "n": 12,
+  "fecha": "2026-10-12",
+  "dow": "lun",
+  "titulo": "VATICANO",
+  "ciudad": "roma",
+  "actividades": [
+   {
+    "hora": "06:45",
+    "titulo": "Levantarse",
+    "detalle": []
+   },
+   {
+    "hora": "07:20",
+    "titulo": "🚶 Salir — 28 min al ingreso (Viale Vaticano)",
+    "detalle": []
+   },
+   {
+    "hora": "08:00",
+    "titulo": "🏛️ MUSEOS VATICANOS + CAPILLA SIXTINA — primer turno",
+    "detalle": [
+     "🔴 ENTRADA AÚN NO COMPRADA (sin cupo online)",
+     "Pio-Clementino (Laocoonte, Apolo del Belvedere) →",
+     "Candelabros → Mapas → Estancias de Rafael → SIXTINA"
+    ]
+   },
+   {
+    "hora": "11:15",
+    "titulo": "🚶 Salir hacia Piazza San Pietro",
+    "detalle": []
+   },
+   {
+    "hora": "11:45",
+    "titulo": "⛪ BASÍLICA DE SAN PEDRO — GRATIS",
+    "detalle": [
+     "👕 Hombros y rodillas cubiertos, lo controlan",
+     "⚠️ Cola de seguridad un lunes: 60-90 min"
+    ]
+   },
+   {
+    "hora": "13:00",
+    "titulo": "⬆️ CÚPULA — 551 escalones, o 320 con ascensor",
+    "detalle": [
+     "~€10 escaleras / ~€15 ascensor, en boletería"
+    ]
+   },
+   {
+    "hora": "14:15",
+    "titulo": "🍽️ Almuerzo en BORGO PIO o Prati",
+    "detalle": []
+   },
+   {
+    "hora": "15:30",
+    "titulo": "🚶 PRATI — Via Cola di Rienzo",
+    "detalle": []
+   },
+   {
+    "hora": "16:45",
+    "titulo": "🚶 BORGO PIO — la callecita vieja pegada al Vaticano",
+    "detalle": []
+   },
+   {
+    "hora": "17:30",
+    "titulo": "👁️ PONTE SANT'ANGELO y el LUNGOTEVERE — GRATIS",
+    "detalle": [
+     "Los ángeles de Bernini, Castel Sant'Angelo enfrente"
+    ]
+   },
+   {
+    "hora": "18:33",
+    "titulo": "🌅 Atardecer",
+    "detalle": []
+   },
+   {
+    "hora": "19:15",
+    "titulo": "🚶 14 min a casa",
+    "detalle": []
+   },
+   {
+    "hora": "20:30",
+    "titulo": "🍽️ Cena en Trastevere",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🔴 **Castel Sant'Angelo cierra los lunes** — va el día 13."
+  ]
+ },
+ {
+  "n": 13,
+  "fecha": "2026-10-13",
+  "dow": "mar",
+  "titulo": "Roma a pie: Trastevere, Ghetto y techos barrocos",
+  "ciudad": "roma",
+  "actividades": [
+   {
+    "hora": "08:45",
+    "titulo": "Salir — 14 min a pie",
+    "detalle": []
+   },
+   {
+    "hora": "09:00",
+    "titulo": "🏰 CASTEL SANT'ANGELO — €18 c/u · abre 9:00, mar-dom",
+    "detalle": [
+     "La terraza sobre el Tíber, casi sin gente a primera hora"
+    ]
+   },
+   {
+    "hora": "10:15",
+    "titulo": "🚶 33 min a Trastevere",
+    "detalle": []
+   },
+   {
+    "hora": "10:50",
+    "titulo": "⛪ SANTA CECILIA IN TRASTEVERE",
+    "detalle": [
+     "🏺 Cripta con domus romana del s. II a.C.",
+     "🎨 Fresco del Juicio Universal de CAVALLINI · €2,50",
+     "🔴 EL CAVALLINI SOLO SE VE DE 10:00 A 12:30"
+    ]
+   },
+   {
+    "hora": "11:55",
+    "titulo": "🥬 MERCATO DI SAN COSIMATO — mercado de barrio",
+    "detalle": []
+   },
+   {
+    "hora": "12:25",
+    "titulo": "🚶 20 min cruzando por la Isola Tiberina",
+    "detalle": []
+   },
+   {
+    "hora": "12:45",
+    "titulo": "🏛️ TEATRO DI MARCELLO — gratis, al aire libre",
+    "detalle": []
+   },
+   {
+    "hora": "12:55",
+    "titulo": "🏛️ PORTICO D'OTTAVIA + GHETTO JUDÍO — gratis",
+    "detalle": [
+     "La sinagoga, Piazza Mattei, Fontana delle Tartarughe"
+    ]
+   },
+   {
+    "hora": "13:45",
+    "titulo": "🍽️ Almuerzo en el Ghetto — pedir carciofi alla giudia",
+    "detalle": []
+   },
+   {
+    "hora": "14:50",
+    "titulo": "🚶 15 min a Via dei Bergamaschi 49",
+    "detalle": []
+   },
+   {
+    "hora": "15:05",
+    "titulo": "🎧 RETIRO DE AUDIOGUÍAS — OhMyGuide",
+    "detalle": [
+     "🔴 Llevar los DNI físicos: quedan en depósito"
+    ]
+   },
+   {
+    "hora": "15:20",
+    "titulo": "🎧 PANTEÓN — CON AUDIOGUÍA DRAMATIZADA EN ESPAÑOL",
+    "detalle": [
+     "✅ BBZDR7 · 30 min de narración"
+    ]
+   },
+   {
+    "hora": "16:05",
+    "titulo": "⛪ SANTA MARIA SOPRA MINERVA — GRATIS",
+    "detalle": [
+     "Bóveda azul con estrellas, la única gótica de Roma"
+    ]
+   },
+   {
+    "hora": "16:25",
+    "titulo": "🎧 Devolver aparatos y recuperar documentos",
+    "detalle": []
+   },
+   {
+    "hora": "16:30",
+    "titulo": "⛪ SANT'IGNAZIO DI LOYOLA — GRATIS",
+    "detalle": [
+     "El techo en trampantojo de Pozzo y la cúpula falsa"
+    ]
+   },
+   {
+    "hora": "17:05",
+    "titulo": "🏛️ GALLERIA SCIARRA — GRATIS · 🔴 solo lun-vie",
+    "detalle": [
+     "Patio liberty pintado entero, a 2 min de Trevi"
+    ]
+   },
+   {
+    "hora": "17:30",
+    "titulo": "⛪ CHIESA DEL GESÙ — LA MACCHINA BAROCCA ⭐ GRATIS",
+    "detalle": [
+     "Todos los días a las 17:30: el cuadro del altar baja",
+     "mecánicamente y aparece la estatua de plata"
+    ]
+   },
+   {
+    "hora": "18:00",
+    "titulo": "🚶 Vuelta por el centro",
+    "detalle": []
+   },
+   {
+    "hora": "19:00",
+    "titulo": "Casa · armar valijas",
+    "detalle": []
+   },
+   {
+    "hora": "20:30",
+    "titulo": "🍽️ Última cena en Trastevere",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🛫 **mié 14/10** — Italo **8906**, Roma Termini **08:55 → Firenze S.M.N. 10:31**.",
+   "---"
+  ]
+ },
+ {
+  "n": 14,
+  "fecha": "2026-10-14",
+  "dow": "mié",
+  "titulo": "Llegada, el Duomo y San Lorenzo",
+  "ciudad": "florencia",
+  "actividades": [
+   {
+    "hora": "10:45",
+    "titulo": "🚕 Taxi a Via dei Pepi 65 — 8 min",
+    "detalle": []
+   },
+   {
+    "hora": "11:15",
+    "titulo": "🧳 Dejar valijas",
+    "detalle": []
+   },
+   {
+    "hora": "11:30",
+    "titulo": "🚶 16 min (el único tramo \"en contra\" del día)",
+    "detalle": []
+   },
+   {
+    "hora": "11:50",
+    "titulo": "🥬 MERCATO CENTRALE — almuerzo en la planta alta",
+    "detalle": []
+   },
+   {
+    "hora": "12:50",
+    "titulo": "⛪ SAN LORENZO — la fachada en piedra desnuda",
+    "detalle": []
+   },
+   {
+    "hora": "13:30",
+    "titulo": "⛪ CATEDRAL — GRATIS · 🔴 cierra 15:45",
+    "detalle": [
+     "Entrada por la Porta del Campanile",
+     "👕 Hombros y rodillas cubiertos"
+    ]
+   },
+   {
+    "hora": "14:15",
+    "titulo": "🏛️ SANTA REPARATA — la iglesia del s. IV bajo la catedral",
+    "detalle": []
+   },
+   {
+    "hora": "15:00",
+    "titulo": "🚶 Piazza della Repubblica, Orsanmichele, Calzaiuoli",
+    "detalle": []
+   },
+   {
+    "hora": "16:00",
+    "titulo": "🏛️ MUSEO DELL'OPERA DEL DUOMO — Piazza Duomo 9",
+    "detalle": [
+     "Las Puertas del Paraíso originales de Ghiberti,",
+     "la Pietà Bandini y la Magdalena de Donatello"
+    ]
+   },
+   {
+    "hora": "17:45",
+    "titulo": "☕ Descanso en Piazza Duomo",
+    "detalle": []
+   },
+   {
+    "hora": "18:00",
+    "titulo": "⬆️ CÚPULA DE BRUNELLESCHI — 🔴 turno fijo, tolerancia 5 min",
+    "detalle": [
+     "463 escalones por la Porta della Mandorla · ~45 min",
+     "🌅 Arriba cerca del atardecer (~18:40)"
+    ]
+   },
+   {
+    "hora": "19:00",
+    "titulo": "🌙 Bajada · Piazza Duomo de noche",
+    "detalle": []
+   },
+   {
+    "hora": "20:30",
+    "titulo": "🍽️ Cena en Sant'Ambrogio o Via Ghibellina",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🎒 **No se entra con mochila a ningún monumento** — depósito en Piazza Duomo 38/r."
+  ]
+ },
+ {
+  "n": 15,
+  "fecha": "2026-10-15",
+  "dow": "jue",
+  "titulo": "Free tour, las subidas y los Uffizi",
+  "ciudad": "florencia",
+  "actividades": [
+   {
+    "hora": "09:40",
+    "titulo": "🚶 14 min a Piazza San Lorenzo",
+    "detalle": []
+   },
+   {
+    "hora": "10:00",
+    "titulo": "🗣️ FREE TOUR POR FLORENCIA — CON GUÍA EN VIVO, en español ✅",
+    "detalle": [
+     "2h15 · a la gorra",
+     "Piazza San Lorenzo → Capillas Medici → Piazza del Duomo"
+    ]
+   },
+   {
+    "hora": "12:45",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "14:00",
+    "titulo": "⬆️ CAMPANILE DE GIOTTO — 414 escalones",
+    "detalle": [
+     "⚠️ en obra: la vista puede estar parcialmente tapada"
+    ]
+   },
+   {
+    "hora": "15:00",
+    "titulo": "⛪ BATTISTERO — 20 min (mosaicos tapados)",
+    "detalle": []
+   },
+   {
+    "hora": "15:30",
+    "titulo": "🗿 PIAZZA DELLA SIGNORIA y LOGGIA DEI LANZI — GRATIS",
+    "detalle": [
+     "El Perseo de Cellini y el Rapto de las Sabinas"
+    ]
+   },
+   {
+    "hora": "16:00",
+    "titulo": "🖼️ UFFIZI — 🔴 turno · €20 c/u (entrada de tarde)",
+    "detalle": [
+     "1h30: Botticelli, Leonardo, Caravaggio y afuera"
+    ]
+   },
+   {
+    "hora": "17:30",
+    "titulo": "🚶 18 min cruzando el Arno por Ponte alle Grazie",
+    "detalle": []
+   },
+   {
+    "hora": "17:48",
+    "titulo": "🌹 GIARDINO DELLE ROSE — GRATIS",
+    "detalle": []
+   },
+   {
+    "hora": "18:10",
+    "titulo": "🚶 13 min subiendo (pasa por el Piazzale Michelangelo)",
+    "detalle": []
+   },
+   {
+    "hora": "18:23",
+    "titulo": "⛪ SAN MINIATO AL MONTE — GRATIS",
+    "detalle": [
+     "Románica de 1018, mármol verde y blanco, piso con",
+     "el zodíaco · la terraza está más alta que el Piazzale"
+    ]
+   },
+   {
+    "hora": "18:30",
+    "titulo": "🎵 VÍSPERAS EN CANTO GREGORIANO — ~40 min",
+    "detalle": []
+   },
+   {
+    "hora": "19:10",
+    "titulo": "La iglesia con calma y la ciudad ya prendida",
+    "detalle": []
+   },
+   {
+    "hora": "19:30",
+    "titulo": "🚶 31 min bajando",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "🍽️ Cena en Santo Spirito (Oltrarno)",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 16,
+  "fecha": "2026-10-16",
+  "dow": "vie",
+  "titulo": "SAN GIMIGNANO + SIENA",
+  "ciudad": "florencia",
+  "actividades": [
+   {
+    "hora": "07:50",
+    "titulo": "🚆 Florencia → Poggibonsi (tren, 52 min)",
+    "detalle": []
+   },
+   {
+    "hora": "08:45",
+    "titulo": "🚌 Poggibonsi → San Gimignano (bus)",
+    "detalle": []
+   },
+   {
+    "hora": "09:15",
+    "titulo": "🏰 SAN GIMIGNANO, el pueblo todavía vacío",
+    "detalle": [
+     "Piazza della Cisterna · Piazza del Duomo · las torres"
+    ]
+   },
+   {
+    "hora": "10:00",
+    "titulo": "⛪ COLLEGIATA — las paredes cubiertas de frescos",
+    "detalle": [
+     "del Trecento sienés y el Juicio Final"
+    ]
+   },
+   {
+    "hora": "11:00",
+    "titulo": "⬆️ TORRE GROSSA — 54 m, la única de las catorce que se sube",
+    "detalle": []
+   },
+   {
+    "hora": "11:45",
+    "titulo": "👁️ ROCCA DI MONTESTAFFOLI — mirador · GRATIS",
+    "detalle": []
+   },
+   {
+    "hora": "12:15",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "13:15",
+    "titulo": "🚌 San Gimignano → Poggibonsi → Siena (bus 130)",
+    "detalle": []
+   },
+   {
+    "hora": "14:45",
+    "titulo": "🏛️ SIENA, Piazzale Gramsci",
+    "detalle": []
+   },
+   {
+    "hora": "15:00",
+    "titulo": "🎧 COMPLEJO DEL DUOMO — CON AUDIOGUÍA en el celular",
+    "detalle": [
+     "(gratis, incluida en el pase) · 2h30",
+     "🔴 HORA DE ENTRADA FIJA",
+     "⭐ El pavimento de 56 paneles DESTAPADO (18/8 al 15/11)",
+     "Librería Piccolomini · Cripta · Battistero · Museo"
+    ]
+   },
+   {
+    "hora": "17:45",
+    "titulo": "👁️ FACCIATONE — el mejor mirador de Siena",
+    "detalle": []
+   },
+   {
+    "hora": "18:20",
+    "titulo": "🏛️ PIAZZA DEL CAMPO",
+    "detalle": []
+   },
+   {
+    "hora": "18:35",
+    "titulo": "🌅 Atardecer",
+    "detalle": []
+   },
+   {
+    "hora": "19:30",
+    "titulo": "🚌 Siena → Florencia (131R)",
+    "detalle": []
+   },
+   {
+    "hora": "21:10",
+    "titulo": "🏠 Florencia",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🎟️ **Se compra allá, en taquilla:** San Gimignano Pass €30 los dos + OPA SI Pass €32 los dos.",
+   "🔴 **Confirmar los horarios de bus en la app \"at bus\"** antes de viajar."
+  ]
+ },
+ {
+  "n": 17,
+  "fecha": "2026-10-17",
+  "dow": "sáb",
+  "titulo": "Escultura a la mañana, Chianti a la tarde",
+  "ciudad": "florencia",
+  "actividades": [
+   {
+    "hora": "09:00",
+    "titulo": "🗿 GALLERIA DELL'ACCADEMIA ✅ 24192675",
+    "detalle": [
+     "🔴 turno 09:00 · 1h45 · 🛂 nominativa, llevar pasaporte",
+     "El David, los Prigioni sin terminar, los instrumentos Medici"
+    ]
+   },
+   {
+    "hora": "10:45",
+    "titulo": "🚶 12 min",
+    "detalle": []
+   },
+   {
+    "hora": "11:00",
+    "titulo": "🗿 BARGELLO — 1h30 · sin turno",
+    "detalle": [
+     "El David de bronce de Donatello, su San Jorge, los",
+     "mármoles tempranos de Miguel Ángel, Cellini, Verrocchio"
+    ]
+   },
+   {
+    "hora": "12:40",
+    "titulo": "🧳 VALIJAS — mañana temprano sale el tren a Turín",
+    "detalle": []
+   },
+   {
+    "hora": "13:15",
+    "titulo": "🍽️ Almuerzo en el barrio",
+    "detalle": []
+   },
+   {
+    "hora": "13:55",
+    "titulo": "🚶 25 min a Piazzale Montelungo (al lado de SMN)",
+    "detalle": []
+   },
+   {
+    "hora": "14:30",
+    "titulo": "🗣️ CHIANTI — CON GUÍA EN VIVO EN ESPAÑOL + 2 CATAS GUIADAS",
+    "detalle": [
+     "✅ reservado · 5 h",
+     "🔴 SE COBRA EL 14/10 · llevar documento original",
+     "Greve y Castellina in Chianti: 2 bodegas orgánicas,",
+     "viñedos, 2 catas con picoteo toscano y aceite de oliva"
+    ]
+   },
+   {
+    "hora": "19:30",
+    "titulo": "🚶 Vuelta a Montelungo · 25 min a casa",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "🍽️ Última cena en Florencia",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🛫 **dom 18/10** — Trenitalia, Firenze S.M.N. → **Torino Porta Nuova 11:35**.",
+   "---"
+  ]
+ },
+ {
+  "n": 18,
+  "fecha": "2026-10-18",
+  "dow": "dom",
+  "titulo": "Medio día · centro",
+  "ciudad": "turin",
+  "actividades": [
+   {
+    "hora": "12:00",
+    "titulo": "🔑 Check-in · 🧳 valijas",
+    "detalle": []
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "14:00",
+    "titulo": "🏛️ MUSEO EGIZIO — 3 h · 🔴 reservar",
+    "detalle": [
+     "El segundo museo egipcio del mundo después de El Cairo"
+    ]
+   },
+   {
+    "hora": "17:00",
+    "titulo": "🏰 PIAZZA CASTELLO y PALAZZO REAL",
+    "detalle": []
+   },
+   {
+    "hora": "18:00",
+    "titulo": "🚶 Las galerías porticadas",
+    "detalle": []
+   },
+   {
+    "hora": "19:00",
+    "titulo": "🍷 Aperitivo en Piazza Vittorio",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 19,
+  "fecha": "2026-10-19",
+  "dow": "lun",
+  "titulo": "Mole, Quadrilatero y Superga",
+  "ciudad": "turin",
+  "actividades": [
+   {
+    "hora": "09:30",
+    "titulo": "🗼 MOLE ANTONELLIANA + MUSEO DEL CINE",
+    "detalle": [
+     "El ascensor panorámico atraviesa la cúpula"
+    ]
+   },
+   {
+    "hora": "12:00",
+    "titulo": "🚶 QUADRILATERO ROMANO — el casco antiguo",
+    "detalle": []
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "15:00",
+    "titulo": "⛰️ SUPERGA — en tranvía cremallera",
+    "detalle": [
+     "La basílica sobre la colina y los Alpes de fondo"
+    ]
+   },
+   {
+    "hora": "18:00",
+    "titulo": "☕ Bicerin en Al Bicerin",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "🍽️ Cena",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🛫 **mar 20/10** — FlixBus, Turin Vittorio Emanuele **09:30 → Lyon Gerland 14:10** (4h40 directo).",
+   "---"
+  ]
+ },
+ {
+  "n": 20,
+  "fecha": "2026-10-20",
+  "dow": "mar",
+  "titulo": "Medio día · la colina",
+  "ciudad": "lyon",
+  "actividades": [
+   {
+    "hora": "15:00",
+    "titulo": "🔑 Check-in · 🧳 valijas",
+    "detalle": []
+   },
+   {
+    "hora": "15:30",
+    "titulo": "🚡 FUNICULAR A FOURVIÈRE",
+    "detalle": [
+     "Basílica de Notre-Dame de Fourvière y los teatros romanos"
+    ]
+   },
+   {
+    "hora": "17:30",
+    "titulo": "🌅 Atardecer desde la explanada, sobre toda Lyon",
+    "detalle": []
+   },
+   {
+    "hora": "19:00",
+    "titulo": "🚶 Bajar al Vieux Lyon",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "🍽️ Cena en un BOUCHON lyonés",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 21,
+  "fecha": "2026-10-21",
+  "dow": "mié",
+  "titulo": "Free tour y Presqu'île",
+  "ciudad": "lyon",
+  "actividades": [
+   {
+    "hora": "09:30",
+    "titulo": "🗣️ FREE TOUR VIEUX LYON Y LAS TRABOULES — CON GUÍA EN VIVO",
+    "detalle": [
+     "Los pasajes cubiertos entre edificios renacentistas"
+    ]
+   },
+   {
+    "hora": "12:30",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "14:00",
+    "titulo": "🖼️ MUSÉE DES BEAUX-ARTS",
+    "detalle": []
+   },
+   {
+    "hora": "16:00",
+    "titulo": "🚶 CROIX-ROUSSE — el barrio de los canuts (los sederos)",
+    "detalle": []
+   },
+   {
+    "hora": "19:00",
+    "titulo": "🍽️ Cena · 🧳 armar valijas (mañana se sale 08:00)",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🔴 **Tarea del 19 o 20:** reservar la franja de **Notre-Dame de París** para el jueves 22 — se abre solo 2-3 días antes, cerca de medianoche hora de París.",
+   "🛫 **jue 22/10** — OUIGO, Lyon Part-Dieu **08:38 → Paris Gare de Lyon 10:41**.",
+   "---"
+  ]
+ },
+ {
+  "n": 22,
+  "fecha": "2026-10-22",
+  "dow": "jue",
+  "titulo": "Llegada, la Cité y free tour de noche",
+  "ciudad": "paris",
+  "actividades": [
+   {
+    "hora": "10:55",
+    "titulo": "🧳 CONSIGNA EN GARE DE LYON — nivel -1, hall 3,",
+    "detalle": [
+     "junto a las salidas Rue de Bercy · ~€9,50 · rayos X"
+    ]
+   },
+   {
+    "hora": "11:20",
+    "titulo": "🥬 MARCHÉ D'ALIGRE — 9 min a pie · GRATIS",
+    "detalle": [
+     "Descubierto mar-vie 7:30-13:30 · Beauvau 9:00-13:00"
+    ]
+   },
+   {
+    "hora": "12:45",
+    "titulo": "🍽️ Almuerzo por Aligre o Bastille",
+    "detalle": [
+     "➕ Opcional: primer tramo de la COULÉE VERTE"
+    ]
+   },
+   {
+    "hora": "13:40",
+    "titulo": "🧳 Volver a buscar las valijas",
+    "detalle": []
+   },
+   {
+    "hora": "14:00",
+    "titulo": "🚇 20 min",
+    "detalle": []
+   },
+   {
+    "hora": "14:15",
+    "titulo": "🔑 CHECK-IN con Amaia",
+    "detalle": []
+   },
+   {
+    "hora": "14:50",
+    "titulo": "🚇 44 min a la Cité",
+    "detalle": []
+   },
+   {
+    "hora": "15:30",
+    "titulo": "⛪ SAINTE-CHAPELLE ✅ pedido 2626564997520405974 · €0",
+    "detalle": [
+     "🎫 ← PRIMER USO DEL PASE (arranca el reloj de 96 h)",
+     "Los vitrales del s. XIII, 15 m de alto",
+     "🔴 Franjas de 30 min · cierra 17:00"
+    ]
+   },
+   {
+    "hora": "16:30",
+    "titulo": "☕ Café y llegar al punto de encuentro",
+    "detalle": []
+   },
+   {
+    "hora": "17:00",
+    "titulo": "🗣️ FREE TOUR POR PARÍS — CON GUÍA EN VIVO, en español",
+    "detalle": [
+     "✅ A41729841 · 2h30 · a la gorra",
+     "Notre-Dame → Île de la Cité (Sainte-Chapelle,",
+     "Conciergerie y Palacio de Justicia por fuera) →",
+     "Pont Neuf → Pont des Arts → explanada del Louvre →",
+     "Jardines de las Tullerías · 🌃 termina iluminado"
+    ]
+   },
+   {
+    "hora": "19:30",
+    "titulo": "Fin cerca del Museo del Louvre",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "⛪ NOTRE-DAME POR DENTRO — GRATIS",
+    "detalle": [
+     "🔴 Los JUEVES es el único día que abre hasta las 22:00",
+     "Mostrar la reserva + documento, 5 min antes"
+    ]
+   },
+   {
+    "hora": "21:00",
+    "titulo": "🍽️ CENA EN EL MARAIS DE NOCHE",
+    "detalle": [
+     "Place des Vosges bajo los arcos, rue des Rosiers,",
+     "rue Vieille du Temple"
+    ]
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 23,
+  "fecha": "2026-10-23",
+  "dow": "vie",
+  "titulo": "El Louvre, el eje y la Torre",
+  "ciudad": "paris",
+  "actividades": [
+   {
+    "hora": "08:40",
+    "titulo": "🚇 Salir · 28 min · bajar en Palais-Royal (línea 1 o 7)",
+    "detalle": [
+     "🚪 Entrar por la PORTE DES LIONS (sobre el Sena, hasta",
+     "17:15): menos cola que la Pirámide y cae en antigüedades"
+    ]
+   },
+   {
+    "hora": "09:00",
+    "titulo": "🏛️ LOUVRE ✅ venta V260782118957 · €0 · 🔴 franja 09:00",
+    "detalle": [
+     "🎫 Llevar EL PASE Y EL PASAPORTE",
+     "2h30, SOLO ANTIGÜEDADES: los toros alados asirios, el",
+     "Código de Hammurabi, la Venus de Milo, la Samotracia",
+     "⚠️ Una entrada por sitio y la salida es definitiva"
+    ]
+   },
+   {
+    "hora": "11:30",
+    "titulo": "🌳 TULLERÍAS → CONCORDE (no detenerse: ya se caminaron",
+    "detalle": [
+     "con guía el jueves)"
+    ]
+   },
+   {
+    "hora": "12:30",
+    "titulo": "🍽️ Almuerzo por Concorde",
+    "detalle": []
+   },
+   {
+    "hora": "13:30",
+    "titulo": "🚶 30 min cruzando el PONT ALEXANDRE III",
+    "detalle": []
+   },
+   {
+    "hora": "14:00",
+    "titulo": "🪖 INVALIDES · TUMBA DE NAPOLEÓN 🎫 sin franja",
+    "detalle": [
+     "🔴 10:00-18:00 · incluye la iglesia del Domo"
+    ]
+   },
+   {
+    "hora": "16:00",
+    "titulo": "🚇 20 min",
+    "detalle": []
+   },
+   {
+    "hora": "16:30",
+    "titulo": "⬆️ ARCO DEL TRIUNFO 🎫 sin franja",
+    "detalle": [
+     "La Eiffel de frente y las doce avenidas en estrella"
+    ]
+   },
+   {
+    "hora": "17:45",
+    "titulo": "🚇 15 min",
+    "detalle": []
+   },
+   {
+    "hora": "18:00",
+    "titulo": "🗼 TORRE EIFFEL ✅ pedido 1168465976ab2b2f36f298",
+    "detalle": [
+     "🔴 turno 18h00 · 2º PISO POR ESCALERAS · 674 escalones",
+     "Control de seguridad antes del pilar: llegar en punto"
+    ]
+   },
+   {
+    "hora": "18:45",
+    "titulo": "🌅 ATARDECER desde el 2º piso",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "👁️ TROCADÉRO con la torre iluminada",
+    "detalle": []
+   },
+   {
+    "hora": "20:30",
+    "titulo": "🍽️ Cena",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 24,
+  "fecha": "2026-10-24",
+  "dow": "sáb",
+  "titulo": "VERSALLES",
+  "ciudad": "paris",
+  "actividades": [
+   {
+    "hora": "07:45",
+    "titulo": "Salir · 🚇 1h20 (RER C)",
+    "detalle": []
+   },
+   {
+    "hora": "09:05",
+    "titulo": "Llegada · abre 9:00",
+    "detalle": []
+   },
+   {
+    "hora": "09:15",
+    "titulo": "🏰 CHÂTEAU 🎫 — 1h30 · 🔴 franja horaria obligatoria",
+    "detalle": []
+   },
+   {
+    "hora": "10:45",
+    "titulo": "🌳 JARDINES",
+    "detalle": []
+   },
+   {
+    "hora": "11:00",
+    "titulo": "⛲ GRANDES EAUX MUSICALES — primera tanda, hasta 12:00",
+    "detalle": [
+     "⭐ Solo corren fines de semana: por eso Versalles es sábado"
+    ]
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "14:30",
+    "titulo": "🌳 Bosquetes (música 10:00-19:00)",
+    "detalle": []
+   },
+   {
+    "hora": "15:30",
+    "titulo": "⛲ Segunda tanda de fuentes, hasta 17:20",
+    "detalle": []
+   },
+   {
+    "hora": "17:30",
+    "titulo": "🚇 Vuelta",
+    "detalle": []
+   },
+   {
+    "hora": "19:00",
+    "titulo": "París",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 25,
+  "fecha": "2026-10-25",
+  "dow": "dom",
+  "titulo": "Montmartre y el Marais ⏰ cambia la hora",
+  "ciudad": "paris",
+  "actividades": [
+   {
+    "hora": "09:30",
+    "titulo": "🚇 34 min",
+    "detalle": []
+   },
+   {
+    "hora": "10:00",
+    "titulo": "🗣️ FREE TOUR POR MONTMARTRE — CON GUÍA EN VIVO, en español",
+    "detalle": [
+     "2h15-2h30 · a la gorra"
+    ]
+   },
+   {
+    "hora": "12:30",
+    "titulo": "⛪ SACRÉ-CŒUR y su CÚPULA",
+    "detalle": [
+     "El punto natural más alto de París, con la Eiffel al fondo"
+    ]
+   },
+   {
+    "hora": "13:30",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "15:00",
+    "titulo": "🚇 al Marais",
+    "detalle": []
+   },
+   {
+    "hora": "15:30",
+    "titulo": "🚶 MARAIS — Place des Vosges, CARNAVALET (gratis),",
+    "detalle": [
+     "rue des Rosiers, Île Saint-Louis",
+     "🔴 El domingo es EL día del Marais: los comercios abren"
+    ]
+   },
+   {
+    "hora": "17:45",
+    "titulo": "🌅 Atardecer (ya con la hora cambiada)",
+    "detalle": []
+   },
+   {
+    "hora": "19:00",
+    "titulo": "🍽️ Cena · 🧳 ARMAR VALIJAS HOY (mañana se vuelve 22:00)",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 26,
+  "fecha": "2026-10-26",
+  "dow": "lun",
+  "titulo": "DISNEYLAND PARK",
+  "ciudad": "paris",
+  "actividades": [
+   {
+    "hora": "08:00",
+    "titulo": "Salir de casa · 🚇 56 min (RER A desde Nation)",
+    "detalle": []
+   },
+   {
+    "hora": "09:00",
+    "titulo": "En la puerta — 🔴 abre 9:30, conviene estar antes",
+    "detalle": [
+     "🎃 Disney Halloween Festival: 26/9 al 1/11",
+     "Decoración, Villanos y shows de temporada"
+    ]
+   },
+   {
+    "hora": "22:00",
+    "titulo": "Vuelta",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🔴 **Un solo parque (Disneyland Park).** Precio dinámico y en Toussaint se agota: comprar cuanto antes.",
+   "🛫 **mar 27/10 · salir de casa ~09:00** — Eurostar, Gare du Nord **11:02 → London St Pancras 12:30**. *Presentarse 90 min antes por control de pasaportes.*",
+   "---"
+  ]
+ },
+ {
+  "n": 27,
+  "fecha": "2026-10-27",
+  "dow": "mar",
+  "titulo": "Medio día · Westminster",
+  "ciudad": "londres",
+  "actividades": [
+   {
+    "hora": "13:30",
+    "titulo": "🔑 Hotel · 🧳 valijas",
+    "detalle": []
+   },
+   {
+    "hora": "14:30",
+    "titulo": "🎧 WESTMINSTER ABBEY — CON AUDIOGUÍA incluida en la entrada",
+    "detalle": [
+     "🔴 reservar · gótico y tumbas, no es pinacoteca"
+    ]
+   },
+   {
+    "hora": "16:00",
+    "titulo": "⬆️ CHURCHILL WAR ROOMS — bajo el Tesoro, a dos cuadras",
+    "detalle": [
+     "de Big Ben · ⚠️ verificar último acceso"
+    ]
+   },
+   {
+    "hora": "18:00",
+    "titulo": "🚶 BIG BEN y PARLIAMENT → ST JAMES'S PARK →",
+    "detalle": [
+     "BUCKINGHAM → TRAFALGAR"
+    ]
+   },
+   {
+    "hora": "20:00",
+    "titulo": "🍽️ Cena",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 28,
+  "fecha": "2026-10-28",
+  "dow": "mié",
+  "titulo": "La City y el Támesis",
+  "ciudad": "londres",
+  "actividades": [
+   {
+    "hora": "09:30",
+    "titulo": "🗣️ TOWER OF LONDON — CON GUÍA EN VIVO (tour del Beefeater,",
+    "detalle": [
+     "en inglés), incluido en la entrada"
+    ]
+   },
+   {
+    "hora": "12:30",
+    "titulo": "🌉 TOWER BRIDGE",
+    "detalle": []
+   },
+   {
+    "hora": "13:30",
+    "titulo": "🍽️ BOROUGH MARKET — almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "15:00",
+    "titulo": "🌉 MILLENNIUM BRIDGE",
+    "detalle": []
+   },
+   {
+    "hora": "16:00",
+    "titulo": "⛪ ST PAUL'S — subir a la cúpula",
+    "detalle": []
+   },
+   {
+    "hora": "19:00",
+    "titulo": "🍽️ Cena",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 29,
+  "fecha": "2026-10-29",
+  "dow": "jue",
+  "titulo": "Bloomsbury y West End",
+  "ciudad": "londres",
+  "actividades": [
+   {
+    "hora": "09:30",
+    "titulo": "🗣️ BRITISH MUSEUM — GRATIS",
+    "detalle": [
+     "🗣️ Tours \"eye-opener\" CON GUÍA EN VIVO (inglés), 30-40 min,",
+     "gratis y sin reserva: mirar la pizarra de horarios al entrar"
+    ]
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "14:30",
+    "titulo": "🚶 COVENT GARDEN",
+    "detalle": []
+   },
+   {
+    "hora": "16:30",
+    "titulo": "🚶 SOHO",
+    "detalle": []
+   },
+   {
+    "hora": "19:30",
+    "titulo": "🎭 OBRA DEL WEST END",
+    "detalle": [
+     "TKTS o rush tickets bajan mucho el precio"
+    ]
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 30,
+  "fecha": "2026-10-30",
+  "dow": "vie",
+  "titulo": "Londres oeste",
+  "ciudad": "londres",
+  "actividades": [
+   {
+    "hora": "10:00",
+    "titulo": "🛍️ PORTOBELLO ROAD y NOTTING HILL",
+    "detalle": []
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "14:30",
+    "titulo": "🌳 KENSINGTON GARDENS y HYDE PARK",
+    "detalle": []
+   },
+   {
+    "hora": "16:00",
+    "titulo": "🏛️ V&A o NATURAL HISTORY MUSEUM — GRATIS",
+    "detalle": [
+     "*(o Kensington Palace, o más tiempo en Portobello)*"
+    ]
+   },
+   {
+    "hora": "19:00",
+    "titulo": "🍽️ Cena · 🧳 valijas — mañana se sale 06:20",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🛫 **sáb 31/10 · salir del hotel 06:20** — Avanti West Coast, **Euston 07:30 → Edinburgh 12:18**, asientos F49/F50, transbordo en Wigan North Western (andén 5 → andén 5).",
+   "---"
+  ]
+ },
+ {
+  "n": 31,
+  "fecha": "2026-10-31",
+  "dow": "sáb",
+  "titulo": "Llegada y Halloween",
+  "ciudad": "edimburgo",
+  "actividades": [
+   {
+    "hora": "12:30",
+    "titulo": "🚕 Taxi a Broughton St Lane — £6-8",
+    "detalle": [
+     "(600 m, pero Leith St es cuesta arriba y van 46 kg)"
+    ]
+   },
+   {
+    "hora": "12:40",
+    "titulo": "🧳 Dejar valijas",
+    "detalle": []
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🚶 19 min a la Royal Mile",
+    "detalle": []
+   },
+   {
+    "hora": "13:20",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "14:05",
+    "titulo": "🎨 VICTORIA STREET — con la última luz buena · GRATIS",
+    "detalle": []
+   },
+   {
+    "hora": "14:30",
+    "titulo": "🏰 CASTILLO DE EDIMBURGO ✅ ticket 759010120003150828",
+    "detalle": [
+     "🔴 turno 14:30-15:00 · 2h30 hasta el cierre",
+     "🌅 16:34 el atardecer desde las murallas"
+    ]
+   },
+   {
+    "hora": "17:00",
+    "titulo": "🌃 Bajar la Royal Mile ya de noche, con Halloween encima",
+    "detalle": []
+   },
+   {
+    "hora": "18:00",
+    "titulo": "🍽️ CENA (sí, a las 18 — horario británico)",
+    "detalle": []
+   },
+   {
+    "hora": "19:45",
+    "titulo": "🚶 16 min",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "📍 Old Police Box frente al Starbucks, High St × Cockburn",
+    "detalle": []
+   },
+   {
+    "hora": "20:15",
+    "titulo": "🗣️ TOUR DE FANTASMAS — CON GUÍA EN VIVO EN ESPAÑOL ✅ pagado",
+    "detalle": []
+   },
+   {
+    "hora": "21:30",
+    "titulo": "Fin · 16 min a casa",
+    "detalle": []
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 32,
+  "fecha": "2026-11-01",
+  "dow": "dom",
+  "titulo": "Oeste a este, terminando en el cerro",
+  "ciudad": "edimburgo",
+  "actividades": [
+   {
+    "hora": "08:40",
+    "titulo": "🚶 18 min a 190 High Street (Old Fishmarket Close)",
+    "detalle": []
+   },
+   {
+    "hora": "09:00",
+    "titulo": "🗣️ FREE TOUR — CON GUÍA EN VIVO EN ESPAÑOL ✅ A41713308 · 2 h",
+    "detalle": [
+     "a la gorra",
+     "Victoria St, Royal Mile y los closes"
+    ]
+   },
+   {
+    "hora": "11:00",
+    "titulo": "Termina en el Museo Nacional de Escocia",
+    "detalle": []
+   },
+   {
+    "hora": "11:20",
+    "titulo": "🏰 HOLYROODHOUSE ✅ pedido 8841500 · 2 h",
+    "detalle": [
+     "✅ SIN TURNO FIJO: entrada por fecha",
+     "dom 9:30-16:30 · último ingreso 15:15"
+    ]
+   },
+   {
+    "hora": "13:30",
+    "titulo": "🍽️ ALMUERZO por Canongate / el Parlamento",
+    "detalle": []
+   },
+   {
+    "hora": "14:35",
+    "titulo": "⛰️ ARTHUR'S SEAT — 37 min de subida desde Holyrood",
+    "detalle": []
+   },
+   {
+    "hora": "15:15",
+    "titulo": "Cumbre · 251 m, la ciudad entera y el estuario",
+    "detalle": []
+   },
+   {
+    "hora": "16:15",
+    "titulo": "🚶 Empezar a bajar CON LUZ",
+    "detalle": []
+   },
+   {
+    "hora": "16:32",
+    "titulo": "🌅 Anochece",
+    "detalle": []
+   },
+   {
+    "hora": "17:00",
+    "titulo": "🏠 Casa",
+    "detalle": []
+   },
+   {
+    "hora": "18:30",
+    "titulo": "🍽️ CENA EN WHISKI BAR — Royal Mile",
+    "detalle": [
+     "Cocina escocesa y música tradicional en vivo"
+    ]
+   }
+  ],
+  "notas": []
+ },
+ {
+  "n": 33,
+  "fecha": "2026-11-02",
+  "dow": "lun",
+  "titulo": "Rosslyn y el Water of Leith",
+  "ciudad": "edimburgo",
+  "actividades": [
+   {
+    "hora": "07:45",
+    "titulo": "🚶 12 min a North Bridge",
+    "detalle": []
+   },
+   {
+    "hora": "08:00",
+    "titulo": "🚌 BUS LOTHIAN 37 → Roslin · 45 min · cada 30 min",
+    "detalle": [
+     "£6,00 el City DAY ticket (se paga arriba)"
+    ]
+   },
+   {
+    "hora": "08:45",
+    "titulo": "Roslin · 2 min a pie por Chapel Loan",
+    "detalle": []
+   },
+   {
+    "hora": "09:00",
+    "titulo": "🗣️ ROSSLYN CHAPEL — 🔴 FRANJA 09:00-10:30 · £12 c/u",
+    "detalle": [
+     "CHARLA CON GUÍA EN VIVO (inglés) a las 9:30, incluida",
+     "+ mapa de tallas impreso en 13 idiomas",
+     "De 1446: el Pilar del Aprendiz, los Green Men, las",
+     "plantas americanas esculpidas 50 años antes de Colón",
+     "🔴 Prohibido sacar fotos adentro"
+    ]
+   },
+   {
+    "hora": "10:30",
+    "titulo": "🏞️ ROSLIN GLEN y el CASTILLO DE ROSLIN — 1h15 · GRATIS",
+    "detalle": [
+     "Garganta boscosa sobre el Esk con ruinas del s. XIV"
+    ]
+   },
+   {
+    "hora": "11:45",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "12:45",
+    "titulo": "🚌 Bus 37 de vuelta · 45 min",
+    "detalle": []
+   },
+   {
+    "hora": "13:30",
+    "titulo": "Edimburgo · North Bridge · 🚶 27 min al noroeste",
+    "detalle": []
+   },
+   {
+    "hora": "13:57",
+    "titulo": "🏘️ DEAN VILLAGE — 45 min · GRATIS",
+    "detalle": [
+     "Pueblo de molinos del s. XVII metido en la ciudad,",
+     "20 m por debajo del nivel de la calle"
+    ]
+   },
+   {
+    "hora": "14:45",
+    "titulo": "🏞️ SENDERO DEL WATER OF LEITH — 16 min por el río",
+    "detalle": []
+   },
+   {
+    "hora": "15:05",
+    "titulo": "🏘️ STOCKBRIDGE — 1 h · Circus Lane",
+    "detalle": []
+   },
+   {
+    "hora": "16:30",
+    "titulo": "🌅 Anochece · 🏠 Casa",
+    "detalle": []
+   },
+   {
+    "hora": "18:30",
+    "titulo": "🍽️ Cena",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "⛰️ CALTON HILL DE NOCHE — 9 min de casa · GRATIS",
+    "detalle": []
+   },
+   {
+    "hora": "21:00",
+    "titulo": "🎻 SANDY BELL'S — Forrest Road · GRATIS",
+    "detalle": [
+     "Rueda informal de músicos todas las noches ~21:00",
+     "⚠️ No sirven comida: por eso se cena antes"
+    ]
+   }
+  ],
+  "notas": [
+   "☔ **Plan B si llueve:** Greyfriars Kirkyard + Museo Nacional de Escocia (gratis, a 62 m uno del otro)."
+  ]
+ },
+ {
+  "n": 34,
+  "fecha": "2026-11-03",
+  "dow": "mar",
+  "titulo": "Mañana y vuelo · Llegada",
+  "ciudad": "edimburgo",
+  "actividades": [
+   {
+    "hora": "09:00",
+    "titulo": "⛰️ CALTON HILL — 9 min de casa · GRATIS, con luz de mañana",
+    "detalle": []
+   },
+   {
+    "hora": "10:20",
+    "titulo": "⛪ ST GILES' CATHEDRAL — 45 min · GRATIS",
+    "detalle": [
+     "mar 9-17 · la Capilla del Cardo"
+    ]
+   },
+   {
+    "hora": "11:45",
+    "titulo": "🏠 Casa · valijas",
+    "detalle": []
+   },
+   {
+    "hora": "12:45",
+    "titulo": "🚋 Tranvía desde PICARDY PLACE — a 2 min de la puerta",
+    "detalle": []
+   },
+   {
+    "hora": "13:20",
+    "titulo": "✈️ Aeropuerto de Edimburgo",
+    "detalle": []
+   },
+   {
+    "hora": "21:00",
+    "titulo": "🔑 Hotel — ⚠️ confirmar el check-in de las 21:00",
+    "detalle": [
+     "El registro se hace en el Hostal Madrid de al lado"
+    ]
+   },
+   {
+    "hora": "21:45",
+    "titulo": "🍽️ Cena de llegada — Puerta del Sol a 3 min",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "🛫 **mar 3/11** — easyJet **EZY3209**, Edimburgo **15:25 → Madrid T1 19:30**, asientos 9E y 9F.",
+   "---"
+  ]
+ },
+ {
+  "n": 35,
+  "fecha": "2026-11-04",
+  "dow": "mié",
+  "titulo": "Día libre y vuelta",
+  "ciudad": "madrid2",
+  "actividades": [
+   {
+    "hora": "10:00",
+    "titulo": "🛍️ Compras por el centro (Sol, Gran Vía, Callao)",
+    "detalle": []
+   },
+   {
+    "hora": "13:00",
+    "titulo": "🍽️ Almuerzo",
+    "detalle": []
+   },
+   {
+    "hora": "15:00",
+    "titulo": "Lo que haya quedado pendiente:",
+    "detalle": [
+     "Thyssen · Retiro · Matadero · Mercado de San Fernando",
+     "· San Antonio de los Alemanes · Museo Arqueológico"
+    ]
+   },
+   {
+    "hora": "18:00",
+    "titulo": "🧳 Valijas y ducha (la habitación está hasta el 5)",
+    "detalle": []
+   },
+   {
+    "hora": "20:00",
+    "titulo": "🚇 Salir a Barajas",
+    "detalle": []
+   },
+   {
+    "hora": "23:10",
+    "titulo": "✈️ VUELO DE VUELTA",
+    "detalle": []
+   }
+  ],
+  "notas": [
+   "💡 **Se reservaron 2 noches a propósito:** el 4/11 se necesita la habitación todo el día y ducha antes del vuelo.",
+   "---"
+  ]
+ }
+];
 
 const GUIA_MADRID_D1 = {
   voz: "coral",
@@ -988,9 +3638,11 @@ var AUDIO_BASE = "audio/";
 
   /* ---------- utilidades ---------- */
   var MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
-  var DIAS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+  /* nombres cortos de los días. Ojo: DIAS a secas son los del viaje,
+     que vienen de dias.js. */
+  var DIA_SEM = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
   function parseISO(s) { var p = s.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
-  function fechaCorta(s) { var d = parseISO(s); return DIAS[d.getDay()] + " " + d.getDate() + " " + MESES[d.getMonth()]; }
+  function fechaCorta(s) { var d = parseISO(s); return DIA_SEM[d.getDay()] + " " + d.getDate() + " " + MESES[d.getMonth()]; }
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
@@ -1019,76 +3671,184 @@ var AUDIO_BASE = "audio/";
   })();
 
   /* ================= VISTA: ITINERARIO ================= */
+  /* ================= ITINERARIO POR DÍA =================
+     La pestaña principal: cada día se despliega y muestra su línea de tiempo
+     con TODO junto — actividades, audioguías y pases —, ordenado por hora.
+     Las pestañas Audioguías y Pases siguen existiendo como listas sueltas,
+     pero el día es el lugar donde uno mira cuando está viajando. */
+
+  var pasesCache = [];
+  var diaAbierto = null;
+
+  function paradaPorId(id) {
+    for (var i = 0; i < GUIAS.length; i++) {
+      var g = GUIAS[i];
+      for (var k = 0; k < g.paradas.length; k++) {
+        if (g.paradas[k].id === id) return { guia: g, idx: k, p: g.paradas[k] };
+      }
+    }
+    return null;
+  }
+
+  /* Reproduce una parada desde donde sea, sin pasar por la pestaña de guías. */
+  function tocarParadaPorId(id) {
+    var r = paradaPorId(id);
+    if (!r) return;
+    guiaActual = r.guia;
+    cargarParada(r.idx);
+  }
+
+  function minutosDeParada(p) {
+    return Math.max(1, Math.round(p.guion.length / CARACTERES_POR_MINUTO));
+  }
+
+  function hoyISO() {
+    var d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") +
+           "-" + String(d.getDate()).padStart(2, "0");
+  }
+
+  function diaPorDefecto() {
+    var hoy = hoyISO();
+    for (var i = 0; i < DIAS.length; i++) if (DIAS[i].fecha >= hoy) return DIAS[i].fecha;
+    return DIAS.length ? DIAS[DIAS.length - 1].fecha : null;
+  }
+
+  function pasesDelDia(fecha) {
+    return pasesCache.filter(function (p) { return p.fecha === fecha; });
+  }
+
+  function filaActividad(a) {
+    var h = '<div class="fila">';
+    h += '<div class="fila-h">' + esc(a.hora) + "</div>";
+    h += '<div class="fila-c">';
+    h += '<div class="fila-t">' + esc(a.titulo) + "</div>";
+    (a.detalle || []).forEach(function (d) {
+      h += '<div class="fila-d">' + esc(d) + "</div>";
+    });
+    if (a.paradas && a.paradas.length) {
+      h += '<div class="fila-audio">';
+      a.paradas.forEach(function (id) {
+        var r = paradaPorId(id);
+        if (!r) return;
+        var listo = hechas[id];
+        h += '<button class="mini-play' + (listo ? " listo" : "") + '" data-tocar="' + esc(id) + '">';
+        h += '<span class="mp-ico">' + (listo ? "&#10003;" : "&#9654;") + "</span>";
+        h += '<span class="mp-t">' + esc(r.p.titulo) + "</span>";
+        h += '<span class="mp-m">' + minutosDeParada(r.p) + " min</span>";
+        h += "</button>";
+      });
+      h += "</div>";
+    }
+    h += "</div></div>";
+    return h;
+  }
+
+  function filaPase(p) {
+    var h = '<div class="fila pase-fila">';
+    h += '<div class="fila-h">' + esc(p.hora || "") + "</div>";
+    h += '<div class="fila-c">';
+    h += '<div class="fila-tipo">' + esc(nombreTipo(p.tipo)) + " &middot; pase</div>";
+    h += '<div class="fila-t">' + esc(p.titulo) + "</div>";
+    if (p.codigo) h += '<div class="fila-cod">' + esc(p.codigo) + "</div>";
+    if (p.nota) h += '<div class="fila-d">' + esc(p.nota) + "</div>";
+    h += '<div class="fila-audio"><button class="mini-play ver" data-verpase="' + esc(p.id) + '">';
+    h += '<span class="mp-ico">&#9744;</span><span class="mp-t">Ver el pase</span></button></div>';
+    h += "</div></div>";
+    return h;
+  }
+
+  function cuerpoDia(d) {
+    var items = [];
+    (d.actividades || []).forEach(function (a) {
+      items.push({ hora: a.hora || "99:99", html: filaActividad(a) });
+    });
+    pasesDelDia(d.fecha).forEach(function (p) {
+      items.push({ hora: p.hora || "00:00", html: filaPase(p) });
+    });
+    items.sort(function (a, b) { return a.hora < b.hora ? -1 : a.hora > b.hora ? 1 : 0; });
+
+    var h = '<div class="linea">' + items.map(function (x) { return x.html; }).join("") + "</div>";
+    if (d.notas && d.notas.length) {
+      h += '<div class="dia-notas">';
+      d.notas.forEach(function (n) { h += "<div>" + esc(n) + "</div>"; });
+      h += "</div>";
+    }
+    return h;
+  }
+
+  function cabeceraDia(d) {
+    var nAud = (d.actividades || []).reduce(function (s, a) {
+      return s + ((a.paradas && a.paradas.length) || 0);
+    }, 0);
+    var nPas = pasesDelDia(d.fecha).length;
+    var partes = [(d.actividades || []).length + " actividades"];
+    if (nAud) partes.push(nAud + (nAud === 1 ? " audioguía" : " audioguías"));
+    if (nPas) partes.push(nPas + (nPas === 1 ? " pase" : " pases"));
+
+    var h = '<button class="dia-cab">';
+    h += '<div class="dia-top"><span class="dia-n">Día ' + d.n + "</span>";
+    h += '<span class="dia-f">' + esc(fechaLarga(d.fecha)) + "</span></div>";
+    h += "<h3>" + esc(d.titulo) + "</h3>";
+    h += '<div class="dia-tags">' + esc(partes.join(" · ")) + "</div>";
+    h += '<span class="dia-flecha">&#9662;</span>';
+    h += "</button>";
+    return h;
+  }
+
   function renderItin() {
+    if (diaAbierto === null) diaAbierto = diaPorDefecto();
     var h = "";
+
     h += '<div class="avisos">';
     IT.avisos.forEach(function (a) {
       var etiqueta = a.nivel === "pendiente" ? "Falta" : a.nivel === "atencion" ? "Ojo" : "Dato";
-      h += '<div class="aviso ' + a.nivel + '"><span class="dot">' + etiqueta + "</span><span>" + esc(a.texto) + "</span></div>";
+      h += '<div class="aviso ' + a.nivel + '"><span class="dot">' + etiqueta +
+           "</span><span>" + esc(a.texto) + "</span></div>";
     });
     h += "</div>";
 
-    IT.ciudades.forEach(function (c, i) {
+    IT.ciudades.forEach(function (c) {
+      var dd = DIAS.filter(function (x) { return x.ciudad === c.id; });
+      if (!dd.length) return;
+
+      h += '<h2 class="sec">' + esc(c.nombre) + " &middot; " + fechaCorta(c.desde) +
+           " &rarr; " + fechaCorta(c.hasta) + "</h2>";
+
       var alo = IT.alojamientos.filter(function (a) { return a.ciudad === c.id; })[0];
-      var legs = IT.transportes.filter(function (t) { return t.fecha === c.desde; });
-      var exc = IT.excursiones.filter(function (e) { return e.ciudad === c.id; });
-
-      h += '<article class="ciudad">';
-      h += '<div class="ciudad-head"><h3>' + esc(c.nombre) + '</h3><span class="pais">' + esc(c.pais) + "</span></div>";
-      h += '<div class="ciudad-meta">' + fechaCorta(c.desde) + " &rarr; " + fechaCorta(c.hasta) +
-           " &middot; " + c.noches + (c.noches === 1 ? " noche" : " noches") + "</div>";
-
-      legs.forEach(function (t) { h += legHTML(t, "Llegada"); });
-
       if (alo) {
-        h += '<div class="card">';
-        h += '<div class="eyebrow">Alojamiento</div>';
+        h += '<div class="alo">';
         if (alo.estado === "reservado") {
-          h += '<div class="card-title">' + esc(alo.nombre) + "</div>";
+          h += '<div class="eyebrow">Alojamiento</div><div class="alo-t">' + esc(alo.nombre) + "</div>";
           var bits = [];
           if (alo.zona) bits.push(alo.zona);
           if (alo.plataforma) bits.push(alo.plataforma);
-          if (alo.rating) bits.push(alo.rating);
-          h += '<div class="card-sub">' + esc(bits.join(" · ")) + "</div>";
-          if (alo.nota) h += '<div class="card-sub" style="margin-top:6px">' + esc(alo.nota) + "</div>";
-          h += '<div class="chips" style="padding:10px 0 0">';
-          if (alo.precio) h += '<span class="chip">' + esc(alo.precio) + "</span>";
-          if (alo.checkin) h += '<span class="chip">check-in ' + esc(alo.checkin) + "</span>";
-          if (alo.cancelacion) h += '<span class="chip">' + esc(alo.cancelacion) + "</span>";
-          h += "</div>";
+          if (alo.checkin) bits.push("check-in " + alo.checkin);
+          h += '<div class="alo-s">' + esc(bits.join(" · ")) + "</div>";
         } else {
-          h += '<div class="card-title" style="color:var(--alert)">Sin reservar</div>';
-          h += '<div class="card-sub">' + esc(alo.nota) + "</div>";
+          h += '<div class="eyebrow" style="color:var(--alert)">Alojamiento sin reservar</div>';
+          h += '<div class="alo-s">' + esc(alo.nota || "") + "</div>";
         }
         h += "</div>";
       }
 
-      exc.forEach(function (e) {
-        h += '<div class="card"><div class="eyebrow">Excursión · ' + fechaCorta(e.fechaSugerida) + "</div>";
-        h += '<div class="card-title">' + esc(e.nombre) + "</div>";
-        h += '<div class="card-sub">' + esc(e.nota) + "</div></div>";
+      dd.forEach(function (d) {
+        var abierto = d.fecha === diaAbierto;
+        h += '<article class="dia' + (abierto ? " abierto" : "") + '" data-dia="' + esc(d.fecha) + '">';
+        h += cabeceraDia(d);
+        h += '<div class="dia-cuerpo"' + (abierto ? "" : " hidden") + ">";
+        h += abierto ? cuerpoDia(d) : "";
+        h += "</div></article>";
       });
-
-      var guias = GUIAS.filter(function (g) { return g.ciudad === c.id; });
-      if (guias.length && i === 0) {
-        guias.forEach(function (g) {
-          h += '<button class="guia-card" data-guia="' + esc(g.id) + '" style="margin-top:10px">';
-          h += '<div class="eyebrow" style="color:var(--accent)">Audioguía disponible</div>';
-          h += "<h3>" + esc(g.titulo) + "</h3>";
-          h += '<div class="sub">' + esc(g.subtitulo) + "</div>";
-          h += '<div class="dur">' + esc(duracionGuia(g)) + "</div></button>";
-        });
-      }
-      h += "</article>";
     });
 
-    var salida = IT.transportes.filter(function (t) { return t.id === "t10"; })[0];
-    h += '<h2 class="sec">Vuelta</h2>' + legHTML(salida, "Salida");
-    h += '<p class="note">Los tramos marcados como comprados son los que ya tenés cerrados con código y asiento. ' +
-         "El resto está abierto.</p>";
+    h += '<h2 class="sec">Todos los tramos</h2>';
+    IT.transportes.forEach(function (t) { h += legHTML(t, t.tipo === "vuelo" ? "Vuelo" : "Tramo"); });
+    h += '<p class="note">Los tramos marcados como comprados son los que ya tenés cerrados. ' +
+         'Cada uno aparece también dentro de su día, más arriba.</p>';
+
     el("view-itin").innerHTML = h;
   }
-
   function legHTML(t, etiqueta) {
     if (!t) return "";
     var h = '<div class="leg">';
@@ -1587,6 +4347,7 @@ var AUDIO_BASE = "audio/";
       var v = t.getAttribute("data-view");
       if (v === "audio") renderAudioIndex();
       if (v === "pases") renderPases();
+      if (v === "itin") renderItin();
       mostrar(v);
     });
   });
@@ -1733,7 +4494,8 @@ var AUDIO_BASE = "audio/";
         var r = s.getAll();
         r.onsuccess = function () {
           var v = r.result || [];
-          v.sort(function (a, b) { return (a.fecha || "9") < (b.fecha || "9") ? -1 : 1; });
+          var clave = function (x) { return (x.fecha || "9999-99-99") + " " + (x.hora || "99:99"); };
+          v.sort(function (a, b) { return clave(a) < clave(b) ? -1 : 1; });
           ok(v);
         };
         r.onerror = function () { mal(r.error); };
@@ -1809,7 +4571,7 @@ var AUDIO_BASE = "audio/";
     }, Promise.resolve([])).then(function (imagenes) {
       borrador = {
         id: "p" + Date.now() + Math.floor(Math.random() * 1000),
-        tipo: "entrada", titulo: "", fecha: "", codigo: "", nota: "",
+        tipo: "entrada", titulo: "", fecha: "", hora: "", codigo: "", nota: "",
         imagenes: imagenes, creado: Date.now()
       };
       el("pase-estado").hidden = true;
@@ -1824,6 +4586,7 @@ var AUDIO_BASE = "audio/";
       ? "1 imagen" : borrador.imagenes.length + " imágenes";
     el("pase-titulo").value = borrador.titulo;
     el("pase-fecha").value = borrador.fecha;
+    el("pase-hora").value = borrador.hora || "";
     el("pase-codigo").value = borrador.codigo;
     el("pase-nota").value = borrador.nota;
     el("pase-tipo").value = borrador.tipo;
@@ -1843,9 +4606,12 @@ var AUDIO_BASE = "audio/";
     borrador.tipo = el("pase-tipo").value;
     borrador.titulo = el("pase-titulo").value.trim() || nombreTipo(borrador.tipo);
     borrador.fecha = el("pase-fecha").value;
+    borrador.hora = el("pase-hora").value;
     borrador.codigo = el("pase-codigo").value.trim();
     borrador.nota = el("pase-nota").value.trim();
-    guardarPase(borrador).then(function () { cerrarFormulario(); renderPases(); });
+    guardarPase(borrador).then(function () {
+      cerrarFormulario(); renderPases(); refrescarPases();
+    });
   }
 
   /* ---------- lista ---------- */
@@ -1859,10 +4625,19 @@ var AUDIO_BASE = "audio/";
     return dias[d.getDay()] + " " + d.getDate() + " de " + mes[d.getMonth()];
   }
 
+  function refrescarPases() {
+    return leerPases().then(function (ps) {
+      pasesCache = ps;
+      if (el("view-itin")) renderItin();
+      return ps;
+    });
+  }
+
   function renderPases() {
     var cont = el("view-pases");
     if (!cont) return;
     leerPases().then(function (ps) {
+      pasesCache = ps;
       var h = '<div class="pases-top">';
       h += '<button class="desc-btn" id="pase-add">Agregar pase</button>';
       h += '<button class="desc-btn sec" id="pase-exp">Exportar</button>';
@@ -1885,7 +4660,8 @@ var AUDIO_BASE = "audio/";
           h += '<h2 class="sec">' + esc(fechaLarga(dia)) + "</h2>";
         }
         h += '<div class="pase" data-pase="' + esc(p.id) + '">';
-        h += '<div class="pase-cab"><span class="pase-tipo">' + esc(nombreTipo(p.tipo)) + "</span>";
+        h += '<div class="pase-cab"><span class="pase-tipo">' + esc(nombreTipo(p.tipo)) +
+             (p.hora ? " &middot; " + esc(p.hora) : "") + "</span>";
         h += '<span class="pase-n">' + p.imagenes.length + "</span></div>";
         h += '<div class="pase-t">' + esc(p.titulo) + "</div>";
         if (p.codigo) h += '<div class="pase-cod">' + esc(p.codigo) + "</div>";
@@ -1984,7 +4760,8 @@ var AUDIO_BASE = "audio/";
           return blobAB64(b).then(function (d) { return { t: b.type, d: d }; });
         })).then(function (imgs) {
           return { id: p.id, tipo: p.tipo, titulo: p.titulo, fecha: p.fecha,
-                   codigo: p.codigo, nota: p.nota, creado: p.creado, imgs: imgs };
+                   hora: p.hora, codigo: p.codigo, nota: p.nota,
+                   creado: p.creado, imgs: imgs };
         });
       }));
     }).then(function (plano) {
@@ -2024,7 +4801,7 @@ var AUDIO_BASE = "audio/";
       var obj = JSON.parse(new TextDecoder().decode(claro));
       var ps = (obj.pases || []).map(function (p) {
         return { id: p.id, tipo: p.tipo, titulo: p.titulo, fecha: p.fecha,
-                 codigo: p.codigo, nota: p.nota, creado: p.creado,
+                 hora: p.hora || "", codigo: p.codigo, nota: p.nota, creado: p.creado,
                  imagenes: p.imgs.map(function (x) { return b64ABlob(x.d, x.t); }) };
       });
       return ps.reduce(function (c, p) {
@@ -2032,7 +4809,7 @@ var AUDIO_BASE = "audio/";
       }, Promise.resolve()).then(function () { return ps.length; });
     }).then(function (n) {
       el("pase-estado").textContent = "Importados " + n + " pase(s).";
-      renderPases();
+      renderPases(); refrescarPases();
     }).catch(function () {
       el("pase-estado").textContent =
         "No pude abrirlo. Suele ser la contraseña mal escrita, o el archivo incompleto.";
@@ -2043,6 +4820,23 @@ var AUDIO_BASE = "audio/";
   document.addEventListener("click", function (ev) {
     var t = ev.target;
     if (!t.closest) return;
+
+    var cab = t.closest(".dia-cab");
+    if (cab) {
+      var art = cab.closest(".dia");
+      var f = art.getAttribute("data-dia");
+      diaAbierto = (diaAbierto === f) ? null : f;
+      renderItin();
+      if (diaAbierto === f) {
+        var nodo = document.querySelector('.dia[data-dia="' + f + '"]');
+        if (nodo) nodo.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      return;
+    }
+    var tocar = t.closest("[data-tocar]");
+    if (tocar) { tocarParadaPorId(tocar.getAttribute("data-tocar")); return; }
+    var vp = t.closest("[data-verpase]");
+    if (vp) { verPase(vp.getAttribute("data-verpase")); return; }
 
     if (t.closest("#pase-add")) { el("pase-file").click(); return; }
     if (t.closest("#pase-exp")) { exportarPases(); return; }
@@ -2061,7 +4855,9 @@ var AUDIO_BASE = "audio/";
       var nodo = del.closest(".pase");
       var titulo = nodo.querySelector(".pase-t").textContent;
       if (confirm('¿Borrar "' + titulo + '" de este teléfono?')) {
-        borrarPaseDB(nodo.getAttribute("data-pase")).then(renderPases);
+        borrarPaseDB(nodo.getAttribute("data-pase")).then(function () {
+          renderPases(); refrescarPases();
+        });
       }
       return;
     }
@@ -2103,6 +4899,9 @@ var AUDIO_BASE = "audio/";
 
   /* ================= ARRANQUE ================= */
   renderItin();
+  /* Los pases viven en IndexedDB, que es asincrónico: el primer render del
+     itinerario sale sin ellos y se vuelve a dibujar apenas llegan. */
+  refrescarPases();
   renderPrac();
   renderAudioIndex();
   mostrar("itin");
