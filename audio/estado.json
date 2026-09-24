@@ -1,5 +1,6 @@
 {
  "mad1-01": {
+  "bitrate": "48k",
   "huella": "7d7e8c14",
   "motor": "openai",
   "velocidad": 1.0,
@@ -7,6 +8,7 @@
   "voz": "coral"
  },
  "mad1-02": {
+  "bitrate": "48k",
   "huella": "d2f260e7",
   "motor": "openai",
   "velocidad": 1.0,
@@ -14,6 +16,7 @@
   "voz": "coral"
  },
  "mad1-03": {
+  "bitrate": "48k",
   "huella": "bd550615",
   "motor": "openai",
   "velocidad": 1.0,
@@ -21,6 +24,7 @@
   "voz": "coral"
  },
  "mad1-04": {
+  "bitrate": "48k",
   "huella": "910a7cce",
   "motor": "openai",
   "velocidad": 1.0,
@@ -28,6 +32,7 @@
   "voz": "coral"
  },
  "mad1-05": {
+  "bitrate": "48k",
   "huella": "8856a895",
   "motor": "openai",
   "velocidad": 1.0,
@@ -35,6 +40,7 @@
   "voz": "coral"
  },
  "mad1-06": {
+  "bitrate": "48k",
   "huella": "28529126",
   "motor": "openai",
   "velocidad": 1.0,
