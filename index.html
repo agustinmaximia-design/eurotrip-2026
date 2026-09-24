@@ -125,10 +125,71 @@
   }
   .brand h1 { transition: opacity .18s ease; }
 
+
+  /* ---- pases ---- */
+  .pases-top { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0 4px; }
+  .vacio { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    padding: 18px; margin-top: 14px; font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+  .vacio b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 6px; }
+  .pase { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    padding: 13px 15px; margin-bottom: 9px; }
+  .pase-cab { display: flex; justify-content: space-between; align-items: center; }
+  .pase-tipo { font-family: var(--ff-mono); font-size: 10.5px; font-weight: 500;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--faint); }
+  .pase-n { font-family: var(--ff-mono); font-size: 10.5px; color: var(--faint); }
+  .pase-t { font-size: 16px; font-weight: 600; margin: 5px 0 0; letter-spacing: -.01em; }
+  .pase-cod { font-family: var(--ff-mono); font-size: 13px; color: var(--accent);
+    margin-top: 5px; user-select: text; letter-spacing: .04em; }
+  .pase-nota { font-size: 13px; color: var(--muted); margin-top: 5px; }
+  .pase-acc { display: flex; gap: 8px; margin-top: 11px; }
+  .pase-acc button { appearance: none; cursor: pointer; font: inherit; font-size: 12.5px;
+    font-weight: 600; padding: 7px 14px; border-radius: 3px; border: 1px solid var(--line);
+    background: var(--surface-2); color: var(--ink); }
+  .pase-acc .pase-ver { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .pase-acc button:active { transform: scale(.97); }
+  .pase-pie { margin-top: 18px; }
+
+  /* ---- hoja de alta ---- */
+  body.sin-scroll { overflow: hidden; }
+  .hoja { position: fixed; inset: 0; z-index: 90; background: rgba(0,0,0,.45);
+    display: flex; align-items: flex-end; }
+  .hoja-in { background: var(--bg); width: 100%; max-height: 92vh; overflow-y: auto;
+    border-radius: 14px 14px 0 0; padding: 20px 18px calc(20px + env(safe-area-inset-bottom, 0px));
+    animation: subir .22s ease; }
+  .hoja-in h3 { margin: 0 0 4px; font-family: var(--ff-text); font-size: 19px; font-weight: 600; }
+  .hoja-in label { display: block; margin-top: 14px; font-size: 12px; font-weight: 600;
+    letter-spacing: .02em; color: var(--muted); }
+  .hoja-in .opt { font-weight: 400; color: var(--faint); }
+  .hoja-in input, .hoja-in select { display: block; width: 100%; margin-top: 5px;
+    font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 3px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    -webkit-user-select: text; user-select: text; }
+  .hoja-acc { display: flex; gap: 8px; margin-top: 20px; }
+  .hoja-acc .desc-btn { flex: 1; padding: 12px; }
+
+  /* ---- visor a pantalla completa ---- */
+  .visor { position: fixed; inset: 0; z-index: 95; background: #fff;
+    display: flex; flex-direction: column; }
+  .visor-bar { display: flex; align-items: center; gap: 12px; padding: 12px 14px;
+    padding-top: calc(12px + env(safe-area-inset-top, 0px));
+    background: #fff; color: #13181A; border-bottom: 1px solid #E3E7E3; }
+  .visor-bar span:first-child { flex: 1; font-size: 14px; font-weight: 600;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #visor-n { font-family: var(--ff-mono); font-size: 11px; color: #8B948F; }
+  #visor-cerrar { appearance: none; border: 0; background: none; cursor: pointer;
+    font-size: 26px; line-height: 1; color: #5C6763; padding: 0 2px; }
+  .visor-img { flex: 1; overflow: auto; display: flex; align-items: center;
+    justify-content: center; background: #fff; }
+  .visor-img img { max-width: 100%; height: auto; display: block; }
+  .visor-nav { position: absolute; bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+    left: 18px; width: 46px; height: 46px; border-radius: 50%; border: 1px solid #D3D9D4;
+    background: rgba(255,255,255,.9); color: #13181A; font-size: 22px; cursor: pointer; }
+  .visor-nav.sig { left: auto; right: 18px; }
+
   /* ---- barra de navegación inferior, al alcance del pulgar ---- */
   .tabbar {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
-    display: grid; grid-template-columns: repeat(3, 1fr);
+    display: grid; grid-template-columns: repeat(4, 1fr);
     background: color-mix(in srgb, var(--surface) 94%, transparent);
     backdrop-filter: blur(16px) saturate(140%);
     border-top: 1px solid var(--line-soft);
@@ -384,8 +445,43 @@
 <main class="wrap">
   <section id="view-itin"></section>
   <section id="view-audio" hidden></section>
+  <section id="view-pases" hidden></section>
   <section id="view-prac" hidden></section>
 </main>
+
+<input type="file" id="pase-file" accept="image/*,application/pdf" multiple hidden>
+<input type="file" id="pase-imp-file" accept=".cifrado,application/octet-stream" hidden>
+
+<div class="hoja" id="pase-form" hidden>
+  <div class="hoja-in">
+    <h3>Nuevo pase</h3>
+    <div class="nota" id="pase-form-img"></div>
+    <label>Tipo<select id="pase-tipo">
+      <option value="vuelo">Vuelo</option><option value="tren">Tren</option>
+      <option value="bus">Bus</option><option value="ferry">Ferry</option>
+      <option value="entrada">Entrada</option><option value="aloj">Alojamiento</option>
+      <option value="otro">Otro</option></select></label>
+    <label>Título<input id="pase-titulo" type="text" placeholder="Ryanair FR1306 a Nápoles"></label>
+    <label>Fecha<input id="pase-fecha" type="date"></label>
+    <label>Código o localizador <span class="opt">opcional</span><input id="pase-codigo" type="text"></label>
+    <label>Nota <span class="opt">opcional</span><input id="pase-nota" type="text" placeholder="Terminal 4, mostrador 12"></label>
+    <div class="hoja-acc">
+      <button class="desc-btn sec" id="pase-cancel">Cancelar</button>
+      <button class="desc-btn" id="pase-ok">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="visor" id="visor" hidden>
+  <div class="visor-bar">
+    <span id="visor-tit"></span>
+    <span id="visor-n"></span>
+    <button id="visor-cerrar" aria-label="Cerrar">&times;</button>
+  </div>
+  <div class="visor-img"><img id="visor-img" alt=""></div>
+  <button class="visor-nav" id="visor-ant" aria-label="Anterior">&#8249;</button>
+  <button class="visor-nav sig" id="visor-sig" aria-label="Siguiente">&#8250;</button>
+</div>
 
 <div class="player" id="player" hidden>
   <div class="player-in">
@@ -413,6 +509,10 @@
   <button class="tab" role="tab" id="tab-audio" aria-selected="false" data-view="audio">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14.5A1.5 1.5 0 0 1 5.5 13H7v6H5.5A1.5 1.5 0 0 1 4 17.5v-3ZM20 14.5a1.5 1.5 0 0 0-1.5-1.5H17v6h1.5a1.5 1.5 0 0 0 1.5-1.5v-3Z"/></svg>
     <span>Audioguías</span>
+  </button>
+  <button class="tab" role="tab" id="tab-pases" aria-selected="false" data-view="pases">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h15A1.5 1.5 0 0 1 21 8.5v2a2 2 0 0 0 0 3.8v1.2a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 15.5v-1.2a2 2 0 0 0 0-3.8Z"/><path d="M14 7v11"/></svg>
+    <span>Pases</span>
   </button>
   <button class="tab" role="tab" id="tab-prac" aria-selected="false" data-view="prac">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9"/><circle cx="19.5" cy="18" r="2.2"/></svg>
@@ -512,7 +612,7 @@ const ITINERARIO = {
 };
 
 const GUIA_MADRID_D1 = {
-  voz: "es-US-Chirp3-HD-Gacrux",
+  voz: "coral",
   id: "madrid-d1",
   ciudad: "madrid",
   titulo: "Madrid, día 1",
@@ -591,7 +691,7 @@ const GUIA_MADRID_D1 = {
 };
 
 const GUIA_MADRID_D2 = {
-  voz: "es-US-Chirp3-HD-Iapetus",
+  voz: "coral",
   id: "madrid-d2",
   ciudad: "madrid",
   titulo: "Madrid, día 2",
@@ -668,7 +768,7 @@ const GUIA_MADRID_D2 = {
 };
 
 const GUIA_MADRID_D4 = {
-  voz: "es-US-Chirp3-HD-Iapetus",
+  voz: "coral",
   id: "madrid-d4",
   ciudad: "madrid",
   titulo: "Madrid, día 4",
@@ -725,7 +825,7 @@ const GUIA_MADRID_D4 = {
 };
 
 const GUIA_TOLEDO = {
-  voz: "es-US-Chirp3-HD-Gacrux",
+  voz: "coral",
   id: "toledo",
   ciudad: "madrid",
   titulo: "Toledo, día completo",
@@ -1466,10 +1566,10 @@ var AUDIO_BASE = "audio/";
   }
 
   /* ================= NAVEGACIÓN ================= */
-  var TITULOS = { itin: "Itinerario", audio: "Audioguías", prac: "Pendientes" };
+  var TITULOS = { itin: "Itinerario", audio: "Audioguías", pases: "Pases", prac: "Pendientes" };
 
   function mostrar(v) {
-    ["itin", "audio", "prac"].forEach(function (x) {
+    ["itin", "audio", "pases", "prac"].forEach(function (x) {
       el("view-" + x).hidden = x !== v;
       var t = el("tab-" + x);
       t.setAttribute("aria-selected", String(x === v));
@@ -1486,8 +1586,17 @@ var AUDIO_BASE = "audio/";
     t.addEventListener("click", function () {
       var v = t.getAttribute("data-view");
       if (v === "audio") renderAudioIndex();
+      if (v === "pases") renderPases();
       mostrar(v);
     });
+  });
+
+  el("pase-file").addEventListener("change", function (ev) {
+    nuevoPase(ev.target.files); ev.target.value = "";
+  });
+  el("pase-imp-file").addEventListener("change", function (ev) {
+    if (ev.target.files[0]) importarPases(ev.target.files[0]);
+    ev.target.value = "";
   });
 
   document.addEventListener("click", function (ev) {
@@ -1558,6 +1667,403 @@ var AUDIO_BASE = "audio/";
         guiaActual.paradas.forEach(function (p, k) { if (p.id === id2) i = k; });
         if (i >= 0) cargarParada(i);
       }
+    }
+  });
+
+
+  /* ================= PASES: pasajes, entradas y reservas =================
+
+     Todo vive en el teléfono, en IndexedDB, al lado del audio descargado.
+     NADA de esto se publica nunca: el repositorio es público y el QR de un
+     pase de embarque es la credencial misma, no una referencia a ella.
+
+     Para tener lo mismo en los dos teléfonos hay Exportar e Importar: se
+     genera un archivo cifrado con una contraseña y se lo pasa por donde sea.
+     Ese mismo archivo sirve de respaldo si un teléfono borra los datos del
+     sitio, que en iOS pasa. */
+
+  var TIPOS = [
+    { id: "vuelo",   nombre: "Vuelo" },
+    { id: "tren",    nombre: "Tren" },
+    { id: "bus",     nombre: "Bus" },
+    { id: "ferry",   nombre: "Ferry" },
+    { id: "entrada", nombre: "Entrada" },
+    { id: "aloj",    nombre: "Alojamiento" },
+    { id: "otro",    nombre: "Otro" }
+  ];
+
+  function nombreTipo(id) {
+    for (var i = 0; i < TIPOS.length; i++) if (TIPOS[i].id === id) return TIPOS[i].nombre;
+    return "Otro";
+  }
+
+  /* ---------- guardado ---------- */
+  var DB = null;
+
+  function abrirDB() {
+    if (DB) return Promise.resolve(DB);
+    return new Promise(function (ok, mal) {
+      var r = indexedDB.open("eurotrip-pases", 1);
+      r.onupgradeneeded = function () {
+        var d = r.result;
+        if (!d.objectStoreNames.contains("pases")) d.createObjectStore("pases", { keyPath: "id" });
+      };
+      r.onsuccess = function () { DB = r.result; ok(DB); };
+      r.onerror = function () { mal(r.error); };
+    });
+  }
+
+  function tx(modo) {
+    return abrirDB().then(function (d) { return d.transaction("pases", modo).objectStore("pases"); });
+  }
+
+  function guardarPase(p) {
+    return tx("readwrite").then(function (s) {
+      return new Promise(function (ok, mal) {
+        var r = s.put(p);
+        r.onsuccess = function () { ok(p); };
+        r.onerror = function () { mal(r.error); };
+      });
+    });
+  }
+
+  function leerPases() {
+    return tx("readonly").then(function (s) {
+      return new Promise(function (ok, mal) {
+        var r = s.getAll();
+        r.onsuccess = function () {
+          var v = r.result || [];
+          v.sort(function (a, b) { return (a.fecha || "9") < (b.fecha || "9") ? -1 : 1; });
+          ok(v);
+        };
+        r.onerror = function () { mal(r.error); };
+      });
+    });
+  }
+
+  function borrarPaseDB(id) {
+    return tx("readwrite").then(function (s) {
+      return new Promise(function (ok) { var r = s.delete(id); r.onsuccess = function () { ok(); }; });
+    });
+  }
+
+  /* ---------- PDF a imagen, solo si hace falta ----------
+     pdf.js son 1,8 MB. No se precarga con la app: se baja la primera vez que
+     importás un PDF y queda en una caché aparte que las publicaciones nuevas
+     no borran, así se baja una sola vez en la vida. */
+  var pdfjs = null;
+
+  function cargarPdfjs() {
+    if (pdfjs) return Promise.resolve(pdfjs);
+    return import("./vendor/pdf.min.mjs").then(function (m) {
+      m.GlobalWorkerOptions.workerSrc = "./vendor/pdf.worker.min.mjs";
+      pdfjs = m;
+      return m;
+    });
+  }
+
+  function pdfAImagenes(archivo) {
+    return cargarPdfjs().then(function (m) {
+      return archivo.arrayBuffer().then(function (buf) {
+        return m.getDocument({ data: buf }).promise;
+      });
+    }).then(function (doc) {
+      var paginas = [];
+      for (var i = 1; i <= doc.numPages; i++) paginas.push(i);
+      return paginas.reduce(function (cadena, n) {
+        return cadena.then(function (acum) {
+          return doc.getPage(n).then(function (pag) {
+            /* 2x da un QR nítido sin que el archivo se vaya de escala. */
+            var vp = pag.getViewport({ scale: 2 });
+            var c = document.createElement("canvas");
+            c.width = vp.width; c.height = vp.height;
+            return pag.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise
+              .then(function () {
+                return new Promise(function (ok) {
+                  c.toBlob(function (b) { acum.push(b); ok(acum); }, "image/jpeg", 0.92);
+                });
+              });
+          });
+        });
+      }, Promise.resolve([]));
+    });
+  }
+
+  function archivoAImagenes(f) {
+    if (f.type === "application/pdf") return pdfAImagenes(f);
+    return Promise.resolve([f]);
+  }
+
+  /* ---------- alta ---------- */
+  var borrador = null;
+
+  function nuevoPase(archivos) {
+    var lista = Array.prototype.slice.call(archivos);
+    if (!lista.length) return;
+    el("pase-estado").textContent = "Procesando " + lista.length + " archivo(s)...";
+    el("pase-estado").hidden = false;
+    lista.reduce(function (cadena, f) {
+      return cadena.then(function (acum) {
+        return archivoAImagenes(f).then(function (imgs) { return acum.concat(imgs); });
+      });
+    }, Promise.resolve([])).then(function (imagenes) {
+      borrador = {
+        id: "p" + Date.now() + Math.floor(Math.random() * 1000),
+        tipo: "entrada", titulo: "", fecha: "", codigo: "", nota: "",
+        imagenes: imagenes, creado: Date.now()
+      };
+      el("pase-estado").hidden = true;
+      abrirFormulario();
+    }).catch(function (e) {
+      el("pase-estado").textContent = "No pude leer ese archivo: " + e;
+    });
+  }
+
+  function abrirFormulario() {
+    el("pase-form-img").textContent = borrador.imagenes.length === 1
+      ? "1 imagen" : borrador.imagenes.length + " imágenes";
+    el("pase-titulo").value = borrador.titulo;
+    el("pase-fecha").value = borrador.fecha;
+    el("pase-codigo").value = borrador.codigo;
+    el("pase-nota").value = borrador.nota;
+    el("pase-tipo").value = borrador.tipo;
+    el("pase-form").hidden = false;
+    document.body.classList.add("sin-scroll");
+    setTimeout(function () { el("pase-titulo").focus(); }, 60);
+  }
+
+  function cerrarFormulario() {
+    el("pase-form").hidden = true;
+    document.body.classList.remove("sin-scroll");
+    borrador = null;
+  }
+
+  function confirmarPase() {
+    if (!borrador) return;
+    borrador.tipo = el("pase-tipo").value;
+    borrador.titulo = el("pase-titulo").value.trim() || nombreTipo(borrador.tipo);
+    borrador.fecha = el("pase-fecha").value;
+    borrador.codigo = el("pase-codigo").value.trim();
+    borrador.nota = el("pase-nota").value.trim();
+    guardarPase(borrador).then(function () { cerrarFormulario(); renderPases(); });
+  }
+
+  /* ---------- lista ---------- */
+  function fechaLarga(iso) {
+    if (!iso) return "Sin fecha";
+    var p = iso.split("-");
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    var dias = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+    var mes = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+               "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+    return dias[d.getDay()] + " " + d.getDate() + " de " + mes[d.getMonth()];
+  }
+
+  function renderPases() {
+    var cont = el("view-pases");
+    if (!cont) return;
+    leerPases().then(function (ps) {
+      var h = '<div class="pases-top">';
+      h += '<button class="desc-btn" id="pase-add">Agregar pase</button>';
+      h += '<button class="desc-btn sec" id="pase-exp">Exportar</button>';
+      h += '<button class="desc-btn sec" id="pase-imp">Importar</button>';
+      h += '</div>';
+      h += '<div class="nota" id="pase-estado" hidden></div>';
+
+      if (!ps.length) {
+        h += '<div class="vacio"><b>Todavía no hay nada guardado.</b>' +
+             'Agregá los pasajes y entradas desde las fotos o los PDF del teléfono. ' +
+             'Quedan acá adentro: no se publican en ningún lado y funcionan sin conexión.</div>';
+        cont.innerHTML = h;
+        return;
+      }
+
+      var dia = null;
+      ps.forEach(function (p) {
+        if (p.fecha !== dia) {
+          dia = p.fecha;
+          h += '<h2 class="sec">' + esc(fechaLarga(dia)) + "</h2>";
+        }
+        h += '<div class="pase" data-pase="' + esc(p.id) + '">';
+        h += '<div class="pase-cab"><span class="pase-tipo">' + esc(nombreTipo(p.tipo)) + "</span>";
+        h += '<span class="pase-n">' + p.imagenes.length + "</span></div>";
+        h += '<div class="pase-t">' + esc(p.titulo) + "</div>";
+        if (p.codigo) h += '<div class="pase-cod">' + esc(p.codigo) + "</div>";
+        if (p.nota) h += '<div class="pase-nota">' + esc(p.nota) + "</div>";
+        h += '<div class="pase-acc"><button class="pase-ver">Ver</button>' +
+             '<button class="pase-del">Borrar</button></div>';
+        h += "</div>";
+      });
+      h += '<div class="nota pase-pie">' + ps.length + ' pase(s) guardados en este teléfono. ' +
+           'Usá <b>Exportar</b> para pasárselos al otro y para tener un respaldo.</div>';
+      cont.innerHTML = h;
+    });
+  }
+
+  /* ---------- visor ---------- */
+  var visor = { urls: [], i: 0, lock: null };
+
+  function verPase(id) {
+    leerPases().then(function (ps) {
+      var p = ps.filter(function (x) { return x.id === id; })[0];
+      if (!p) return;
+      visor.urls.forEach(URL.revokeObjectURL);
+      visor.urls = p.imagenes.map(function (b) { return URL.createObjectURL(b); });
+      visor.i = 0;
+      el("visor-tit").textContent = p.titulo;
+      pintarVisor();
+      el("visor").hidden = false;
+      document.body.classList.add("sin-scroll");
+      /* La pantalla no se apaga mientras mostrás un código. */
+      if (navigator.wakeLock) {
+        navigator.wakeLock.request("screen").then(function (l) { visor.lock = l; })
+          .catch(function () {});
+      }
+    });
+  }
+
+  function pintarVisor() {
+    el("visor-img").src = visor.urls[visor.i];
+    el("visor-n").textContent = visor.urls.length > 1
+      ? (visor.i + 1) + " / " + visor.urls.length : "";
+    el("visor-ant").hidden = visor.urls.length < 2;
+    el("visor-sig").hidden = visor.urls.length < 2;
+  }
+
+  function cerrarVisor() {
+    el("visor").hidden = true;
+    document.body.classList.remove("sin-scroll");
+    if (visor.lock) { try { visor.lock.release(); } catch (e) {} visor.lock = null; }
+    visor.urls.forEach(URL.revokeObjectURL);
+    visor.urls = [];
+  }
+
+  /* ---------- exportar e importar, cifrado ----------
+     AES-256-GCM con la clave derivada de la contraseña por PBKDF2. Lo hace el
+     navegador solo, sin librerías. El archivo que sale es: salt (16 bytes),
+     iv (12) y el resto cifrado. Sin la contraseña no hay nada que hacer con él,
+     y por eso la contraseña tiene que ser larga: cuatro o cinco palabras. */
+  var VUELTAS = 310000;
+
+  function derivar(pass, salt) {
+    return crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2",
+                                   false, ["deriveKey"])
+      .then(function (km) {
+        return crypto.subtle.deriveKey(
+          { name: "PBKDF2", salt: salt, iterations: VUELTAS, hash: "SHA-256" },
+          km, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+      });
+  }
+
+  function blobAB64(b) {
+    return new Promise(function (ok) {
+      var r = new FileReader();
+      r.onload = function () { ok(r.result.split(",")[1]); };
+      r.readAsDataURL(b);
+    });
+  }
+
+  function b64ABlob(s, tipo) {
+    var bin = atob(s), u = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+    return new Blob([u], { type: tipo || "image/jpeg" });
+  }
+
+  function exportarPases() {
+    var pass = prompt("Elegí una contraseña para el archivo.\n\n" +
+                      "Tiene que ser larga: cuatro o cinco palabras sueltas.\n" +
+                      "Si la perdés, el archivo no se puede abrir.");
+    if (!pass) return;
+    if (pass.length < 12) { alert("Muy corta. Poné al menos 12 caracteres."); return; }
+    el("pase-estado").hidden = false;
+    el("pase-estado").textContent = "Cifrando...";
+
+    leerPases().then(function (ps) {
+      return Promise.all(ps.map(function (p) {
+        return Promise.all(p.imagenes.map(function (b) {
+          return blobAB64(b).then(function (d) { return { t: b.type, d: d }; });
+        })).then(function (imgs) {
+          return { id: p.id, tipo: p.tipo, titulo: p.titulo, fecha: p.fecha,
+                   codigo: p.codigo, nota: p.nota, creado: p.creado, imgs: imgs };
+        });
+      }));
+    }).then(function (plano) {
+      var salt = crypto.getRandomValues(new Uint8Array(16));
+      var iv = crypto.getRandomValues(new Uint8Array(12));
+      var datos = new TextEncoder().encode(JSON.stringify({ v: 1, pases: plano }));
+      return derivar(pass, salt).then(function (k) {
+        return crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, k, datos);
+      }).then(function (cif) {
+        var out = new Uint8Array(16 + 12 + cif.byteLength);
+        out.set(salt, 0); out.set(iv, 16); out.set(new Uint8Array(cif), 28);
+        var url = URL.createObjectURL(new Blob([out], { type: "application/octet-stream" }));
+        var a = document.createElement("a");
+        a.href = url; a.download = "pases-eurotrip.cifrado";
+        a.click();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+        el("pase-estado").textContent =
+          "Listo. Mandale ese archivo al otro teléfono y pasale la contraseña por otro lado.";
+      });
+    }).catch(function (e) {
+      el("pase-estado").textContent = "Falló el cifrado: " + e;
+    });
+  }
+
+  function importarPases(archivo) {
+    var pass = prompt("Contraseña del archivo:");
+    if (!pass) return;
+    el("pase-estado").hidden = false;
+    el("pase-estado").textContent = "Descifrando...";
+    archivo.arrayBuffer().then(function (buf) {
+      var u = new Uint8Array(buf);
+      var salt = u.slice(0, 16), iv = u.slice(16, 28), cif = u.slice(28);
+      return derivar(pass, salt).then(function (k) {
+        return crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, k, cif);
+      });
+    }).then(function (claro) {
+      var obj = JSON.parse(new TextDecoder().decode(claro));
+      var ps = (obj.pases || []).map(function (p) {
+        return { id: p.id, tipo: p.tipo, titulo: p.titulo, fecha: p.fecha,
+                 codigo: p.codigo, nota: p.nota, creado: p.creado,
+                 imagenes: p.imgs.map(function (x) { return b64ABlob(x.d, x.t); }) };
+      });
+      return ps.reduce(function (c, p) {
+        return c.then(function () { return guardarPase(p); });
+      }, Promise.resolve()).then(function () { return ps.length; });
+    }).then(function (n) {
+      el("pase-estado").textContent = "Importados " + n + " pase(s).";
+      renderPases();
+    }).catch(function () {
+      el("pase-estado").textContent =
+        "No pude abrirlo. Suele ser la contraseña mal escrita, o el archivo incompleto.";
+    });
+  }
+
+  /* ---------- enganche de eventos ---------- */
+  document.addEventListener("click", function (ev) {
+    var t = ev.target;
+    if (!t.closest) return;
+
+    if (t.closest("#pase-add")) { el("pase-file").click(); return; }
+    if (t.closest("#pase-exp")) { exportarPases(); return; }
+    if (t.closest("#pase-imp")) { el("pase-imp-file").click(); return; }
+    if (t.closest("#pase-cancel")) { cerrarFormulario(); return; }
+    if (t.closest("#pase-ok")) { confirmarPase(); return; }
+    if (t.closest("#visor-cerrar")) { cerrarVisor(); return; }
+    if (t.closest("#visor-ant")) { visor.i = (visor.i - 1 + visor.urls.length) % visor.urls.length; pintarVisor(); return; }
+    if (t.closest("#visor-sig")) { visor.i = (visor.i + 1) % visor.urls.length; pintarVisor(); return; }
+
+    var ver = t.closest(".pase-ver");
+    if (ver) { verPase(ver.closest(".pase").getAttribute("data-pase")); return; }
+
+    var del = t.closest(".pase-del");
+    if (del) {
+      var nodo = del.closest(".pase");
+      var titulo = nodo.querySelector(".pase-t").textContent;
+      if (confirm('¿Borrar "' + titulo + '" de este teléfono?')) {
+        borrarPaseDB(nodo.getAttribute("data-pase")).then(renderPases);
+      }
+      return;
     }
   });
 

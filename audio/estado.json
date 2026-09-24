@@ -1,39 +1,45 @@
 {
  "mad1-01": {
-  "huella": "0936bd86",
+  "huella": "7d7e8c14",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "mad1-02": {
-  "huella": "bd4b034d",
+  "huella": "d2f260e7",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "mad1-03": {
-  "huella": "8e9ac05f",
+  "huella": "bd550615",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "mad1-04": {
-  "huella": "eb51f7f8",
+  "huella": "910a7cce",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "mad1-05": {
-  "huella": "3a28b7e3",
+  "huella": "8856a895",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "mad1-06": {
-  "huella": "e1201038",
+  "huella": "28529126",
+  "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
-  "voz": "es-US-Chirp3-HD-Gacrux"
+  "voz": "coral"
  },
  "mad2-01": {
   "huella": "78f5ff69",

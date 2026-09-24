@@ -3,9 +3,12 @@
    - "cascara": el HTML, el manifest y los íconos. Se renueva sola al publicar.
    - "audio": los MP3. Nunca se tocan solos; los baja y los borra el usuario. */
 
-const VERSION = "8635fa2aae";
+const VERSION = "7a11b6f7a2";
 const CACHE_CASCARA = "eurotrip-cascara-" + VERSION;
 const CACHE_AUDIO = "eurotrip-audio-v1";
+/* pdf.js: pesado y estable. Cachearlo aparte evita volver a bajarlo en cada
+   publicación, porque la caché de cáscara se renueva con cada versión. */
+const CACHE_VENDOR = "eurotrip-vendor-v1";
 
 const CASCARA = [
   "./",
@@ -41,6 +44,22 @@ self.addEventListener("fetch", function (ev) {
   if (req.method !== "GET") return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
+
+  // pdf.js: caché primero, red si falta. Se guarda solo la primera vez.
+  if (url.pathname.indexOf("/vendor/") !== -1) {
+    ev.respondWith(
+      caches.open(CACHE_VENDOR).then(function (c) {
+        return c.match(req, { ignoreVary: true }).then(function (hit) {
+          if (hit) return hit;
+          return fetch(req).then(function (res) {
+            if (res && res.ok) c.put(req, res.clone());
+            return res;
+          });
+        });
+      })
+    );
+    return;
+  }
 
   // Audio: primero la caché, siempre. Si no está, no hay red que valga.
   if (url.pathname.indexOf("/audio/") !== -1 && url.pathname.slice(-4) === ".mp3") {
