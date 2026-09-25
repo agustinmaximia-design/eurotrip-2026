@@ -1898,8 +1898,18 @@ var AUDIO_BASE = "audio/";
     var src = AUDIO_BASE + p.id + ".mp3?v=" + huella((p.voz || "") + "\n" + p.guion);
     var a = new Audio();
     a.preload = "auto";
+    /* defaultPlaybackRate y no solo playbackRate: al asignar src el navegador
+       corre el algoritmo de carga, que pisa playbackRate con el valor por
+       defecto. Si solo se setea playbackRate acá, la pista siguiente arranca
+       en 1× aunque el botón siga diciendo 1,3×. Se reaplica al cargar y al
+       empezar a sonar porque no todos los navegadores se comportan igual. */
+    a.defaultPlaybackRate = reproductor.rate;
     a.playbackRate = reproductor.rate;
     var falloAMP3 = false;
+
+    a.addEventListener("loadedmetadata", function () {
+      a.playbackRate = reproductor.rate;
+    });
 
     a.addEventListener("error", function () {
       if (falloAMP3) return;
@@ -1911,6 +1921,7 @@ var AUDIO_BASE = "audio/";
     });
     a.addEventListener("ended", function () { finParada(); });
     a.addEventListener("playing", function () {
+      a.playbackRate = reproductor.rate;
       reproductor.modo = "mp3";
       el("player-src").textContent = "audio";
       setTocando(true);
@@ -2046,7 +2057,10 @@ var AUDIO_BASE = "audio/";
     var i = reproductor.rates.indexOf(reproductor.rate);
     reproductor.rate = reproductor.rates[(i + 1) % reproductor.rates.length];
     el("btn-rate").textContent = reproductor.rate.toFixed(2).replace(".", ",").replace(/,?0+$/, "") + "×";
-    if (reproductor.audio) reproductor.audio.playbackRate = reproductor.rate;
+    if (reproductor.audio) {
+      reproductor.audio.defaultPlaybackRate = reproductor.rate;
+      reproductor.audio.playbackRate = reproductor.rate;
+    }
     else if (reproductor.tocando && reproductor.idx >= 0) leerConVoz(reproductor.lista[reproductor.idx]);
   });
 
