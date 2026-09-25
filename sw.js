@@ -3,7 +3,7 @@
    - "cascara": el HTML, el manifest y los íconos. Se renueva sola al publicar.
    - "audio": los MP3. Nunca se tocan solos; los baja y los borra el usuario. */
 
-const VERSION = "5c48bde956";
+const VERSION = "260a348965";
 const CACHE_CASCARA = "eurotrip-cascara-" + VERSION;
 const CACHE_AUDIO = "eurotrip-audio-v1";
 /* pdf.js: pesado y estable. Cachearlo aparte evita volver a bajarlo en cada
