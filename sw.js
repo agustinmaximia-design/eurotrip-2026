@@ -39,6 +39,45 @@ self.addEventListener("activate", function (ev) {
   );
 });
 
+/* Responder pedidos parciales (Range) de los MP3.
+   Para saltar a un punto que todavía no bajó, el reproductor pide un pedazo
+   del archivo con la cabecera "Range". Si le devolvemos el archivo entero con
+   un 200, el elemento de audio descarta lo que tenía y vuelve a empezar: ése
+   era el bug de "se reinicia el audio al usar +15 o la barra".
+   Un servidor normal contesta 206 con Content-Range; acá lo hacemos a mano
+   cortando el blob guardado. */
+function conRango(req, res) {
+  const rango = req.headers.get("range");
+  if (!rango || !res || res.status !== 200) return Promise.resolve(res);
+  const m = /bytes=(\d*)-(\d*)/.exec(rango);
+  if (!m) return Promise.resolve(res);
+  const tipo = res.headers.get("Content-Type") || "audio/mpeg";
+  return res.blob().then(function (b) {
+    const total = b.size;
+    let ini = m[1] === "" ? null : parseInt(m[1], 10);
+    let fin = m[2] === "" ? null : parseInt(m[2], 10);
+    if (ini === null) {                     // "bytes=-500": los últimos 500
+      ini = Math.max(0, total - (fin || 0));
+      fin = total - 1;
+    } else if (fin === null || fin >= total) {
+      fin = total - 1;
+    }
+    if (!(ini >= 0) || ini > fin || ini >= total) {
+      return new Response("", { status: 416, statusText: "Range Not Satisfiable",
+        headers: { "Content-Range": "bytes */" + total } });
+    }
+    return new Response(b.slice(ini, fin + 1), {
+      status: 206, statusText: "Partial Content",
+      headers: {
+        "Content-Type": tipo,
+        "Content-Length": String(fin - ini + 1),
+        "Content-Range": "bytes " + ini + "-" + fin + "/" + total,
+        "Accept-Ranges": "bytes"
+      }
+    });
+  });
+}
+
 self.addEventListener("fetch", function (ev) {
   const req = ev.request;
   if (req.method !== "GET") return;
@@ -76,7 +115,7 @@ self.addEventListener("fetch", function (ev) {
           .then(function (h) { return h || c.match(url.pathname + url.search, opts); })
           .then(function (h) { return h || c.match(req, { ignoreVary: true, ignoreSearch: true }); })
           .then(function (hit) {
-            if (hit) return hit;
+            if (hit) return conRango(req, hit);
             return fetch(req).catch(function () {
               return new Response("", { status: 504, statusText: "sin audio guardado" });
             });
@@ -160,7 +199,8 @@ self.addEventListener("message", function (ev) {
             return res.blob().then(function (b) {
               return c.put(u, new Response(b, {
                 status: 200,
-                headers: { "Content-Type": "audio/mpeg", "Content-Length": String(b.size) }
+                headers: { "Content-Type": "audio/mpeg", "Content-Length": String(b.size),
+                           "Accept-Ranges": "bytes" }
               }));
             });
           }).then(function () {
