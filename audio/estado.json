@@ -215,9 +215,25 @@
   "volumen": -4.0,
   "voz": "coral"
  },
+ "mad4-05": {
+  "bitrate": "48k",
+  "huella": "cbb5eea7",
+  "motor": "openai",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "mad4-06": {
+  "bitrate": "48k",
+  "huella": "30d7eb7f",
+  "motor": "openai",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
  "tol-01": {
   "bitrate": "48k",
-  "huella": "b4b28411",
+  "huella": "89709089",
   "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
@@ -298,6 +314,30 @@
  "tol-11": {
   "bitrate": "48k",
   "huella": "a15ac860",
+  "motor": "openai",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "tol-12": {
+  "bitrate": "48k",
+  "huella": "0e517ff7",
+  "motor": "openai",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "tol-13": {
+  "bitrate": "48k",
+  "huella": "cc060fcd",
+  "motor": "openai",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "tol-14": {
+  "bitrate": "48k",
+  "huella": "30f2417b",
   "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
