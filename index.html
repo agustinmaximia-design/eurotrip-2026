@@ -192,7 +192,7 @@
     letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
   .fila-cod { font-family: var(--ff-mono); font-size: 14px; color: var(--accent);
     margin-top: 3px; user-select: text; letter-spacing: .04em; }
-  .pase-fila { background: var(--accent-soft); }
+  .pase-fila { background: var(--signal-soft); box-shadow: inset 3px 0 0 var(--signal); }
   .fila-audio { display: grid; gap: 5px; margin-top: 8px; }
   .mini-play { appearance: none; cursor: pointer; font: inherit; text-align: left;
     display: grid; grid-template-columns: 18px 1fr auto; gap: 9px; align-items: start;
@@ -204,10 +204,22 @@
   .mp-m { font-family: var(--ff-mono); font-size: 11.5px; color: var(--faint);
     padding-top: 3px; white-space: nowrap; }
   .mini-play.listo .mp-t { color: var(--muted); }
-  .mini-play.ver { background: var(--surface); border-color: var(--accent); }
+  /* Dentro de un día conviven tres cosas y hay que distinguirlas sin leer:
+       parada  fondo neutro          te parás y escuchás
+       tramo   verde tenue           se escucha caminando
+       pase    arena + barra al lado NO es una audioguía, es una entrada
+     El verde es la familia de las audioguías, así que el tramo se queda
+     adentro de esa familia y el pase se va al otro extremo del círculo. */
   .mini-play.resumen { border-style: dashed; }
-  .mini-play.tramo { border-color: color-mix(in srgb, var(--linea) 70%, transparent);
-    background: color-mix(in srgb, var(--surface) 60%, transparent); }
+  .mini-play.tramo { background: var(--accent-soft);
+    border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+  .mini-play.ver { background: var(--signal-soft); border-color: transparent;
+    border-left: 3px solid var(--signal); padding-left: 11px; }
+  .mini-play.ver .mp-ico { color: var(--signal); }
+  .mini-play.ver .mp-t { font-weight: 600; }
+  .mini-play.ver .mp-m { color: var(--signal); font-weight: 600;
+    text-transform: uppercase; letter-spacing: .08em; font-size: 10.5px;
+    padding-top: 5px; }
   .mp-tipo { display: block; font-family: var(--ff-mono); font-size: 10.5px;
     letter-spacing: .04em; text-transform: uppercase; color: var(--faint); margin-top: 3px; }
   .dia-play { display: inline-block; margin-top: 9px; font-family: var(--ff-mono);
@@ -2956,9 +2968,30 @@ var AUDIO_BASE = "audio/";
     if (verAudios) {
       var ka = verAudios.getAttribute("data-audios");
       audiosAbiertos[ka] = !audiosAbiertos[ka];
+      /* Esto hacía scrollIntoView del día entero, heredado del handler de la
+         cabecera. Resultado: abrir un bloque de audios te mandaba al principio
+         del día y perdías dónde estabas leyendo. Ahora se ancla en la
+         actividad: se anota a qué altura de la pantalla estaba antes de
+         redibujar y después se corrige el scroll para dejarla en el mismo
+         lugar. La actividad no se mueve; lo que se mueve es lo de abajo. */
+      var selAct = '[data-act="' + ka + '"]';
+      var previo = document.querySelector(selAct);
+      /* Se corrige con scrollTo absoluto y no con un scrollBy relativo. El
+         delta no sirve: Chrome tiene anclaje de scroll y, cuando algo cambia
+         de alto, ya mueve la página solo para que no te salte el contenido.
+         Si además le sumábamos nuestro ajuste, la corrección se aplicaba dos
+         veces y al cerrar el bloque se iba 400 px. Con la posición absoluta
+         mandamos nosotros, haga lo que haga el navegador. */
+      var enPantalla = previo ? previo.getBoundingClientRect().top : null;
       renderItin();
-      var nd = document.querySelector('.dia[data-dia="' + ka.split("#")[0] + '"]');
-      if (nd) nd.scrollIntoView({ block: "start" });
+      var despues = enPantalla === null ? null : document.querySelector(selAct);
+      if (despues) {
+        /* Se restaura con scrollTo absoluto: se lleva la actividad a la misma
+           altura de pantalla que tenía antes de redibujar. Lo que se mueve es
+           el contenido de abajo, no la fila que estás mirando. */
+        var docY = despues.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo(0, Math.max(0, docY - enPantalla));
+      }
       return;
     }
     var diaPlay = t.closest("[data-diaplay]");
