@@ -414,5 +414,13 @@
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
+ },
+ "tol-17": {
+  "bitrate": "48k",
+  "huella": "87053700",
+  "motor": "openai",
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
  }
 }
