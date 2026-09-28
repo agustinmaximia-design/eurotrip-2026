@@ -601,7 +601,7 @@
  },
  "nap4-05": {
   "bitrate": "48k",
-  "huella": "48fdff72",
+  "huella": "23e4cb5d",
   "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
@@ -617,7 +617,7 @@
  },
  "nap4-07": {
   "bitrate": "48k",
-  "huella": "9f2995b8",
+  "huella": "de1bba05",
   "motor": "openai",
   "velocidad": 1.0,
   "volumen": -4.0,
