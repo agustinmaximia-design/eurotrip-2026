@@ -1201,10 +1201,10 @@
  },
  "rom2-02": {
   "bitrate": "48k",
-  "cps": 14.09,
+  "cps": 14.7,
   "huella": "08115a63",
   "motor": "openai",
-  "segundos": 194.3,
+  "segundos": 186.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
