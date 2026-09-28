@@ -1,1088 +1,1360 @@
 {
  "mad1-01": {
   "bitrate": "48k",
+  "cps": 13.18,
   "huella": "7d7e8c14",
   "motor": "openai",
+  "segundos": 221.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-02": {
   "bitrate": "48k",
+  "cps": 13.61,
   "huella": "d2f260e7",
   "motor": "openai",
+  "segundos": 185.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-03": {
   "bitrate": "48k",
+  "cps": 13.04,
   "huella": "bd550615",
   "motor": "openai",
+  "segundos": 195.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-04": {
   "bitrate": "48k",
+  "cps": 12.78,
   "huella": "910a7cce",
   "motor": "openai",
+  "segundos": 242.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-05": {
   "bitrate": "48k",
+  "cps": 13.46,
   "huella": "8856a895",
   "motor": "openai",
+  "segundos": 137.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-06": {
   "bitrate": "48k",
+  "cps": 14.05,
   "huella": "8ade7325",
   "motor": "openai",
+  "segundos": 169.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-07": {
   "bitrate": "48k",
+  "cps": 13.99,
   "huella": "a71cf1e0",
   "motor": "openai",
+  "segundos": 143.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-08": {
   "bitrate": "48k",
+  "cps": 14.98,
   "huella": "260e2137",
   "motor": "openai",
+  "segundos": 114.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-09": {
   "bitrate": "48k",
+  "cps": 14.11,
   "huella": "b3e978d0",
   "motor": "openai",
+  "segundos": 158.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-10": {
   "bitrate": "48k",
+  "cps": 13.49,
   "huella": "fcab4105",
   "motor": "openai",
+  "segundos": 131.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-11": {
   "bitrate": "48k",
+  "cps": 13.48,
   "huella": "e20e2fea",
   "motor": "openai",
+  "segundos": 152.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-12": {
   "bitrate": "48k",
+  "cps": 14.0,
   "huella": "3312ac2c",
   "motor": "openai",
+  "segundos": 86.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-13": {
   "bitrate": "48k",
+  "cps": 14.08,
   "huella": "a9705155",
   "motor": "openai",
+  "segundos": 193.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-14": {
   "bitrate": "48k",
+  "cps": 13.46,
   "huella": "ab2cb70f",
   "motor": "openai",
+  "segundos": 173.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-15": {
   "bitrate": "48k",
+  "cps": 14.15,
   "huella": "5f66a78b",
   "motor": "openai",
+  "segundos": 151.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-16": {
   "bitrate": "48k",
+  "cps": 14.35,
   "huella": "39250ae3",
   "motor": "openai",
+  "segundos": 162.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-17": {
   "bitrate": "48k",
+  "cps": 14.46,
   "huella": "8609bf81",
   "motor": "openai",
+  "segundos": 146.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad1-18": {
   "bitrate": "48k",
+  "cps": 14.33,
   "huella": "5000b125",
   "motor": "openai",
+  "segundos": 187.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-01": {
   "bitrate": "48k",
+  "cps": 13.58,
   "huella": "87d5b1f2",
   "motor": "openai",
+  "segundos": 158.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-02": {
   "bitrate": "48k",
+  "cps": 13.17,
   "huella": "42856899",
   "motor": "openai",
+  "segundos": 135.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-03": {
   "bitrate": "48k",
+  "cps": 12.83,
   "huella": "b50dc6aa",
   "motor": "openai",
+  "segundos": 144.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-04": {
   "bitrate": "48k",
+  "cps": 13.91,
   "huella": "2cd0716f",
   "motor": "openai",
+  "segundos": 187.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-05": {
   "bitrate": "48k",
+  "cps": 13.91,
   "huella": "aab9b4f4",
   "motor": "openai",
+  "segundos": 151.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-06": {
   "bitrate": "48k",
+  "cps": 13.08,
   "huella": "37186136",
   "motor": "openai",
+  "segundos": 143.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-07": {
   "bitrate": "48k",
+  "cps": 14.24,
   "huella": "f83be68a",
   "motor": "openai",
+  "segundos": 274.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-08": {
   "bitrate": "48k",
+  "cps": 13.64,
   "huella": "2e1621b0",
   "motor": "openai",
+  "segundos": 186.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-09": {
   "bitrate": "48k",
+  "cps": 13.57,
   "huella": "34f22033",
   "motor": "openai",
+  "segundos": 136.5,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-10": {
   "bitrate": "48k",
+  "cps": 13.62,
   "huella": "9af1de1a",
   "motor": "openai",
+  "segundos": 258.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-11": {
   "bitrate": "48k",
+  "cps": 14.38,
   "huella": "ba45f052",
   "motor": "openai",
+  "segundos": 271.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad2-12": {
   "bitrate": "48k",
+  "cps": 15.05,
   "huella": "de26d490",
   "motor": "openai",
+  "segundos": 244.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-01": {
   "bitrate": "48k",
+  "cps": 14.14,
   "huella": "29f98951",
   "motor": "openai",
+  "segundos": 143.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-03": {
   "bitrate": "48k",
+  "cps": 14.17,
   "huella": "89cf51c3",
   "motor": "openai",
+  "segundos": 143.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-04": {
   "bitrate": "48k",
+  "cps": 13.53,
   "huella": "d0289c5c",
   "motor": "openai",
+  "segundos": 168.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-05": {
   "bitrate": "48k",
+  "cps": 13.72,
   "huella": "cbb5eea7",
   "motor": "openai",
+  "segundos": 183.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-06": {
   "bitrate": "48k",
+  "cps": 13.45,
   "huella": "bcc57363",
   "motor": "openai",
+  "segundos": 218.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-07": {
   "bitrate": "48k",
+  "cps": 13.96,
   "huella": "762a13d1",
   "motor": "openai",
+  "segundos": 134.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-08": {
   "bitrate": "48k",
+  "cps": 13.56,
   "huella": "526532f3",
   "motor": "openai",
+  "segundos": 142.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-09": {
   "bitrate": "48k",
+  "cps": 14.97,
   "huella": "fdca557d",
   "motor": "openai",
+  "segundos": 158.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-10": {
   "bitrate": "48k",
+  "cps": 13.65,
   "huella": "2b67f760",
   "motor": "openai",
+  "segundos": 210.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-11": {
   "bitrate": "48k",
+  "cps": 14.18,
   "huella": "d6d3223a",
   "motor": "openai",
+  "segundos": 168.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-12": {
   "bitrate": "48k",
+  "cps": 14.17,
   "huella": "c33a30b7",
   "motor": "openai",
+  "segundos": 196.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-13": {
   "bitrate": "48k",
+  "cps": 14.59,
   "huella": "4f2fde92",
   "motor": "openai",
+  "segundos": 181.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "mad4-14": {
   "bitrate": "48k",
+  "cps": 12.97,
   "huella": "8b83550a",
   "motor": "openai",
+  "segundos": 215.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap1-01": {
   "bitrate": "48k",
+  "cps": 13.61,
   "huella": "a12e7e00",
   "motor": "openai",
+  "segundos": 174.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap1-02": {
   "bitrate": "48k",
+  "cps": 13.65,
   "huella": "3dc5dbbe",
   "motor": "openai",
+  "segundos": 148.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap1-03": {
   "bitrate": "48k",
+  "cps": 14.26,
   "huella": "fc7c1cb0",
   "motor": "openai",
+  "segundos": 165.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap1-04": {
   "bitrate": "48k",
+  "cps": 14.06,
   "huella": "90d4cc00",
   "motor": "openai",
+  "segundos": 153.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap1-05": {
   "bitrate": "48k",
+  "cps": 13.3,
   "huella": "4013a969",
   "motor": "openai",
+  "segundos": 150.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap1-06": {
   "bitrate": "48k",
+  "cps": 13.87,
   "huella": "b641a7b5",
   "motor": "openai",
+  "segundos": 140.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap1-07": {
   "bitrate": "48k",
+  "cps": 14.12,
   "huella": "f46da1de",
   "motor": "openai",
+  "segundos": 168.5,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap1-08": {
   "bitrate": "48k",
+  "cps": 14.39,
   "huella": "3f43d1bf",
   "motor": "openai",
+  "segundos": 177.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-01": {
   "bitrate": "48k",
+  "cps": 14.72,
   "huella": "aab043e3",
   "motor": "openai",
+  "segundos": 147.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-02": {
   "bitrate": "48k",
+  "cps": 14.02,
   "huella": "8b99d58b",
   "motor": "openai",
+  "segundos": 179.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-03": {
   "bitrate": "48k",
+  "cps": 14.73,
   "huella": "58818e81",
   "motor": "openai",
+  "segundos": 160.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-04": {
   "bitrate": "48k",
+  "cps": 13.97,
   "huella": "8a0dde29",
   "motor": "openai",
+  "segundos": 152.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-05": {
   "bitrate": "48k",
+  "cps": 15.74,
   "huella": "4d09152f",
   "motor": "openai",
+  "segundos": 112.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-06": {
   "bitrate": "48k",
+  "cps": 13.8,
   "huella": "fdd2c9b4",
   "motor": "openai",
+  "segundos": 157.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-07": {
   "bitrate": "48k",
+  "cps": 13.5,
   "huella": "1711f9fe",
   "motor": "openai",
+  "segundos": 154.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-08": {
   "bitrate": "48k",
+  "cps": 14.32,
   "huella": "33d1eed2",
   "motor": "openai",
+  "segundos": 160.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-09": {
   "bitrate": "48k",
+  "cps": 13.77,
   "huella": "1233a993",
   "motor": "openai",
+  "segundos": 185.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-10": {
   "bitrate": "48k",
+  "cps": 14.16,
   "huella": "cbb1a3c7",
   "motor": "openai",
+  "segundos": 131.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap2-11": {
   "bitrate": "48k",
+  "cps": 13.7,
   "huella": "2e451c58",
   "motor": "openai",
+  "segundos": 150.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-01": {
   "bitrate": "48k",
+  "cps": 12.93,
   "huella": "bdd85ec8",
   "motor": "openai",
+  "segundos": 152.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-02": {
   "bitrate": "48k",
+  "cps": 13.31,
   "huella": "863d904e",
   "motor": "openai",
+  "segundos": 148.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-03": {
   "bitrate": "48k",
+  "cps": 13.6,
   "huella": "49f63533",
   "motor": "openai",
+  "segundos": 168.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-04": {
   "bitrate": "48k",
+  "cps": 14.08,
   "huella": "9f2a5ef1",
   "motor": "openai",
+  "segundos": 146.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-05": {
   "bitrate": "48k",
+  "cps": 14.06,
   "huella": "2a27acef",
   "motor": "openai",
+  "segundos": 151.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-06": {
   "bitrate": "48k",
+  "cps": 14.56,
   "huella": "b392cacd",
   "motor": "openai",
+  "segundos": 155.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-07": {
   "bitrate": "48k",
+  "cps": 13.24,
   "huella": "1e4f4ff3",
   "motor": "openai",
+  "segundos": 167.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-08": {
   "bitrate": "48k",
+  "cps": 14.08,
   "huella": "74d0950c",
   "motor": "openai",
+  "segundos": 130.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-09": {
   "bitrate": "48k",
+  "cps": 13.56,
   "huella": "cb81cf9e",
   "motor": "openai",
+  "segundos": 158.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-10": {
   "bitrate": "48k",
+  "cps": 14.5,
   "huella": "80b5a260",
   "motor": "openai",
+  "segundos": 165.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-11": {
   "bitrate": "48k",
+  "cps": 13.96,
   "huella": "4a2895df",
   "motor": "openai",
+  "segundos": 203.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-12": {
   "bitrate": "48k",
+  "cps": 13.71,
   "huella": "07a78366",
   "motor": "openai",
+  "segundos": 207.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-13": {
   "bitrate": "48k",
+  "cps": 13.18,
   "huella": "75794106",
   "motor": "openai",
+  "segundos": 255.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-14": {
   "bitrate": "48k",
+  "cps": 14.13,
   "huella": "16a55678",
   "motor": "openai",
+  "segundos": 171.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-15": {
   "bitrate": "48k",
+  "cps": 13.26,
   "huella": "5ca6fc86",
   "motor": "openai",
+  "segundos": 243.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap3-16": {
   "bitrate": "48k",
+  "cps": 14.2,
   "huella": "81f208b0",
   "motor": "openai",
+  "segundos": 187.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-01": {
   "bitrate": "48k",
+  "cps": 13.76,
   "huella": "2036a228",
   "motor": "openai",
+  "segundos": 189.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-02": {
   "bitrate": "48k",
+  "cps": 12.86,
   "huella": "808fbd89",
   "motor": "openai",
+  "segundos": 240.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-03": {
   "bitrate": "48k",
+  "cps": 14.23,
   "huella": "90090a9d",
   "motor": "openai",
+  "segundos": 143.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-04": {
   "bitrate": "48k",
+  "cps": 14.87,
   "huella": "3545e024",
   "motor": "openai",
+  "segundos": 164.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-05": {
   "bitrate": "48k",
+  "cps": 13.66,
   "huella": "23e4cb5d",
   "motor": "openai",
+  "segundos": 222.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-06": {
   "bitrate": "48k",
+  "cps": 14.8,
   "huella": "cf8d3884",
   "motor": "openai",
+  "segundos": 204.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-07": {
   "bitrate": "48k",
+  "cps": 14.53,
   "huella": "de1bba05",
   "motor": "openai",
+  "segundos": 204.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-08": {
   "bitrate": "48k",
+  "cps": 14.41,
   "huella": "c513c945",
   "motor": "openai",
+  "segundos": 269.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-09": {
   "bitrate": "48k",
+  "cps": 14.52,
   "huella": "a1ab837b",
   "motor": "openai",
+  "segundos": 250.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap4-10": {
   "bitrate": "48k",
+  "cps": 14.25,
   "huella": "582694b1",
   "motor": "openai",
+  "segundos": 161.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-01": {
   "bitrate": "48k",
+  "cps": 14.2,
   "huella": "990bed96",
   "motor": "openai",
+  "segundos": 148.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-02": {
   "bitrate": "48k",
+  "cps": 13.89,
   "huella": "d91404e0",
   "motor": "openai",
+  "segundos": 154.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-03": {
   "bitrate": "48k",
+  "cps": 13.86,
   "huella": "85eafdd7",
   "motor": "openai",
+  "segundos": 180.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-04": {
   "bitrate": "48k",
+  "cps": 13.49,
   "huella": "2b4b4010",
   "motor": "openai",
+  "segundos": 195.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-05": {
   "bitrate": "48k",
+  "cps": 14.22,
   "huella": "2c4e2107",
   "motor": "openai",
+  "segundos": 140.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-06": {
   "bitrate": "48k",
+  "cps": 13.63,
   "huella": "5ef012ac",
   "motor": "openai",
+  "segundos": 220.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-07": {
   "bitrate": "48k",
+  "cps": 13.87,
   "huella": "cf392ad8",
   "motor": "openai",
+  "segundos": 142.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-08": {
   "bitrate": "48k",
+  "cps": 14.51,
   "huella": "bf8a691c",
   "motor": "openai",
+  "segundos": 138.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-09": {
   "bitrate": "48k",
+  "cps": 13.27,
   "huella": "5d67d3b4",
   "motor": "openai",
+  "segundos": 163.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-10": {
   "bitrate": "48k",
+  "cps": 13.79,
   "huella": "08231461",
   "motor": "openai",
+  "segundos": 164.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-11": {
   "bitrate": "48k",
+  "cps": 14.46,
   "huella": "5bc3415a",
   "motor": "openai",
+  "segundos": 170.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "nap5-12": {
   "bitrate": "48k",
+  "cps": 13.8,
   "huella": "1db3634e",
   "motor": "openai",
+  "segundos": 174.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-01": {
   "bitrate": "48k",
+  "cps": 13.77,
   "huella": "74d72701",
   "motor": "openai",
+  "segundos": 258.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-02": {
   "bitrate": "48k",
+  "cps": 14.41,
   "huella": "cf908859",
   "motor": "openai",
+  "segundos": 160.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-03": {
   "bitrate": "48k",
+  "cps": 13.77,
   "huella": "3e398604",
   "motor": "openai",
+  "segundos": 172.5,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-04": {
   "bitrate": "48k",
+  "cps": 14.0,
   "huella": "f259d379",
   "motor": "openai",
+  "segundos": 165.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-05": {
   "bitrate": "48k",
+  "cps": 14.22,
   "huella": "f6faaebd",
   "motor": "openai",
+  "segundos": 165.5,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-06": {
   "bitrate": "48k",
+  "cps": 14.72,
   "huella": "486dae5e",
   "motor": "openai",
+  "segundos": 225.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-07": {
   "bitrate": "48k",
+  "cps": 13.9,
   "huella": "aebeaa36",
   "motor": "openai",
+  "segundos": 248.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-08": {
   "bitrate": "48k",
+  "cps": 14.02,
   "huella": "b55d74c3",
   "motor": "openai",
+  "segundos": 167.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-09": {
   "bitrate": "48k",
+  "cps": 13.82,
   "huella": "ecb1ccf0",
   "motor": "openai",
+  "segundos": 225.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-10": {
   "bitrate": "48k",
+  "cps": 14.87,
   "huella": "e65d144c",
   "motor": "openai",
+  "segundos": 217.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-11": {
   "bitrate": "48k",
+  "cps": 14.77,
   "huella": "a7229105",
   "motor": "openai",
+  "segundos": 258.5,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-12": {
   "bitrate": "48k",
+  "cps": 14.31,
   "huella": "c01b00cf",
   "motor": "openai",
+  "segundos": 268.5,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-13": {
   "bitrate": "48k",
+  "cps": 14.01,
   "huella": "dbf9249a",
   "motor": "openai",
+  "segundos": 140.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-14": {
   "bitrate": "48k",
+  "cps": 14.03,
   "huella": "f21dc698",
   "motor": "openai",
+  "segundos": 273.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-15": {
   "bitrate": "48k",
+  "cps": 14.54,
   "huella": "e791fde4",
   "motor": "openai",
+  "segundos": 264.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-16": {
   "bitrate": "48k",
+  "cps": 14.84,
   "huella": "ad1713fd",
   "motor": "openai",
+  "segundos": 258.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-17": {
   "bitrate": "48k",
+  "cps": 14.02,
   "huella": "4b8b3dfe",
   "motor": "openai",
+  "segundos": 185.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-18": {
   "bitrate": "48k",
+  "cps": 13.97,
   "huella": "bafb4090",
   "motor": "openai",
+  "segundos": 241.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "rom1-19": {
   "bitrate": "48k",
+  "cps": 14.86,
   "huella": "926d4cdb",
   "motor": "openai",
+  "segundos": 258.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-01": {
   "bitrate": "48k",
+  "cps": 13.75,
   "huella": "89709089",
   "motor": "openai",
+  "segundos": 240.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-02": {
   "bitrate": "48k",
+  "cps": 13.72,
   "huella": "9cc50c65",
   "motor": "openai",
+  "segundos": 185.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-03": {
   "bitrate": "48k",
+  "cps": 13.76,
   "huella": "2a78576a",
   "motor": "openai",
+  "segundos": 190.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-04": {
   "bitrate": "48k",
+  "cps": 13.29,
   "huella": "562c556c",
   "motor": "openai",
+  "segundos": 175.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-05": {
   "bitrate": "48k",
+  "cps": 13.16,
   "huella": "9779a4d0",
   "motor": "openai",
+  "segundos": 181.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-06": {
   "bitrate": "48k",
+  "cps": 14.02,
   "huella": "661b5c1e",
   "motor": "openai",
+  "segundos": 166.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-07": {
   "bitrate": "48k",
+  "cps": 13.56,
   "huella": "34799553",
   "motor": "openai",
+  "segundos": 194.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-08": {
   "bitrate": "48k",
+  "cps": 13.21,
   "huella": "bad79352",
   "motor": "openai",
+  "segundos": 169.3,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-09": {
   "bitrate": "48k",
+  "cps": 14.25,
   "huella": "7f2cbd81",
   "motor": "openai",
+  "segundos": 178.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-10": {
   "bitrate": "48k",
+  "cps": 12.83,
   "huella": "b96d9c0e",
   "motor": "openai",
+  "segundos": 208.2,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-11": {
   "bitrate": "48k",
+  "cps": 14.62,
   "huella": "a15ac860",
   "motor": "openai",
+  "segundos": 143.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-12": {
   "bitrate": "48k",
+  "cps": 14.11,
   "huella": "0e517ff7",
   "motor": "openai",
+  "segundos": 275.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-13": {
   "bitrate": "48k",
+  "cps": 13.56,
   "huella": "cc060fcd",
   "motor": "openai",
+  "segundos": 222.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-14": {
   "bitrate": "48k",
+  "cps": 14.49,
   "huella": "30f2417b",
   "motor": "openai",
+  "segundos": 202.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-15": {
   "bitrate": "48k",
+  "cps": 14.79,
   "huella": "a624eccd",
   "motor": "openai",
+  "segundos": 168.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-16": {
   "bitrate": "48k",
+  "cps": 13.64,
   "huella": "70a0ed92",
   "motor": "openai",
+  "segundos": 251.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "tol-17": {
   "bitrate": "48k",
+  "cps": 14.75,
   "huella": "87053700",
   "motor": "openai",
+  "segundos": 226.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
