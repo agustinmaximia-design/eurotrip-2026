@@ -316,25 +316,45 @@
   .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; border-radius: 8px; }
 
   /* ---- migraciones ---- */
-  .mig-cruce { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
-    padding: 14px 15px 12px; margin-bottom: 12px; border-left: 3px solid var(--accent); }
-  .mig-cruce.pasado { border-left-color: var(--line); opacity: .55; }
-  .mig-t { font-size: 17px; font-weight: 600; line-height: 1.35; margin-top: 5px; }
-  .mig-ctx { font-size: 14.5px; color: var(--muted); line-height: 1.55; margin-top: 8px; }
+  .mig-sec { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    margin-bottom: 12px; overflow: hidden; }
+  .mig-sec summary { list-style: none; cursor: pointer; padding: 14px 15px;
+    display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+  .mig-sec summary::-webkit-details-marker { display: none; }
+  .mig-sec summary::after { content: ""; grid-column: 2; width: 9px; height: 9px;
+    border-right: 2px solid var(--faint); border-bottom: 2px solid var(--faint);
+    transform: rotate(45deg); transition: transform .18s ease; margin-right: 4px; }
+  .mig-sec[open] summary::after { transform: rotate(-135deg); }
+  .mig-st { font-size: 18px; font-weight: 600; line-height: 1.3; }
+  .mig-sc { font-size: 13px; color: var(--faint); margin-top: 3px; }
+  .mig-badge { display: inline-block; margin-top: 7px; padding: 2px 9px; border-radius: 99px;
+    font-family: var(--ff-mono); font-size: 11px; font-weight: 600; letter-spacing: .04em; }
+  .mig-badge.ok { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+  .mig-badge.falta { background: color-mix(in srgb, var(--alert) 14%, transparent); color: var(--alert); }
+  .mig-body { padding: 0 15px 14px; border-top: 1px solid var(--line-soft); }
+  .mig-l { font-size: 14.5px; color: var(--muted); line-height: 1.55; margin-top: 10px; }
   .mig-h { font-family: var(--ff-ui); font-size: 11.5px; font-weight: 700; letter-spacing: .06em;
-    text-transform: uppercase; color: var(--faint); margin: 14px 0 6px; }
-  .mig-pasos { list-style: none; margin: 0; padding: 0; counter-reset: paso; }
-  .mig-pasos li { position: relative; padding-left: 30px; font-size: 15px; line-height: 1.5;
-    margin-bottom: 7px; counter-increment: paso; }
-  .mig-pasos li::before { content: counter(paso); position: absolute; left: 0; top: 1px;
-    width: 21px; height: 21px; border-radius: 50%; background: var(--accent); color: #fff;
-    font-family: var(--ff-mono); font-size: 11.5px; font-weight: 600; text-align: center; line-height: 21px; }
-  .mig-mano { list-style: none; margin: 0; padding: 0; }
-  .mig-mano li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.5; margin-bottom: 5px; }
-  .mig-mano li::before { content: ""; position: absolute; left: 2px; top: 7px; width: 10px; height: 10px;
-    border: 1.6px solid var(--muted); border-radius: 2px; }
-  .mig-ojo { font-size: 14.5px; color: var(--muted); line-height: 1.55; margin-top: 6px;
-    padding-left: 12px; border-left: 2px solid var(--alert); }
+    text-transform: uppercase; color: var(--faint); margin: 16px 0 6px; }
+  .mig-doc { display: grid; grid-template-columns: 26px 1fr auto; gap: 8px; align-items: start;
+    padding: 10px 0; border-top: 1px solid var(--line-soft); }
+  .mig-doc:first-of-type { border-top: 0; }
+  .mig-ico { font-size: 17px; line-height: 1.3; }
+  .mig-q { font-size: 15.5px; font-weight: 600; line-height: 1.35; }
+  .mig-q.falta { color: var(--alert); }
+  .mig-d { font-size: 13.5px; color: var(--muted); line-height: 1.45; margin-top: 2px; }
+  .mig-p { font-size: 13.5px; color: var(--accent); margin-top: 2px; }
+  .mig-acc { display: flex; flex-direction: column; gap: 6px; }
+  .mig-acc button { appearance: none; border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+    font-family: var(--ff-ui); font-size: 12.5px; font-weight: 600; padding: 6px 10px; border-radius: 3px; cursor: pointer; }
+  .mig-acc button.pri { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .mig-pick { grid-column: 1 / -1; margin-top: 4px; padding: 8px 10px; background: var(--bg);
+    border: 1px solid var(--line-soft); border-radius: 3px; }
+  .mig-pick button { display: block; width: 100%; text-align: left; appearance: none; border: 0;
+    background: none; padding: 7px 2px; font-family: var(--ff-ui); font-size: 14px; color: var(--ink);
+    border-top: 1px solid var(--line-soft); cursor: pointer; }
+  .mig-pick button:first-child { border-top: 0; }
+  .mig-pick .pk-t { font-size: 11px; color: var(--faint); display: block; }
+  .mig-mano { font-size: 13.5px; color: var(--faint); line-height: 1.5; margin-top: 14px; }
 
   /* ---- generic ---- */
   .eyebrow {
@@ -614,6 +634,8 @@
       <select id="pase-act"><option value="">Sin actividad — va por hora</option></select></label>
     <label>Código o localizador <span class="opt">opcional</span><input id="pase-codigo" type="text"></label>
     <label>Nota <span class="opt">opcional</span><input id="pase-nota" type="text" placeholder="Terminal 4, mostrador 12"></label>
+    <label>Migraciones <span class="opt">si es un documento para una frontera</span>
+      <select id="pase-migra"><option value="">No aplica</option></select></label>
     <div class="hoja-acc">
       <button class="desc-btn sec" id="pase-cancel">Cancelar</button>
       <button class="desc-btn" id="pase-ok">Guardar</button>
@@ -842,106 +864,47 @@ const PRACTICO = {
   ]
 };
 
-/* Migraciones: qué pasa en cada frontera y qué hay que tener a mano.
-   Verificado el 30/9/2026 contra gov.uk, interior.gob.es, la Comisión Europea
-   (DG HOME) y eurostar.com. Dos pasaportes argentinos, sin visa. */
+/* Migraciones: dos fronteras, y qué documento hay que tener cargado para cada una.
+   Los documentos no viven acá: son pases del teléfono (pestaña Pases) marcados con
+   el campo "migra". Esta lista dice qué ranuras existen y cuál está vacía.
+   Verificado el 30/9/2026 contra gov.uk, interior.gob.es, la Comisión Europea y
+   eurostar.com. Dos pasaportes argentinos, sin visa. */
 const MIGRACIONES = {
-  resumen: [
-    { que: "Para Europa no se tramita nada",
-      nota: "El ETIAS, el permiso pago de la Unión Europea, NO está en vigor: la Comisión retiró la fecha de 2026 y no anunció otra. Cualquier sitio que hoy cobre un «ETIAS» es una estafa. Con el pasaporte alcanza." },
-    { que: "Para el Reino Unido hace falta la ETA",
-      nota: "Es obligatoria para argentinos desde enero de 2025. Cuesta £20 por persona, vale dos años, y se pide SOLO en gov.uk/eta o en la app oficial «UK ETA». Queda ligada al pasaporte: no hay nada que imprimir. Recomiendan pedirla al menos tres días hábiles antes; suele llegar por mail en minutos u horas." },
-    { que: "El sello en el pasaporte ya no existe",
-      nota: "Desde el 10 de abril de 2026 la entrada y la salida de Europa quedan en el EES, un registro biométrico. La primera vez toman huellas de cuatro dedos y una foto, y ese registro vale tres años. Las veces siguientes solo verifican." },
-    { que: "Los pasaportes tienen que valer hasta febrero de 2027",
-      nota: "España pide tres meses de validez más allá de la salida (4/11) y que el pasaporte tenga menos de diez años. El Reino Unido pide solo que valga durante la estadía." },
-    { que: "Seguro médico: no es obligatorio, pero llevalo",
-      nota: "Ni España ni el Reino Unido lo exigen a quien no necesita visa. Es la prueba más fácil de solvencia si la piden, y la atención médica no es gratis para turistas." }
-  ],
-
-  cruces: [
-    { fecha: "2026-10-01", hora: "06:45", lugar: "Madrid · Barajas T4",
-      titulo: "Entrada a Europa · el registro EES por primera vez",
-      contexto: "Llegan con Plus Ultra PU502 a la T4 (el pasaje dice Terminal 4, no T1). La fila es «Todos los pasaportes» (la de eGates es solo para europeos). Con el EES ya sin excepciones desde septiembre, contar entre 45 y 90 minutos de cola: por eso el plan dice fuera del aeropuerto 08:00-08:30.",
-      pasos: [
-        "Fila «Todos los pasaportes / Resto de nacionalidades».",
-        "Registro EES: huellas de cuatro dedos, foto de la cara, y el pasaporte en el lector. Puede haber quioscos para pre-registrarse antes de la cabina; si los hay, usarlos acorta la fila.",
-        "El oficial puede preguntar: motivo (turismo), cuántos días (35, hasta el 4/11), dónde se alojan, con qué plata.",
-        "No hay sello. La prueba de entrada es el registro."
+  secciones: [
+    { id: "es", titulo: "Ingreso a España",
+      cuando: "jue 1/10 · Barajas T4 · 06:45 — y de nuevo el mar 3/11 · T1 · 19:30",
+      lineas: [
+        "Fila «Todos los pasaportes». La primera vez el EES toma huellas de cuatro dedos y foto; el 3/11 solo verifica. No hay sello.",
+        "Para Europa no se tramita nada: el ETIAS no está en vigor. Pasaporte válido hasta febrero de 2027 y con menos de diez años.",
+        "Pueden preguntar: motivo, cuántos días (35, hasta el 4/11), dónde duermen y con qué plata. Medios: €121,10 por día; alcanza con tarjeta y un extracto en el celular."
       ],
-      mano: [
-        "Pasaporte (el DNI argentino no sirve para nada en Europa).",
-        "Pasaje de vuelta: Madrid → Ezeiza, 4/11 23:10.",
-        "Reservas de alojamiento: la primera noche (The Newton Hostel, Calle de la Cabeza 11) y las demás en la app.",
-        "Tarjeta de crédito, y el resumen o saldo en el celular.",
-        "Seguro: los dos certificados de Chubb (Visa Signature), uno por cada uno, 30/9 al 4/11, en el celular."
+      docs: [
+        { slot: "vuelta",     que: "Pasaje de vuelta",             det: "Plus Ultra PU501 · Madrid T4 → Ezeiza · 4/11 23:10 · los dos" },
+        { slot: "hotel-mad1", que: "Alojamiento de la primera noche", det: "The Newton Hostel · 1 al 5/10 · Calle de la Cabeza 11" },
+        { slot: "seguro-a",   que: "Seguro médico · Agustín",       det: "Certificado Chubb / Visa Signature · 30/9 al 4/11 · Schengen €30.000" },
+        { slot: "seguro-s",   que: "Seguro médico · Sofía",         det: "Certificado Chubb / Visa Signature · 30/9 al 4/11 · Schengen €30.000" },
+        { slot: "hotel-mad2", que: "Alojamiento en Madrid, 3 y 4/11", det: "Para la reentrada del 3/11: la reserva de las dos últimas noches" },
+        { slot: "vuelo-edi",  que: "Vuelo Edimburgo → Madrid",     det: "easyJet EZY3209 · 3/11 15:25 → T1 19:30 · es lo que justifica la reentrada" }
       ],
-      ojo: [
-        "Los medios económicos oficiales para 2026 son €121,10 por persona y día, mínimo €1.098,90. Nadie pide efectivo: alcanza con la tarjeta y un extracto en el celular.",
-        "Carta de invitación: no hace falta. Solo se pide a quien se aloja en casa de un particular."
-      ]
+      mano: "En la mano, no acá: los dos pasaportes. El DNI argentino no sirve en Europa."
     },
-    { fecha: "2026-10-27", hora: "09:30", lugar: "París · Gare du Nord",
-      titulo: "Salida de Europa y entrada al Reino Unido, en la misma estación",
-      contexto: "El Eurostar tiene los controles británicos en París: se sale de Schengen y se entra al Reino Unido antes de subir al tren, y en Londres no hay nada más. Estar en Gare du Nord a las 09:30. Las puertas cierran 10:32 y ese tren no tiene un siguiente.",
-      pasos: [
-        "Portillos de ticket con el QR, en el entrepiso Eurostar (Hall 2, primer piso, señalizado con la bandera británica; escaleras frente al andén 17).",
-        "Policía francesa: registro de SALIDA del EES. Solo verificación, ya están registrados desde Madrid.",
-        "UK Border Force: cabina con oficial. Los argentinos NO pueden usar los eGates aunque tengan la ETA.",
-        "Seguridad, rayos X: sacar los electrónicos de la mochila.",
-        "Sala de espera y andenes 3 a 6."
+    { id: "uk", titulo: "Ingreso a Reino Unido",
+      cuando: "mar 27/10 · París Gare du Nord · estar 09:30 · puertas 10:32",
+      lineas: [
+        "Los controles británicos están en París: portillos con el QR → policía francesa (salida del EES) → UK Border Force en cabina, los argentinos no usan eGates → rayos X. En Londres no hay nada más.",
+        "La ETA es obligatoria, una por cabeza, £20, solo en gov.uk/eta o la app «UK ETA». Va ligada al pasaporte, nada que imprimir; el oficial la ve en el sistema.",
+        "Pueden preguntar: a qué vienen, cuántos días (siete, hasta el 3/11), dónde duermen, cómo se van. Con el vuelo a Madrid en pantalla, termina rápido. Pasaporte: válido durante la estadía, sin mínimo de seis meses."
       ],
-      mano: [
-        "Pasaporte, el mismo con el que se pidió la ETA.",
-        "El mail de confirmación de la ETA, por las dudas: el oficial la ve en el sistema.",
-        "Ticket del Eurostar en el celular.",
-        "Reserva del hotel de Londres (Aparthotel Adagio London City East, Whitechapel) y la de Edimburgo (Forth House).",
-        "El vuelo de salida del Reino Unido: easyJet EZY3209, Edimburgo → Madrid, 3/11 15:25.",
-        "Tarjeta de crédito."
+      docs: [
+        { slot: "eta-a",     que: "ETA · Agustín",                det: "Mail de confirmación de gov.uk · con el mismo pasaporte con el que se pidió" },
+        { slot: "eta-s",     que: "ETA · Sofía",                  det: "Mail de confirmación de gov.uk · con el mismo pasaporte con el que se pidió" },
+        { slot: "eurostar",  que: "Ticket del Eurostar",          det: "París Gare du Nord 11:02 → London St Pancras 12:30 · 27/10" },
+        { slot: "hotel-lon", que: "Alojamiento en Londres",       det: "Aparthotel Adagio London City East · 27 al 31/10 · Whitechapel" },
+        { slot: "hotel-edi", que: "Alojamiento en Edimburgo",     det: "Forth House · 31/10 al 3/11 · 6 Broughton St Lane" },
+        { slot: "vuelo-edi", que: "Vuelo de salida del Reino Unido", det: "easyJet EZY3209 · Edimburgo → Madrid · 3/11 15:25 · reserva a nombre de los dos" }
       ],
-      ojo: [
-        "Lo que suele preguntar Border Force a un turista no europeo: a qué vienen, cuántos días (siete, hasta el 3/11), dónde duermen, cómo se mantienen y cómo se van. Con el vuelo a Madrid en pantalla, se termina rápido.",
-        "Las respuestas cortas y consistentes entre los dos: turismo, Londres cuatro noches, Edimburgo tres, vuelo a Madrid el 3."
-      ]
-    },
-    { fecha: "2026-11-03", hora: "19:30", lugar: "Edimburgo → Madrid · Barajas T1",
-      titulo: "Vuelta a Europa · el EES ya los conoce",
-      contexto: "En Edimburgo no hay control migratorio de salida: el Reino Unido no lo hace, la aerolínea manda los datos. En Barajas vuelven a pasar por «Todos los pasaportes» y el EES solo verifica contra el registro del 1/10.",
-      pasos: [
-        "Fila «Todos los pasaportes» en la T1.",
-        "Verificación EES: foto o huella contra el registro de octubre. Sin enrolamiento nuevo.",
-        "Puede preguntar cuántos días se quedan: uno, vuelo el 4 a la noche."
-      ],
-      mano: [
-        "Pasaporte.",
-        "Pasaje Madrid → Ezeiza del 4/11.",
-        "Reserva del hotel de Madrid (dos noches, 3 y 4)."
-      ],
-      ojo: [
-        "Días en Europa hasta acá: 27 en octubre más 2 en noviembre, 29 en total. Los ocho días en el Reino Unido no cuentan para los 90 de Schengen. Sobra margen."
-      ]
-    },
-    { fecha: "2026-11-04", hora: "20:30", lugar: "Madrid · Barajas T4",
-      titulo: "Salida de Europa",
-      contexto: "Plus Ultra PU501, Terminal 4, a las 23:10. Con tres horas de antelación, el control de salida es la última cola del viaje.",
-      pasos: [
-        "Control de salida con registro EES: verificación, y queda asentada la fecha.",
-        "Nada que declarar ni tramitar del lado argentino: Migraciones argentina solo pide el pasaporte vigente. Aduana, únicamente si superan la franquicia."
-      ],
-      mano: [ "Pasaporte y tarjeta de embarque." ],
-      ojo: []
+      mano: "En la mano: los dos pasaportes, los mismos con los que se pidió la ETA."
     }
-  ],
-
-  reglas: [
-    { que: "90 días en cualquier ventana de 180",
-      nota: "Es el máximo en todo Schengen sumado. Este viaje consume 29. El Reino Unido va aparte: no es Schengen y no descuenta." },
-    { que: "El registro EES dura tres años",
-      nota: "Vale para toda Europa, no solo España. Si vuelven antes de octubre de 2029, no los enrolan de nuevo." },
-    { que: "La ETA dura dos años",
-      nota: "O hasta que venza el pasaporte, lo que pase primero. Entradas múltiples, hasta seis meses por visita. Si cambian de pasaporte, hay que pedir otra." },
-    { que: "Los dos pasaportes van siempre juntos con su dueño",
-      nota: "Cada control es individual: cada uno pasa con su pasaporte, su ETA y sus reservas. Las reservas a nombre de uno solo alcanzan si el otro está al lado y en la misma reserva." }
   ]
 };
 
@@ -6743,51 +6706,110 @@ var AUDIO_BASE = "audio/";
   }
 
   /* ================= VISTA: MIGRACIONES ================= */
-  function renderMig() {
-    var h = "";
-    h += '<h2 class="sec">Lo que hay que saber antes de salir</h2>';
-    MIGRACIONES.resumen.forEach(function (x) {
-      h += '<div class="prac"><div class="prac-q">' + esc(x.que) + '</div>' +
-           '<div class="prac-n">' + esc(x.nota) + "</div></div>";
-    });
+  var migraPendiente = "";   /* ranura elegida antes de cargar un archivo nuevo */
+  var migraAbierta = {};     /* qué desplegable está abierto, para no cerrarlo al redibujar */
+  var migraPicker = null;    /* ranura con el selector de pases desplegado */
 
-    h += '<h2 class="sec">Las cuatro fronteras, en orden</h2>';
-    var hoy = hoyISO();
-    MIGRACIONES.cruces.forEach(function (c) {
-      var pasado = c.fecha < hoy;
-      h += '<div class="mig-cruce' + (pasado ? " pasado" : "") + '">';
-      h += '<div class="crit-cab"><span class="crit-f">' + esc(fechaCorta(c.fecha)) +
-           '</span><span class="crit-h">' + esc(c.hora) + '</span><span class="crit-f">' + esc(c.lugar) + "</span></div>";
-      h += '<div class="mig-t">' + esc(c.titulo) + "</div>";
-      if (c.contexto) h += '<div class="mig-ctx">' + esc(c.contexto) + "</div>";
-      if (c.pasos && c.pasos.length) {
-        h += '<div class="mig-h">Qué pasa</div><ol class="mig-pasos">';
-        c.pasos.forEach(function (p) { h += "<li>" + esc(p) + "</li>"; });
-        h += "</ol>";
-      }
-      if (c.mano && c.mano.length) {
-        h += '<div class="mig-h">A mano, en este orden</div><ul class="mig-mano">';
-        c.mano.forEach(function (p) { h += "<li>" + esc(p) + "</li>"; });
-        h += "</ul>";
-      }
-      if (c.ojo && c.ojo.length) {
-        h += '<div class="mig-h">Ojo</div>';
-        c.ojo.forEach(function (p) { h += '<div class="mig-ojo">' + esc(p) + "</div>"; });
-      }
-      h += "</div>";
+  function migraSlots() {
+    var out = [], visto = {};
+    MIGRACIONES.secciones.forEach(function (sec) {
+      sec.docs.forEach(function (d) {
+        if (visto[d.slot]) return;
+        visto[d.slot] = true;
+        out.push({ slot: d.slot, que: d.que, sec: sec.titulo });
+      });
     });
-
-    h += '<h2 class="sec">Las reglas</h2>';
-    MIGRACIONES.reglas.forEach(function (x) {
-      h += '<div class="prac"><div class="prac-q">' + esc(x.que) + '</div>' +
-           '<div class="prac-n">' + esc(x.nota) + "</div></div>";
-    });
-    h += '<p class="note">Verificado el 30/9/2026 contra gov.uk, interior.gob.es, la Comisión Europea y eurostar.com. ' +
-         'Si algo cambia antes del viaje, cambia acá: la ETA y el ETIAS se consultan en gov.uk/eta y en travel-europe.europa.eu.</p>';
-    el("view-mig").innerHTML = h;
+    return out;
   }
 
-  /* ================= REPRODUCTOR ================= */
+  function llenarMigra(elegido) {
+    var sel = el("pase-migra");
+    if (!sel) return;
+    var h = '<option value="">No aplica</option>';
+    migraSlots().forEach(function (x) {
+      h += '<option value="' + esc(x.slot) + '"' + (x.slot === elegido ? " selected" : "") + ">" +
+           esc(x.que) + " — " + esc(x.sec) + "</option>";
+    });
+    sel.innerHTML = h;
+  }
+
+  function renderMig() {
+    leerPases().then(function (ps) {
+      pasesCache = ps;
+      var porSlot = {};
+      ps.forEach(function (p) { if (p.migra) porSlot[p.migra] = p; });
+      var h = "";
+      MIGRACIONES.secciones.forEach(function (sec) {
+        var faltan = sec.docs.filter(function (d) { return !porSlot[d.slot]; });
+        var abierta = migraAbierta[sec.id] || faltan.length > 0 && migraAbierta[sec.id] !== false;
+        h += '<details class="mig-sec" data-sec="' + esc(sec.id) + '"' + (abierta ? " open" : "") + ">";
+        h += "<summary><div>";
+        h += '<div class="mig-st">' + esc(sec.titulo) + "</div>";
+        h += '<div class="mig-sc">' + esc(sec.cuando) + "</div>";
+        h += faltan.length
+          ? '<span class="mig-badge falta">Faltan ' + faltan.length + " de " + sec.docs.length + "</span>"
+          : '<span class="mig-badge ok">' + sec.docs.length + " de " + sec.docs.length + " cargados</span>";
+        h += "</div></summary>";
+        h += '<div class="mig-body">';
+        sec.lineas.forEach(function (l) { h += '<div class="mig-l">' + esc(l) + "</div>"; });
+        h += '<div class="mig-h">Documentos</div>';
+        sec.docs.forEach(function (d) {
+          var p = porSlot[d.slot];
+          h += '<div class="mig-doc">';
+          h += '<div class="mig-ico">' + (p ? "\u2705" : "\u26A0\uFE0F") + "</div>";
+          h += "<div>";
+          h += '<div class="mig-q' + (p ? "" : " falta") + '">' + esc(d.que) + (p ? "" : " — falta") + "</div>";
+          h += '<div class="mig-d">' + esc(d.det) + "</div>";
+          if (p) h += '<div class="mig-p">' + esc(p.titulo) + " &middot; " + p.imagenes.length +
+                      (p.imagenes.length === 1 ? " imagen" : " imágenes") + "</div>";
+          h += "</div>";
+          h += '<div class="mig-acc">';
+          if (p) {
+            h += '<button class="pri" data-migra-ver="' + esc(p.id) + '">Ver</button>';
+            h += '<button data-migra-elegir="' + esc(d.slot) + '">Cambiar</button>';
+          } else {
+            h += '<button class="pri" data-migra-cargar="' + esc(d.slot) + '">Cargar</button>';
+            h += '<button data-migra-elegir="' + esc(d.slot) + '">Elegir</button>';
+          }
+          h += "</div>";
+          if (migraPicker === d.slot) {
+            h += '<div class="mig-pick">';
+            if (!ps.length) h += '<span class="pk-t">No hay pases en este teléfono todavía.</span>';
+            ps.forEach(function (q) {
+              h += '<button data-migra-asignar="' + esc(q.id) + '|' + esc(d.slot) + '">' + esc(q.titulo) +
+                   '<span class="pk-t">' + esc(nombreTipo(q.tipo)) + (q.fecha ? " · " + esc(fechaCorta(q.fecha)) : "") +
+                   (q.migra && q.migra !== d.slot ? " · ya usado en otra ranura" : "") + "</span></button>";
+            });
+            if (p) h += '<button data-migra-asignar="|' + esc(d.slot) + '">Quitar el que está</button>';
+            h += "</div>";
+          }
+          h += "</div>";
+        });
+        h += '<div class="mig-mano">' + esc(sec.mano) + "</div>";
+        h += "</div></details>";
+      });
+      h += '<p class="note">Los documentos son pases del teléfono: no se publican en ningún lado. ' +
+           'Cargar abre las fotos o PDF del celular; Elegir engancha uno que ya está en Pases. ' +
+           'Verificado el 30/9/2026 contra gov.uk, interior.gob.es, la Comisión Europea y eurostar.com.</p>';
+      el("view-mig").innerHTML = h;
+      Array.prototype.forEach.call(el("view-mig").querySelectorAll("details"), function (d) {
+        d.addEventListener("toggle", function () { migraAbierta[d.getAttribute("data-sec")] = d.open; });
+      });
+    });
+  }
+
+  function asignarMigra(pid, slot) {
+    return leerPases().then(function (ps) {
+      var cambios = [];
+      ps.forEach(function (q) {
+        if (q.migra === slot && q.id !== pid) { q.migra = ""; cambios.push(q); }
+        if (q.id === pid && q.migra !== slot) { q.migra = slot; cambios.push(q); }
+      });
+      return cambios.reduce(function (c, q) { return c.then(function () { return guardarPase(q); }); }, Promise.resolve());
+    }).then(function () { migraPicker = null; renderMig(); });
+  }
+
+  /* ================= REPRODUCTOR ================= */  /* ================= REPRODUCTOR ================= */
   var reproductor = {
     lista: [], idx: -1, modo: null, audio: null, tocando: false, rate: 1, arrastrando: false,
     rates: [1, 1.15, 1.3, 0.85]
@@ -7383,9 +7405,10 @@ var AUDIO_BASE = "audio/";
       borrador = {
         id: "p" + Date.now() + Math.floor(Math.random() * 1000),
         tipo: "entrada", titulo: "", fecha: "", hora: "", actividad: "",
-        codigo: "", nota: "",
+        codigo: "", nota: "", migra: migraPendiente || "",
         imagenes: imagenes, creado: Date.now()
       };
+      migraPendiente = "";
       el("pase-estado").hidden = true;
       abrirFormulario();
     }).catch(function (e) {
@@ -7403,6 +7426,7 @@ var AUDIO_BASE = "audio/";
     el("pase-codigo").value = borrador.codigo;
     el("pase-nota").value = borrador.nota;
     el("pase-tipo").value = borrador.tipo;
+    llenarMigra(borrador.migra || "");
     el("pase-form").hidden = false;
     document.body.classList.add("sin-scroll");
     setTimeout(function () { el("pase-titulo").focus(); }, 60);
@@ -7427,6 +7451,7 @@ var AUDIO_BASE = "audio/";
   }
 
   function cerrarFormulario() {
+    migraPendiente = "";
     el("pase-form").hidden = true;
     document.body.classList.remove("sin-scroll");
     borrador = null;
@@ -7441,8 +7466,12 @@ var AUDIO_BASE = "audio/";
     borrador.actividad = el("pase-act").value;
     borrador.codigo = el("pase-codigo").value.trim();
     borrador.nota = el("pase-nota").value.trim();
+    borrador.migra = el("pase-migra").value;
+    var slot = borrador.migra, pid = borrador.id;
     guardarPase(borrador).then(function () {
       cerrarFormulario(); renderPases(); refrescarPases();
+      if (slot) return asignarMigra(pid, slot);
+      if (!el("view-mig").hidden) renderMig();
     });
   }
 
@@ -7498,6 +7527,10 @@ var AUDIO_BASE = "audio/";
         h += '<div class="pase-t">' + esc(p.titulo) + "</div>";
         if (p.codigo) h += '<div class="pase-cod">' + esc(p.codigo) + "</div>";
         if (p.nota) h += '<div class="pase-nota">' + esc(p.nota) + "</div>";
+        if (p.migra) {
+          var ms = migraSlots().filter(function (x) { return x.slot === p.migra; })[0];
+          if (ms) h += '<div class="pase-nota">Migraciones: ' + esc(ms.que) + "</div>";
+        }
         h += '<div class="pase-acc"><button class="pase-ver">Ver</button>' +
              '<button class="pase-del">Borrar</button></div>';
         h += "</div>";
@@ -7731,6 +7764,21 @@ var AUDIO_BASE = "audio/";
     if (vp) { verPase(vp.getAttribute("data-verpase")); return; }
 
     if (t.closest("#pase-add")) { el("pase-file").click(); return; }
+    var mv = t.closest("[data-migra-ver]");
+    if (mv) { verPase(mv.getAttribute("data-migra-ver")); return; }
+    var mc = t.closest("[data-migra-cargar]");
+    if (mc) { migraPendiente = mc.getAttribute("data-migra-cargar"); el("pase-file").click(); return; }
+    var me = t.closest("[data-migra-elegir]");
+    if (me) {
+      var sl = me.getAttribute("data-migra-elegir");
+      migraPicker = migraPicker === sl ? null : sl;
+      renderMig(); return;
+    }
+    var ma = t.closest("[data-migra-asignar]");
+    if (ma) {
+      var par = ma.getAttribute("data-migra-asignar").split("|");
+      asignarMigra(par[0], par[1]); return;
+    }
     if (t.closest("#pase-exp")) { exportarPases(); return; }
     if (t.closest("#pase-imp")) { el("pase-imp-file").click(); return; }
     if (t.closest("#pase-cancel")) { cerrarFormulario(); return; }
