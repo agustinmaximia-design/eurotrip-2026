@@ -7660,8 +7660,20 @@ var AUDIO_BASE = "audio/";
     archivo.arrayBuffer().then(function (buf) {
       var u = new Uint8Array(buf);
       var salt = u.slice(0, 16), iv = u.slice(16, 28), cif = u.slice(28);
-      return derivar(pass, salt).then(function (k) {
-        return crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, k, cif);
+      /* Primero tal cual se escribió. Si falla, con la contraseña normalizada:
+         minúsculas, sin tildes, un solo espacio, sin espacios en las puntas.
+         El teclado del iPhone pone mayúscula inicial y tildes solo, y con
+         eso Sofía no pudo abrir el archivo el 30/9. */
+      var intento = function (pw) {
+        return derivar(pw, salt).then(function (k) {
+          return crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, k, cif);
+        });
+      };
+      var norm = pass.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                     .toLowerCase().replace(/\s+/g, " ").trim();
+      return intento(pass).catch(function () {
+        if (norm === pass) throw new Error("clave");
+        return intento(norm);
       });
     }).then(function (claro) {
       var obj = JSON.parse(new TextDecoder().decode(claro));
@@ -7678,8 +7690,10 @@ var AUDIO_BASE = "audio/";
       el("pase-estado").textContent = "Importados " + n + " pase(s).";
       renderPases(); refrescarPases();
     }).catch(function () {
+      var mb = (archivo.size / 1048576).toFixed(1);
       el("pase-estado").textContent =
-        "No pude abrirlo. Suele ser la contraseña mal escrita, o el archivo incompleto.";
+        "No pude abrirlo. Suele ser la contraseña mal escrita, o el archivo incompleto. " +
+        "Este archivo pesa " + mb + " MB: si el original pesa otra cosa, se cortó al pasarlo.";
     });
   }
 
