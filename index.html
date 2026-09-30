@@ -7627,7 +7627,7 @@ var AUDIO_BASE = "audio/";
           return { id: p.id, tipo: p.tipo, titulo: p.titulo, fecha: p.fecha,
                    hora: p.hora, actividad: p.actividad || "",
                    codigo: p.codigo, nota: p.nota,
-                   creado: p.creado, imgs: imgs };
+                   creado: p.creado, migra: p.migra || "", imgs: imgs };
         });
       }));
     }).then(function (plano) {
@@ -7668,7 +7668,7 @@ var AUDIO_BASE = "audio/";
       var ps = (obj.pases || []).map(function (p) {
         return { id: p.id, tipo: p.tipo, titulo: p.titulo, fecha: p.fecha,
                  hora: p.hora || "", actividad: p.actividad || "",
-                 codigo: p.codigo, nota: p.nota, creado: p.creado,
+                 codigo: p.codigo, nota: p.nota, creado: p.creado, migra: p.migra || "",
                  imagenes: p.imgs.map(function (x) { return b64ABlob(x.d, x.t); }) };
       });
       return ps.reduce(function (c, p) {
