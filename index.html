@@ -138,6 +138,28 @@
   .fila.hecha .fila-t span { color: var(--faint); text-decoration: line-through; }
   .fila.hecha .fila-d { opacity: .5; }
 
+  /* ---- Pendientes: lo no tachado de los días que ya pasaron, por ciudad ---- */
+  .pend-ciudad { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
+    margin-bottom: 12px; overflow: hidden; }
+  .pend-cab { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+    padding: 12px 16px 8px; border-bottom: 1px solid var(--line-soft); }
+  .pend-cab h3 { font-family: var(--ff-text); font-size: 20px; font-weight: 600; margin: 0; }
+  .pend-n { font-family: var(--ff-mono); font-size: 11.5px; color: var(--faint); }
+  .pend-ciudad .fila { grid-template-columns: 1fr; }
+  .pend-ciudad .fila-h { display: none; }
+  .pend-ciudad .fila-audio { display: none; }  /* la lista es para leer; el audio vive en Audioguías */
+  .pend-ciudad .fila-t { padding-right: 44px; position: relative; }
+  .nova { appearance: none; cursor: pointer; position: absolute; right: -4px; top: 0;
+    border: 1px solid var(--line); background: var(--surface); color: var(--faint);
+    font-family: var(--ff-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase;
+    padding: 4px 7px; border-radius: 3px; }
+  .nova:active { transform: scale(.94); }
+  .pend-vacio { text-align: center; color: var(--faint); font-size: 15px; padding: 36px 16px; line-height: 1.6; }
+  .pend-desc { margin-top: 18px; }
+  .pend-desc summary { font-family: var(--ff-mono); font-size: 11.5px; color: var(--faint);
+    cursor: pointer; letter-spacing: .04em; }
+  .pend-desc .fila { opacity: .6; }
+
   .prac { background: var(--surface); border: 1px solid var(--line-soft); border-radius: 3px;
     padding: 15px 16px; margin-bottom: 9px; }
   .prac-q { font-size: 17px; font-weight: 600; }
@@ -294,7 +316,7 @@
   /* ---- barra de navegación inferior, al alcance del pulgar ---- */
   .tabbar {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
-    display: grid; grid-template-columns: repeat(5, 1fr);
+    display: grid; grid-template-columns: repeat(6, 1fr);
     background: color-mix(in srgb, var(--surface) 94%, transparent);
     backdrop-filter: blur(16px) saturate(140%);
     border-top: 1px solid var(--line-soft);
@@ -303,8 +325,8 @@
   .tab {
     appearance: none; border: 0; background: none; cursor: pointer;
     display: flex; flex-direction: column; align-items: center; gap: 3px;
-    padding: 9px 4px 7px; color: var(--faint);
-    font-family: var(--ff-ui); font-size: 11.5px; font-weight: 600; letter-spacing: .01em;
+    padding: 9px 2px 7px; color: var(--faint);
+    font-family: var(--ff-ui); font-size: 10.5px; font-weight: 600; letter-spacing: 0;
     transition: color .18s ease;
   }
   .tab svg { width: 23px; height: 23px; fill: none; stroke: currentColor;
@@ -610,6 +632,7 @@
   <section id="view-pases" hidden></section>
   <section id="view-prac" hidden></section>
   <section id="view-mig" hidden></section>
+  <section id="view-pend" hidden></section>
 </main>
 
 <input type="file" id="pase-file" accept="image/*,application/pdf" multiple hidden>
@@ -701,6 +724,10 @@
   <button class="tab" role="tab" id="tab-mig" aria-selected="false" data-view="mig">
     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1.5"/><circle cx="12" cy="10" r="3"/><path d="M8.5 17h7"/></svg>
     <span>Migraciones</span>
+  </button>
+  <button class="tab" role="tab" id="tab-pend" aria-selected="false" data-view="pend">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h2.5M10 6.5h10M4 12h2.5M10 12h10M4 17.5h2.5M10 17.5h10"/><path d="M4.3 6.2l1 1 1.6-1.8"/></svg>
+    <span>Pendientes</span>
   </button>
 </nav>
 
@@ -8552,6 +8579,65 @@ var AUDIO_BASE = "audio/";
     sel.innerHTML = h;
   }
 
+  /* ---------- Pendientes ----------
+     Lo que no se marcó como hecho de los días que YA PASARON (y de hoy, lo
+     que ya quedó atrás por hora), agrupado por ciudad y sin fecha: es la
+     lista de lo que se escapó, para recuperarlo o darlo por perdido. "No va"
+     lo saca de la lista sin tacharlo; se guarda en localStorage aparte. */
+  var actDescartadas = store.get("actDescartadas", {});
+
+  function horaAhora() {
+    var d = new Date();
+    return String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+  }
+
+  function renderPend() {
+    var hoy = hoyISO(), ahora = horaAhora();
+    var porCiudad = {}, orden = [], descartadas = [];
+    DIAS.forEach(function (d) {
+      if (d.fecha > hoy) return;
+      d.actividades.forEach(function (a, i) {
+        if (d.fecha === hoy && a.hora >= ahora) return;
+        var k = claveAct(d.fecha, i);
+        if (actHechas[k]) return;
+        var item = { a: a, fecha: d.fecha, i: i, k: k };
+        if (actDescartadas[k]) { descartadas.push(item); return; }
+        if (!porCiudad[d.ciudad]) { porCiudad[d.ciudad] = []; orden.push(d.ciudad); }
+        porCiudad[d.ciudad].push(item);
+      });
+    });
+    var h = '<p class="note" style="margin-top:0;border:0;padding-top:0">' +
+            "Lo que no marcaste como hecho de los días que ya pasaron, por ciudad. " +
+            "El círculo lo tacha; «No va» lo saca de la lista sin tacharlo.</p>";
+    var total = 0;
+    orden.forEach(function (c) { total += porCiudad[c].length; });
+    if (!total) {
+      h += '<div class="pend-vacio">Nada pendiente.<br>Todo lo que ya pasó está tachado.</div>';
+    }
+    orden.forEach(function (c) {
+      var items = porCiudad[c];
+      h += '<section class="pend-ciudad">';
+      h += '<div class="pend-cab"><h3>' + esc(nombreCiudad(c)) + "</h3>" +
+           '<span class="pend-n">' + items.length + (items.length === 1 ? " pendiente" : " pendientes") + "</span></div>";
+      items.forEach(function (it) {
+        h += filaActividad(it.a, it.fecha, it.i).replace('<div class="fila-t">',
+             '<div class="fila-t"><button class="nova" data-nova="' + esc(it.k) + '" aria-label="Sacar de la lista">No va</button>');
+      });
+      h += "</section>";
+    });
+    if (descartadas.length) {
+      h += '<details class="pend-desc"><summary>' + descartadas.length +
+           (descartadas.length === 1 ? " descartada" : " descartadas") + " · ver</summary>";
+      h += '<section class="pend-ciudad" style="margin-top:10px">';
+      descartadas.forEach(function (it) {
+        h += filaActividad(it.a, it.fecha, it.i).replace('<div class="fila-t">',
+             '<div class="fila-t"><button class="nova" data-nova="' + esc(it.k) + '" aria-label="Volver a la lista">Volver</button>');
+      });
+      h += "</section></details>";
+    }
+    el("view-pend").innerHTML = h;
+  }
+
   function renderMig() {
     leerPases().then(function (ps) {
       pasesCache = ps;
@@ -9028,10 +9114,10 @@ var AUDIO_BASE = "audio/";
   }
 
   /* ================= NAVEGACIÓN ================= */
-  var TITULOS = { itin: "Itinerario", audio: "Audioguías", pases: "Pases", prac: "Práctico", mig: "Migraciones" };
+  var TITULOS = { itin: "Itinerario", audio: "Audioguías", pases: "Pases", prac: "Práctico", mig: "Migraciones", pend: "Pendientes" };
 
   function mostrar(v) {
-    ["itin", "audio", "pases", "prac", "mig"].forEach(function (x) {
+    ["itin", "audio", "pases", "prac", "mig", "pend"].forEach(function (x) {
       el("view-" + x).hidden = x !== v;
       var t = el("tab-" + x);
       t.setAttribute("aria-selected", String(x === v));
@@ -9052,6 +9138,7 @@ var AUDIO_BASE = "audio/";
       if (v === "itin") renderItin();
       if (v === "prac") renderPrac();
       if (v === "mig") renderMig();
+      if (v === "pend") renderPend();
       mostrar(v);
     });
   });
@@ -9629,11 +9716,20 @@ var AUDIO_BASE = "audio/";
       if (nodo) nodo.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
+    var nova = t.closest("[data-nova]");
+    if (nova) {
+      var kn = nova.getAttribute("data-nova");
+      if (actDescartadas[kn]) delete actDescartadas[kn]; else actDescartadas[kn] = 1;
+      store.set("actDescartadas", actDescartadas);
+      renderPend();
+      return;
+    }
     var tic = t.closest("[data-act]");
     if (tic) {
       var k = tic.getAttribute("data-act");
       if (actHechas[k]) delete actHechas[k]; else actHechas[k] = 1;
       store.set("actHechas", actHechas);
+      if (tic.closest("#view-pend")) { setTimeout(renderPend, 380); }
       var fila = tic.closest(".fila");
       fila.classList.toggle("hecha", !!actHechas[k]);
       tic.innerHTML = actHechas[k] ? "&#10003;" : "";
