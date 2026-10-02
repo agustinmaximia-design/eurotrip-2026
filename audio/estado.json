@@ -1819,6 +1819,76 @@
   "volumen": -4.0,
   "voz": "coral"
  },
+ "par1-08": {
+  "bitrate": "48k",
+  "cps": 14.09,
+  "huella": "1fbdd351",
+  "motor": "openai",
+  "segundos": 196.5,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par1-09": {
+  "bitrate": "48k",
+  "cps": 14.26,
+  "huella": "64ccd640",
+  "motor": "openai",
+  "segundos": 189.0,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par1-10": {
+  "bitrate": "48k",
+  "cps": 14.11,
+  "huella": "0fce0033",
+  "motor": "openai",
+  "segundos": 168.8,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par1-11": {
+  "bitrate": "48k",
+  "cps": 13.29,
+  "huella": "55e2936f",
+  "motor": "openai",
+  "segundos": 141.3,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par1-12": {
+  "bitrate": "48k",
+  "cps": 14.15,
+  "huella": "5309296a",
+  "motor": "openai",
+  "segundos": 187.5,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par1-13": {
+  "bitrate": "48k",
+  "cps": 14.52,
+  "huella": "553f338e",
+  "motor": "openai",
+  "segundos": 168.9,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par1-14": {
+  "bitrate": "48k",
+  "cps": 14.95,
+  "huella": "22087442",
+  "motor": "openai",
+  "segundos": 175.8,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
  "par2-01": {
   "bitrate": "48k",
   "cps": 14.17,
@@ -1919,6 +1989,46 @@
   "volumen": -4.0,
   "voz": "coral"
  },
+ "par2-11": {
+  "bitrate": "48k",
+  "cps": 14.39,
+  "huella": "edc1ac9e",
+  "motor": "openai",
+  "segundos": 177.4,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par2-12": {
+  "bitrate": "48k",
+  "cps": 14.47,
+  "huella": "eac50998",
+  "motor": "openai",
+  "segundos": 192.0,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par2-13": {
+  "bitrate": "48k",
+  "cps": 14.13,
+  "huella": "0a54bcf3",
+  "motor": "openai",
+  "segundos": 190.8,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par2-14": {
+  "bitrate": "48k",
+  "cps": 15.24,
+  "huella": "10177060",
+  "motor": "openai",
+  "segundos": 183.2,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
  "par4-01": {
   "bitrate": "48k",
   "cps": 14.48,
@@ -2015,6 +2125,56 @@
   "huella": "0203ed34",
   "motor": "openai",
   "segundos": 171.6,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par4-11": {
+  "bitrate": "48k",
+  "cps": 14.15,
+  "huella": "07120fdb",
+  "motor": "openai",
+  "segundos": 220.7,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par4-12": {
+  "bitrate": "48k",
+  "cps": 14.61,
+  "huella": "ca168762",
+  "motor": "openai",
+  "segundos": 185.4,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par4-13": {
+  "bitrate": "48k",
+  "cps": 14.21,
+  "huella": "c6f964c5",
+  "motor": "openai",
+  "segundos": 213.0,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par4-14": {
+  "bitrate": "48k",
+  "cps": 14.53,
+  "huella": "cea074c9",
+  "motor": "openai",
+  "segundos": 254.9,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "par4-15": {
+  "bitrate": "48k",
+  "cps": 15.03,
+  "huella": "267fd0be",
+  "motor": "openai",
+  "segundos": 188.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
