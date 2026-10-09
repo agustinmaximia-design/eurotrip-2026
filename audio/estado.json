@@ -3361,10 +3361,10 @@
  },
  "rom1-13": {
   "bitrate": "48k",
-  "cps": 14.01,
-  "huella": "dbf9249a",
+  "cps": 14.32,
+  "huella": "1c0ac5f8",
   "motor": "openai",
-  "segundos": 140.7,
+  "segundos": 139.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -3451,10 +3451,10 @@
  },
  "rom2-03": {
   "bitrate": "48k",
-  "cps": 14.05,
-  "huella": "210a3696",
+  "cps": 14.03,
+  "huella": "669419e9",
   "motor": "openai",
-  "segundos": 202.0,
+  "segundos": 197.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -3531,10 +3531,10 @@
  },
  "rom2-11": {
   "bitrate": "48k",
-  "cps": 13.91,
-  "huella": "e4a7be8e",
+  "cps": 14.31,
+  "huella": "a9572f29",
   "motor": "openai",
-  "segundos": 212.4,
+  "segundos": 209.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
