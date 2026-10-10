@@ -3599,6 +3599,46 @@
   "volumen": -4.0,
   "voz": "coral"
  },
+ "rom2-18": {
+  "bitrate": "48k",
+  "cps": 14.32,
+  "huella": "92677a60",
+  "motor": "openai",
+  "segundos": 253.4,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "rom2-19": {
+  "bitrate": "48k",
+  "cps": 14.17,
+  "huella": "637a3c3a",
+  "motor": "openai",
+  "segundos": 263.4,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "rom2-20": {
+  "bitrate": "48k",
+  "cps": 14.94,
+  "huella": "b4e9884d",
+  "motor": "openai",
+  "segundos": 254.8,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "rom2-21": {
+  "bitrate": "48k",
+  "cps": 14.2,
+  "huella": "f90c9e0b",
+  "motor": "openai",
+  "segundos": 259.6,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
  "rom3-01": {
   "bitrate": "48k",
   "cps": 14.26,
