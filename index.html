@@ -8666,6 +8666,47 @@ var AUDIO_BASE = "audio/";
     return pasesCache.filter(function (p) { return p.fecha === fecha; });
   }
 
+  /* A qué actividad va pegado un pase. El enganche se guarda como
+     fecha#posición, y eso se rompe cuando un día se reordena: el 10/10 el
+     pase de San Clemente (que estaba en la posición 9) apareció colgado de
+     otra actividad, porque el domingo 11 se rearmó entero. Ahora, si la
+     actividad de esa posición no comparte ninguna palabra con el título del
+     pase, se busca en el día la que más comparte. Si ninguna se parece, se
+     respeta la posición guardada; y si esa posición ya no existe, el pase
+     queda suelto y se ordena por su hora: nunca desaparece. */
+  var PALABRAS_VACIAS = { "desde": 1, "hasta": 1, "entre": 1, "sobre": 1, "visita": 1,
+    "guiada": 1, "entrada": 1, "entradas": 1, "ticket": 1, "incluye": 1, "niveles": 1,
+    "tres": 1, "reservado": 1, "gratis": 1, "punto": 1, "encuentro": 1 };
+  function palabrasClave(t) {
+    return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, " ").split(" ")
+      .filter(function (w) { return w.length >= 5 && !PALABRAS_VACIAS[w]; });
+  }
+  function coincidencias(a, b) {
+    var set = {}; a.forEach(function (w) { set[w] = 1; });
+    return b.filter(function (w) { return set[w]; }).length;
+  }
+  function claveDePase(p) {
+    if (!p.actividad) return "";
+    var d = DIAS.filter(function (x) { return x.fecha === p.fecha; })[0];
+    if (!d) return "";
+    var acts = d.actividades || [];
+    var idx = parseInt(String(p.actividad).split("#")[1], 10);
+    var pw = palabrasClave(p.titulo);
+    function txt(a) { return palabrasClave(a.titulo + " " + (a.detalle || []).join(" ")); }
+    if (acts[idx] && (!pw.length || coincidencias(pw, txt(acts[idx])) > 0)) return p.fecha + "#" + idx;
+    var mejor = -1, puntos = 0;
+    acts.forEach(function (a, i) {
+      var c = coincidencias(pw, txt(a));
+      if (c > puntos) { puntos = c; mejor = i; }
+    });
+    if (mejor >= 0) return p.fecha + "#" + mejor;
+    /* Ninguna actividad del día se parece al título (por ejemplo, un pase que
+       se cargó a mano con un nombre libre): se respeta el enganche que eligió
+       el usuario. Solo queda suelto si esa posición ya no existe. */
+    return acts[idx] ? p.fecha + "#" + idx : "";
+  }
+
   /* Las actividades se marcan como hechas con un toque en el círculo. La clave
      es fecha + posición: los días vienen de dias.js y no tienen id propio. */
   var actHechas = store.get("actHechas", {});
@@ -8689,7 +8730,7 @@ var AUDIO_BASE = "audio/";
     (a.detalle || []).forEach(function (d) {
       h += '<div class="fila-d">' + esc(d) + "</div>";
     });
-    var pegados = pasesDelDia(fecha).filter(function (x) { return x.actividad === k; });
+    var pegados = pasesDelDia(fecha).filter(function (x) { return claveDePase(x) === k; });
     if ((a.paradas && a.paradas.length) || pegados.length) {
       h += '<div class="fila-audio">';
       pegados.forEach(function (x) {
@@ -8755,7 +8796,7 @@ var AUDIO_BASE = "audio/";
        Los sueltos van por hora, y los que no tienen hora al final — antes
        caían primeros y te aparecía el pase arriba de todo el día. */
     pasesDelDia(d.fecha).forEach(function (p) {
-      if (p.actividad) return;
+      if (claveDePase(p)) return;
       items.push({ hora: p.hora || "99:98", html: filaPase(p) });
     });
     items.sort(function (a, b) { return a.hora < b.hora ? -1 : a.hora > b.hora ? 1 : 0; });
