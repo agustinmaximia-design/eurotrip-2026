@@ -4509,6 +4509,66 @@
   "volumen": -4.0,
   "voz": "coral"
  },
+ "tur1-17": {
+  "bitrate": "48k",
+  "cps": 13.84,
+  "huella": "5bdd0740",
+  "motor": "openai",
+  "segundos": 185.0,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "tur1-18": {
+  "bitrate": "48k",
+  "cps": 12.92,
+  "huella": "ee6dd90b",
+  "motor": "openai",
+  "segundos": 212.4,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "tur1-19": {
+  "bitrate": "48k",
+  "cps": 14.01,
+  "huella": "71e24e86",
+  "motor": "openai",
+  "segundos": 173.6,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "tur1-20": {
+  "bitrate": "48k",
+  "cps": 13.71,
+  "huella": "e7ddf866",
+  "motor": "openai",
+  "segundos": 183.5,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "tur1-21": {
+  "bitrate": "48k",
+  "cps": 13.69,
+  "huella": "1290bf3a",
+  "motor": "openai",
+  "segundos": 169.4,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "tur1-22": {
+  "bitrate": "48k",
+  "cps": 13.99,
+  "huella": "86d5499d",
+  "motor": "openai",
+  "segundos": 183.2,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
  "tur2-01": {
   "bitrate": "48k",
   "cps": 14.43,
