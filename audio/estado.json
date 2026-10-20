@@ -3271,20 +3271,20 @@
  },
  "par2-07": {
   "bitrate": "48k",
-  "cps": 14.18,
-  "huella": "f509b31c",
+  "cps": 14.25,
+  "huella": "8485f688",
   "motor": "openai",
-  "segundos": 233.0,
+  "segundos": 234.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "par2-08": {
   "bitrate": "48k",
-  "cps": 14.6,
-  "huella": "31d07e68",
+  "cps": 14.16,
+  "huella": "c0a9e4b2",
   "motor": "openai",
-  "segundos": 225.3,
+  "segundos": 240.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
