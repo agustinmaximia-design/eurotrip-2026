@@ -1111,10 +1111,10 @@
  },
  "lon1-08": {
   "bitrate": "48k",
-  "cps": 13.45,
-  "huella": "fa7999a0",
+  "cps": 14.56,
+  "huella": "a978b1ee",
   "motor": "openai",
-  "segundos": 221.8,
+  "segundos": 205.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1181,20 +1181,20 @@
  },
  "lon1-15": {
   "bitrate": "48k",
-  "cps": 15.03,
-  "huella": "f49f4b20",
+  "cps": 14.05,
+  "huella": "eec97a87",
   "motor": "openai",
-  "segundos": 145.2,
+  "segundos": 155.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "lon2-01": {
   "bitrate": "48k",
-  "cps": 14.14,
-  "huella": "1524db2e",
+  "cps": 14.56,
+  "huella": "672a1ce5",
   "motor": "openai",
-  "segundos": 117.5,
+  "segundos": 116.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1221,10 +1221,10 @@
  },
  "lon2-04": {
   "bitrate": "48k",
-  "cps": 14.31,
-  "huella": "7d416e4c",
+  "cps": 15.24,
+  "huella": "13d3622b",
   "motor": "openai",
-  "segundos": 146.0,
+  "segundos": 139.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1359,12 +1359,22 @@
   "volumen": -4.0,
   "voz": "coral"
  },
+ "lon2-18": {
+  "bitrate": "48k",
+  "cps": 14.31,
+  "huella": "c62c4296",
+  "motor": "openai",
+  "segundos": 182.4,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
  "lon3-01": {
   "bitrate": "48k",
-  "cps": 14.32,
-  "huella": "b78bc330",
+  "cps": 14.48,
+  "huella": "724aaa71",
   "motor": "openai",
-  "segundos": 125.9,
+  "segundos": 124.8,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1411,10 +1421,10 @@
  },
  "lon3-06": {
   "bitrate": "48k",
-  "cps": 14.56,
-  "huella": "37626084",
+  "cps": 14.36,
+  "huella": "99c8b473",
   "motor": "openai",
-  "segundos": 179.7,
+  "segundos": 181.7,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1461,10 +1471,10 @@
  },
  "lon3-11": {
   "bitrate": "48k",
-  "cps": 14.37,
-  "huella": "83a35b2d",
+  "cps": 14.28,
+  "huella": "9d567fc1",
   "motor": "openai",
-  "segundos": 186.9,
+  "segundos": 186.0,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1491,10 +1501,10 @@
  },
  "lon3-14": {
   "bitrate": "48k",
-  "cps": 14.07,
-  "huella": "dc51e7e0",
+  "cps": 13.38,
+  "huella": "4c7e9fcc",
   "motor": "openai",
-  "segundos": 191.0,
+  "segundos": 200.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1561,20 +1571,20 @@
  },
  "lon3-21": {
   "bitrate": "48k",
-  "cps": 14.3,
-  "huella": "6839332c",
+  "cps": 14.65,
+  "huella": "d08680e8",
   "motor": "openai",
-  "segundos": 235.8,
+  "segundos": 231.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "lon4-01": {
   "bitrate": "48k",
-  "cps": 14.1,
-  "huella": "6229d921",
+  "cps": 14.34,
+  "huella": "90257bd1",
   "motor": "openai",
-  "segundos": 155.9,
+  "segundos": 163.1,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1631,10 +1641,10 @@
  },
  "lon4-07": {
   "bitrate": "48k",
-  "cps": 14.85,
-  "huella": "e247cd9a",
+  "cps": 15.17,
+  "huella": "bc5c0f76",
   "motor": "openai",
-  "segundos": 207.6,
+  "segundos": 204.4,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1651,20 +1661,20 @@
  },
  "lon4-09": {
   "bitrate": "48k",
-  "cps": 14.43,
-  "huella": "440a6518",
+  "cps": 14.28,
+  "huella": "f8013858",
   "motor": "openai",
-  "segundos": 185.6,
+  "segundos": 187.9,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
  },
  "lon4-10": {
   "bitrate": "48k",
-  "cps": 14.88,
-  "huella": "ad4e9db1",
+  "cps": 13.82,
+  "huella": "8e98e0d1",
   "motor": "openai",
-  "segundos": 161.5,
+  "segundos": 125.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
@@ -1711,10 +1721,20 @@
  },
  "lon4-15": {
   "bitrate": "48k",
-  "cps": 14.05,
-  "huella": "97325033",
+  "cps": 14.82,
+  "huella": "c4fd86b1",
   "motor": "openai",
-  "segundos": 200.1,
+  "segundos": 188.5,
+  "velocidad": 1.0,
+  "volumen": -4.0,
+  "voz": "coral"
+ },
+ "lon4-16": {
+  "bitrate": "48k",
+  "cps": 13.92,
+  "huella": "04efdea9",
+  "motor": "openai",
+  "segundos": 237.6,
   "velocidad": 1.0,
   "volumen": -4.0,
   "voz": "coral"
